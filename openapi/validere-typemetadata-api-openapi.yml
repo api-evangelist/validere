@@ -1,0 +1,150 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities TypeMetadata API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- name: TypeMetadata
+paths:
+  /type_metadata/transaction_states:
+    get:
+      tags:
+      - TypeMetadata
+      summary: List All Transaction States
+      description: Lists all transaction states.
+      operationId: list_all_transaction_states_type_metadata_transaction_states_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_statuses:
+    get:
+      tags:
+      - TypeMetadata
+      summary: List All Transaction Statuses
+      description: Lists all transaction statuses.
+      operationId: list_all_transaction_statuses_type_metadata_transaction_statuses_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_steps:
+    get:
+      tags:
+      - TypeMetadata
+      summary: List All Transaction Steps
+      description: Lists all transaction steps.
+      operationId: list_all_transaction_steps_type_metadata_transaction_steps_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_errors:
+    get:
+      tags:
+      - TypeMetadata
+      summary: List All Transaction Errors
+      description: Lists all transaction errors.
+      operationId: list_all_transaction_errors_type_metadata_transaction_errors_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+components:
+  schemas:
+    TypeMetadataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TypeMetadataResponse
+      description: TypeMetadata response envelope
+    ResponseMeta:
+      properties:
+        type:
+          type: string
+          title: Type
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
+      type: object
+      required:
+      - type
+      title: ResponseMeta
+      description: Standard response envelope meta object

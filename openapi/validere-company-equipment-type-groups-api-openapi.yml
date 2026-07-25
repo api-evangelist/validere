@@ -1,0 +1,124 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities company_equipment_type_groups API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Company <> Equipment Type Groups
+  name: company_equipment_type_groups
+paths:
+  /app/v1/company_equipment_type_groups:
+    get:
+      operationId: list_company_equipment_type_groups
+      parameters:
+      - $ref: '#/components/parameters/EquipmentTypeGroupNameQuery'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CompanyEquipmentTypeGroup'
+                type: array
+          description: A successful operation
+      summary: List company equipment type groups
+      tags:
+      - company_equipment_type_groups
+    post:
+      operationId: create_company_equipment_type_group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                group_name:
+                  example: subpartW
+                  type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyEquipmentTypeGroup'
+          description: A successful operation
+      summary: Create an association between a company and equipment type group
+      tags:
+      - company_equipment_type_groups
+  /app/v1/company_equipment_type_groups/{group_name}:
+    delete:
+      operationId: delete_company_equipment_type_group
+      parameters:
+      - $ref: '#/components/parameters/EquipmentTypeGroupName'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete a company equipment type group
+      tags:
+      - company_equipment_type_groups
+    get:
+      operationId: get_company_equipment_type_group
+      parameters:
+      - $ref: '#/components/parameters/EquipmentTypeGroupName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyEquipmentTypeGroup'
+          description: A successful operation
+      summary: Get company equipment type group
+      tags:
+      - company_equipment_type_groups
+components:
+  schemas:
+    CompanyEquipmentTypeGroup:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        group_name:
+          example: subpartW
+          type: string
+  parameters:
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EquipmentTypeGroupNameQuery:
+      description: equipment type group name
+      in: query
+      name: group_name
+      required: false
+      schema:
+        type: string
+    EquipmentTypeGroupName:
+      description: Name of an equipment type group
+      in: path
+      name: group_name
+      required: true
+      schema:
+        example: subpartW
+        type: string

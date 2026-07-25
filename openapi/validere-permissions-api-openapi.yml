@@ -1,0 +1,112 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities permissions API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Permission
+  name: permissions
+paths:
+  /app/v1/permissions:
+    get:
+      operationId: list_permissions
+      parameters:
+      - $ref: '#/components/parameters/PermissionName'
+      - $ref: '#/components/parameters/PermissionIsFeatureEnabled'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/Permission'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List permissions
+      tags:
+      - permissions
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    PermissionName:
+      description: Permission name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+  schemas:
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Permission:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+      type: object

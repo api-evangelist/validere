@@ -1,0 +1,765 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities calculator_results API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Calculator Results
+  name: calculator_results
+paths:
+  /app/v1/calculator_results:
+    post:
+      operationId: calculator_results
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/CalculatorResultSort'
+              - $ref: '#/components/schemas/CalculatorResultFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAggregatedCalculatorResults'
+          description: successful operation
+      summary: Search and aggregate Calculator Result
+      tags:
+      - calculator_results
+  /app/v1/calculator_results/export:
+    post:
+      operationId: export_calculator_results
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/CalculatorResultSort'
+              - $ref: '#/components/schemas/CalculatorResultFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithS3Url'
+          description: successful operation
+      summary: Export Calculator Results
+      tags:
+      - calculator_results
+  /app/v1/calculator_results/filters:
+    get:
+      operationId: get_calculator_results_filter
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      - $ref: '#/components/parameters/FilterStatus'
+      - $ref: '#/components/parameters/FilterCreatedBy'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCalculatorResultFilterOutput'
+          description: successful operation
+      summary: List Filter
+      tags:
+      - calculator_results
+    post:
+      operationId: post_calculator_results_filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorResultFilterInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorResultFilterOutput'
+          description: successful operation
+      summary: Create Filter
+      tags:
+      - calculator_results
+  /app/v1/calculator_results/filters/{filter_id}:
+    delete:
+      operationId: delete_calculator_results_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete Filter
+      tags:
+      - calculator_results
+    put:
+      operationId: put_calculator_results_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorResultFilterUpdateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorResultFilterOutput'
+          description: successful operation
+      summary: Update Filter
+      tags:
+      - calculator_results
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    FilterCreatedBy:
+      description: Filter Creator
+      in: query
+      name: created_by
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FilterStatus:
+      description: Filter Status
+      in: query
+      name: status
+      required: false
+      schema:
+        $ref: '#/components/schemas/schemas-FilterStatus'
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    schemas-FilterStatus:
+      type: string
+      enum:
+      - active
+      - draft
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    CalculatorResultSort:
+      properties:
+        sort_by:
+          description: any field from group_by param
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    CalculatorResultFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/CalculatorResultFilter'
+      - properties:
+          entity_type:
+            example: calculator_result
+            type: string
+      type: object
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    CalculatorResultGroupByFields:
+      items:
+        type: string
+        enum:
+        - entity_id
+        - estimation_method_id
+        - reporting_group
+        - measurement_type
+        - year_month
+        - equipment.custom_attributes
+        - equipment.id
+        - equipment.name
+        - equipment.status
+        - equipment.type.id
+        - equipment.type.name
+        - equipment.facility.custom_attributes
+        - equipment.facility.id
+        - equipment.facility.name
+        - equipment.facility.status
+        - estimation_method.facility.status
+        - estimation_method.name
+        - estimation_method.entity_id
+        - estimation_method.analytics_library_id
+        - estimation_method.analytics_calculator_id
+      type: array
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      nullable: true
+      type: number
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EquipmentFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.facility.custom_attributes:
+          type: object
+        equipment.facility.id:
+          type: string
+        equipment.facility.name:
+          type: string
+        equipment.facility.status:
+          type: string
+      type: object
+    CalculatorResultFilter:
+      properties:
+        filter:
+          $ref: '#/components/schemas/CalculatorResultFilterFields'
+        group_by:
+          $ref: '#/components/schemas/CalculatorResultGroupByFields'
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    CalculatorResultFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/EstimationMethodPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/FlowEquipmentPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
+      - properties:
+          entity_type:
+            type: string
+            example: equipment
+          entity_id:
+            type: string
+            format: uuid
+            example:
+              $in:
+              - c3e9446d-4cc0-4e7b-bb43-43fff9361957
+              - c3e9446d-4cc0-4e7b-bb43-43fff9361957
+              - c3e9446d-4cc0-4e7b-bb43-43fff9361957
+          reporting_group:
+            type: string
+            example: subpartw
+          measurement_type:
+            type: string
+          year_month:
+            type: string
+            example: 202201
+        type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    PagedCalculatorResultFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/CalculatorResultFilterOutput'
+            type: array
+        type: object
+    CalculatorResultFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/CalculatorResultFilter'
+      type: object
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      nullable: true
+      type: number
+    AggregatedCalculatorResult:
+      properties:
+        id:
+          type: string
+          format: uuid
+        calculator_run_id:
+          type: string
+          format: uuid
+        result_category:
+          type: string
+          example: outputs
+        measurement_unit:
+          type: string
+          example: g
+        measurement_value:
+          type: number
+        estimation_method_id:
+          type: string
+          format: uuid
+        year_month:
+          example: 202212
+          type: string
+        equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+      type: object
+    PagedAggregatedCalculatorResults:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/AggregatedCalculatorResults'
+        type: object
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    EquipmentBasic:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    CalculatorResultFilterUpdateInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/CalculatorResultFilter'
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    ReportWithTemplatedReportResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        s3_object_id:
+          type: string
+        report_version:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
+    EstimationMethodPrimaryFilterFieldsWithPrefix:
+      properties:
+        estimation_method.id:
+          type: string
+        estimation_method.name:
+          type: string
+        estimation_method.entity_id:
+          type: string
+        estimation_method.analytics_library_id:
+          type: string
+        estimation_method.analytics_calculator_id:
+          type: string
+        estimation_method.created_at:
+          type: string
+        estimation_method.created_by:
+          type: string
+        estimation_method.updated_at:
+          type: string
+        estimation_method.updated_by:
+          type: string
+      type: object
+    FlowEquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.equipment.custom_attributes:
+          type: object
+        flow.equipment.id:
+          type: string
+        flow.equipment.name:
+          type: string
+        flow.equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        flow.equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
+      type: object
+    FlowFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.facility.custom_attributes:
+          type: object
+        flow.facility.id:
+          type: string
+        flow.facility.name:
+          type: string
+        flow.facility.status:
+          type: string
+      type: object
+    FlowPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.id:
+          type: string
+        flow.name:
+          type: string
+        flow.status:
+          $ref: '#/components/schemas/FlowStatus'
+        flow.type:
+          $ref: '#/components/schemas/FlowTypes'
+        flow.product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        flow.product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        flow.custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        flow.associated_facility_id:
+          type: string
+          format: uuid
+        flow.associated_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    AggregatedCalculatorResults:
+      items:
+        $ref: '#/components/schemas/AggregatedCalculatorResult'
+      type: array
+    EquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.custom_attributes:
+          type: object
+        equipment.id:
+          type: string
+        equipment.name:
+          type: string
+        equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
+      type: object
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter

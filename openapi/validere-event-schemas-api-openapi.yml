@@ -1,0 +1,327 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities event_schemas API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Event Schemas
+  name: event_schemas
+paths:
+  /app/v1/event_schemas:
+    post:
+      operationId: create_event_schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSchemaCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSchemaWithForms'
+          description: A successful operation
+      summary: Create an event schema
+      tags:
+      - event_schemas
+  /app/v1/event_schemas/{id}:
+    put:
+      operationId: update_event_schema
+      parameters:
+      - $ref: '#/components/parameters/EventSchemaId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventSchemaCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSchemaWithForms'
+          description: A successful operation
+      summary: Update an event schema
+      tags:
+      - event_schemas
+    delete:
+      operationId: delete_event_schema
+      parameters:
+      - $ref: '#/components/parameters/EventSchemaId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete an event schema
+      tags:
+      - event_schemas
+    get:
+      operationId: get_event_schema
+      parameters:
+      - $ref: '#/components/parameters/EventSchemaId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSchemaWithForms'
+          description: A successful operation
+      summary: Get an event schema
+      tags:
+      - event_schemas
+  /app/v1/event_schemas/search:
+    post:
+      operationId: search_event_schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/EventSchemaSort'
+              - $ref: '#/components/schemas/EventSchemaFilter'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/EventSchema'
+                      type: array
+                  type: object
+      summary: Search and list event schemas
+      tags:
+      - event_schemas
+components:
+  schemas:
+    EventSchemaSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - version
+          - priority
+          - event_category.id
+          - event_category.name
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    EventSchemaWithForms:
+      allOf:
+      - $ref: '#/components/schemas/EventSchema'
+      - properties:
+          form_schemas:
+            type: array
+            items:
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                description:
+                  type: string
+                form_category:
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                  type: object
+                required:
+                  type: boolean
+              type: object
+      type: object
+    EventSchemaConfig:
+      properties:
+        has_due_date:
+          type: boolean
+          example: true
+        due_date:
+          properties:
+            relative_time:
+              type: boolean
+              example: true
+            time_period:
+              type: string
+              example: days
+            duration:
+              type: number
+              example: 7
+          type: object
+        has_forms:
+          type: boolean
+        forms:
+          properties:
+            required_templates:
+              type: array
+              items:
+                type: string
+                example: c482584f-0402-4b6f-9ca4-124e2775a172
+            suggested_templates:
+              type: array
+              items:
+                type: string
+                example: 43c0aab0-2a67-47c1-aa7d-cb16055d6432
+          type: object
+        has_alerts:
+          type: boolean
+        has_flows:
+          type: boolean
+        has_equipment:
+          type: boolean
+        equipment:
+          properties:
+            is_mandatory:
+              type: boolean
+              example: true
+            has_source:
+              type: boolean
+              example: true
+          type: object
+        has_devices:
+          type: boolean
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventSchemaCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
+    EventSchemaCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        version:
+          type: string
+          maxLength: 20
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+        description:
+          type: string
+          maxLength: 256
+        config:
+          $ref: '#/components/schemas/EventSchemaConfig'
+        event_category_id:
+          type: string
+          format: uuid
+      type: object
+    EventSchemaFilter:
+      properties:
+        filter:
+          description: A filter object for Event Schemas where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            version: V1
+            status: active
+            name:
+              $like: leak
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            status:
+              type: string
+            version:
+              type: string
+            priority:
+              type: string
+            event_category.id:
+              type: string
+            event_category.name:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+  parameters:
+    EventSchemaId:
+      description: Event Schema ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string

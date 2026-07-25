@@ -1,0 +1,281 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities company API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Company
+  name: company
+paths:
+  /app/v1/companies:
+    post:
+      operationId: create_company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateCompanyWithAdminInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICompany'
+          description: A successful operation
+      summary: Must be System Admin - Create a company
+      tags:
+      - company
+  /app/v1/companies/search:
+    post:
+      operationId: search_companies
+      parameters:
+      - $ref: '#/components/parameters/TenantId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/CompanySort'
+              - $ref: '#/components/schemas/CompanyFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCompanyList'
+          description: successful operation
+      summary: Must be System Admin - Search companies
+      tags:
+      - company
+  /app/v1/companies/{company_id}:
+    get:
+      operationId: get_company
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/TenantId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICompany'
+          description: A successful operation
+      summary: Must be System Admin or Company member - Get a company
+      tags:
+      - company
+    put:
+      operationId: update_company
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateCompanyInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICompany'
+          description: A successful operation
+      summary: Must be System Admin - Update a company
+      tags:
+      - company
+    delete:
+      operationId: delete_company
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Must be System Admin - Delete a company
+      tags:
+      - company
+components:
+  schemas:
+    CompanySort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    IUpdateCompanyInput:
+      type: object
+      properties:
+        name:
+          type: string
+        localization:
+          type: object
+          additionalProperties:
+            nullable: true
+    ICompany:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        localization:
+          type: object
+          additionalProperties:
+            nullable: true
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - name
+      - localization
+      - created_at
+      - created_by
+      - updated_at
+      - updated_by
+    ICreateCompanyWithAdminInput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        localization:
+          type: object
+          additionalProperties:
+            nullable: true
+        admin:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+            email:
+              type: string
+              format: email
+          required:
+          - name
+          - email
+      required:
+      - name
+      - localization
+      - admin
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedCompanyList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ICompany'
+        type: object
+    CompanyFilter:
+      properties:
+        filter:
+          description: A filter object for Companies where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+          type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+  parameters:
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id

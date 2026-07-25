@@ -1,0 +1,566 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities users API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: User
+  name: users
+paths:
+  /app/v1/users:
+    post:
+      operationId: create_user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateUserInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IUser'
+          description: A successful operation
+      summary: Create a user
+      tags:
+      - users
+  /app/v1/users/search:
+    post:
+      operationId: search_users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/UserSort'
+              - $ref: '#/components/schemas/UserFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedUserList'
+          description: successful operation
+      summary: Search users
+      tags:
+      - users
+  /app/v1/users/myself:
+    get:
+      operationId: get_user_myself
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWithCompanies'
+          description: A successful operation
+      summary: Get the current user info
+      tags:
+      - users
+  /app/v1/users/{id}:
+    get:
+      operationId: get_user
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IUser'
+          description: A successful operation
+      summary: Get a user
+      tags:
+      - users
+    put:
+      operationId: update_user
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateUserInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IUser'
+          description: A successful operation
+      summary: Update a user
+      tags:
+      - users
+    delete:
+      operationId: delete_user
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete a user
+      tags:
+      - users
+  /app/v1/users/{id}/groups:
+    get:
+      deprecated: true
+      operationId: list_user_groups
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleMembershipWithRole'
+      summary: List groups a user belongs to
+      tags:
+      - users
+  /app/v1/users/{id}/roles:
+    get:
+      operationId: list_user_roles
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleMembershipWithRole'
+      summary: List roles a user belongs to
+      tags:
+      - users
+  /app/v1/users/{id}/permissions/decision:
+    post:
+      operationId: get_user_permission_decision
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionDecisionRequest'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionDecision'
+      summary: Check whether a user has been granted permissions
+      tags:
+      - users
+  /app/v1/users/{id}/permissions:
+    get:
+      operationId: get_user_permission
+      parameters:
+      - $ref: '#/components/parameters/UserId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPermissions'
+          description: A successful operation
+      summary: Get user permission
+      tags:
+      - users
+components:
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    UserStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    ICreateUserInput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          default: 0007bb10-5367-4d41-ad10-b05468b52529
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+      required:
+      - name
+      - email
+    PermissionDecisionRequest:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - facilities:read
+          - facilities:write
+          - facilities:delete
+          - equipment:read
+          - equipment:write
+          - equipment:delete
+    PagedUserList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/IUser'
+              - properties:
+                  user_groups:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  user_groups_count:
+                    type: number
+                  roles:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  roles_count:
+                    type: number
+                type: object
+        type: object
+    IUpdateUserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        phone:
+          type: string
+          nullable: true
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+    IUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          default: a6877768-18a7-4371-b3b2-f9a89f9dc6f2
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+        company_id:
+          type: string
+          format: uuid
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - name
+      - email
+      - phone
+      - company_id
+      - created_at
+      - created_by
+      - updated_at
+      - updated_by
+    RoleMembershipWithRole:
+      allOf:
+      - $ref: '#/components/schemas/RoleMembership'
+      - properties:
+          role:
+            $ref: '#/components/schemas/GroupBasic'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    UserWithCompanies:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          default: 6fe51353-233f-4745-84df-e51a7b9fe46f
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+          nullable: true
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+        company_id:
+          type: string
+          format: uuid
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_by:
+          type: string
+          format: uuid
+        companies:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+            required:
+            - id
+            - name
+      required:
+      - name
+      - email
+      - phone
+      - company_id
+      - created_at
+      - created_by
+      - updated_at
+      - updated_by
+      - companies
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    UserSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - quicksight
+          - timezone
+          - status
+          - email
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    PermissionInput:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+        active:
+          type: boolean
+        filter:
+          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          example:
+            $or:
+            - custom_attributes.region: US
+            - name:
+                $like: Facility 1
+          type: object
+      type: object
+    UserPermissions:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
+    PermissionDecision:
+      type: object
+      additionalProperties:
+        type: boolean
+      example:
+        facilities:read: true
+        equipment:read: true
+    GroupBasic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    UserFilter:
+      properties:
+        filter:
+          description: A filter object for Users where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              quicksight:
+                type: boolean
+              timezone:
+                type: string
+                example: America/Los_Angeles
+              status:
+                $ref: '#/components/schemas/UserStatus'
+              email:
+                type: string
+                format: email
+          type: object
+  parameters:
+    UserId:
+      description: User ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string

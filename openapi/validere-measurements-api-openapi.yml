@@ -1,0 +1,471 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities measurements API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Measurements
+  name: measurements
+paths:
+  /app/v1/measurements:
+    get:
+      operationId: get_aggregated_measurements
+      parameters:
+      - $ref: '#/components/parameters/DeviceIdQuery'
+      - $ref: '#/components/parameters/GroupBy'
+      - $ref: '#/components/parameters/Interval'
+      - $ref: '#/components/parameters/AggregateFunction'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedMeasurementList'
+          description: successful operation
+      summary: Get aggregated list of measurements
+      tags:
+      - measurements
+  /app/v1/measurements/plot/{measurement_type}:
+    get:
+      operationId: plot_measurements
+      parameters:
+      - $ref: '#/components/parameters/MeasurementType'
+      - $ref: '#/components/parameters/DeviceIdQueryOptional'
+      - $ref: '#/components/parameters/MeasurementTypeSubjectId'
+      - $ref: '#/components/parameters/MeasurementTypeSubjectType'
+      - $ref: '#/components/parameters/IncludeForms'
+      - $ref: '#/components/parameters/FormSubmissionStatuses'
+      - $ref: '#/components/parameters/MeasurementSeriesIds'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/Interval'
+      - $ref: '#/components/parameters/AggregateFunction'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementPlot'
+          description: successful operation
+      summary: Get measurements for a measurement type
+      tags:
+      - measurements
+  /app/v1/measurements/{measurement_series_id}:
+    get:
+      operationId: get_measurements
+      parameters:
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      - $ref: '#/components/parameters/GroupBy'
+      - $ref: '#/components/parameters/Interval'
+      - $ref: '#/components/parameters/AggregateFunction'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      - $ref: '#/components/parameters/MeasurementSeriesSubjectId'
+      - $ref: '#/components/parameters/MeasurementSeriesSubjectType'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedMeasurementList'
+          description: successful operation
+      summary: Get list of measurements
+      tags:
+      - measurements
+    put:
+      operationId: add_measurement
+      parameters:
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Measurement'
+              - $ref: '#/components/schemas/MeasurementSeriesSubjectInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  recordsWritten:
+                    example: 1
+                    minimum: 0
+                    type: integer
+                  success:
+                    example: true
+                    type: boolean
+          description: successful operation
+        '400':
+          content:
+            application/json:
+              schema:
+                properties:
+                  error:
+                    type: string
+                  recordsRejected:
+                    items:
+                      $ref: '#/components/schemas/RejectedRecord'
+                    type: array
+                  recordsRejectedCount:
+                    minimum: 1
+                    type: integer
+                  success:
+                    example: false
+                    type: boolean
+                required:
+                - success
+                - error
+          description: unsuccessful operation
+      summary: Upsert a measurement
+      tags:
+      - measurements
+components:
+  parameters:
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FormSubmissionStatuses:
+      description: Form submission status to filter on, can be comma separated list
+      in: query
+      name: form_submission_statuses
+      required: false
+      schema:
+        type: string
+    GroupBy:
+      description: group by
+      example: measurement_type
+      in: query
+      name: group_by
+      required: false
+      schema:
+        type: string
+    DeviceIdQuery:
+      description: Id of device
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: device_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    DeviceIdQueryOptional:
+      description: ID of device
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: device_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    IncludeForms:
+      description: If form measurements should be included
+      in: query
+      name: include_forms
+      required: false
+      schema:
+        type: boolean
+    MeasurementTypeSubjectId:
+      description: ID of the entity you want to list the measurement types for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesSubjectType:
+      description: Type of the entity you want to list the measurements for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    StartDate:
+      description: start date - default value is current date time
+      example: '2022-11-20T09:12:28.000Z'
+      in: query
+      name: start
+      schema:
+        format: date-time
+        type: string
+    EndDate:
+      description: end date
+      example: '2022-11-30T09:12:28.000Z'
+      in: query
+      name: end
+      schema:
+        format: date-time
+        type: string
+    AggregateFunction:
+      description: Aggregate Function
+      example: avg
+      in: query
+      name: func
+      required: false
+      schema:
+        enum:
+        - avg
+        - sum
+    MeasurementSeriesIds:
+      description: a comma-separated list of measurement series ids
+      in: query
+      name: measurement_series_ids
+      required: false
+      schema:
+        type: string
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    Interval:
+      description: interval
+      example: 1day
+      in: query
+      name: interval
+      required: false
+      schema:
+        enum:
+        - 1minute
+        - 15minute
+        - 1hour
+        - 1day
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    MeasurementTypeSubjectType:
+      description: Type of the entity you want to list the measurement types for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    MeasurementSeriesSubjectId:
+      description: ID of the entity you want to list the measurements for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    Measurement:
+      properties:
+        measurement_type:
+          type: string
+          example: volume
+        measurement_unit:
+          type: string
+          example: bbl
+        records:
+          items:
+            $ref: '#/components/schemas/MeasurementInputRecord'
+          type: array
+      required:
+      - records
+      - measurement_type
+      - measurement_unit
+      type: object
+    PagedMeasurementList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/MeasurementList'
+        type: object
+    MeasurementOutput:
+      properties:
+        measure_name:
+          example: methane_concentration
+          type: string
+        measure_value:
+          example: 456
+          type: number
+        msid:
+          description: Measurement series Id
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    MeasurementPlot:
+      properties:
+        form:
+          type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/MeasurementOutputLean'
+        series:
+          type: array
+          items:
+            properties:
+              measurement_series_id:
+                type: string
+                format: uuid
+              description:
+                type: string
+              data:
+                $ref: '#/components/schemas/MeasurementOutputLean'
+            type: object
+      type: object
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
+    MeasurementInputRecord:
+      properties:
+        timestamp:
+          format: date-time
+          type: string
+        value:
+          type: number
+      required:
+      - timestamp
+      - value
+      type: object
+    MeasurementOutputLean:
+      properties:
+        id:
+          type: string
+          format: uuid
+        measure_value:
+          example: 456
+          type: number
+        time:
+          format: date-time
+          type: string
+        form_submission_id:
+          type: string
+          format: uuid
+        form_submission_status:
+          $ref: '#/components/schemas/FormSubmissionStatus'
+        form_schema:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+        form_category:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              nullable: true
+            name:
+              type: string
+              nullable: true
+      type: object
+    RejectedRecord:
+      properties:
+        ExistingVersion:
+          type: integer
+        Reason:
+          type: string
+        RecordIndex:
+          type: integer
+      type: object
+    MeasurementList:
+      items:
+        $ref: '#/components/schemas/MeasurementOutput'
+      type: array
+    MeasurementSeriesSubjectInput:
+      properties:
+        subjects:
+          items:
+            properties:
+              entity_id:
+                format: uuid
+                type: string
+              entity_type:
+                $ref: '#/components/schemas/MeasurementSubjectEntityType'
+              start_time:
+                format: date-time
+          type: array
+      type: object

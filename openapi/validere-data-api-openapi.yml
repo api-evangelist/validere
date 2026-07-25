@@ -1,0 +1,273 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities data API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- name: data
+paths:
+  /data/json:
+    post:
+      tags:
+      - data
+      summary: Register Json Data
+      description: 'Registers new JSON data for the specified dataset.
+
+
+        The JSON request body must include the following fields:
+
+        * `client_id` (UUID) - client making the request
+
+        * `dataset_id` (UUID) - dataset uuid for which the payload is being ingested for.
+
+        * `data` (List[object]) - data to ingest into the data platform'
+      operationId: register_json_data_data_json_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JSONDataPostRequest'
+            example:
+              client_id: ffaaee85-3665-464b-a0a5-979cf3a46bcc
+              dataset_id: 9142d109-d86e-4820-bc72-da6b5b0c61d0
+              data:
+              - RecordDatetimeUTC: '2022-10-21T04:08:52.102Z'
+                Tag: Tank_A/Type_1_Tanks/Pressure/PVPct
+                Value: 23.0192
+              - RecordDatetimeUTC: '2022-10-21T04:08:55.102Z'
+                Tag: Tank_A/Type_1_Tanks/Pressure/PVPct
+                Value: 22.9441
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse'
+              example:
+                meta:
+                  type: JSONData
+                  transaction_id: 8372d109-d86e-4820-bc72-da6b5b0c61d0
+                  total: 2
+                data:
+                - RecordDatetimeUTC: '2022-10-21T04:08:52.102Z'
+                  Tag: Tank_A/Type_1_Tanks/Pressure/PVPct
+                  Value: 23.0192
+                - RecordDatetimeUTC: '2022-10-21T04:08:55.102Z'
+                  Tag: Tank_A/Type_1_Tanks/Pressure/PVPct
+                  Value: 22.9441
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /data/file_upload_url:
+    get:
+      tags:
+      - data
+      summary: Get File Upload Url
+      description: 'Generates a presigned S3 upload url to upload files to the Data Platform.
+
+
+        The following fields should be passed as query parameters:
+
+
+        * `file_name` (str) - Must include file extension. Must match the DatasetType that was registered for the dataset_id.
+
+        * `content_type` (str) - Optional. Can be specified in request. Otherwise, will be interpreted from file_name.
+
+
+        Requests made from systems authenticated via api-key must additionally pass the following fields:
+
+
+        * `client_id` (uuid) - The Data Platform Client making the request.
+
+        * `dataset_id` (uuid) - The Data Platform Dataset for which the payload is being ingested for.'
+      operationId: get_file_upload_url_data_file_upload_url_get
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+      parameters:
+      - name: client_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Client Id
+      - name: company_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Company Id
+      - name: dataset_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Dataset Id
+      - name: file_id
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: File Id
+      - name: content_type
+        in: query
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Content Type
+      - name: file_name
+        in: query
+        required: true
+        schema:
+          type: string
+          title: File Name
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataResponse'
+              example:
+                meta:
+                  type: FileUploadUri
+                  transaction_id: 6372d109-d86e-4820-bc72-da6b5b0c61d0
+                  info: Please make a PUT request with the file attachment to the attached `data[uri]`
+                data:
+                - file_id: 6372d109-d86e-4820-bc72-da6b5b0c61d0
+                  uri: https://presignedurl.s3.us-west-2.amazonaws.com/image.png
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    JSONDataPostRequest:
+      properties:
+        client_id:
+          type: string
+          format: uuid
+          title: Client Id
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - client_id
+      - dataset_id
+      - data
+      title: JSONDataPostRequest
+    DataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: DataResponse
+      description: Data response envelope
+    ResponseMeta:
+      properties:
+        type:
+          type: string
+          title: Type
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
+      type: object
+      required:
+      - type
+      title: ResponseMeta
+      description: Standard response envelope meta object

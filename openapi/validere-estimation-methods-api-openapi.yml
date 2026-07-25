@@ -1,0 +1,3668 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities estimation_methods API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Estimation Methods
+  name: estimation_methods
+paths:
+  /app/v1/estimation_methods/:
+    post:
+      operationId: bulk_add_estimation_method
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/BulkAddEstimationMethodToEntitiesRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEstimationMethodsBulkResponse'
+          description: Successfully Created Estimation Methods in bulk
+      summary: Bulk create estimation methods
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/run:
+    post:
+      deprecated: true
+      operationId: run_estimation_methods
+      parameters:
+      - $ref: '#/components/parameters/PreviewCalculation'
+      - $ref: '#/components/parameters/PromoteCalculation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorRunsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorRunsResponse'
+          description: Successfully ran estimation method calculations
+      summary: Run calculators based on filtered configurations
+      tags:
+      - estimation_methods
+  /app/v2/estimation_methods/run:
+    post:
+      operationId: run_estimation_methods_v2
+      parameters:
+      - $ref: '#/components/parameters/PreviewCalculation'
+      - $ref: '#/components/parameters/PromoteCalculation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorRunsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorRunsBulkResponse'
+          description: Successfully ran estimation method calculations
+      summary: Bulk run calculators based on filtered configurations
+      tags:
+      - estimation_methods
+  /app/v2/estimation_methods/run_async:
+    post:
+      operationId: run_async_estimation_methods_v2
+      parameters:
+      - $ref: '#/components/parameters/PreviewCalculation'
+      - $ref: '#/components/parameters/PromoteCalculation'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorRunsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorAsyncRunsBulkResponse'
+          description: Successfully starts an asynchronous job to run estimation method calculations
+      summary: Start an asynchronous job to bulk run calculators based on filtered configurations
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/search:
+    post:
+      operationId: search_estimation_methods
+      parameters:
+      - $ref: '#/components/parameters/parameters-Period'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/EstimationMethodSort'
+              - $ref: '#/components/schemas/EstimationMethodFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedEstimationMethodList'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+          description: Successfully something
+      summary: Search and list Estimation Methods
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/search/configurations:
+    post:
+      operationId: search_estimation_method_configurations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/EstimationMethodConfigurationSort'
+              - $ref: '#/components/schemas/EstimationMethodConfigurationFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedEstimationMethodWithConfigurationList'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+          description: Successfully something
+      summary: Search and list Estimation Methods with calculator configs and runs
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/export:
+    post:
+      operationId: export_estimation_methods
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/EstimationMethodSort'
+              - $ref: '#/components/schemas/EstimationMethodFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithS3Url'
+          description: A successful with the link to download report
+      summary: Export estimation methods based on search input
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/export/configurations:
+    post:
+      operationId: export_estimation_method_configurations
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/EstimationMethodConfigurationSort'
+              - $ref: '#/components/schemas/EstimationMethodConfigurationFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithS3Url'
+          description: A successful with the link to download report
+      summary: Search and export Estimation Methods with calculator configs and runs
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}:
+    post:
+      operationId: add_estimation_method
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddEstimationMethodToEntityRequest'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodWithEntityInfoResponse'
+          description: Successfully Added Estimation Method to Entity
+      summary: Add Estimation Method to Entity
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}:
+    get:
+      operationId: get_estimation_method
+      parameters:
+      - $ref: '#/components/parameters/parameters-EstimationMethodEntityType'
+      - $ref: '#/components/parameters/parameters-EstimationMethodId'
+      - $ref: '#/components/parameters/parameters-Period'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodWithReportingGroupsResponse'
+          description: Successfully retrieved an estimation event
+      summary: Get an estimation method
+      tags:
+      - estimation_methods
+    put:
+      operationId: update_estimation_method
+      parameters:
+      - $ref: '#/components/parameters/parameters-EstimationMethodEntityType'
+      - $ref: '#/components/parameters/parameters-EstimationMethodId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEstimationMethodRequestBody'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateEstimationMethodResponse'
+          description: Successfully updated an estimation event
+      summary: Update an estimation method
+      tags:
+      - estimation_methods
+    delete:
+      operationId: delete_estimation_method
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete an estimation method
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/runs:
+    get:
+      operationId: list_estimation_method_runs
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - $ref: '#/components/schemas/CalculatorRunsResponse'
+          description: Successfully return runs for a given estimation method
+      summary: List runs for a given estimation method
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/configuration/{year_month}:
+    get:
+      operationId: get_estimation_method_configuration
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodConfiguration'
+          description: Successfully retrieved an estimation method configuration
+      summary: Get an estimation method configuration
+      tags:
+      - estimation_methods
+    put:
+      operationId: update_estimation_method_configuration
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetCalculatorConfigurationRequestBody'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodConfiguration'
+          description: Successfully updated an estimation method configuration
+      summary: Update an estimation method configuration
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/configuration/{year_month}/apply_defaults:
+    put:
+      operationId: apply_defaults_estimation_method_configuration
+      parameters:
+      - $ref: '#/components/parameters/parameters-EstimationMethodEntityType'
+      - $ref: '#/components/parameters/parameters-EstimationMethodId'
+      - $ref: '#/components/parameters/parameters-YearMonth'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplyDefaultsEstimationMethodConfigurationResponse'
+          description: Successfully set defaults on the calculator configuration
+      summary: Re-apply defaults to a calculator configuration
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/configurations/apply_defaults:
+    put:
+      operationId: bulk_apply_defaults_estimation_method_configuration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  estimation_method_id:
+                    type: string
+                    format: uuid
+                  year_month:
+                    type: string
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BulkResponse'
+                - properties:
+                    data:
+                      description: Dictionary of results where the key is {Estimation method ID}_{Year month}
+                      type: object
+                      additionalProperties:
+                        properties:
+                          status:
+                            $ref: '#/components/schemas/BulkItemStatus'
+                          error:
+                            type: string
+                          errors:
+                            type: array
+                            description: List of errors
+                            items:
+                              $ref: '#/components/schemas/CalculationResultError'
+                          data:
+                            type: object
+                            properties:
+                              estimation_method_id:
+                                type: string
+                                format: UUID
+                              year_month:
+                                type: string
+                              calculation_status:
+                                $ref: '#/components/schemas/CalculationStatus'
+          description: Successfully set defaults on the calculator configurations
+      summary: Re-apply defaults to multiple calculator configurations
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/configurations/apply_defaults_async:
+    post:
+      operationId: bulk_apply_defaults_estimation_method_configuration_async
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/EstimationMethodConfigurationFilter'
+              - properties:
+                  year_months:
+                    type: array
+                    items:
+                      type: string
+                      example: 202212
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BulkResponse'
+                - properties:
+                    job:
+                      $ref: '#/components/schemas/Job'
+          description: Successfully starts an asynchronous job to set defaults on the calculator configurations
+      summary: Start an asynchronous job to re-apply defaults to multiple calculator configurations
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/configuration/{year_month}/run:
+    get:
+      operationId: get_estimation_method_configuration_run
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorRunSourceResponse'
+          description: Successfully retrieved a calculator run
+      summary: Get a calculator run
+      tags:
+      - estimation_methods
+    post:
+      operationId: run_estimation_method_configuration
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/PreviewCalculation'
+      - $ref: '#/components/parameters/PromoteCalculation'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorRunSourceResponse'
+          description: Successfully ran estimation method calculations
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorRun422Error'
+          description: Calculator validation error
+      summary: Run estimation method calculator for a single period
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/record/{year_month}/{input_name}:
+    put:
+      operationId: set_calculator_input_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorInputRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorInputRecord'
+          description: Successfully updated calculator input record
+      summary: Set the input record for a given calculator configuration
+      tags:
+      - estimation_methods
+    get:
+      operationId: get_calculator_input_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorInputRecord'
+          description: A successful operation
+      summary: Get the input record for a given calculator configuration
+      tags:
+      - estimation_methods
+    delete:
+      operationId: delete_calculator_input_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete the input record for a given calculator configuration
+      tags:
+      - estimation_methods
+  /app/v1/estimation_methods/{entity_type}/{id}/record/{year_month}/{target_asset_id}/{input_name}:
+    put:
+      operationId: set_calculator_input_record_target_asset
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorInputRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorInputRecord'
+          description: Successfully updated calculator input record on target asset
+      summary: Set the input record for a given calculator configuration and target asset
+      tags:
+      - estimation_methods
+    get:
+      operationId: get_calculator_input_record_target_asset
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculatorInputRecord'
+          description: A successful operation
+      summary: Get the input record for a given calculator configuration and target asset
+      tags:
+      - estimation_methods
+    delete:
+      operationId: delete_calculator_input_record_target_asset
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete the input record for a given calculator configuration and target asset
+      tags:
+      - estimation_methods
+components:
+  schemas:
+    CalculatorRunsFilter:
+      type: object
+      properties:
+        filters:
+          allOf:
+          - properties:
+              year_month:
+                type: string
+                example: 202306
+              status:
+                $ref: '#/components/schemas/CalculationStatus'
+              estimation_method_id:
+                format: uuid
+                type: string
+              estimation_method.name:
+                type: string
+              estimation_method.analytics_calculator_id:
+                $ref: '#/components/schemas/EstimationMethodCalculatorId'
+              estimation_method.analytics_library_id:
+                $ref: '#/components/schemas/EstimationMethodLibraryId'
+              estimation_method.entity_id:
+                $ref: '#/components/schemas/EstimationMethodEntityId'
+              estimation_method.entity_type:
+                type: string
+                enum:
+                - equipment
+                - flow
+                - asset_group
+              estimation_method.reporting_group_id:
+                type: string
+              entity_name:
+                type: string
+              entity_type:
+                type: string
+                enum:
+                - equipment
+                - flow
+                - asset_group
+              facility.id:
+                type: string
+                format: uuid
+              facility.name:
+                type: string
+          - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowEquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/AssetGroupFilterWithPrefix'
+    CalculatorResultRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - calculator_result
+        aggregate_function:
+          $ref: '#/components/schemas/RecordValueConfigurationFunction'
+        calculator_result_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    AssetGroupFilterWithPrefix:
+      properties:
+        asset_group.id:
+          type: string
+        asset_group.name:
+          type: string
+        asset_group.status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group.asset_group_type_id:
+          type: string
+        asset_group.custom_attributes:
+          type: object
+      type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    CalculatorRun422Error:
+      properties:
+        status:
+          type: boolean
+        error:
+          type: string
+          description: Error message
+          example: Validation failed for node 9a911b4d-c6c9-4faa-acbe-f8297b1dbd6d_202403, calculation CO2InjectedMassFlowMeterV1
+        detail:
+          type: object
+          properties:
+            errors:
+              type: array
+              description: List of errors
+              items:
+                $ref: '#/components/schemas/CalculationResultError'
+    CalculatorRunSourceResponse:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/CalculatorRunResponse'
+      - type: object
+        properties:
+          input_sources:
+            $ref: '#/components/schemas/CalculatorRunInputSources'
+    CalculatorAsyncRunsBulkResponse:
+      allOf:
+      - $ref: '#/components/schemas/BulkResponse'
+      - properties:
+          job:
+            $ref: '#/components/schemas/Job'
+    CalculatorInputParameter:
+      properties:
+        id:
+          type: string
+          example: mass_injected
+        display_name:
+          type: string
+          example: Mass Injected
+        required:
+          type: boolean
+          example: true
+        measurement_quantity:
+          type: string
+          example: Mass CO2
+        measurement_type:
+          type: string
+          example: Mass
+        measurement_unit:
+          type: string
+          example: grams
+        description:
+          type: string
+          example: Mass of CO2 injected
+        type:
+          type: string
+          example: number
+        minimum:
+          type: number
+          example: 0
+        maximum:
+          type: number
+          example: 100
+        min_length:
+          type: number
+          example: 0
+        mex_length:
+          type: number
+          example: 100
+        measurement_value:
+          type: number
+          example: 25400
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    EstimationMethodConfigurationWithoutInputSources:
+      properties:
+        estimation_method_id:
+          format: uuid
+          type: string
+        inputs:
+          $ref: '#/components/schemas/AnalyticsCalculatorInputs'
+        asset_inputs:
+          $ref: '#/components/schemas/AnalyticsCalculatorAssetInputs'
+        calculator_version:
+          type: string
+          example: V1
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+        company_id:
+          type: string
+          format: uuid
+    CalculationResultError:
+      description: Calculation specific error
+      type: object
+      properties:
+        loc:
+          description: Parameter where the error occurred
+          type: string
+          example: mass_injected
+        msg:
+          description: Error message
+          type: string
+          example: Field required
+        type:
+          description: Type of error
+          type: string
+          example: missing
+    JobStatus:
+      type: string
+      enum:
+      - started
+      - finished
+      - failed
+      - partial
+    PagedEstimationMethodWithConfigurationList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/EstimationMethodWithRenamedStatusResponse'
+              - properties:
+                  facility_id:
+                    type: string
+                    format: uuid
+                  facility_name:
+                    type: string
+                  entity_name:
+                    type: string
+                  entity_type_type:
+                    type: string
+                    description: eg. equipment type or facility type
+                  status:
+                    $ref: '#/components/schemas/CalculationStatus'
+                  calculator_configuration:
+                    $ref: '#/components/schemas/EstimationMethodConfiguration'
+                  calculator_run:
+                    $ref: '#/components/schemas/CalculatorRunResponse'
+                  reporting_groups:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportingGroupInput'
+            type: array
+        type: object
+    RecordValueConfigurationFunction:
+      type: string
+      enum:
+      - avg
+      - sum
+    EstimationMethodSearchResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+        reporting_groups:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              priority:
+                type: number
+              id:
+                type: string
+            required:
+            - name
+            - description
+            - priority
+            - id
+        flow:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            company_id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            status:
+              type: string
+            type:
+              type: string
+            product_category:
+              type: string
+            product_type:
+              type: string
+            custom_attributes:
+              type: object
+              additionalProperties:
+                anyOf:
+                - type: string
+                - type: number
+                - type: array
+                  items:
+                    type: string
+                - type: array
+                  items:
+                    type: number
+                - nullable: true
+              example:
+                attribute1: 12345
+                attribute2: value1
+            upstream_flow_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
+            downstream_flow_ids:
+              type: array
+              items:
+                type: string
+                format: uuid
+            upstream_flows_count:
+              type: number
+            downstream_flows_count:
+              type: number
+            upstream_facility_id:
+              type: string
+              format: uuid
+            downstream_facility_id:
+              type: string
+              format: uuid
+            upstream_equipment_id:
+              type: string
+              format: uuid
+            downstream_equipment_id:
+              type: string
+              format: uuid
+            associated_facility_id:
+              type: string
+              format: uuid
+            associated_equipment_id:
+              type: string
+              format: uuid
+            associated_facility:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                company_id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                status:
+                  type: string
+                type:
+                  type: string
+                latitude:
+                  type: number
+                longitude:
+                  type: number
+                custom_attributes:
+                  type: object
+                  additionalProperties:
+                    anyOf:
+                    - type: string
+                    - type: number
+                    - type: array
+                      items:
+                        type: string
+                    - type: array
+                      items:
+                        type: number
+                    - nullable: true
+                  example:
+                    attribute1: 12345
+                    attribute2: value1
+                created_at:
+                  anyOf:
+                  - type: string
+                    format: date-time
+                  - type: string
+                    nullable: true
+                  - nullable: true
+                updated_at:
+                  anyOf:
+                  - type: string
+                    format: date-time
+                  - type: string
+                    nullable: true
+                  - nullable: true
+                created_by:
+                  type: string
+                  format: uuid
+                updated_by:
+                  type: string
+                  format: uuid
+              required:
+              - id
+              - company_id
+              - name
+              - status
+              - type
+              - latitude
+              - longitude
+              - custom_attributes
+              - created_at
+              - updated_at
+              - created_by
+              - updated_by
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            created_by:
+              type: string
+              format: uuid
+            updated_by:
+              type: string
+              format: uuid
+          required:
+          - id
+          - company_id
+          - name
+          - status
+          - type
+          - product_category
+          - product_type
+          - custom_attributes
+          - upstream_flow_ids
+          - downstream_flow_ids
+          - upstream_flows_count
+          - downstream_flows_count
+          - upstream_facility_id
+          - downstream_facility_id
+          - upstream_equipment_id
+          - downstream_equipment_id
+          - associated_facility_id
+          - associated_equipment_id
+          - associated_facility
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+        equipment:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            company_id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            status:
+              type: string
+            type:
+              type: object
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+              required:
+              - id
+              - name
+            effective_date:
+              type: string
+              example: '2021-01-01'
+            latitude:
+              type: number
+            longitude:
+              type: number
+            custom_attributes:
+              type: object
+              additionalProperties:
+                anyOf:
+                - type: string
+                - type: number
+                - type: array
+                  items:
+                    type: string
+                - type: array
+                  items:
+                    type: number
+                - nullable: true
+              example:
+                attribute1: 12345
+                attribute2: value1
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            created_by:
+              type: string
+              format: uuid
+            updated_by:
+              type: string
+              format: uuid
+            facility:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+              required:
+              - id
+              - name
+          required:
+          - id
+          - company_id
+          - name
+          - status
+          - type
+          - effective_date
+          - latitude
+          - longitude
+          - custom_attributes
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          - facility
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - entity_type
+      - entity_id
+      - reporting_groups
+      - flow
+      - equipment
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    EstimationMethodConfiguration:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/EstimationMethodConfigurationWithoutInputSources'
+      - properties:
+          input_sources:
+            $ref: '#/components/schemas/CalculatorInputSources'
+          asset_input_sources:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/CalculatorInputSources'
+    YearMonth:
+      type: string
+    RunItemResponse:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/BulkItemStatus'
+        result:
+          $ref: '#/components/schemas/CalculatorRunResponse'
+        error:
+          type: string
+        errors:
+          type: array
+          description: List of errors
+          items:
+            $ref: '#/components/schemas/CalculationResultError'
+    BulkItemStatus:
+      type: string
+      enum:
+      - success
+      - failed
+      - skipped
+    EstimationMethodWithReportingGroupsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+        reporting_groups:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              priority:
+                type: number
+              id:
+                type: string
+            required:
+            - name
+            - description
+            - priority
+            - id
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - entity_type
+      - entity_id
+      - reporting_groups
+    AnalyticsCalculatorAssetInputs:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/AnalyticsCalculatorInputs'
+    EquipmentFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.facility.custom_attributes:
+          type: object
+        equipment.facility.id:
+          type: string
+        equipment.facility.name:
+          type: string
+        equipment.facility.status:
+          type: string
+      type: object
+    CalculatorRunResponse:
+      type: object
+      properties:
+        estimation_method_id:
+          format: uuid
+          type: string
+        year_month:
+          type: string
+        calculation_end:
+          format: date-time
+          type: string
+        calculation_start:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        configuration_input:
+          type: object
+        configuration_asset_input:
+          type: object
+        input:
+          $ref: '#/components/schemas/CalculatorInput'
+        output:
+          $ref: '#/components/schemas/CalculatorOutput'
+    JobItemStatusCounts:
+      type: object
+      properties:
+        success:
+          type: number
+        failed:
+          type: number
+        skipped:
+          type: number
+    CalculatorOutputMeasurement:
+      type: object
+      properties:
+        measurement_quantity:
+          type: string
+          example: Mass CO2
+        measurement_type:
+          type: string
+          example: Mass
+        measurement_unit:
+          type: string
+          example: grams
+        measurement_value:
+          type: number
+          example: 25400
+        description:
+          type: string
+          example: Mass of CO2 injected
+        type:
+          type: string
+          example: number
+        calculator_run_id:
+          type: string
+          format: uuid
+    BulkAddEstimationMethodToEntitiesRequest:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: SubpartW AGR Method
+          analytics_library_id:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: 2024-SubpartW
+          analytics_calculator_id:
+            type: string
+            minLength: 1
+            maxLength: 255
+            example: 2024-SubpartW-AcidGasRemovalMethod1
+          default_asset_values:
+            type: object
+            additionalProperties:
+              type: object
+              nullable: true
+              additionalProperties:
+                type: object
+                nullable: true
+                properties:
+                  value:
+                    anyOf:
+                    - type: string
+                    - type: number
+                    - nullable: true
+                    - type: boolean
+                    - nullable: true
+                  unit:
+                    type: string
+                  measurement_type:
+                    type: string
+                  measurement_quantity:
+                    type: string
+                required:
+                - value
+              example:
+                fuel_type:
+                  value: Eastern
+                  unit: ''
+                  measurement_type: measurement_type
+                  measurement_quantity: dimensionless_coefficient
+                volume:
+                  value: 5
+                  unit: e3m3
+                  measurement_type: measurement_type
+                  measurement_quantity: volume
+                rvp: null
+            default: {}
+            example:
+              98eeea2b-ec04-458f-a936-653f1061c861:
+                fuel_type:
+                  value: Eastern
+                  unit: ''
+                  measurement_type: measurement_type
+                  measurement_quantity: dimensionless_coefficient
+                volume:
+                  value: 5
+                  unit: e3m3
+                  measurement_type: measurement_type
+                  measurement_quantity: volume
+                rvp: null
+              5e57efba-65da-4a50-89e0-bb12a8b8af54:
+                fuel_type:
+                  value: Eastern
+                  unit: ''
+                  measurement_type: measurement_type
+                  measurement_quantity: dimensionless_coefficient
+                volume:
+                  value: 5
+                  unit: e3m3
+                  measurement_type: measurement_type
+                  measurement_quantity: volume
+                rvp: null
+              38d6313c-8d40-4716-a682-45eb8e4058b7: null
+          entity_type:
+            type: string
+            enum:
+            - equipment
+            - flow
+            - asset_group
+          entity_id:
+            type: string
+            format: uuid
+          status:
+            type: string
+            enum:
+            - active
+            - inactive
+            default: active
+          default_values:
+            type: object
+            additionalProperties:
+              type: object
+              nullable: true
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+        required:
+        - name
+        - analytics_library_id
+        - analytics_calculator_id
+        - entity_type
+        - entity_id
+    AssetGroupStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    CalculatorInputRecord:
+      properties:
+        estimation_method_id:
+          type: string
+          format: uuid
+        input_name:
+          type: string
+        year_month:
+          type: string
+        record_value_id:
+          type: string
+          format: uuid
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+    ApplyDefaultsEstimationMethodConfigurationResponse:
+      type: object
+      properties:
+        estimation_method_id:
+          type: string
+          format: uuid
+        inputs:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        asset_inputs:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        calculator_version:
+          type: string
+          example: V1
+        company_id:
+          type: string
+          format: uuid
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - estimation_method_id
+      - inputs
+      - asset_inputs
+      - calculator_version
+      - company_id
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
+    EstimationMethodEntityId:
+      description: ID of the entity that the estimation belongs to
+      type: string
+      example: a48fdf7a-c4c1-45ae-a794-139b134b622b
+    EstimationMethodLibraryId:
+      description: ID of the library the analytics calculator ID belongs to
+      type: string
+      example: SubpartW
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    CalculatorInput:
+      type: object
+      properties:
+        id:
+          type: string
+          example: bfbd6b12-4229-4c43-b08f-94f2a72fa0f8_202305
+        calculation:
+          $ref: '#/components/schemas/CalculatorInputCalculation'
+    CalculatorOutput:
+      type: object
+      properties:
+        intermediates:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalculatorOutputMeasurement'
+        outputs:
+          type: array
+          items:
+            $ref: '#/components/schemas/CalculatorOutputMeasurement'
+    CalculatorRunsBulkResponse:
+      allOf:
+      - $ref: '#/components/schemas/BulkResponse'
+      - properties:
+          data:
+            type: object
+            description: Dictionary of results where the key is the node ID
+            additionalProperties:
+              $ref: '#/components/schemas/RunItemResponse'
+          error:
+            type: string
+    EstimationMethodCalculatorId:
+      description: ID of an analytics calculator, used to determine estimation method metadata
+      type: string
+      example: AcidGasRemovalMethod1
+    SetCalculatorConfigurationRequestBody:
+      type: object
+      properties:
+        calculator_version:
+          type: string
+          example: V1
+        inputs:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+            additionalProperties: false
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+            rvp: null
+        asset_inputs:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            additionalProperties:
+              type: object
+              nullable: true
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+              additionalProperties: false
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+          example:
+            2e98b207-b912-4c52-bdb1-5a58a7f758e2:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            3d5dec96-bbe9-42d9-9608-d291c10de1cc:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            840cd887-8693-44d5-8116-f11bba5516cc: null
+      additionalProperties: false
+    UpdateEstimationMethodRequestBody:
+      type: object
+      properties:
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            additionalProperties:
+              type: object
+              nullable: true
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+          example:
+            98eeea2b-ec04-458f-a936-653f1061c861:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            5e57efba-65da-4a50-89e0-bb12a8b8af54:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            38d6313c-8d40-4716-a682-45eb8e4058b7: null
+        delete_configurations_and_results:
+          type: boolean
+          default: false
+          description: Delete any existing configurations and results for the estimation method
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          default: {}
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+            rvp: null
+        start_date:
+          anyOf:
+          - type: string
+            description: Year month formatted as YYYYMM
+            example: '202101'
+          - type: string
+            enum:
+            - min
+            - max
+            description: Year month shorthand
+            example: min
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          example: '202101'
+        end_date:
+          anyOf:
+          - type: string
+            description: Year month formatted as YYYYMM
+            example: '202101'
+          - type: string
+            enum:
+            - min
+            - max
+            description: Year month shorthand
+            example: min
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          example: '202112'
+      additionalProperties: false
+    EstimationMethodEntityType:
+      type: string
+      enum:
+      - equipment
+      - flow
+      - asset_group
+    JobType:
+      type: string
+      enum:
+      - run_calculation
+      - apply_default_record_configuration
+      - apply_default_calculator_configuration
+    UpdateEstimationMethodResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+        start_date:
+          type: string
+          description: Year month formatted as YYYYMM
+          example: '202101'
+        end_date:
+          type: string
+          description: Year month formatted as YYYYMM
+          example: '202101'
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - entity_type
+      - entity_id
+      - start_date
+      - end_date
+      additionalProperties: false
+    AddEstimationMethodToEntityRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            additionalProperties:
+              type: object
+              nullable: true
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+          default: {}
+          example:
+            98eeea2b-ec04-458f-a936-653f1061c861:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            5e57efba-65da-4a50-89e0-bb12a8b8af54:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+              rvp: null
+            38d6313c-8d40-4716-a682-45eb8e4058b7: null
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          default: active
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            nullable: true
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+            rvp: null
+      required:
+      - name
+      - analytics_library_id
+      - analytics_calculator_id
+      - entity_type
+      - entity_id
+    CalculationStatus:
+      type: string
+      enum:
+      - not_configured
+      - missing_inputs
+      - ready_to_run
+      - run
+      - requires_re_run
+    EstimationMethodWithEntityInfoResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - entity_type
+      - entity_id
+    EstimationMethodWithRenamedStatusResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        estimation_method_status:
+          type: string
+          enum:
+          - active
+          - inactive
+        year_month:
+          type: string
+          pattern: ^(19|20)\d{2}(0[1-9]|1[0-2])$
+          example: '202101'
+        entity_type:
+          type: string
+          enum:
+          - equipment
+          - flow
+          - asset_group
+        entity_id:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - estimation_method_status
+      - year_month
+      - entity_type
+      - entity_id
+    BulkResponseStatus:
+      type: string
+      enum:
+      - success
+      - failed
+    EstimationMethodFilter:
+      properties:
+        filter:
+          description: A filter object for Estimation Methods where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            $or:
+            - entity_type: equipment
+            - name:
+                $like: Emissions
+          allOf:
+          - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowEquipmentPrimaryFilterFieldsWithPrefix'
+          - properties:
+              id:
+                type: string
+              name:
+                type: string
+              entity_id:
+                type: string
+              entity_type:
+                type: string
+                enum:
+                - equipment
+                - flow
+                - asset_group
+              analytics_library_id:
+                type: string
+              analytics_calculator_id:
+                type: string
+              status:
+                type: string
+              created_at:
+                type: string
+              created_by:
+                type: string
+              updated_at:
+                type: string
+              updated_by:
+                type: string
+              reporting_group_id:
+                type: string
+            type: object
+          type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    FormMeasurementRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - form_measurement
+        aggregate_function:
+          $ref: '#/components/schemas/RecordValueConfigurationFunction'
+        form_category_id:
+          type: string
+          format: uuid
+        measurement_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    CreateEstimationMethodsBulkResponse:
+      allOf:
+      - $ref: '#/components/schemas/BulkResponse'
+      - properties:
+          data:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/CreateEstimationMethodsBulkItemResponse'
+    CreateEstimationMethodsBulkItemResponse:
+      type: object
+      properties:
+        entity_type:
+          type: string
+        entity_id:
+          type: string
+          format: uuid
+        estimation_method:
+          $ref: '#/components/schemas/EstimationMethodWithEntityInfoResponse'
+    EstimationMethodConfigurationSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - year_month
+          - entity_id
+          - entity_type
+          - analytics_library_id
+          - analytics_calculator_id
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FlowFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.facility.custom_attributes:
+          type: object
+        flow.facility.id:
+          type: string
+        flow.facility.name:
+          type: string
+        flow.facility.status:
+          type: string
+      type: object
+    FlowPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.id:
+          type: string
+        flow.name:
+          type: string
+        flow.status:
+          $ref: '#/components/schemas/FlowStatus'
+        flow.type:
+          $ref: '#/components/schemas/FlowTypes'
+        flow.product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        flow.product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        flow.custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        flow.associated_facility_id:
+          type: string
+          format: uuid
+        flow.associated_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    FlowEquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.equipment.custom_attributes:
+          type: object
+        flow.equipment.id:
+          type: string
+        flow.equipment.name:
+          type: string
+        flow.equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        flow.equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
+      type: object
+    CalculatorRunInputSources:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/CalculatorInputSources'
+      - type: object
+        properties:
+          record_value_configuration:
+            $ref: '#/components/schemas/RecordValueConfiguration'
+    EquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.custom_attributes:
+          type: object
+        equipment.id:
+          type: string
+        equipment.name:
+          type: string
+        equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
+      type: object
+    Period:
+      type: string
+      pattern: ^(19|20)\d{2}(0[1-9]|1[0-2])$
+      default: '202502'
+      example: '202101'
+    AnalyticsCalculatorInputs:
+      type: object
+      example:
+        fuel_type:
+          value: Eastern
+          unit: ''
+          measurement_type: measurement_type
+          measurement_quantity: dimensionless_coefficient
+        volume:
+          value: 5
+          unit: e3m3
+          measurement_type: measurement_type
+          measurement_quantity: volume
+        rvp: null
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    CalculatorRunsResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: array
+            $ref: '#/components/schemas/CalculatorRunResponse'
+    MeasurementSeriesRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - measurement_series
+        aggregate_function:
+          $ref: '#/components/schemas/RecordValueConfigurationFunction'
+        measurement_series_id:
+          type: string
+          format: uuid
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        Interval:
+          type: string
+          example: 1day
+          enum:
+          - 1minute
+          - 15minute
+          - 1hour
+          - 1day
+      type: object
+    CalculatorInputSources:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          record_value_id:
+            type: string
+            format: uuid
+          record_id:
+            type: string
+            format: uuid
+          asset_id:
+            type: string
+            format: uuid
+          target_asset_id:
+            type: string
+            format: uuid
+          asset_type:
+            type: string
+            example: equipment
+          asset_name:
+            type: string
+            example: my equipment
+          reporting_group_id:
+            type: string
+            example: subpartw
+          measurement_type:
+            type: string
+            example: wind_speed
+          measurement_unit:
+            type: string
+            example: meters per second
+          measurement_value:
+            type: number
+            example: 10
+    RecordValueConfiguration:
+      allOf:
+      - oneOf:
+        - $ref: '#/components/schemas/ManualRecordValueConfiguration'
+        - $ref: '#/components/schemas/FormMeasurementRecordValueConfiguration'
+        - $ref: '#/components/schemas/CalculatorResultRecordValueConfiguration'
+        - $ref: '#/components/schemas/MeasurementSeriesRecordValueConfiguration'
+      - properties:
+          sources:
+            items:
+              type: object
+            type: array
+            readOnly: true
+        type: object
+    Job:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        type:
+          $ref: '#/components/schemas/JobType'
+        started_at:
+          type: string
+          format: date-time
+        finished_at:
+          type: string
+          format: date-time
+        duration:
+          type: number
+        input:
+          type: object
+        output:
+          type: object
+        total_items:
+          type: number
+        processed_items:
+          type: number
+        item_status_counts:
+          $ref: '#/components/schemas/JobItemStatusCounts'
+    PagedEstimationMethodList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/EstimationMethodSearchResponse'
+            type: array
+        type: object
+    CalculatorConfigurationPrimaryFilterFieldsWithPrefix:
+      properties:
+        configuration.estimation_method_id:
+          format: uuid
+          type: string
+        configuration.year_month:
+          type: string
+          example: 202306
+        configuration.calculator_version:
+          type: string
+        configuration.created_at:
+          type: string
+          format: date-time
+        configuration.updated_at:
+          type: string
+          format: date-time
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EstimationMethodId:
+      type: string
+      format: uuid
+    CalculatorInputRecordInput:
+      description: a record value id or filter params to specify one
+      oneOf:
+      - properties:
+          record_value_id:
+            type: string
+            format: uuid
+      - properties:
+          asset_id:
+            type: string
+            format: uuid
+          reporting_group_id:
+            type: string
+          year_month:
+            type: string
+          measurement_type:
+            type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    BulkResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/BulkResponseStatus'
+      type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    CalculatorInputCalculation:
+      type: object
+      properties:
+        calculation_id:
+          type: string
+          example: CO2InjectedMassFlowMeterV1
+        calculation_parameters:
+          type: object
+          items:
+            $ref: '#/components/schemas/CalculatorInputParameter'
+    EstimationMethodSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - entity_id
+          - entity_type
+          - analytics_library_id
+          - analytics_calculator_id
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    EstimationMethodConfigurationFilter:
+      properties:
+        filter:
+          description: A filter object for Estimation Methods where it can filter based on any of these following fields.
+          example:
+            year_month:
+              $in:
+              - 202301
+              - 202302
+              - 202303
+          allOf:
+          - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowEquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/AssetGroupFilterWithPrefix'
+          - $ref: '#/components/schemas/CalculatorConfigurationPrimaryFilterFieldsWithPrefix'
+          - properties:
+              year_month:
+                type: object
+                properties:
+                  $in:
+                    type: array
+                    items:
+                      type: string
+                      example: 202301
+              id:
+                type: string
+              name:
+                type: string
+              entity_id:
+                type: string
+              entity_name:
+                type: string
+              entity_type:
+                type: string
+                enum:
+                - equipment
+                - flow
+                - asset_group
+              analytics_library_id:
+                type: string
+              analytics_calculator_id:
+                type: string
+              estimation_method_status:
+                type: string
+              facility_id:
+                type: string
+                format: uuid
+              facility_name:
+                type: string
+              status:
+                $ref: '#/components/schemas/CalculationStatus'
+              reporting_group_id:
+                type: string
+              created_at:
+                type: string
+              created_by:
+                type: string
+              updated_at:
+                type: string
+              updated_by:
+                type: string
+            type: object
+            required:
+            - year_month
+          type: object
+    ReportWithTemplatedReportResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        s3_object_id:
+          type: string
+        report_version:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ManualRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - manual
+        value:
+          type: number
+      type: object
+  parameters:
+    PromoteCalculation:
+      description: Run calculation and create records from the results
+      example: ''
+      in: query
+      name: promote_to_record
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    EstimationMethodInputName:
+      description: Input Name
+      in: path
+      name: input_name
+      required: true
+      schema:
+        type: string
+    parameters-EstimationMethodId:
+      schema:
+        $ref: '#/components/schemas/EstimationMethodId'
+      required: true
+      description: Estimation Method ID
+      in: path
+      name: id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+    parameters-EstimationMethodEntityType:
+      schema:
+        $ref: '#/components/schemas/EstimationMethodEntityType'
+      required: true
+      description: Estimation Method Entity Type
+      in: path
+      name: entity_type
+    PreviewCalculation:
+      description: Run calculation without saving the results (true)
+      example: ''
+      in: query
+      name: preview
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EstimationMethodEntityType:
+      description: Estimation Method Entity Type
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        type: string
+        enum:
+        - equipment
+        - flow
+        - asset_group
+    EstimationMethodId:
+      description: Estimation Method ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EstimationMethodTargetAssetId:
+      description: Target Asset ID
+      in: path
+      name: target_asset_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    parameters-Period:
+      schema:
+        $ref: '#/components/schemas/Period'
+      required: false
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+    parameters-YearMonth:
+      schema:
+        $ref: '#/components/schemas/YearMonth'
+      required: true
+      description: Year month (YYYYMM)
+      in: path
+      name: year_month
+      example: 202210
+    YearMonth:
+      description: YearMonth
+      example: 202210
+      in: path
+      name: year_month
+      required: true
+      schema:
+        type: string

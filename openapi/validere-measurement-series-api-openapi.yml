@@ -1,0 +1,390 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities measurement_series API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Measurement series
+  name: measurement_series
+paths:
+  /app/v1/measurement_series:
+    get:
+      operationId: list_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortByMeasurementSeries'
+      - $ref: '#/components/parameters/SortDirection'
+      - $ref: '#/components/parameters/MeasurementSeriesIds'
+      - $ref: '#/components/parameters/MeasurementSeriesDescription'
+      - $ref: '#/components/parameters/MeasurementSeriesDeviceName'
+      - $ref: '#/components/parameters/MeasurementSeriesDeviceId'
+      - $ref: '#/components/parameters/MeasurementSeriesSubjectId'
+      - $ref: '#/components/parameters/MeasurementSeriesSubjectType'
+      - $ref: '#/components/parameters/EventIdQuery'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedMeasurementSeries'
+          description: successful operation
+      summary: List a Measurement series
+      tags:
+      - measurement_series
+    post:
+      operationId: create_measurement_series
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/MeasurementSeriesCreateInput'
+              - $ref: '#/components/schemas/MeasurementSeriesSubjectInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementSeries'
+          description: successful operation
+      summary: Create Measurement series
+      tags:
+      - measurement_series
+  /app/v1/measurement_series/{measurement_series_id}:
+    get:
+      operationId: get_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/MeasurementSeries'
+                - properties:
+                    device:
+                      $ref: '#/components/schemas/MeasurementSeriesDevice'
+                    measurement_type_name:
+                      example: Wind Variation
+                      type: string
+                  type: object
+                - $ref: '#/components/schemas/MeasurementSeriesSubjectInput'
+          description: successful operation
+      summary: Get a Measurement series
+      tags:
+      - measurement_series
+    put:
+      operationId: update_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - properties:
+                  description:
+                    type: string
+                type: object
+              - $ref: '#/components/schemas/MeasurementSeriesSubjectInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/MeasurementSeries'
+                - properties:
+                    device:
+                      $ref: '#/components/schemas/Device'
+                  type: object
+          description: successful operation
+      summary: Update a Measurement series
+      tags:
+      - measurement_series
+    delete:
+      operationId: delete_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a Measurement series
+      tags:
+      - measurement_series
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortByMeasurementSeries:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - device_name
+        - description
+    MeasurementSeriesDeviceId:
+      description: UUID of the device to filter on
+      in: query
+      name: measurement_series_device_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesSubjectType:
+      description: Type of the entity you want to list the measurements for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    MeasurementSeriesDescription:
+      description: String to search for in measurement series descriptions
+      in: query
+      name: measurement_series_description
+      required: false
+      schema:
+        type: string
+    MeasurementSeriesIds:
+      description: a comma-separated list of measurement series ids
+      in: query
+      name: measurement_series_ids
+      required: false
+      schema:
+        type: string
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    MeasurementSeriesDeviceName:
+      description: String to search for in device names
+      in: query
+      name: measurement_series_device_name
+      required: false
+      schema:
+        type: string
+    EventIdQuery:
+      description: Event ID
+      in: query
+      name: event_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    MeasurementSeriesSubjectId:
+      description: ID of the entity you want to list the measurements for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    DeviceStatus:
+      default: active
+      type: string
+      enum:
+      - active
+      - archived
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    MeasurementSeriesCreateInput:
+      properties:
+        description:
+          type: string
+        device_id:
+          format: uuid
+          type: string
+        measurement_type:
+          type: string
+          example: volume
+        unit:
+          type: string
+          example: bbl
+      type: object
+    DeviceAttribute:
+      additionalProperties: true
+      description: Device Attributes
+      example:
+        height: 10
+        location:
+        - 43.65107
+        - -79.347015
+        provider: provider
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Device:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          attributes:
+            $ref: '#/components/schemas/DeviceAttribute'
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          facility:
+            $ref: '#/components/schemas/FacilityNameAndId'
+          facility_id:
+            description: facility_id
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          measurement_types:
+            type: array
+            items:
+              type: string
+              example: volume
+            description: measurement_types
+          name:
+            description: Device name
+            type: string
+          status:
+            $ref: '#/components/schemas/DeviceStatus'
+            description: Device status
+          type_id:
+            description: Device type
+            type: string
+        type: object
+    MeasurementSeriesDevice:
+      allOf:
+      - $ref: '#/components/schemas/Device'
+      - properties:
+          facility_name:
+            example: Facility Name
+            type: string
+    MeasurementSeries:
+      allOf:
+      - $ref: '#/components/schemas/MeasurementSeriesCreateInput'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+      type: object
+    FacilityNameAndId:
+      example:
+        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
+        name: Facility 1
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    PagedMeasurementSeries:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/MeasurementSeries'
+              - properties:
+                  device:
+                    $ref: '#/components/schemas/MeasurementSeriesDevice'
+                  device_name:
+                    type: string
+                  measurement_type_name:
+                    example: Wind Variation
+                    type: string
+            type: array
+        type: object
+    MeasurementSeriesSubjectInput:
+      properties:
+        subjects:
+          items:
+            properties:
+              entity_id:
+                format: uuid
+                type: string
+              entity_type:
+                $ref: '#/components/schemas/MeasurementSubjectEntityType'
+              start_time:
+                format: date-time
+          type: array
+      type: object

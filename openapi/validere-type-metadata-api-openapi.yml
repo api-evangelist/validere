@@ -1,0 +1,249 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities type_metadata API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Types used across the APIs
+  name: type_metadata
+paths:
+  /app/v1/custom_attribute_data_types:
+    get:
+      description: Returns the list of data types that custom attributes support
+      operationId: list_custom_attribute_data_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAttributeDataTypeList'
+          description: successful operation
+      summary: List Custom Attribute Data Types
+      tags:
+      - type_metadata
+  /app/v1/custom_attribute_entities:
+    get:
+      description: Returns the list of entity types that support custom attributes
+      operationId: list_custom_attribute_entities
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomAttributeEntityTypeList'
+          description: successful operation
+      summary: List Custom Attribute Entity Types
+      tags:
+      - type_metadata
+  /app/v1/flow_types:
+    get:
+      description: Returns the list of flow types
+      operationId: list_flow_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Flow Types
+      tags:
+      - type_metadata
+  /app/v1/product_types:
+    get:
+      description: Returns the list of product types
+      operationId: list_product_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Product Types
+      tags:
+      - type_metadata
+  /app/v1/product_categories:
+    get:
+      description: Returns the list of product categories
+      operationId: list_product_categories
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Product Categories
+      tags:
+      - type_metadata
+  /app/v1/event_statuses:
+    get:
+      description: Returns the list of event statuses
+      operationId: list_event_statuses
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Event Statuses
+      tags:
+      - type_metadata
+  /app/v1/facility_types:
+    get:
+      description: Returns the list of facility types
+      operationId: list_facility_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Facility Types
+      tags:
+      - type_metadata
+  /app/v1/facility_statuses:
+    get:
+      description: Returns the list of facility statuses
+      operationId: list_facility_statuses
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List Facility Statuses
+      tags:
+      - type_metadata
+  /app/v1/industry_segments:
+    get:
+      description: Returns the list of industry segments based on the US emission spreadsheet
+      operationId: list_industry_segment
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CodeNamePair'
+          description: successful operation
+      summary: List Industry Segment
+      tags:
+      - type_metadata
+  /app/v1/workflow_template_statuses:
+    get:
+      description: Returns the list of workflow template statuses
+      operationId: list_workflow_template_statuses
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List workflow template statuses
+      tags:
+      - type_metadata
+  /app/v1/workflow_statuses:
+    get:
+      description: Returns the list of workflow statuses
+      operationId: list_workflow_statuses
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List workflow statuses
+      tags:
+      - type_metadata
+  /app/v1/workflow_task_statuses:
+    get:
+      description: Returns the list of workflow task statuses
+      operationId: list_workflow_task_statuses
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnumIdNamePairList'
+          description: successful operation
+      summary: List workflow task statuses
+      tags:
+      - type_metadata
+components:
+  schemas:
+    CustomAttributeDataType:
+      properties:
+        id:
+          $ref: '#/components/schemas/AttributeTypes'
+        name:
+          type: string
+      type: object
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
+    EnumIdNamePairList:
+      type: array
+      items:
+        properties:
+          id:
+            type: string
+            description: enum value
+          name:
+            type: string
+            description: display name
+    CodeNamePair:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    CustomAttributeEntityType:
+      properties:
+        id:
+          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+        name:
+          type: string
+      type: object
+    CustomAttributeEntityTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeEntityType'
+      type: array

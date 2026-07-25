@@ -1,0 +1,196 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities company_feature_flags API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Company Feature Flags
+  name: company_feature_flags
+paths:
+  /app/v1/company_feature_flags/search:
+    post:
+      operationId: search_all_company_feature_flags
+      parameters:
+      - $ref: '#/components/parameters/TenantId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/AllCompanyFeatureFlagsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCompanyFeatureFlagsList'
+          description: successful operation
+      summary: Search all company feature flags
+      tags:
+      - company_feature_flags
+  /app/v1/company_feature_flags/{company_id}/search:
+    post:
+      operationId: search_company_feature_flags
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/CompanyFeatureFlagsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedCompanyFeatureFlagsList'
+          description: successful operation
+      summary: Must be Company member - Search company feature flags
+      tags:
+      - company_feature_flags
+  /app/v1/company_feature_flags/{company_id}/{feature_flag_name}:
+    put:
+      operationId: create_company_feature_flag
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/FeatureFlagName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompanyFeatureFlag'
+          description: A successful operation
+      summary: Create a company feature flag
+      tags:
+      - company_feature_flags
+    delete:
+      operationId: delete_company_feature_flag
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/FeatureFlagName'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete a company feature flag
+      tags:
+      - company_feature_flags
+components:
+  parameters:
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string
+    FeatureFlagName:
+      description: Feature Flag Name (any version)
+      in: path
+      name: feature_flag_name
+      required: true
+      schema:
+        type: string
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    PagedCompanyFeatureFlagsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/CompanyFeatureFlag'
+            type: array
+        type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    CompanyFeatureFlag:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+          feature_flag_name:
+            type: string
+    AllCompanyFeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              company_id:
+                type: string
+              feature_flag_name:
+                type: string
+          type: object
+    CompanyFeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              feature_flag_name:
+                type: string
+          type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number

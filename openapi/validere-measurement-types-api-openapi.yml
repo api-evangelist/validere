@@ -1,0 +1,177 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities measurement_types API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Measurement Types
+  name: measurement_types
+paths:
+  /app/v1/measurement_types:
+    get:
+      operationId: list_measurement_types
+      parameters:
+      - $ref: '#/components/parameters/MeasurementTypeSubjectId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementTypeList'
+          description: successful operation
+      summary: Get Measurement Type List
+      tags:
+      - measurement_types
+  /app/v2/measurement_types:
+    get:
+      operationId: list_measurement_types_v2
+      parameters:
+      - $ref: '#/components/parameters/MeasurementTypeSubjectId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  allOf:
+                  - $ref: '#/components/schemas/MeasurementTypeV2'
+                  - properties:
+                      default_unit_info:
+                        $ref: '#/components/schemas/MeasurementTypeUnitConfig'
+                    type: object
+                type: array
+          description: successful operation
+      summary: Get Measurement Type List
+      tags:
+      - measurement_types
+  /app/v1/measurement_quantities:
+    get:
+      operationId: list_measurement_quantities
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeasurementQuantityList'
+          description: successful operation
+      summary: Get Measurement Quantity List
+      tags:
+      - measurement_types
+  /app/v1/measurement_units:
+    get:
+      operationId: list_all_measurement_units
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MeasurementTypeUnitConfig'
+                type: array
+          description: successful operation
+      summary: Get Measurement Unit List
+      tags:
+      - measurement_types
+  /app/v1/measurement_units/{quantity}:
+    get:
+      operationId: list_measurement_units
+      parameters:
+      - $ref: '#/components/parameters/MeasurementQuantityId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/MeasurementTypeUnitConfig'
+                type: array
+          description: successful operation
+      summary: Get Measurement Unit List for a quantity
+      tags:
+      - measurement_types
+components:
+  schemas:
+    MeasurementQuantityList:
+      items:
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+        type: object
+      type: array
+    MeasurementTypeList:
+      items:
+        $ref: '#/components/schemas/MeasurementType'
+      type: array
+    MeasurementTypeUnitConfig:
+      properties:
+        name:
+          properties:
+            singular:
+              type: string
+            plural:
+              type: string
+            symbol:
+              type: string
+          type: object
+        to_anchor:
+          type: number
+        anchor_shift:
+          type: number
+        quantity:
+          type: string
+        id:
+          type: string
+      type: object
+    MeasurementTypeDataType:
+      type: string
+      enum:
+      - int
+      - float
+    MeasurementType:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/MeasurementTypeDataType'
+        id:
+          type: string
+        name:
+          type: string
+        units:
+          items:
+            type: string
+          type: array
+      type: object
+    MeasurementTypeV2:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: string
+        default_unit:
+          type: string
+      type: object
+  parameters:
+    MeasurementQuantityId:
+      description: ID of the measurement quantity
+      in: path
+      name: quantity
+      required: true
+      schema:
+        type: string
+    MeasurementTypeSubjectId:
+      description: ID of the entity you want to list the measurement types for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string

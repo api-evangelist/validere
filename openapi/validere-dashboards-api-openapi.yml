@@ -1,0 +1,237 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities dashboards API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Dashboards
+  name: dashboards
+paths:
+  /app/v1/dashboards:
+    get:
+      operationId: list_dashboard
+      parameters:
+      - $ref: '#/components/parameters/DashboardName'
+      - $ref: '#/components/parameters/DashboardDescription'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/Dashboard'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List dashboards
+      tags:
+      - dashboards
+    post:
+      operationId: create_dashboard
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DashboardCreateUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+          description: A successful operation
+      summary: Create a dashboard
+      tags:
+      - dashboards
+  /app/v1/dashboards/{id}:
+    delete:
+      operationId: delete_dashboard
+      parameters:
+      - $ref: '#/components/parameters/DashboardId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a dashboard
+      tags:
+      - dashboards
+    get:
+      operationId: get_dashboard
+      parameters:
+      - $ref: '#/components/parameters/DashboardId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Dashboard'
+                - properties:
+                    chart:
+                      items:
+                        $ref: '#/components/schemas/Chart'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: Get a dashboard
+      tags:
+      - dashboards
+    put:
+      operationId: put_dashboard
+      parameters:
+      - $ref: '#/components/parameters/DashboardId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DashboardCreateUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dashboard'
+          description: A successful operation
+      summary: Update a dashboard
+      tags:
+      - dashboards
+components:
+  parameters:
+    DashboardId:
+      description: Dashboard ID
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    DashboardDescription:
+      description: Dashboard description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    DashboardName:
+      description: Dashboard name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    Chart:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        dashboard_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        json:
+          type: object
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object
+    Dashboard:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        description:
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    DashboardCreateUpdate:
+      properties:
+        description:
+          example: 'Description of Dashboard #1'
+          type: string
+        name:
+          example: 'Dashboard #1'
+          type: string
+      type: object

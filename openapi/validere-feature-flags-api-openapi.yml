@@ -1,0 +1,124 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities feature_flags API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Feature Flags
+  name: feature_flags
+paths:
+  /app/v1/feature_flags/search:
+    post:
+      operationId: search_feature_flags
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FeatureFlagsFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFeatureFlagsList'
+          description: successful operation
+      summary: Search feature flags
+      tags:
+      - feature_flags
+  /app/v1/feature_flags/{name}:
+    get:
+      operationId: get_feature_flag
+      parameters:
+      - $ref: '#/components/parameters/FeatureFlagId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlag'
+          description: A successful operation
+      summary: Get a feature flag
+      tags:
+      - feature_flags
+components:
+  parameters:
+    FeatureFlagId:
+      description: Feature Flag Name (any version)
+      in: path
+      name: name
+      required: true
+      schema:
+        type: string
+  schemas:
+    FeatureFlag:
+      allOf:
+      - type: object
+        properties:
+          name:
+            type: string
+          version:
+            type: string
+          isEnabled:
+            type: boolean
+          isDeprecated:
+            type: boolean
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedFeatureFlagsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FeatureFlag'
+            type: array
+        type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          allOf:
+          - properties:
+              name:
+                type: string
+              isEnabled:
+                type: boolean
+              isDeprecated:
+                type: boolean
+          type: object

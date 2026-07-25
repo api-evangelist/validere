@@ -1,0 +1,240 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities group_categories API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Group Categories
+  name: group_categories
+paths:
+  /app/v1/group_categories:
+    post:
+      operationId: create_group_category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCategoryCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupCategory'
+          description: A successful operation
+      summary: Create a Group Category
+      tags:
+      - group_categories
+  /app/v1/group_categories/{id}:
+    get:
+      operationId: get_group_category
+      parameters:
+      - $ref: '#/components/parameters/GroupCategoryId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupCategory'
+          description: A successful operation
+      summary: Get a Group Category
+      tags:
+      - group_categories
+    put:
+      operationId: put_group_category
+      parameters:
+      - $ref: '#/components/parameters/GroupCategoryId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupCategoryUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupCategory'
+          description: A successful operation
+      summary: Update a Group Category
+      tags:
+      - group_categories
+    delete:
+      operationId: delete_group_category
+      parameters:
+      - $ref: '#/components/parameters/GroupCategoryId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a Group Category
+      tags:
+      - group_categories
+  /app/v1/group_categories/search:
+    post:
+      operationId: search_group_categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/GroupCategorySort'
+              - $ref: '#/components/schemas/GroupCategoryFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedGroupCategoryList'
+          description: Successfully operation
+      summary: Search Group Categories
+      tags:
+      - group_categories
+components:
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    GroupCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    GroupCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    PagedGroupCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/GroupCategory'
+            type: array
+        type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    GroupCategorySort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - description
+          - created_by
+          - created_at
+          - updated_by
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    GroupCategoryFilter:
+      properties:
+        filter:
+          description: A filter object for Group Category where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            description:
+              type: string
+            created_by:
+              type: string
+              format: uuid
+            created_at:
+              type: string
+              format: date-time
+            updated_by:
+              type: string
+              format: uuid
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    GroupCategory:
+      allOf:
+      - $ref: '#/components/schemas/GroupCategoryCreate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+      type: object
+  parameters:
+    GroupCategoryId:
+      description: Group Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string

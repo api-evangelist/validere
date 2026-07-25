@@ -1,0 +1,131 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities charts API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Charts
+  name: charts
+paths:
+  /app/v1/charts:
+    post:
+      operationId: create_chart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChartCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chart'
+          description: A successful operation
+      summary: Create a chart
+      tags:
+      - charts
+  /app/v1/charts/{id}:
+    delete:
+      operationId: delete_chart
+      parameters:
+      - $ref: '#/components/parameters/ChartId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a chart
+      tags:
+      - charts
+    get:
+      operationId: get_chart
+      parameters:
+      - $ref: '#/components/parameters/ChartId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chart'
+          description: A successful operation
+      summary: Get a chart
+      tags:
+      - charts
+    put:
+      operationId: put_chart
+      parameters:
+      - $ref: '#/components/parameters/ChartId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChartUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chart'
+          description: A successful operation
+      summary: Update a Chart
+      tags:
+      - charts
+components:
+  parameters:
+    ChartId:
+      description: Chart ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    ChartCreate:
+      properties:
+        dashboard_id:
+          type: string
+          format: uuid
+        json:
+          type: object
+        name:
+          example: 'Chart #1'
+          type: string
+      type: object
+    ChartUpdate:
+      properties:
+        json:
+          type: object
+        name:
+          example: 'Chart #1'
+          type: string
+      type: object
+    Chart:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        dashboard_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        json:
+          type: object
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object

@@ -1,0 +1,187 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Activity Log
+  name: activities
+paths:
+  /app/v1/activities/search:
+    post:
+      operationId: search_activities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ActivitySort'
+              - $ref: '#/components/schemas/ActivityFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedActivityList'
+          description: Successfully operation
+      summary: Search and list Activities
+      tags:
+      - activities
+  /app/v1/activities/{resource_type}/search:
+    post:
+      operationId: search_activities_resource_type
+      parameters:
+      - $ref: '#/components/parameters/ResourceType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ActivitySort'
+              - $ref: '#/components/schemas/ActivityFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedActivityList'
+          description: Successfully operation
+      summary: Search and list Activities for a resource type
+      tags:
+      - activities
+components:
+  schemas:
+    Activity:
+      properties:
+        resource_type:
+          type: string
+        resource_id:
+          type: string
+          format: uuid
+        author_id:
+          type: string
+          format: uuid
+        action:
+          type: string
+          format: uuid
+        before:
+          type: object
+          example:
+            name: old name
+            description: old description
+        after:
+          type: object
+          example:
+            name: new name
+            description: new description
+        timestamp:
+          format: date-time
+          type: string
+      type: object
+    PagedActivityList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Activity'
+            type: array
+        type: object
+    ActivitySort:
+      properties:
+        sort_by:
+          enum:
+          - resource_type
+          - resource_id
+          - author_id
+          - action
+          - timestamp
+          example: timestamp
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    ActivityFilter:
+      properties:
+        filter:
+          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            resource_type: equipment
+            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            action: update
+            timestamp:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          properties:
+            resource_type:
+              type: string
+            resource_id:
+              type: string
+            author_id:
+              type: string
+            action:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+          type: object
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+  parameters:
+    ResourceType:
+      description: ResourceType
+      in: path
+      name: resource_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/ResourceType'

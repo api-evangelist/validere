@@ -1,0 +1,435 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities roles API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Roles
+  name: roles
+paths:
+  /app/v1/roles:
+    post:
+      operationId: create_role
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRoleInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: A successful operation
+      summary: Create a role
+      tags:
+      - roles
+  /app/v1/roles/search:
+    post:
+      operationId: search_roles
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/RoleSort'
+              - $ref: '#/components/schemas/RoleFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedRoleList'
+          description: successful operation
+      summary: Must be Company member -  Search roles
+      tags:
+      - roles
+  /app/v1/roles/{role_id}:
+    get:
+      operationId: get_role
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: A successful operation
+      summary: Must be Company member - Get a role
+      tags:
+      - roles
+    put:
+      operationId: update_role
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRoleInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Role'
+          description: A successful operation
+      summary: Update a role
+      tags:
+      - roles
+    delete:
+      operationId: delete_role
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete a role
+      tags:
+      - roles
+  /app/v1/roles/{role_id}/members:
+    get:
+      operationId: list_role_members
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RoleMembershipWithUser'
+      summary: Must be Company member - Show Memberships for a role
+      tags:
+      - roles
+  /app/v1/roles/{role_id}/members/{member_id}:
+    put:
+      operationId: add_member
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      - $ref: '#/components/parameters/MemberId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add a user to a role
+      tags:
+      - roles
+    delete:
+      operationId: remove_member
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      - $ref: '#/components/parameters/MemberId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove a user from a role
+      tags:
+      - roles
+  /app/v1/roles/{role_id}/permissions:
+    put:
+      operationId: update_role_permission
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionsInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionsOutput'
+          description: A successful operation
+      summary: Update role permission
+      tags:
+      - roles
+    get:
+      operationId: get_role_permission
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionsOutput'
+          description: A successful operation
+      summary: Get role permission
+      tags:
+      - roles
+  /app/v1/roles/{role_id}/permissions/{permission_name}:
+    put:
+      operationId: update_single_role_permission
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      - $ref: '#/components/parameters/PermissionNamePath'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SinglePermissionInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionsOutput'
+          description: A successful operation
+      summary: Update single permission
+      tags:
+      - roles
+    delete:
+      operationId: remove_single_role_permission
+      parameters:
+      - $ref: '#/components/parameters/RoleId'
+      - $ref: '#/components/parameters/PermissionNamePath'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove single permission
+      tags:
+      - roles
+components:
+  parameters:
+    RoleId:
+      description: Role ID
+      in: path
+      name: role_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    PermissionNamePath:
+      description: Permission name
+      in: path
+      name: permission_name
+      required: true
+      schema:
+        type: string
+    MemberId:
+      description: Member ID
+      in: path
+      name: member_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    RoleFilter:
+      properties:
+        filter:
+          description: A filter object for Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              status:
+                $ref: '#/components/schemas/UserStatus'
+              user.id:
+                type: string
+                format: uuid
+          type: object
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    CreateRoleInput:
+      allOf:
+      - $ref: '#/components/schemas/UpdateRoleInput'
+    UserStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    UpdateRoleInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/RoleStatus'
+    RoleStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PermissionsInput:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    RoleSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - status
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    PermissionInput:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+        active:
+          type: boolean
+        filter:
+          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          example:
+            $or:
+            - custom_attributes.region: US
+            - name:
+                $like: Facility 1
+          type: object
+      type: object
+    RoleMembershipWithUser:
+      allOf:
+      - $ref: '#/components/schemas/RoleMembership'
+      - properties:
+          user:
+            $ref: '#/components/schemas/UserBasic'
+    UserBasic:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    PermissionsOutput:
+      type: array
+      items:
+        allOf:
+        - $ref: '#/components/schemas/AuditFields'
+        - $ref: '#/components/schemas/PermissionInput'
+        - properties:
+            company_id:
+              type: string
+              format: uuid
+            role_id:
+              type: string
+              format: uuid
+    PagedRoleList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              type: array
+              $ref: '#/components/schemas/Role'
+        type: object
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    SinglePermissionInput:
+      properties:
+        active:
+          type: boolean
+        filter:
+          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          example:
+            $or:
+            - custom_attributes.region: US
+            - name:
+                $like: Facility 1
+          type: object
+      type: object
+    Role:
+      allOf:
+      - $ref: '#/components/schemas/CreateRoleInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          company_id:
+            type: string
+            format: uuid

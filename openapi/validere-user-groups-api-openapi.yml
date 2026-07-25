@@ -1,0 +1,307 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities user_groups API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage User Groups
+  name: user_groups
+paths:
+  /app/v1/user_groups:
+    post:
+      operationId: create_user_group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+          description: A successful operation
+      summary: Create a user group
+      tags:
+      - user_groups
+  /app/v1/user_groups/search:
+    post:
+      operationId: search_user_groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/UserGroupSort'
+              - $ref: '#/components/schemas/UserGroupFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedUserGroupList'
+          description: successful operation
+      summary: Search user groups
+      tags:
+      - user_groups
+  /app/v1/user_groups/{user_group_id}:
+    get:
+      operationId: get_user_group
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+          description: A successful operation
+      summary: Get a user group
+      tags:
+      - user_groups
+    put:
+      operationId: update_user_group
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserGroup'
+          description: A successful operation
+      summary: Update a user group
+      tags:
+      - user_groups
+    delete:
+      operationId: delete_user_group
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete a user group
+      tags:
+      - user_groups
+  /app/v1/user_groups/{user_group_id}/members:
+    get:
+      operationId: list_user_group_members
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserGroupMembershipWithUser'
+      summary: Show Memberships for a user group
+      tags:
+      - user_groups
+  /app/v1/user_groups/{user_group_id}/members/{member_id}:
+    put:
+      operationId: add_user_group_member
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      - $ref: '#/components/parameters/MemberId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add a user to a user group
+      tags:
+      - user_groups
+    delete:
+      operationId: remove_user_group_member
+      parameters:
+      - $ref: '#/components/parameters/UserGroupId'
+      - $ref: '#/components/parameters/MemberId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove a user from a user group
+      tags:
+      - user_groups
+components:
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    UserGroupSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - group_category_id
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    PagedUserGroupList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              type: array
+              $ref: '#/components/schemas/UserGroup'
+        type: object
+    UserGroup:
+      allOf:
+      - $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          company_id:
+            type: string
+            format: uuid
+    CreateAndUpdateUserGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        group_category_id:
+          type: string
+          format: uuid
+    UserGroupMembershipWithUser:
+      allOf:
+      - $ref: '#/components/schemas/UserGroupMembership'
+      - properties:
+          user:
+            $ref: '#/components/schemas/UserBasic'
+    UserBasic:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    UserGroupMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          user_group_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    UserGroupFilter:
+      properties:
+        filter:
+          description: A filter object for User Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              group_category_id:
+                type: string
+                format: uuid
+              user.id:
+                type: string
+                format: uuid
+                example:
+                  $in:
+                  - c3e9446d-4cc0-4e7b-bb43-43fff9361957
+                  - c3e9446d-4cc0-4e7b-bb43-43fff9361957
+          type: object
+  parameters:
+    UserGroupId:
+      description: User Group ID
+      in: path
+      name: user_group_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    MemberId:
+      description: Member ID
+      in: path
+      name: member_id
+      required: true
+      schema:
+        format: uuid
+        type: string

@@ -1,0 +1,1049 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities flows API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Flows
+  name: flows
+paths:
+  /app/v1/flows:
+    post:
+      operationId: create_flow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowCreateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowWithConnections'
+          description: A successful operation
+      summary: Create a flow
+      tags:
+      - flows
+  /app/v1/flows/search:
+    post:
+      operationId: search_flows
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FlowSort'
+              - $ref: '#/components/schemas/FlowFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFlowsList'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+          description: successful operation
+      summary: Search and list Flows
+      tags:
+      - flows
+  /app/v2/flows/search:
+    post:
+      operationId: search_flows_v2
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FlowSort'
+              - $ref: '#/components/schemas/FlowFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFlowsListV2'
+          description: successful operation
+      summary: Search and list Flows
+      tags:
+      - flows
+  /app/v1/flows/export:
+    post:
+      operationId: export_flows
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/FlowSort'
+              - $ref: '#/components/schemas/FlowFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithS3Url'
+          description: successful operation
+      summary: Export Flows
+      tags:
+      - flows
+  /app/v1/flows/{id}:
+    get:
+      operationId: get_flow
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/FlowId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowWithConnections'
+          description: A successful operation
+      summary: Get a flow
+      tags:
+      - flows
+    put:
+      operationId: update_flow
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/FlowId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowUpdateInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowWithConnections'
+          description: A successful operation
+      summary: Update a flow
+      tags:
+      - flows
+    delete:
+      operationId: delete_flow
+      parameters:
+      - $ref: '#/components/parameters/FlowId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a flow
+      tags:
+      - flows
+  /app/v1/flows/filters:
+    get:
+      operationId: get_flow_filter
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFlowFilterOutput'
+          description: successful operation
+      summary: List Filter
+      tags:
+      - flows
+    post:
+      operationId: post_flow_filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowFilterInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowFilterOutput'
+          description: successful operation
+      summary: Create Filter
+      tags:
+      - flows
+  /app/v1/flows/filters/{filter_id}:
+    delete:
+      operationId: delete_flow_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete Filter
+      tags:
+      - flows
+    put:
+      operationId: put_flow_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FlowFilterUpdateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FlowFilterOutput'
+          description: successful operation
+      summary: Update Filter
+      tags:
+      - flows
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FlowId:
+      description: Flow ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    FlowSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - product_category
+          - product_type
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    FlowEquipmentConnectionDetails:
+      properties:
+        upstream_equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+        downstream_equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+      type: object
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FacilityType:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_types`
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    FlowFlowConnectionDetails:
+      properties:
+        upstream_flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flow'
+        downstream_flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flow'
+      type: object
+    FlowFacilityConnectionDetails:
+      properties:
+        upstream_facility:
+          $ref: '#/components/schemas/Facility'
+        downstream_facility:
+          $ref: '#/components/schemas/Facility'
+      type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
+    FlowUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - properties:
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - allOf:
+        - $ref: '#/components/schemas/FlowFacilityConnections'
+        - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+    FlowFilterUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FlowFilter'
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    FlowFilter:
+      properties:
+        filter:
+          $ref: '#/components/schemas/FlowFilterFields'
+      type: object
+    EquipmentFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - properties:
+          event.id:
+            type: string
+        type: object
+    AssetAttributeStartEndDateInput:
+      type: object
+      properties:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
+    FlowFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/FlowFilter'
+      type: object
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      nullable: true
+      type: number
+    FlowFilterFields:
+      example:
+        $or:
+        - type: fuel
+          product_type: natural_gas
+          product_category: natural_gas
+        - name:
+            $like: test
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        associated_facility_id:
+          type: string
+          format: uuid
+        associated_equipment_id:
+          type: string
+          format: uuid
+        upstream_facility_id:
+          type: string
+          format: uuid
+        upstream_equipment_id:
+          type: string
+          format: uuid
+        downstream_facility_id:
+          type: string
+          format: uuid
+        downstream_equipment_id:
+          type: string
+          format: uuid
+        event.id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        upstream_flows.id:
+          type: string
+          format: uuid
+        downstream_flows.id:
+          type: string
+          format: uuid
+      type: object
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    FlowCreateInput:
+      allOf:
+      - $ref: '#/components/schemas/FlowUpdateInput'
+      - properties:
+          associated_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          upstream_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          downstream_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          associated_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+          upstream_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+          downstream_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedFlowsListV2:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FlowV2'
+              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+            type: array
+        type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    FlowAssociatedEquipmentDetails:
+      properties:
+        associated_equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+      type: object
+    FlowFlowConnectionsV2:
+      properties:
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
+    FlowEquipmentConnections:
+      properties:
+        upstream_equipment_id:
+          type: string
+          format: uuid
+        downstream_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    FlowFacilityConnections:
+      properties:
+        upstream_facility_id:
+          type: string
+          format: uuid
+        downstream_facility_id:
+          type: string
+          format: uuid
+      type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    Flow:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      nullable: true
+      type: number
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    FlowWithConnections:
+      allOf:
+      - $ref: '#/components/schemas/Flow'
+      - $ref: '#/components/schemas/FlowFlowConnectionDetails'
+      - oneOf:
+        - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+        - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+        - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+        - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/FacilityStatus'
+          type:
+            $ref: '#/components/schemas/FacilityType'
+          id:
+            format: uuid
+            type: string
+        type: object
+    FacilityFilterFields:
+      description: A filter object for facility where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+      example:
+        custom_attributes.hint: View schema for all supported fields
+        custom_attributes.operator: bob
+        name:
+          $like: wind
+      properties:
+        custom_attributes:
+          type: object
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        event.id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    FacilityStatus:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_statuses`
+    EquipmentBasic:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    PagedFlowFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/FlowFilterOutput'
+            type: array
+        type: object
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    ReportWithTemplatedReportResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        s3_object_id:
+          type: string
+        report_version:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
+    FlowFlowConnections:
+      properties:
+        upstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        downstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
+    FlowFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FlowFilter'
+    FlowV2:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnectionsV2'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    PagedFlowsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/Flow'
+              - $ref: '#/components/schemas/FlowFlowConnectionDetails'
+              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+            type: array
+        type: object
+    FlowAssociatedFacilityDetails:
+      properties:
+        associated_facility:
+          $ref: '#/components/schemas/Facility'
+    EquipmentPrimaryFilterFields:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        type.id:
+          type: string
+        type.name:
+          type: string
+        custom_attributes:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false

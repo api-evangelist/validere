@@ -1,0 +1,677 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities asset_groups API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Asset Groups
+  name: asset_groups
+paths:
+  /app/v1/asset_groups:
+    post:
+      operationId: create_asset_group
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetGroupCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroupWithAssets'
+          description: A successful operation
+      summary: Create an asset group
+      tags:
+      - asset_groups
+  /app/v2/asset_groups:
+    post:
+      operationId: create_asset_group_v2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetGroupCreateV2'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroupWithAssets'
+          description: A successful operation
+      summary: Create an asset group
+      tags:
+      - asset_groups
+  /app/v1/asset_groups/{id}:
+    get:
+      operationId: get_asset_group
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/AssetGroupId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroupWithAssets'
+          description: A successful operation
+      summary: Get an asset group
+      tags:
+      - asset_groups
+    put:
+      operationId: put_asset_group
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssetGroupUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroup'
+          description: A successful operation
+      summary: Update an Asset Group
+      tags:
+      - asset_groups
+    delete:
+      operationId: delete_asset_group
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete an asset group
+      tags:
+      - asset_groups
+  /app/v1/asset_groups/{id}/asset:
+    put:
+      operationId: update_asset_group_assets
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroupAssetsUpdate'
+          description: A successful operation
+      summary: Update all the assets in an asset group.
+      description: Update all the assets in an asset group. Also updates estimation methods and default calculator input records that reference these AssetGroupAssets.
+      tags:
+      - asset_groups
+  /app/v1/asset_groups/{id}/asset/{asset_id}:
+    put:
+      operationId: add_asset_to_asset_group
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/AssetId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                is_prorated:
+                  type: boolean
+                default_values:
+                  $ref: '#/components/schemas/CalculatorInputs'
+                  example:
+                    volume:
+                      value: 5
+                      unit: e3m3
+                      measurement_type: volume
+                      measurement_quantity: volume
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroupAsset'
+          description: A successful operation
+      summary: Add an asset to an asset group
+      tags:
+      - asset_groups
+    delete:
+      operationId: remove_asset_to_asset_group
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/AssetId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an asset to an asset group
+      tags:
+      - asset_groups
+  /app/v1/asset_groups/search:
+    post:
+      operationId: search_asset_groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/AssetGroupSort'
+              - $ref: '#/components/schemas/AssetGroupFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedAssetGroupWithAssetsList'
+          description: Successfully something
+      summary: Search and list Asset Groups
+      tags:
+      - asset_groups
+components:
+  parameters:
+    AssetId:
+      description: Asset ID
+      in: path
+      name: asset_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    AssetGroupId:
+      description: Asset Group ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+  schemas:
+    AssetAttributeStartEndDateInput:
+      type: object
+      properties:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
+    AssetGroupWithAssets:
+      allOf:
+      - $ref: '#/components/schemas/AssetGroup'
+      - properties:
+          assets:
+            type: array
+            items:
+              $ref: '#/components/schemas/Asset'
+          network_inlet_ids:
+            type: array
+            items:
+              type: string
+              format: uuid
+      type: object
+    AssetGroupFilter:
+      properties:
+        filter:
+          description: A filter object for Asset Group where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            $or:
+            - asset.asset_type: equipment
+            - name:
+                $like: Asset Group 1
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/AssetGroupStatus'
+            asset.id:
+              type: string
+            created_at:
+              type: string
+            created_by:
+              type: string
+            updated_at:
+              type: string
+            updated_by:
+              type: string
+            custom_attributes:
+              type: object
+          type: object
+      type: object
+    AssetGroupCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    AssetGroupAssetsUpdate:
+      properties:
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EstimationMethodResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    AssetGroup:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        default_network_reporting_group_id:
+          type: string
+        default_network_reporting_group:
+          $ref: '#/components/schemas/ReportingGroupInput'
+        default_estimation_method_id:
+          format: uuid
+          type: string
+        default_estimation_method:
+          $ref: '#/components/schemas/EstimationMethodResponse'
+        id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    AssetGroupSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - asset_group_type_id
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+    Asset:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+    AssetGroupStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    AssetGroupAsset:
+      type: object
+      properties:
+        asset_id:
+          format: uuid
+          type: string
+        asset_group_id:
+          format: uuid
+          type: string
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    AssetGroupUpdate:
+      allOf:
+      - properties:
+          name:
+            type: string
+            maxLength: 100
+          status:
+            $ref: '#/components/schemas/AssetGroupStatus'
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+      type: object
+    PagedAssetGroupWithAssetsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/AssetGroupWithAssets'
+            type: array
+        type: object
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    CalculatorInputs:
+      type: object
+      additionalProperties:
+        type: object
+        nullable: true
+        properties:
+          value:
+            anyOf:
+            - type: string
+            - type: number
+            - nullable: true
+            - type: boolean
+            - nullable: true
+          unit:
+            type: string
+          measurement_type:
+            type: string
+          measurement_quantity:
+            type: string
+        required:
+        - value
+      example:
+        fuel_type:
+          value: Eastern
+          unit: ''
+          measurement_type: measurement_type
+          measurement_quantity: dimensionless_coefficient
+        volume:
+          value: 5
+          unit: e3m3
+          measurement_type: measurement_type
+          measurement_quantity: volume
+        rvp: null
+    AssetGroupCreateV2:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        reporting_group_id:
+          description: Reporting group ID when `asset_group_type_id="network"`
+          type: string
+          format: uuid
+      type: object

@@ -1,0 +1,211 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities event_categories API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Event Categories
+  name: event_categories
+paths:
+  /app/v1/event_categories:
+    get:
+      operationId: list_event_category
+      parameters:
+      - $ref: '#/components/parameters/EventCategoryName'
+      - $ref: '#/components/parameters/EventCategoryArchived'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/EventCategory'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List event categories
+      tags:
+      - event_categories
+    post:
+      operationId: create_event_category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCategoryCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCategory'
+          description: A successful operation
+      summary: Create an event category
+      tags:
+      - event_categories
+  /app/v1/event_categories/{id}:
+    get:
+      operationId: get_event_category
+      parameters:
+      - $ref: '#/components/parameters/EventCategoryId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCategory'
+          description: A successful operation
+      summary: Get an event category
+      tags:
+      - event_categories
+    put:
+      operationId: put_event_category
+      parameters:
+      - $ref: '#/components/parameters/EventCategoryId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCategoryUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventCategory'
+          description: A successful operation
+      summary: Update an event category
+      tags:
+      - event_categories
+    delete:
+      operationId: delete_event_category
+      parameters:
+      - $ref: '#/components/parameters/EventCategoryId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete an event category
+      tags:
+      - event_categories
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    EventCategoryName:
+      description: Event Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EventCategoryArchived:
+      description: Event Category archived
+      in: query
+      name: archived
+      required: false
+      schema:
+        default: false
+        type: boolean
+    EventCategoryId:
+      description: Event Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    EventCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
+    EventCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventCategory:
+      allOf:
+      - $ref: '#/components/schemas/EventCategoryCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+      type: object

@@ -1,0 +1,139 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities emissions_calculator API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Emission Calculator
+  name: emissions_calculator
+paths:
+  /app/v1/libraries:
+    get:
+      operationId: get_libraries
+      responses:
+        '200':
+          description: successful operation
+      summary: Get all calculation libraries
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v1/libraries/{library_id}:
+    get:
+      operationId: get_library
+      parameters:
+      - $ref: '#/components/parameters/LibraryId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Get library
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v1/calculators:
+    get:
+      deprecated: true
+      operationId: get_calculators
+      responses:
+        '200':
+          description: successful operation
+      summary: Get all calculators
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v2/calculators:
+    get:
+      operationId: get_calculators_v2
+      parameters:
+      - $ref: '#/components/parameters/CalculatorVersionInformationFieldQuery'
+      responses:
+        '200':
+          description: successful operation
+      summary: Get all calculators
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v1/calculators/{calculator_id}:
+    get:
+      operationId: get_calculator
+      parameters:
+      - $ref: '#/components/parameters/CalculatorId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Get calculator
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v1/calculators/{calculator_id}/versions:
+    get:
+      operationId: get_calculator_versions
+      parameters:
+      - $ref: '#/components/parameters/CalculatorId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Get calculator versions
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+  /app/v1/calculators/{calculator_id}/versions/{version_id}:
+    get:
+      operationId: get_calculator_version
+      parameters:
+      - $ref: '#/components/parameters/CalculatorId'
+      - $ref: '#/components/parameters/CalculatorVersionId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Get calculator version
+      description: Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema
+      tags:
+      - emissions_calculator
+components:
+  parameters:
+    CalculatorId:
+      description: Calculator ID
+      in: path
+      name: calculator_id
+      required: true
+      schema:
+        type: string
+    CalculatorVersionInformationFieldQuery:
+      description: Calculator Version Information Fields
+      in: query
+      name: include
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/CalculatorVersionInformationField'
+    LibraryId:
+      description: Library ID
+      in: path
+      name: library_id
+      required: true
+      schema:
+        type: string
+    CalculatorVersionId:
+      description: Calculator Version ID
+      in: path
+      name: version_id
+      required: true
+      schema:
+        type: string
+  schemas:
+    CalculatorVersionInformationField:
+      type: string
+      enum:
+      - assets
+      - calculation_parameters
+      - documentation
+      - intermediate_results
+      - outputs
+      - defaults

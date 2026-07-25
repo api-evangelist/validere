@@ -1,0 +1,71 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities device_types API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Device Types
+  name: device_types
+paths:
+  /app/v1/device_types:
+    get:
+      operationId: list_device_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceTypeList'
+          description: successful operation
+      summary: Get Device Type List
+      tags:
+      - device_types
+components:
+  schemas:
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    DeviceTypeAttribute:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DeviceType:
+      properties:
+        attributes:
+          items:
+            $ref: '#/components/schemas/DeviceTypeAttribute'
+          type: array
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DeviceTypeList:
+      items:
+        $ref: '#/components/schemas/DeviceType'
+      type: array

@@ -1,0 +1,255 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities reporting_groups API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Reporting Groups
+  name: reporting_groups
+paths:
+  /app/v1/reporting_groups:
+    get:
+      operationId: list_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupIdFilter'
+      - $ref: '#/components/parameters/ReportingGroupNameFilter'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedReportingGroupOutput'
+          description: A successful operation
+      summary: List Reporting Groups
+      tags:
+      - reporting_groups
+    post:
+      operationId: create_reporting_group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportingGroupInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportingGroup'
+          description: A successful operation
+      summary: Create new Reporting Group
+      tags:
+      - reporting_groups
+  /app/v1/reporting_groups/{id}:
+    get:
+      operationId: get_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportingGroup'
+          description: A successful operation
+      summary: Get a Reporting Group by Id
+      tags:
+      - reporting_groups
+    put:
+      operationId: update_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportingGroupUpdateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportingGroup'
+          description: A successful operation
+      summary: Update a Reporting Group by Id
+      tags:
+      - reporting_groups
+    delete:
+      operationId: delete_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a Reporting Group by Id
+      tags:
+      - reporting_groups
+  /app/v1/reporting_groups/{id}/estimation_methods/{estimation_method_id}:
+    put:
+      operationId: add_estimation_method_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupId'
+      - $ref: '#/components/parameters/EstimationMethodFullId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add a reporting_group/estimation_method relationship
+      tags:
+      - reporting_groups
+    delete:
+      operationId: remove_estimation_method_reporting_group
+      parameters:
+      - $ref: '#/components/parameters/ReportingGroupId'
+      - $ref: '#/components/parameters/EstimationMethodFullId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove a reporting_group/estimation_method relationship
+      tags:
+      - reporting_groups
+components:
+  parameters:
+    EstimationMethodFullId:
+      description: Estimation Method ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: estimation_method_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    ReportingGroupIdFilter:
+      description: String to search for in reporting group IDs
+      in: query
+      name: id
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    ReportingGroupNameFilter:
+      description: String to search for in reporting group names
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    ReportingGroupId:
+      description: ID of report group
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        example: subpartw
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ReportingGroup:
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+        type: object
+    PagedReportingGroupOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ReportingGroup'
+            type: array
+        type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2

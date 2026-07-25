@@ -1,0 +1,384 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities user_unit_config API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: User Unit Configuration
+  name: user_unit_config
+paths:
+  /app/v1/user_unit_config/search:
+    post:
+      operationId: search_user_unit_config
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/UnitConfigSort'
+              - $ref: '#/components/schemas/UnitConfigFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedUserUnitConfig'
+          description: A successful operation
+      summary: Search user unit configs
+      tags:
+      - user_unit_config
+  /app/v1/user_unit_config/{measurement_type}:
+    get:
+      operationId: get_user_unit_config
+      parameters:
+      - $ref: '#/components/parameters/MeasurementType'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserUnitConfig'
+          description: A successful operation
+      summary: Get a user unit config
+      tags:
+      - user_unit_config
+    put:
+      operationId: upsert_user_unit_config
+      parameters:
+      - $ref: '#/components/parameters/MeasurementType'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnitConfigUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserUnitConfig'
+          description: A successful operation
+      summary: Create or update a user unit config
+      tags:
+      - user_unit_config
+    delete:
+      operationId: delete_user_unit_config
+      parameters:
+      - $ref: '#/components/parameters/MeasurementType'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a user unit configuration
+      tags:
+      - user_unit_config
+  /app/v1/user_unit_config/filters:
+    get:
+      operationId: get_user_unit_config_filter
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedUnitConfigFilterOutput'
+          description: successful operation
+      summary: List Filter
+      tags:
+      - user_unit_config
+    post:
+      operationId: post_user_unit_config_filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnitConfigFilterInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitConfigFilterOutput'
+          description: successful operation
+      summary: Create Filter
+      tags:
+      - user_unit_config
+  /app/v1/user_unit_config/filters/{filter_id}:
+    delete:
+      operationId: delete_user_unit_config_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete Filter
+      tags:
+      - user_unit_config
+    put:
+      operationId: put_user_unit_config_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnitConfigFilterUpdateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnitConfigFilterOutput'
+          description: successful operation
+      summary: Update Filter
+      tags:
+      - user_unit_config
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
+      schema:
+        type: string
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    PagedUnitConfigFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/UnitConfigFilterOutput'
+            type: array
+        type: object
+    PagedUserUnitConfig:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/UserUnitConfig'
+            type: array
+        type: object
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    UnitConfigFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+      - properties:
+          entity_type:
+            example: company_unit_config
+            type: string
+      type: object
+    UnitConfigFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+      type: object
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    UnitConfigFilter:
+      properties:
+        filter:
+          type: object
+          properties:
+            measurement_type:
+              type: string
+              example: volume
+            measurement_unit:
+              type: string
+              example: l
+    UnitConfigFilterUpdateInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+    UserUnitConfig:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - $ref: '#/components/schemas/UnitConfigUpdate'
+      properties:
+        measurement_type:
+          type: string
+          example: mass
+        user_id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+    UnitConfigUpdate:
+      type: object
+      properties:
+        measurement_unit:
+          type: string
+          example: g
+        precision:
+          type: integer
+          example: 3
+    UnitConfigSort:
+      properties:
+        sort_by:
+          enum:
+          - measurement_type
+          - measurement_unit
+          - created_at
+          - updated_at
+          example: measurement_type
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter

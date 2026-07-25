@@ -1,0 +1,537 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities networks API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Networks
+  name: networks
+paths:
+  /app/v1/networks/{id}/{year_month}:
+    get:
+      operationId: get_network_monthly
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedNetworkList'
+          description: successful operation
+      summary: Gets a list of network proration inputs and results
+      tags:
+      - networks
+    put:
+      operationId: upsert_network_monthly
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/YearMonth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/NetworkInput'
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FlowSort'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedNetworkList'
+          description: successful operation
+      summary: Upsert configuration for a network monthly proration input
+      tags:
+      - networks
+    delete:
+      operationId: delete_network_monthly
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/YearMonth'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedNetworkList'
+          description: successful operation
+      summary: Delete a month configuration. Returns the default configuration
+      tags:
+      - networks
+  /app/v1/networks/{id}/{year_month}/run:
+    post:
+      operationId: run_network_monthly
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      - $ref: '#/components/parameters/YearMonth'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FlowSort'
+              - $ref: '#/components/schemas/NetworkRunPromote'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedNetworkList'
+          description: successful operation
+      summary: Triggers the calculation and returns the table along with the results
+      tags:
+      - networks
+  /app/v1/networks/{id}/migrate:
+    post:
+      operationId: migrate_network
+      parameters:
+      - $ref: '#/components/parameters/AssetGroupId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                reporting_group_id:
+                  type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssetGroup'
+          description: successful operation
+      summary: Migrates the network and it's configurations to estimation methods
+      tags:
+      - networks
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    AssetGroupId:
+      description: Asset Group ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    YearMonth:
+      description: YearMonth
+      example: 202210
+      in: path
+      name: year_month
+      required: true
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    PagedNetworkList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/NetworkFlowList'
+          reporting_group_id:
+            type: string
+        type: object
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    FlowSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - product_category
+          - product_type
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    NetworkFlowList:
+      items:
+        $ref: '#/components/schemas/NetworkFlow'
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EstimationMethodResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        asset_id:
+          type: string
+          format: uuid
+        analytics_library_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW
+        analytics_calculator_id:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: 2024-SubpartW-AcidGasRemovalMethod1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          example: SubpartW AGR Method
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        default_values:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                anyOf:
+                - type: string
+                - type: number
+                - nullable: true
+                - type: boolean
+                - nullable: true
+              unit:
+                type: string
+              measurement_type:
+                type: string
+              measurement_quantity:
+                type: string
+            required:
+            - value
+          example:
+            fuel_type:
+              value: Eastern
+              unit: ''
+              measurement_type: measurement_type
+              measurement_quantity: dimensionless_coefficient
+            volume:
+              value: 5
+              unit: e3m3
+              measurement_type: measurement_type
+              measurement_quantity: volume
+        default_asset_values:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                value:
+                  anyOf:
+                  - type: string
+                  - type: number
+                  - nullable: true
+                  - type: boolean
+                  - nullable: true
+                unit:
+                  type: string
+                measurement_type:
+                  type: string
+                measurement_quantity:
+                  type: string
+              required:
+              - value
+            example:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+          example:
+            a04b4387-5145-4935-9edc-d53ecdb7a6c0:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+            99a45dd3-6ce1-4290-9d16-79415111cc43:
+              fuel_type:
+                value: Eastern
+                unit: ''
+                measurement_type: measurement_type
+                measurement_quantity: dimensionless_coefficient
+              volume:
+                value: 5
+                unit: e3m3
+                measurement_type: measurement_type
+                measurement_quantity: volume
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - asset_id
+      - analytics_library_id
+      - analytics_calculator_id
+      - name
+      - status
+      - default_values
+      - default_asset_values
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    NetworkInput:
+      properties:
+        input:
+          type: object
+          description: flow_id map
+          example:
+            3fa85f64-5717-4562-b3fc-2c963f66afa6:
+              adjustable: true
+          additionalProperties:
+            type: object
+            properties:
+              adjustable:
+                type: boolean
+        reporting_group_id:
+          type: string
+    NetworkRunPromote:
+      properties:
+        promote_to_record:
+          type: boolean
+          default: false
+    AssetGroup:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        default_network_reporting_group_id:
+          type: string
+        default_network_reporting_group:
+          $ref: '#/components/schemas/ReportingGroupInput'
+        default_estimation_method_id:
+          format: uuid
+          type: string
+        default_estimation_method:
+          $ref: '#/components/schemas/EstimationMethodResponse'
+        id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    AssetGroupStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    NetworkFlow:
+      allOf:
+      - properties:
+          adjustable:
+            type: boolean
+          proratable:
+            description: If the entry is able to be adjustable
+            type: boolean
+          volume:
+            type: number
+          volume_unit:
+            type: string
+          adjusted_volume:
+            type: number
+          volume_record_id:
+            type: string
+            format: uuid
+          volume_estimation_method_id:
+            type: string
+            format: uuid
+          volume_source_type:
+            type: string
+            enum:
+            - record
+            - estimation_method
+          id:
+            description: flow_id
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/FlowBasic'
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2

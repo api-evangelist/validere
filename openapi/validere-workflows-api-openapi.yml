@@ -1,0 +1,1215 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities workflows API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Workflow
+  name: workflows
+paths:
+  /app/v1/workflows:
+    post:
+      operationId: create_workflow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateWorkflowInput'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+      summary: Trigger a Workflow
+      tags:
+      - workflows
+  /app/v1/workflows/search:
+    post:
+      operationId: search_workflows
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/WorkflowSort'
+              - $ref: '#/components/schemas/WorkflowFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedWorkflowList'
+          description: Successfully operation
+      summary: Search Workflows
+      tags:
+      - workflows
+  /app/v1/workflows/{workflow_id}:
+    get:
+      operationId: get_workflow
+      parameters:
+      - $ref: '#/components/parameters/WorkflowId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkflow'
+          description: A successful operation
+      summary: Get a workflow
+      tags:
+      - workflows
+    put:
+      operationId: put_workflow
+      parameters:
+      - $ref: '#/components/parameters/WorkflowId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateWorkflowInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkflow'
+          description: A successful operation
+      summary: Update a workflow
+      tags:
+      - workflows
+    delete:
+      operationId: delete_workflow
+      parameters:
+      - $ref: '#/components/parameters/WorkflowId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a workflow
+      tags:
+      - workflows
+  /app/v1/workflows/{workflow_id}/form_submissions/search:
+    post:
+      operationId: search_workflow_form_submissions
+      parameters:
+      - $ref: '#/components/parameters/WorkflowId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FormSubmissionSort'
+              - $ref: '#/components/schemas/FormSubmissionFilter'
+              - type: object
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedWorkflowFormSubmissionList'
+          description: successful operation
+      summary: Search form submissions on a workflow
+      tags:
+      - workflows
+components:
+  schemas:
+    FormSubmissionWithoutAnswers:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        form_schema_id:
+          format: uuid
+          type: string
+        form_schema_version:
+          type: number
+        id:
+          format: uuid
+          type: string
+        status:
+          $ref: '#/components/schemas/FormSubmissionStatus'
+      type: object
+    IWorkflow:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        company_id:
+          type: string
+          format: uuid
+        workflow_template_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - complete
+          - in_progress
+          - overdue
+          - dismissed
+          - missed
+          - error
+        config:
+          type: object
+          properties:
+            start:
+              type: string
+            steps:
+              type: object
+              additionalProperties:
+                anyOf:
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - system_action
+                    name:
+                      type: string
+                      maxLength: 256
+                    description:
+                      type: string
+                      maxLength: 1024
+                    next:
+                      type: string
+                    end:
+                      type: boolean
+                    task:
+                      anyOf:
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - create_event
+                          event_schema_id:
+                            type: string
+                            format: uuid
+                          event_status:
+                            type: string
+                            enum:
+                            - open
+                            - resolved
+                            - overdue
+                            - dismissed
+                        required:
+                        - type
+                        - event_schema_id
+                        - event_status
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - form_choice
+                          form_schema_id:
+                            type: string
+                            format: uuid
+                          choices:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                answer_filter:
+                                  type: object
+                                  additionalProperties:
+                                    nullable: true
+                                  description: an array of answer filters is similar to an and operation which will match answers with a common section_id and section_index. filter must contain question_id and answer to make the condition meaningful
+                                next:
+                                  type: string
+                              required:
+                              - answer_filter
+                              - next
+                            minItems: 1
+                            maxItems: 8
+                        required:
+                        - type
+                        - form_schema_id
+                        - choices
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - delay
+                          time_period:
+                            type: string
+                            enum:
+                            - hours
+                            - days
+                            - weeks
+                            - months
+                          duration:
+                            type: number
+                            minimum: 0
+                            exclusiveMinimum: true
+                          from:
+                            type: string
+                            enum:
+                            - now
+                            - previous_workflow
+                        required:
+                        - type
+                        - time_period
+                        - duration
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - create_form
+                          form_schema_id:
+                            type: string
+                            format: uuid
+                          form_status:
+                            type: string
+                            enum:
+                            - validated
+                            - invalidated
+                            - pending
+                            - submitted
+                            - draft
+                        required:
+                        - type
+                        - form_schema_id
+                        - form_status
+                  required:
+                  - type
+                  - name
+                  - task
+                - type: object
+                  properties:
+                    type:
+                      type: string
+                      enum:
+                      - user_task
+                    name:
+                      type: string
+                      maxLength: 256
+                    description:
+                      type: string
+                      maxLength: 1024
+                    next:
+                      type: string
+                    end:
+                      type: boolean
+                    task:
+                      anyOf:
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - manual_task
+                        required:
+                        - type
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - submit_form
+                          form_schema_id:
+                            type: string
+                            format: uuid
+                          autocomplete:
+                            type: boolean
+                            description: Completes workflow as soon as a form is associated to task. Defaults to false
+                          auto_attach:
+                            type: boolean
+                            description: Will automatically attach any workflow that matches the schema + asset to this open task
+                          form_required:
+                            type: boolean
+                            description: Lock task from completion if they do not have a form associated
+                        required:
+                        - type
+                        - form_schema_id
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - complete_event
+                          event_step_id:
+                            type: string
+                            format: uuid
+                        required:
+                        - type
+                        - event_step_id
+                      - type: object
+                        properties:
+                          output:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^\$.*$
+                                description: path must be a JSON path to specify the JSON fields starting with $
+                                example: $.answers.section1[0].question_leak.value
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for storing workflow variables. Value accept static value or a JSON path starting with $
+                            example:
+                              $TRIGGERING_ASSET_ID: $.asset_trigger.metadata.id
+                              $LEAK_EQUIPMENT: $.answers.section1[0].question_leak.value
+                              $ASSOCIATED_ASSET_ID: $.asset.id
+                              $ASSOCIATED_ASSET_NAME: $.asset.name
+                              $ASSOCIATED_ASSET_TYPE: $.asset.asset_type
+                              $FOO: bar
+                          input:
+                            type: object
+                            additionalProperties:
+                              anyOf:
+                              - type: string
+                                minLength: 3
+                                maxLength: 64
+                                pattern: ^\$[A-Z]+[A-Z_0-9]+
+                                description: variable name must start with $ and use only uppercase letters, digits and the dash character, variable name must not start with $VALIDERE, reserved namespace
+                                example: $TRIGGERING_ASSET_NAME
+                              - type: string
+                                minLength: 1
+                                maxLength: 1024
+                                pattern: ^(?!\$).*$
+                                description: static value ​​cannot start with $
+                                example: foo
+                            description: key-value pairs for accessing workflow variables. Value accept static value or a Variable name
+                            example:
+                              $.description: foo
+                              $.questions.question_leak.default_answer: $LEAK_EQUIPMENT
+                          type:
+                            type: string
+                            enum:
+                            - choice
+                          choices:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                id:
+                                  type: string
+                                  minLength: 1
+                                  maxLength: 64
+                                name:
+                                  type: string
+                                  maxLength: 256
+                                description:
+                                  type: string
+                                  maxLength: 1024
+                                next:
+                                  type: string
+                              required:
+                              - id
+                              - name
+                              - description
+                              - next
+                            minItems: 2
+                            maxItems: 10
+                        required:
+                        - type
+                        - choices
+                    is_dismissible:
+                      type: boolean
+                      description: Determines whether a workflow task can be dismissed. Defaults to false
+                    assignment_filter:
+                      type: object
+                      additionalProperties:
+                        type: object
+                        additionalProperties:
+                          type: object
+                          properties:
+                            assignee_user:
+                              type: string
+                              format: uuid
+                            assignee_group:
+                              type: string
+                              format: uuid
+                    due_date:
+                      type: object
+                      properties:
+                        time_period:
+                          type: string
+                          enum:
+                          - hours
+                          - days
+                          - weeks
+                          - months
+                        duration:
+                          type: number
+                          minimum: 0
+                          exclusiveMinimum: true
+                      required:
+                      - time_period
+                      - duration
+                    restrict_assignee_completion:
+                      type: boolean
+                    assignee_user:
+                      type: string
+                      format: uuid
+                    assignee_group:
+                      type: string
+                      format: uuid
+                  required:
+                  - type
+                  - name
+                  - description
+                  - task
+            workflow_name:
+              type: string
+            workflow_description:
+              type: string
+          required:
+          - start
+          - steps
+        variables:
+          type: object
+          additionalProperties:
+            type: string
+        step_states:
+          type: object
+          additionalProperties:
+            type: string
+            enum:
+            - pending
+            - finished
+            - skipped
+            - failed
+        due_date:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        notification_date:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - name
+      - description
+      - company_id
+      - workflow_template_id
+      - status
+      - config
+      - variables
+      - step_states
+      - due_date
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+    WorkflowStatus:
+      type: string
+      enum:
+      - complete
+      - in_progress
+      - overdue
+      - dismissed
+      - missed
+    FormSubmissionFilter:
+      properties:
+        filter:
+          description: A filter object for Form Submissions where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+              format: uuid
+            version:
+              type: integer
+            current_version:
+              type: boolean
+            status:
+              type: string
+              $ref: '#/components/schemas/FormSubmissionStatus'
+            form_category_id:
+              type: string
+              example:
+                $in:
+                - 748970de-fd1f-4494-ae3f-47cc21ff205f
+            form_category.name:
+              type: string
+              example: test
+            form_schema.id:
+              type: string
+              example:
+                $in:
+                - 748970de-fd1f-4494-ae3f-47cc21ff205f
+            form_schema.name:
+              type: string
+            form_schema.version:
+              type: number
+            form_schema.current_version:
+              type: boolean
+            form_schema.status:
+              type: string
+              $ref: '#/components/schemas/FormSchemaStatus'
+            related_entity_id:
+              type: string
+              format: uuid
+            created_by:
+              type: string
+              format: uuid
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+            event.id:
+              type: string
+              format: uuid
+            measurement.measurement_type:
+              type: string
+            measurement.measurement_unit:
+              type: string
+            measurement.source_id:
+              type: string
+              format: uuid
+            measurement.subject_id:
+              type: string
+              format: uuid
+            measurement.form_submission_id:
+              type: string
+              format: uuid
+            measurement.section_id:
+              type: string
+            measurement.question_id:
+              type: string
+            measurement.question_index:
+              type: number
+            measurement.time:
+              type: string
+              format: date-time
+          type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    PagedWorkflowFormSubmissionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FormSubmissionWithFormSchemaName'
+              - properties:
+                  associated_tasks:
+                    items:
+                      properties:
+                        workflow_task_name:
+                          type: string
+                        workflow_task_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  associated_actions:
+                    items:
+                      properties:
+                        workflow_action_name:
+                          type: string
+                        workflow_action_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  is_workflow_trigger:
+                    type: boolean
+                type: object
+            type: array
+        type: object
+    WorkflowTemplateStatus:
+      type: string
+      enum:
+      - active
+      - draft
+      - archive
+    FormSchemaStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      - draft
+    WorkflowSort:
+      properties:
+        sort_by:
+          enum:
+          - status
+          - created_at
+          example: created_at
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    PagedWorkflowList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/IWorkflow'
+            type: array
+        type: object
+    FormSubmissionSort:
+      properties:
+        sort_by:
+          enum:
+          - created_at
+          - status
+          - answer
+          default: created_at
+          type: string
+        sort_direction:
+          default: asc
+          description: sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+    ICreateWorkflowInput:
+      allOf:
+      - type: object
+        properties:
+          workflow_template_id:
+            type: string
+            format: uuid
+        required:
+        - workflow_template_id
+      - type: object
+        properties:
+          facility_id:
+            type: string
+            format: uuid
+          asset_id:
+            type: string
+            format: uuid
+          due_date:
+            type: object
+            properties:
+              time_period:
+                type: string
+                enum:
+                - hours
+                - days
+                - weeks
+                - months
+              duration:
+                type: number
+                minimum: 0
+                exclusiveMinimum: true
+              start_variable:
+                type: string
+            required:
+            - time_period
+            - duration
+          notification_date:
+            type: object
+            properties:
+              time_period:
+                type: string
+                enum:
+                - hours
+                - days
+                - weeks
+                - months
+              duration:
+                type: number
+                minimum: 0
+                exclusiveMinimum: true
+            required:
+            - time_period
+            - duration
+    FormSubmissionWithFormSchemaName:
+      allOf:
+      - $ref: '#/components/schemas/FormSubmissionWithoutAnswers'
+      - properties:
+          form_schema:
+            properties:
+              id:
+                format: uuid
+                type: string
+              name:
+                type: string
+              form_category:
+                nullable: true
+                properties:
+                  id:
+                    format: uuid
+                    type: string
+                  name:
+                    type: string
+    IUpdateWorkflowInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - complete
+          - in_progress
+          - overdue
+          - dismissed
+          - missed
+          - error
+    WorkflowFilter:
+      properties:
+        filter:
+          description: A filter object for Workflow where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            category_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            status: active
+            created_by: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            created_at:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          allOf:
+          - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              description:
+                type: string
+              workflow_template_id:
+                type: string
+                format: uuid
+              status:
+                $ref: '#/components/schemas/WorkflowStatus'
+              created_by:
+                type: string
+                format: uuid
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+              due_date:
+                type: string
+                format: date-time
+              workflow_category.id:
+                type: string
+                format: uuid
+              workflow_category.name:
+                type: string
+              workflow_template.name:
+                type: string
+              workflow_template.status:
+                $ref: '#/components/schemas/WorkflowTemplateStatus'
+              workflow_template.description:
+                type: string
+            type: object
+      type: object
+  parameters:
+    WorkflowId:
+      description: Workflow ID
+      in: path
+      name: workflow_id
+      required: true
+      schema:
+        format: uuid
+        type: string

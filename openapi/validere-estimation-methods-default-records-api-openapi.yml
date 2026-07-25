@@ -1,0 +1,534 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities estimation_methods_default_records API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Estimation Methods Default Records
+  name: estimation_methods_default_records
+paths:
+  /app/v1/estimation_methods/{entity_type}/{id}/default_records:
+    get:
+      operationId: list_estimation_method_default_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEstimationMethodDefaultRecords'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+          description: Successfully returns the list of default input records for a given estimation method
+      summary: List the default input records for a given estimation method
+      tags:
+      - estimation_methods_default_records
+  /app/v1/estimation_methods/{entity_type}/{id}/default_records/{input_name}:
+    post:
+      operationId: create_estimation_method_default_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationMethodDefaultRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+          description: Successfully returns the default input record for a given estimation method
+      summary: Create the default input record for a given estimation method
+      tags:
+      - estimation_methods_default_records
+    put:
+      operationId: update_estimation_method_default_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationMethodDefaultRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+          description: Successfully update the default input record for a given estimation method
+      summary: Update the default input record for a given estimation method
+      tags:
+      - estimation_methods_default_records
+    delete:
+      operationId: delete_estimation_method_default_record
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete the default input record for a given estimation method
+      tags:
+      - estimation_methods_default_records
+  /app/v1/estimation_methods/{entity_type}/{id}/default_records/{target_asset_id}:
+    get:
+      operationId: list_estimation_method_default_record_target_asset_id
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEstimationMethodDefaultRecords'
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                $ref: '#/components/schemas/XLSXResponse'
+          description: Successfully returns the list of default input records for a given estimation method  and target asset
+      summary: List the default input records for a given estimation method and target asset
+      tags:
+      - estimation_methods_default_records
+  /app/v1/estimation_methods/{entity_type}/{id}/default_records/{target_asset_id}/{input_name}:
+    get:
+      operationId: get_estimation_method_default_record_target_asset_id
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+          description: Successfully returns the default input record for a given estimation method and target asset
+      summary: Get the default input record for a given estimation method and target asset
+      tags:
+      - estimation_methods_default_records
+    post:
+      operationId: create_estimation_method_default_record_target_asset_id
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationMethodDefaultRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+          description: Successfully returns the default input record for a given estimation method and target asset
+      summary: Create the default input record for a given estimation method and target asset
+      tags:
+      - estimation_methods_default_records
+    put:
+      operationId: update_estimation_method_default_record_target_asset_id
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstimationMethodDefaultRecordInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+          description: Successfully update the default input record for a given estimation method and target asset
+      summary: Update the default input record for a given estimation method and target asset
+      tags:
+      - estimation_methods_default_records
+    delete:
+      operationId: delete_estimation_method_default_record_target_asset_id
+      parameters:
+      - $ref: '#/components/parameters/EstimationMethodEntityType'
+      - $ref: '#/components/parameters/EstimationMethodId'
+      - $ref: '#/components/parameters/EstimationMethodTargetAssetId'
+      - $ref: '#/components/parameters/EstimationMethodInputName'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete the default input record for a given estimation method and target asset
+      tags:
+      - estimation_methods_default_records
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    EstimationMethodEntityType:
+      description: Estimation Method Entity Type
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        type: string
+        enum:
+        - equipment
+        - flow
+        - asset_group
+    EstimationMethodInputName:
+      description: Input Name
+      in: path
+      name: input_name
+      required: true
+      schema:
+        type: string
+    EstimationMethodId:
+      description: Estimation Method ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    EstimationMethodTargetAssetId:
+      description: Target Asset ID
+      in: path
+      name: target_asset_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      nullable: true
+      type: number
+    EstimationMethodDefaultRecordsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EstimationMethodDefaultRecordInput:
+      properties:
+        measurement_type:
+          type: string
+          example: wind_speed
+        asset_id:
+          type: string
+          format: uuid
+        reporting_group_id:
+          type: string
+    EstimationMethodDefaultRecord:
+      properties:
+        method_id:
+          type: string
+          format: uuid
+        input_name:
+          type: string
+        measurement_type:
+          type: string
+          example: wind_speed
+        asset:
+          allOf:
+          - $ref: '#/components/schemas/Asset'
+          - required:
+            - id
+            - asset_type
+          - properties:
+              flow:
+                $ref: '#/components/schemas/Flow'
+              equipment:
+                $ref: '#/components/schemas/Equipment'
+        asset_id:
+          type: string
+          format: uuid
+        target_asset_id:
+          type: string
+          format: uuid
+        reporting_group_id:
+          type: string
+        reporting_group:
+          $ref: '#/components/schemas/ReportingGroup'
+        company_id:
+          type: string
+          format: uuid
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+    FlowEquipmentConnections:
+      properties:
+        upstream_equipment_id:
+          type: string
+          format: uuid
+        downstream_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    FlowFacilityConnections:
+      properties:
+        upstream_facility_id:
+          type: string
+          format: uuid
+        downstream_facility_id:
+          type: string
+          format: uuid
+      type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+    ReportingGroup:
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+        type: object
+    Asset:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      nullable: true
+      type: number
+    Flow:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    PaginatedEstimationMethodDefaultRecords:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/EstimationMethodDefaultRecordsList'
+        type: object
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    Equipment:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    FlowFlowConnections:
+      properties:
+        upstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        downstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2

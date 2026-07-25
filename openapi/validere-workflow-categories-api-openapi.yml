@@ -1,0 +1,232 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities workflow_categories API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Workflow Categories
+  name: workflow_categories
+paths:
+  /app/v1/workflow_categories:
+    get:
+      operationId: list_workflow_category
+      parameters:
+      - $ref: '#/components/parameters/WorkflowCategoryName'
+      - $ref: '#/components/parameters/WorkflowCategoryDescription'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/IWorkflowCategory'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List workflow categories
+      tags:
+      - workflow_categories
+    post:
+      operationId: create_workflow_category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateWorkflowCategoryInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkflowCategory'
+          description: A successful operation
+      summary: Create a workflow category
+      tags:
+      - workflow_categories
+  /app/v1/workflow_categories/{id}:
+    get:
+      operationId: get_workflow_category
+      parameters:
+      - $ref: '#/components/parameters/WorkflowCategoryId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkflowCategory'
+          description: A successful operation
+      summary: Get a workflow category
+      tags:
+      - workflow_categories
+    put:
+      operationId: put_workflow_category
+      parameters:
+      - $ref: '#/components/parameters/WorkflowCategoryId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateWorkflowCategoryInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IWorkflowCategory'
+          description: A successful operation
+      summary: Update a workflow category
+      tags:
+      - workflow_categories
+    delete:
+      operationId: delete_workflow_category
+      parameters:
+      - $ref: '#/components/parameters/WorkflowCategoryId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a workflow category
+      tags:
+      - workflow_categories
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    WorkflowCategoryId:
+      description: Workflow Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    WorkflowCategoryDescription:
+      description: Workflow Category description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    WorkflowCategoryName:
+      description: Workflow Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+  schemas:
+    IWorkflowCategory:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - name
+      - description
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+    ICreateWorkflowCategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - description
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    IUpdateWorkflowCategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string

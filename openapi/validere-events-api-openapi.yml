@@ -1,0 +1,963 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities events API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Emission Events
+  name: events
+paths:
+  /app/v1/events:
+    get:
+      operationId: list_events
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/EventName'
+      - $ref: '#/components/parameters/EventDescription'
+      - $ref: '#/components/parameters/EventStatus'
+      - $ref: '#/components/parameters/EventClassification'
+      - $ref: '#/components/parameters/EventStartWindow'
+      - $ref: '#/components/parameters/EventEndWindow'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/EventWithDuration'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List events
+      tags:
+      - events
+    post:
+      operationId: create_event
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCreate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          description: A successful operation
+      summary: Create an event
+      tags:
+      - events
+  /app/v1/events/search:
+    post:
+      operationId: search_events
+      parameters:
+      - $ref: '#/components/parameters/EventSchemaQuery'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/EventSort'
+              - $ref: '#/components/schemas/EventFilter'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        oneOf:
+                        - $ref: '#/components/schemas/EventWithSchema'
+                        - $ref: '#/components/schemas/EventWithDuration'
+                      type: array
+                  type: object
+      summary: Search and list events
+      tags:
+      - events
+  /app/v1/events/{id}:
+    get:
+      operationId: get_event
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventWithAssociatedFacility'
+          description: A successful operation
+      summary: Get an event
+      tags:
+      - events
+    put:
+      operationId: update_event
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventCreate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          description: A successful operation
+      summary: Update an event
+      tags:
+      - events
+    delete:
+      operationId: delete_event
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete an event
+      tags:
+      - events
+  /app/v1/events/{id}/equipment/{equipment_id}:
+    put:
+      deprecated: true
+      operationId: add_event_equipment
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/EquipmentId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/equipment relationship
+      tags:
+      - events
+    delete:
+      deprecated: true
+      operationId: remove_event_equipment
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/EquipmentId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/equipment relationship
+      tags:
+      - events
+  /app/v1/events/{id}/measurement_series/{measurement_series_id}:
+    put:
+      operationId: add_event_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/measurement_series relationship
+      tags:
+      - events
+    delete:
+      operationId: remove_event_measurement_series
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/MeasurementSeriesId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/measurement_series relationship
+      tags:
+      - events
+  /app/v1/events/{id}/facilities/{facility_id}:
+    put:
+      deprecated: true
+      operationId: add_event_facilities
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/FacilityId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/facilities relationship
+      tags:
+      - events
+    delete:
+      deprecated: true
+      operationId: remove_event_facilities
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/FacilityId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/facilities relationship
+      tags:
+      - events
+  /app/v1/events/{id}/asset/{asset_id}:
+    put:
+      operationId: add_event_asset
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/AssetId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/asset relationship
+      tags:
+      - events
+    delete:
+      operationId: remove_event_asset
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/AssetId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/asset relationship
+      tags:
+      - events
+  /app/v1/events/{id}/form_submissions/{form_submission_id}:
+    put:
+      operationId: add_event_form_submissions
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/FormSubmissionIdFull'
+      - $ref: '#/components/parameters/FormSubmissionVersionQuery'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/form_submissions relationship
+      tags:
+      - events
+    delete:
+      operationId: remove_event_form_submissions
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/FormSubmissionIdFull'
+      - $ref: '#/components/parameters/FormSubmissionVersionQuery'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/form_submissions relationship
+      tags:
+      - events
+  /app/v1/events/{id}/alerts/:
+    get:
+      operationId: list_event_alerts
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventAlert'
+      summary: List an event/alerts relationships
+      tags:
+      - events
+  /app/v1/events/{id}/alerts/{alert_id}:
+    put:
+      operationId: add_event_alerts
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/AlertIdPath'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Add an event/alerts relationship
+      tags:
+      - events
+    delete:
+      operationId: remove_event_alerts
+      parameters:
+      - $ref: '#/components/parameters/EventId'
+      - $ref: '#/components/parameters/AlertIdPath'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove an event/alerts relationship
+      tags:
+      - events
+  /app/v1/events/filters:
+    get:
+      operationId: get_events_filter
+      parameters:
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedEventFilterOutput'
+          description: successful operation
+      summary: List Filter
+      tags:
+      - events
+    post:
+      operationId: post_events_filter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilterInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventFilterOutput'
+          description: successful operation
+      summary: Create Filter
+      tags:
+      - events
+  /app/v1/events/filters/{filter_id}:
+    delete:
+      operationId: delete_events_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      responses:
+        '200':
+          description: successful operation
+      summary: Delete Filter
+      tags:
+      - events
+    put:
+      operationId: put_events_filter
+      parameters:
+      - $ref: '#/components/parameters/FilterId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EventFilterUpdateInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventFilterOutput'
+          description: successful operation
+      summary: Update Filter
+      tags:
+      - events
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    AssetId:
+      description: Asset ID
+      in: path
+      name: asset_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EventStatus:
+      description: Event status
+      in: query
+      name: status
+      required: false
+      schema:
+        $ref: '#/components/schemas/EventStatus'
+    FormSubmissionVersionQuery:
+      description: Form Submission Version
+      in: query
+      name: form_submission_version
+      required: false
+      schema:
+        type: integer
+    EventSchemaQuery:
+      description: set to true to include event schema
+      in: query
+      name: event_schema
+      example: true
+      required: false
+      schema:
+        type: string
+    EventName:
+      description: Event name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    FacilityId:
+      description: Id of facility
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: facility_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EventStartWindow:
+      description: Returns all events that were ongoing during the start/end (in UTC)
+      in: query
+      name: start_window
+      required: false
+      schema:
+        format: date-time
+        type: string
+    EventClassification:
+      description: Event classification
+      in: query
+      name: classification
+      required: false
+      schema:
+        $ref: '#/components/schemas/EventClassification'
+    FormSubmissionIdFull:
+      description: Form Submission ID
+      in: path
+      name: form_submission_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    AlertIdPath:
+      description: Alert ID
+      in: path
+      name: alert_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EquipmentId:
+      description: Id of equipment
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: equipment_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EventDescription:
+      description: Event description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    EventEndWindow:
+      description: Returns all events that were ongoing during the start/end (in UTC)
+      in: query
+      name: end_window
+      required: false
+      schema:
+        format: date-time
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EventId:
+      description: Event ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    EventWithAssociatedFacility:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - properties:
+          associated_facility:
+            $ref: '#/components/schemas/Facility'
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
+    EventClassification:
+      type: string
+      enum:
+      - planned
+      - unplanned
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FacilityType:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_types`
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    EventCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+        status:
+          $ref: '#/components/schemas/EventStatus'
+        classification:
+          $ref: '#/components/schemas/EventClassification'
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        event_schema_id:
+          format: uuid
+          type: string
+        associated_facility_id:
+          format: uuid
+          type: string
+        completed_at:
+          format: date-time
+          type: string
+        due_date:
+          format: date-time
+          type: string
+      type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    EventAlert:
+      properties:
+        event_id:
+          format: uuid
+          type: string
+        alert_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+      type: object
+    EventStatus:
+      type: string
+      enum:
+      - open
+      - resolved
+      - overdue
+      - dismissed
+    Event:
+      allOf:
+      - $ref: '#/components/schemas/EventCreate'
+      - properties:
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+    EventFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/EventFilter'
+      type: object
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      nullable: true
+      type: number
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventWithDuration:
+      allOf:
+      - $ref: '#/components/schemas/EventWithAssociatedFacility'
+      - properties:
+          duration:
+            type: string
+            example: 10 days 12 hours
+    EventSchemaConfig:
+      properties:
+        has_due_date:
+          type: boolean
+          example: true
+        due_date:
+          properties:
+            relative_time:
+              type: boolean
+              example: true
+            time_period:
+              type: string
+              example: days
+            duration:
+              type: number
+              example: 7
+          type: object
+        has_forms:
+          type: boolean
+        forms:
+          properties:
+            required_templates:
+              type: array
+              items:
+                type: string
+                example: c482584f-0402-4b6f-9ca4-124e2775a172
+            suggested_templates:
+              type: array
+              items:
+                type: string
+                example: 43c0aab0-2a67-47c1-aa7d-cb16055d6432
+          type: object
+        has_alerts:
+          type: boolean
+        has_flows:
+          type: boolean
+        has_equipment:
+          type: boolean
+        equipment:
+          properties:
+            is_mandatory:
+              type: boolean
+              example: true
+            has_source:
+              type: boolean
+              example: true
+          type: object
+        has_devices:
+          type: boolean
+    EventSchemaCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        version:
+          type: string
+          maxLength: 20
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+        description:
+          type: string
+          maxLength: 256
+        config:
+          $ref: '#/components/schemas/EventSchemaConfig'
+        event_category_id:
+          type: string
+          format: uuid
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    EventFilter:
+      properties:
+        filter:
+          description: A filter object for events where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            classification: A
+            status: active
+            name:
+              $like: leak
+          allOf:
+          - $ref: '#/components/schemas/AssociatedFacilityPrimaryFilterFieldsWithPrefix'
+          - properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              start_window:
+                type: string
+              end_window:
+                type: string
+              classification:
+                type: string
+              start:
+                type: string
+              end:
+                type: string
+              event_schema_id:
+                type: string
+              event_category_id:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+          type: object
+    EventWithSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventWithDuration'
+      - properties:
+          event_schema:
+            $ref: '#/components/schemas/EventSchema'
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    EventSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - classification
+          - start
+          - end
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      nullable: true
+      type: number
+    AssociatedFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        associated_facility.custom_attributes:
+          type: object
+        associated_facility.id:
+          type: string
+        associated_facility.name:
+          type: string
+        associated_facility.status:
+          type: string
+      type: object
+    EventSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventSchemaCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/FacilityStatus'
+          type:
+            $ref: '#/components/schemas/FacilityType'
+          id:
+            format: uuid
+            type: string
+        type: object
+    FacilityStatus:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_statuses`
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    PagedEventFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/EventFilterOutput'
+            type: array
+        type: object
+    EventFilterUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/EventFilter'
+    EventFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/EventFilter'
+      type: object

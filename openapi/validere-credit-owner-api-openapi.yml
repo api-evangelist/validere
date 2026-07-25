@@ -1,0 +1,224 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities credit_owner API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Credit Owners
+  name: credit_owner
+paths:
+  /app/v1/credit_owners:
+    post:
+      operationId: create_credit_owner
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditOwner'
+          description: A successful operation
+      summary: Add a credit owner
+      tags:
+      - credit_owner
+  /app/v1/credit_owners/search:
+    post:
+      operationId: search_credit_owners
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/CreditOwnerSort'
+              - $ref: '#/components/schemas/CreditOwnerFilter'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/CreditOwner'
+                      type: array
+                  type: object
+      summary: Search and list credit owners
+      tags:
+      - credit_owner
+  /app/v1/credit_owners/{credit_owner_id}:
+    get:
+      operationId: get_credit_owner
+      parameters:
+      - $ref: '#/components/parameters/CreditOwnerId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditOwner'
+          description: A successful operation
+      summary: Get a credit_owners entry
+      tags:
+      - credit_owner
+    put:
+      operationId: update_credit_owners
+      parameters:
+      - $ref: '#/components/parameters/CreditOwnerId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditOwner'
+          description: A successful operation
+      summary: Update a credit owner
+      tags:
+      - credit_owner
+    delete:
+      operationId: delete_credit_owner
+      parameters:
+      - $ref: '#/components/parameters/CreditOwnerId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a credit owner
+      tags:
+      - credit_owner
+components:
+  schemas:
+    CreditOwnerVisibility:
+      type: string
+      enum:
+      - public
+      - private
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    CreditOwnerSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - public_name
+          - visibility
+          example: public_name
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    CreditOwner:
+      allOf:
+      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          public_name:
+            type: string
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    CreditOwnerFilter:
+      properties:
+        filter:
+          description: A filter object for Credit Owners where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Validere
+          properties:
+            name:
+              type: string
+            public_name:
+              type: string
+            visibility:
+              type: string
+            buffer_holder:
+              type: string
+          type: object
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    CreditOwnerCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        visibility:
+          $ref: '#/components/schemas/CreditOwnerVisibility'
+        buffer_holder:
+          type: boolean
+          default: false
+      type: object
+  parameters:
+    CreditOwnerId:
+      description: Credit Owner ID
+      in: path
+      name: credit_owner_id
+      required: true
+      schema:
+        format: uuid
+        type: string

@@ -1,0 +1,384 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities project_group API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Project Groups
+  name: project_group
+paths:
+  /app/v1/project_groups:
+    post:
+      operationId: create_project_group
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectGroup'
+          description: A successful operation
+      summary: Add a project group
+      tags:
+      - project_group
+  /app/v1/project_groups/search:
+    post:
+      operationId: search_project_groups
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ProjectGroupSort'
+              - $ref: '#/components/schemas/ProjectGroupFilter'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/ProjectGroup'
+                      type: array
+                  type: object
+      summary: Search and list project groups
+      tags:
+      - project_group
+  /app/v1/project_groups/{project_group_id}:
+    get:
+      operationId: get_project_group_entry
+      parameters:
+      - $ref: '#/components/parameters/ProjectGroupId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ProjectGroup'
+                - $ref: '#/components/schemas/ProjectGroupSummary'
+          description: A successful operation
+      summary: Get a project_groups entry
+      tags:
+      - project_group
+    put:
+      operationId: update_project_groups_entry
+      parameters:
+      - $ref: '#/components/parameters/ProjectGroupId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectGroup'
+          description: A successful operation
+      summary: Update a project group entry
+      tags:
+      - project_group
+    delete:
+      operationId: delete_project_groups_entry
+      parameters:
+      - $ref: '#/components/parameters/ProjectGroupId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a project group entry
+      tags:
+      - project_group
+  /public/v1/project_groups/{company_id}/search:
+    post:
+      operationId: public_search_project_groups
+      security: []
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ProjectGroupPublicSort'
+              - $ref: '#/components/schemas/ProjectGroupPublicFilter'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/ProjectGroupPublic'
+                      type: array
+                  type: object
+      summary: Public search and list ledger entries
+      tags:
+      - project_group
+  /public/v1/project_groups/{company_id}/{project_group_id}:
+    get:
+      operationId: public_get_project
+      security: []
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      - $ref: '#/components/parameters/ProjectGroupId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ProjectGroupPublic'
+                - $ref: '#/components/schemas/ProjectGroupSummary'
+      summary: Public search and list ledger entries
+      tags:
+      - project_group
+  /public/v1/project_groups/{company_id}/summary:
+    get:
+      operationId: public_get_all_project_group_summary
+      security: []
+      parameters:
+      - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: A successful operation
+          content:
+            application/json:
+              schema:
+                properties:
+                  total_active_credits:
+                    type: number
+                  total_retired_credits:
+                    type: number
+                  project_count:
+                    type: number
+                  active_projects:
+                    type: number
+                type: object
+      summary: Get the summary across all projects
+      tags:
+      - project_group
+components:
+  schemas:
+    ProjectGroupPublic:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    ProjectGroupCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/ProjectGroupStatus'
+        project_developer:
+          type: string
+          maxLength: 256
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        protocol:
+          type: string
+          maxLength: 256
+        country:
+          type: string
+          maxLength: 256
+      type: object
+    ProjectGroupSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    ProjectGroupPublicSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    ProjectGroupStatus:
+      type: string
+      enum:
+      - active
+      - closed
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ProjectGroupSummary:
+      properties:
+        summary:
+          properties:
+            project_periods:
+              type: number
+            total_active_credits:
+              type: number
+            total_retired_credits:
+              type: number
+            buffer_credits:
+              type: number
+          type: object
+      type: object
+    ProjectGroupFilter:
+      properties:
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
+      type: object
+    ProjectGroup:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    ProjectGroupPublicFilter:
+      properties:
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
+      type: object
+  parameters:
+    ProjectGroupId:
+      description: Project Group ID
+      in: path
+      name: project_group_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id

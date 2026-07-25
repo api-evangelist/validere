@@ -1,0 +1,805 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities form_schemas API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Form Schemas
+  name: form_schemas
+paths:
+  /app/v1/form_schemas:
+    get:
+      operationId: list_form_schema
+      parameters:
+      - $ref: '#/components/parameters/FormSchemaName'
+      - $ref: '#/components/parameters/FormSchemaStatus'
+      - $ref: '#/components/parameters/FormCategoryIdQuery'
+      - $ref: '#/components/parameters/FormCategoryNameQuery'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFormSchemaList'
+          description: A successful operation
+      summary: List form schema
+      tags:
+      - form_schemas
+    post:
+      operationId: create_form_schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormSchemaInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSchema'
+          description: A successful operation
+      summary: Create a form schema
+      tags:
+      - form_schemas
+  /app/v1/form_schemas/{id}:
+    get:
+      operationId: get_form_schema
+      parameters:
+      - $ref: '#/components/parameters/FormSchemaId'
+      - $ref: '#/components/parameters/FormSchemaVersionQuery'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSchemaWithCategory'
+          description: A successful operation
+      summary: Get a form schema
+      tags:
+      - form_schemas
+    put:
+      operationId: update_form_schema
+      parameters:
+      - $ref: '#/components/parameters/FormSchemaId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormSchemaInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSchemaWithCategory'
+          description: A successful operation
+      summary: Update a form schema
+      tags:
+      - form_schemas
+  /app/v1/form_schemas/{id}/versions:
+    get:
+      operationId: list_form_schema_versions
+      parameters:
+      - $ref: '#/components/parameters/FormSchemaId'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFormSchemaList'
+          description: A successful operation
+      summary: List form schema versions
+      tags:
+      - form_schemas
+  /app/v1/form_schemas/search:
+    post:
+      operationId: search_form_schemas
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/FormSchemaSort'
+              - $ref: '#/components/schemas/FormSchemaFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedFormSchemaList'
+          description: successful operation
+      summary: Search form schemas
+      tags:
+      - form_schemas
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FormCategoryIdQuery:
+      description: Form Category ID
+      in: query
+      name: form_category_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FormSchemaName:
+      description: Form Schema name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    FormCategoryNameQuery:
+      description: Form Category name
+      in: query
+      name: form_category_name
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    FormSchemaVersionQuery:
+      description: Form Schema Version
+      in: query
+      name: version
+      required: false
+      schema:
+        type: integer
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    FormSchemaStatus:
+      description: Form Schema status
+      in: query
+      name: status
+      required: false
+      schema:
+        enum:
+        - archived
+        - active
+        - draft
+    FormSchemaId:
+      description: Form Schema ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+  schemas:
+    DeviceFilterFields:
+      example:
+        $or:
+        - facility.name: WellSite1
+        custom_attributes.hint: View schema for all supported fields
+        custom_attributes.operator: bob
+        name:
+          $like: wind
+      allOf:
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/DevicePrimaryFilterFields'
+      - properties:
+          event.id:
+            type: string
+      type: object
+    FormSchemaConfig:
+      properties:
+        questions:
+          additionalProperties:
+            anyOf:
+            - $ref: '#/components/schemas/FormSchemaQuestion'
+            - $ref: '#/components/schemas/FormSchemaMeasurement'
+          example:
+            questionId1:
+              description: Look at gauge
+              subject_lookup_question_id: lookupQuestionId
+              source_lookup_question_id: deviceQuestion
+              measurement_time_question_id: measurementTimeQuestion
+              is_required: false
+              measurement_type: temperature
+              measurement_unit: degrees Celsius
+              prompt: Input measurement 1
+              type: measurement
+              default_answer: 40
+              minimum: 1
+              maximum: 100
+            questionId2:
+              data_type: string
+              description: Is gauge working?
+              is_required: false
+              prompt: Input question 1
+              type: question
+              min_length: 1
+              max_length: 100
+            questionId3:
+              data_type: string
+              description: Description of the problem
+              is_required: false
+              prompt: Question 2
+              type: question
+              is_long_string: true
+            questionIdBoolean:
+              data_type: boolean
+              description: Input question Boolean
+              is_required: false
+              prompt: Input question Boolean
+              type: question
+            facilityLookupQuestionId:
+              data_type: lookup
+              description: Facility
+              is_required: false
+              lookup_entity_type: facility
+              prompt: Facility checked
+              type: question
+            lookupQuestionId:
+              data_type: lookup
+              description: Equipment that has the temperature sensor
+              is_required: false
+              lookup_entity_type: equipment
+              prompt: Equipment checked
+              parent_facility_question_id: facilityLookupQuestionId
+              filter:
+                name:
+                  $like: AB123
+              type: question
+              conditions:
+                $or:
+                - questionId1:
+                    $gt: 5
+                  questionId2: 10
+                - questionId3: 1
+            deviceQuestion:
+              data_type: lookup
+              description: Device that monitors temperature
+              is_required: false
+              lookup_entity_type: device
+              prompt: Gauge that was read
+              type: question
+              conditions:
+                questionIdBoolean: true
+            measurementTimeQuestion:
+              data_type: date-time
+              description: Time the temperature sensor was read
+              is_required: false
+              prompt: Measurement Time
+              type: question
+              default_answer: $now
+              before: '2024-01-01'
+              after: $now
+            note:
+              data_type: string
+              description: note
+              is_required: false
+              prompt: note
+              type: question
+              default_answer:
+                lookup_question_id: facilityLookupQuestionId
+                lookup_attribute: area
+            fileUploadQuestion:
+              data_type: file
+              description: File
+              is_required: false
+              prompt: File
+              type: question
+          type: object
+        sections:
+          items:
+            properties:
+              description:
+                maxLength: 256
+                type: string
+              id:
+                type: string
+              name:
+                maxLength: 100
+                type: string
+                description: Should not start with a number
+              is_repeatable:
+                type: boolean
+                default: false
+              questions:
+                example:
+                - questionId1
+                - questionId2
+                - facilityLookupQuestionId
+                - lookupQuestionId
+                - deviceQuestion
+                - measurementTimeQuestion
+                items:
+                  type: string
+                type: array
+            required:
+            - description
+            - id
+            - name
+            - questions
+          type: array
+      type: object
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
+    EquipmentFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - properties:
+          event.id:
+            type: string
+        type: object
+    FormSchemaFilter:
+      properties:
+        filter:
+          description: A filter object for Form Schemas where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/FormSchemaStatus'
+            version:
+              type: string
+            form_category.id:
+              type: string
+              example:
+                $in:
+                - 748970de-fd1f-4494-ae3f-47cc21ff205f
+            form_category.name:
+              type: string
+              example: test
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FormLookupQuestionFilterFields:
+      oneOf:
+      - $ref: '#/components/schemas/FacilityFilterFields'
+      - $ref: '#/components/schemas/EquipmentFilterFields'
+      - $ref: '#/components/schemas/DeviceFilterFields'
+    FormSchemaQuestionDefaultSourcingAnswer:
+      type: object
+      properties:
+        lookup_question_id:
+          type: string
+        lookup_attribute:
+          type: string
+    FormSchemaWithCategory:
+      allOf:
+      - $ref: '#/components/schemas/FormSchema'
+      - properties:
+          form_category:
+            $ref: '#/components/schemas/FormCategory'
+    FormSchemaSort:
+      properties:
+        sort_by:
+          enum:
+          - created_at
+          - name
+          default: name
+          description: The sort key for form schema
+          type: string
+        sort_direction:
+          default: asc
+          description: sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+    FormSchemaMeasurement:
+      properties:
+        description:
+          maxLength: 256
+          type: string
+        source_lookup_question_id:
+          type: string
+        subject_lookup_question_id:
+          type: string
+        is_required:
+          example: false
+          type: boolean
+        measurement_type:
+          type: string
+          example: volume
+        measurement_unit:
+          type: string
+          example: bbl
+        prompt:
+          maxLength: 100
+          type: string
+        type:
+          enum:
+          - measurement
+          type: string
+        conditions:
+          $ref: '#/components/schemas/FormSchemaQuestionConditions'
+        default_answer:
+          $ref: '#/components/schemas/FormSchemaQuestionDefaultAnswer'
+        equation:
+          type: string
+          description: An equation that contains any valid combination of arithmetic operations (+,-,*,/,^,(,)), numeric/date question references, measurement references or decimal numbers
+          example: (measurement_duration*measurement_vent_rate)*number_question/2.3
+        minimum:
+          type: number
+          description: specify a minimum value for an answer. Applies to number, integer, and measurement question types.
+        maximum:
+          type: number
+          description: specify a maximum value for an answer. Applies to number, integer, and measurement question types.
+      required:
+      - description
+      - is_required
+      - measurement_type
+      - measurement_unit
+      - prompt
+      - type
+      type: object
+    FormSchemaStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      - draft
+    PagedFormSchemaList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/FormSchemaWithCategory'
+            type: array
+        type: object
+    FormSchemaQuestionDefaultAnswer:
+      description: default answer to this question. For reference only, the actual answer still needs to be submitted with the form submission.
+      anyOf:
+      - type: string
+      - type: number
+      - type: boolean
+      - type: array
+        items:
+          anyOf:
+          - type: string
+          - type: number
+      - $ref: '#/components/schemas/FormSchemaQuestionDefaultSourcingAnswer'
+      example: 123
+    FacilityFilterFields:
+      description: A filter object for facility where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+      example:
+        custom_attributes.hint: View schema for all supported fields
+        custom_attributes.operator: bob
+        name:
+          $like: wind
+      properties:
+        custom_attributes:
+          type: object
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        event.id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    EquipmentPrimaryFilterFields:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        type.id:
+          type: string
+        type.name:
+          type: string
+        custom_attributes:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    FormSchemaQuestion:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          maxLength: 256
+          type: string
+        is_required:
+          example: false
+          type: boolean
+        lookup_entity_type:
+          $ref: '#/components/schemas/MeasurementSubjectEntityType'
+        lookup_entity_attribute:
+          type: array
+          items:
+            type: string
+            example: ghgrp_id
+        pick_list_values:
+          items:
+            type: string
+          type: array
+        prompt:
+          maxLength: 100
+          type: string
+        type:
+          enum:
+          - question
+          type: string
+        parent_facility_question_id:
+          description: the facility look up question id that will be used to limit the available options for device and equipment look up questions to the devices/equipment associated to that facility.
+          type: string
+        filter:
+          $ref: '#/components/schemas/FormLookupQuestionFilterFields'
+        conditions:
+          $ref: '#/components/schemas/FormSchemaQuestionConditions'
+        default_answer:
+          $ref: '#/components/schemas/FormSchemaQuestionDefaultAnswer'
+        minimum:
+          type: number
+          description: specify a minimum value for an answer. Applies to number, integer, and measurement question types.
+        maximum:
+          type: number
+          description: specify a maximum value for an answer. Applies to number, integer, and measurement question types.
+        min_length:
+          type: number
+          description: specify a minimum length for an answer. Applies to string question types.
+        max_length:
+          type: number
+          description: specify a maximum length for an answer. Applies to string question types.
+        is_long_string:
+          type: boolean
+          description: specify if the string question is a multiline string. Applies to string question types.
+        before:
+          type: string
+          description: specify a maximum date for an answer. Applies to date/datetime question types. Accept date in string and "$now"
+          example: $now
+        after:
+          type: string
+          description: specify a maximum date for an answer. Applies to date/datetime question types. Accept date in string and "$now"
+          example: '2024-12-01'
+      required:
+      - data_type
+      - description
+      - is_required
+      - prompt
+      - type
+      type: object
+    FormSchemaQuestionConditions:
+      description: configure the conditional question for current question. The syntax will take inspiration from existing filtering object.
+      example:
+        questionId1:
+          $gt: 5
+      type: object
+    FormSchemaInput:
+      properties:
+        config:
+          $ref: '#/components/schemas/FormSchemaConfig'
+        description:
+          maxLength: 1024
+          type: string
+        form_submission_editable:
+          type: boolean
+        form_category_id:
+          format: uuid
+          type: string
+        name:
+          maxLength: 100
+          type: string
+        status:
+          $ref: '#/components/schemas/FormSchemaStatus'
+        form_submission_default_status:
+          $ref: '#/components/schemas/FormSubmissionStatus'
+      type: object
+    FormCategory:
+      properties:
+        archived:
+          type: boolean
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object
+    DevicePrimaryFilterFields:
+      properties:
+        attributes:
+          type: object
+        custom_attributes:
+          type: object
+        id:
+          type: string
+        measurement_types:
+          type: string
+        name:
+          type: string
+        status:
+          type: string
+        type_id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    FormSchema:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        config:
+          $ref: '#/components/schemas/FormSchemaConfig'
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        description:
+          maxLength: 1024
+          type: string
+        form_submission_editable:
+          type: boolean
+        form_category_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          maxLength: 100
+          type: string
+        status:
+          enum:
+          - active
+          - archived
+          - draft
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        version:
+          default: 1
+          type: integer
+      type: object

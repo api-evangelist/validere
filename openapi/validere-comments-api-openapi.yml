@@ -1,0 +1,492 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities comments API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Comments
+  name: comments
+paths:
+  /app/v1/comments/{comment_id}:
+    put:
+      operationId: update_comment
+      parameters:
+      - $ref: '#/components/parameters/CommentId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IUpdateCommentInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IComment'
+          description: A successful operation
+      summary: Update comment
+      tags:
+      - comments
+    delete:
+      operationId: delete_comment
+      parameters:
+      - $ref: '#/components/parameters/CommentId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IComment'
+          description: A successful operation
+      summary: Delete comment
+      tags:
+      - comments
+  /app/v1/comments/{entity_type}/{entity_id}:
+    get:
+      operationId: get_comments
+      parameters:
+      - $ref: '#/components/parameters/CommentEntityType'
+      - $ref: '#/components/parameters/CommentEntityId'
+      - $ref: '#/components/parameters/CommentAdditionalIdentifier'
+      - $ref: '#/components/parameters/CommentCreatedBefore'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IListCommentResponse'
+          description: Successfully retrieved comments
+      summary: List comments for a specific entity
+      tags:
+      - comments
+    post:
+      operationId: create_comment
+      parameters:
+      - $ref: '#/components/parameters/CommentEntityType'
+      - $ref: '#/components/parameters/CommentEntityId'
+      - $ref: '#/components/parameters/CommentAdditionalIdentifier'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ICreateCommentInput'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICommentResponse'
+          description: Successfully create comment and attach comment to entity
+      summary: Create comment
+      tags:
+      - comments
+  /app/v1/comments/count/{entity_type}/{entity_ids}:
+    get:
+      operationId: get_comment_count
+      parameters:
+      - $ref: '#/components/parameters/CommentEntityType'
+      - $ref: '#/components/parameters/CommentEntityIds'
+      - $ref: '#/components/parameters/CommentAdditionalIdentifier'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ICommentCountResponse'
+          description: Successfully retrieved comment count
+      summary: Count comments
+      tags:
+      - comments
+components:
+  schemas:
+    ICommentCountResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          entity_id:
+            type: string
+            format: uuid
+          entity_type:
+            type: string
+            enum:
+            - workflow
+            - asset
+            - report
+          count:
+            type: number
+          additional_identifier:
+            type: string
+        required:
+        - entity_id
+        - entity_type
+        - count
+    CommentEntityId:
+      type: string
+      format: uuid
+    CommentCreatedBefore:
+      type: string
+    CommentEntityType:
+      type: string
+      enum:
+      - workflow
+      - asset
+      - report
+    CommentEntityIds:
+      type: array
+      items:
+        type: string
+        format: uuid
+    CommentAdditionalIdentifier:
+      type: string
+      format: uuid
+    IUpdateCommentInput:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 5120
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+            required:
+            - file_id
+            - file_name
+          maxItems: 10
+    IComment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        text:
+          type: string
+          maxLength: 5120
+        title_context:
+          type: string
+          maxLength: 64
+        is_deleted:
+          type: boolean
+          default: false
+        created_by:
+          anyOf:
+          - type: string
+            format: uuid
+          - nullable: true
+          - nullable: true
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        commented_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+      required:
+      - id
+      - company_id
+      - text
+      - created_by
+      - created_at
+      - updated_at
+      - commented_at
+    ICreateCommentInput:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 5120
+        title_context:
+          type: string
+          maxLength: 64
+        commented_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+            required:
+            - file_id
+            - file_name
+          maxItems: 10
+      required:
+      - text
+      - files
+    CommentId:
+      type: string
+      format: uuid
+    ICommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        text:
+          type: string
+          maxLength: 5120
+        title_context:
+          type: string
+          maxLength: 64
+        is_deleted:
+          type: boolean
+          default: false
+        created_by:
+          anyOf:
+          - type: string
+            format: uuid
+          - nullable: true
+          - nullable: true
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        commented_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              comment_id:
+                type: string
+                format: uuid
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+              created_at:
+                anyOf:
+                - type: string
+                - type: string
+                  format: date-time
+            required:
+            - comment_id
+            - file_id
+            - file_name
+            - created_at
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              default: 77f8dca6-6d8b-408e-b08b-4bc39d0df549
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+          required:
+          - name
+        entity_id:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - workflow
+          - asset
+          - report
+        additional_identifier:
+          type: string
+          description: Used to group comments by an additional context
+      required:
+      - id
+      - company_id
+      - text
+      - created_by
+      - created_at
+      - updated_at
+      - commented_at
+      - files
+      - user
+      - entity_id
+      - entity_type
+    IListCommentResponse:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+          company_id:
+            type: string
+            format: uuid
+          text:
+            type: string
+            maxLength: 5120
+          title_context:
+            type: string
+            maxLength: 64
+          is_deleted:
+            type: boolean
+            default: false
+          created_by:
+            anyOf:
+            - type: string
+              format: uuid
+            - nullable: true
+            - nullable: true
+          created_at:
+            anyOf:
+            - type: string
+            - type: string
+              format: date-time
+          updated_at:
+            anyOf:
+            - type: string
+            - type: string
+              format: date-time
+          commented_at:
+            anyOf:
+            - type: string
+            - type: string
+              format: date-time
+          files:
+            type: array
+            items:
+              type: object
+              properties:
+                comment_id:
+                  type: string
+                  format: uuid
+                file_id:
+                  type: string
+                file_name:
+                  type: string
+                  maxLength: 128
+                created_at:
+                  anyOf:
+                  - type: string
+                  - type: string
+                    format: date-time
+              required:
+              - comment_id
+              - file_id
+              - file_name
+              - created_at
+          user:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                default: f3fb7d47-4b61-4589-bb91-ceae2bf2a621
+              name:
+                type: string
+                minLength: 1
+                maxLength: 100
+            required:
+            - name
+          entity_id:
+            type: string
+            format: uuid
+          entity_type:
+            type: string
+            enum:
+            - workflow
+            - asset
+            - report
+          additional_identifier:
+            type: string
+            description: Used to group comments by an additional context
+        required:
+        - id
+        - company_id
+        - text
+        - created_by
+        - created_at
+        - updated_at
+        - commented_at
+        - files
+        - user
+        - entity_id
+        - entity_type
+  parameters:
+    CommentEntityType:
+      schema:
+        $ref: '#/components/schemas/CommentEntityType'
+      required: true
+      description: Entity Type
+      in: path
+      name: entity_type
+    CommentId:
+      schema:
+        $ref: '#/components/schemas/CommentId'
+      required: true
+      description: Comment ID
+      in: path
+      name: comment_id
+    CommentEntityIds:
+      schema:
+        $ref: '#/components/schemas/CommentEntityIds'
+      required: true
+      description: Entity IDs
+      in: path
+      name: entity_ids
+    CommentCreatedBefore:
+      schema:
+        $ref: '#/components/schemas/CommentCreatedBefore'
+      required: false
+      description: Comment Created Before filter
+      in: query
+      name: created_before
+    CommentAdditionalIdentifier:
+      schema:
+        $ref: '#/components/schemas/CommentAdditionalIdentifier'
+      required: false
+      description: Additional Identifier
+      in: query
+      name: additional_identifier
+    CommentEntityId:
+      schema:
+        $ref: '#/components/schemas/CommentEntityId'
+      required: true
+      description: Entity ID
+      in: path
+      name: entity_id

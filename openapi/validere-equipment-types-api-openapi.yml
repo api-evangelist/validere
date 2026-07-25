@@ -1,0 +1,65 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities equipment_types API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Manage Equipment Types
+  name: equipment_types
+paths:
+  /app/v1/equipment_types:
+    get:
+      operationId: list_equipment_types
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentTypeList'
+          description: successful operation
+      summary: Get Equipment Type List
+      tags:
+      - equipment_types
+  /app/v1/equipment_types/{type_id}:
+    get:
+      operationId: get_equipment_type
+      parameters:
+      - $ref: '#/components/parameters/EquipmentTypeId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquipmentType'
+          description: successful operation
+      summary: Get Equipment Type
+      tags:
+      - equipment_types
+components:
+  parameters:
+    EquipmentTypeId:
+      description: Equipment Type Id
+      example: acid_gas_removal
+      in: path
+      name: type_id
+      required: true
+      schema:
+        type: string
+  schemas:
+    EquipmentType:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    EquipmentTypeList:
+      items:
+        $ref: '#/components/schemas/EquipmentType'
+      type: array

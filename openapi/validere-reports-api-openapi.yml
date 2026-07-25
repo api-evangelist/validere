@@ -1,0 +1,2143 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities reports API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Reports
+  name: reports
+paths:
+  /app/v2/reports/search:
+    post:
+      operationId: search_reports
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ReportSort'
+              - $ref: '#/components/schemas/ReportFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedReportList'
+          description: List of generated reports
+      summary: Search and list generated reports
+      tags:
+      - reports
+  /app/v2/reports/{report_id}:
+    get:
+      operationId: get_report_v2
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+          description: Report object plus link
+      summary: Get report with download URL
+      tags:
+      - reports
+    delete:
+      operationId: delete_report
+      deprecated: true
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete report
+      tags:
+      - reports
+  /app/v2/reports:
+    post:
+      operationId: trigger_report_v2
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerReportRequestBody'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+          description: Report
+      summary: Trigger report generation
+      tags:
+      - reports
+  /app/v3/reports:
+    post:
+      operationId: trigger_report_v3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TriggerReportRequestBody'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndLatestVersionResponse'
+          description: Report
+      summary: Trigger report generation
+      tags:
+      - reports
+  /app/v3/reports/search:
+    post:
+      operationId: search_reports_v3
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/ReportSort'
+              - $ref: '#/components/schemas/ReportFilterV2'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedReportsLatestVersionList'
+          description: successful operation
+      summary: Search reports with latest version
+      tags:
+      - reports
+  /app/v3/reports/inputs:
+    get:
+      operationId: get_existing_report_inputs
+      parameters:
+      - $ref: '#/components/parameters/TemplatedReportNameQuery'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetExistingReportInputsResponse'
+          description: A successful operation
+      summary: Get existing report inputs for a templated report
+      tags:
+      - reports
+  /app/v3/reports/{report_id}:
+    get:
+      operationId: get_report_with_latest_version_v3
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndLatestVersionResponse'
+          description: Report with latest version
+      summary: Get Report with latest version
+      tags:
+      - reports
+    put:
+      operationId: update_report
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndLatestVersionResponse'
+          description: Report with Templated Report
+      summary: Update report status
+      tags:
+      - reports
+    delete:
+      operationId: delete_report
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete report
+      tags:
+      - reports
+  /app/v3/reports/{report_id}/versions:
+    post:
+      operationId: trigger_report_next_version_v3
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndLatestVersionResponse'
+          description: Report
+      summary: Trigger next version report generation
+      tags:
+      - reports
+    get:
+      operationId: get_report_versions_v3
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndVersionsResponse'
+          description: Report with list of versions
+      summary: Get report with list of versions
+      tags:
+      - reports
+  /app/v3/reports/{report_id}/versions/{version}:
+    get:
+      operationId: get_report_version_v3
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      - $ref: '#/components/parameters/ReportVersion'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportWithTemplatedReportAndVersionResponse'
+          description: Report with version
+      summary: Get report version
+      tags:
+      - reports
+  /app/v3/reports/{report_id}/versions/{version}/embedded/sheets:
+    get:
+      operationId: get_embedded_report_sheets
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      - $ref: '#/components/parameters/ReportVersion'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedEmbeddedReportSheetList'
+          description: List of embedded report sheets
+      summary: Get and list embedded report sheets
+      tags:
+      - reports
+  /app/v3/reports/{report_id}/embedded/search:
+    post:
+      operationId: search_embedded_report_rows
+      parameters:
+      - $ref: '#/components/parameters/ReportId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - type: object
+                properties:
+                  filter:
+                    allOf:
+                    - $ref: '#/components/schemas/SearchEmbeddedReportRowsRequestFilter'
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/EmbeddedReportSort'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedEmbeddedReportRowList'
+          description: List of embedded report rows
+      summary: Search and list embedded report rows
+      tags:
+      - reports
+  /app/v1/templated_reports/search:
+    post:
+      operationId: search_templated_report
+      parameters:
+      - $ref: '#/components/parameters/TenantId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/TemplatedReportSort'
+              - $ref: '#/components/schemas/TemplatedReportFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTemplatedReportList'
+          description: successful operation
+      summary: Search templated reports [System Admin]
+      tags:
+      - reports
+  /app/v1/templated_reports/search_company:
+    post:
+      operationId: search_company_templated_report
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/TemplatedReportSort'
+              - type: object
+                properties:
+                  filter:
+                    allOf:
+                    - $ref: '#/components/schemas/TemplatedReportFilterFields'
+                    - $ref: '#/components/schemas/TemplatedReportCategoryFilterFieldsWithPrefix'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTemplatedReportWithCategoryList'
+          description: successful operation
+      summary: Search a company's templated reports
+      description: This is scoped to what is enabled to the company and automatically filters only active reports
+      tags:
+      - reports
+  /app/v1/templated_reports/{templated_report_name}:
+    get:
+      operationId: get_templated_report
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportName'
+      - $ref: '#/components/parameters/TenantId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatedReportWithCategoryResponse'
+          description: A successful operation
+      summary: Get templated report
+      tags:
+      - reports
+  /app/v1/templated_reports/{templated_report_name}/company/{company_id}:
+    put:
+      operationId: add_templated_report_to_company
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportName'
+      - $ref: '#/components/parameters/CompanyId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddTemplatedReportCompanyRequestBody'
+        required: true
+      responses:
+        '200':
+          description: A successful operation
+      summary: Make templated report available to a company [System Admin]
+      tags:
+      - reports
+    delete:
+      operationId: remove_templated_report_from_company
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportName'
+      - $ref: '#/components/parameters/CompanyId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Remove a templated report from a company [System Admin]
+      tags:
+      - reports
+  /app/v2/templated_report_categories:
+    post:
+      operationId: create_templated_report_category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplatedReportCategoryRequestBody'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatedReportCategoryResponse'
+          description: A successful operation
+      summary: Must be Company Admin - Create templated report category
+      tags:
+      - reports
+  /app/v2/templated_report_categories/{templated_report_category_id}:
+    get:
+      operationId: get_templated_report_category
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportCategoryId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatedReportCategoryResponse'
+          description: A successful operation
+      summary: Get templated report category
+      tags:
+      - reports
+    put:
+      operationId: update_templated_report_category
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportCategoryId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTemplatedReportCategoryRequestBody'
+        required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplatedReportCategoryResponse'
+          description: A successful operation
+      summary: Must be Company Admin - Update templated report category
+      tags:
+      - reports
+    delete:
+      operationId: delete_templated_report_category
+      parameters:
+      - $ref: '#/components/parameters/parameters-TemplatedReportCategoryId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Must be Company Admin - Delete templated report category
+      tags:
+      - reports
+  /app/v2/templated_report_categories/search:
+    post:
+      operationId: search_company_templated_report_categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/Paginated'
+              - $ref: '#/components/schemas/TemplatedReportCategorySort'
+              - $ref: '#/components/schemas/TemplatedReportCategoryFilter'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedTemplatedReportCategoryList'
+          description: successful operation
+      summary: Search templated report categories
+      tags:
+      - reports
+components:
+  parameters:
+    ReportId:
+      schema:
+        $ref: '#/components/schemas/ReportId'
+      required: true
+      description: Report ID
+      in: path
+      name: report_id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string
+    parameters-TemplatedReportName:
+      schema:
+        type: string
+      required: true
+      description: Templated Report Name
+      in: path
+      name: templated_report_name
+      example: v2_report
+    TemplatedReportNameQuery:
+      schema:
+        type: string
+      required: true
+      description: Templated Report Name
+      in: query
+      name: templated_report_name
+      example: v2_report
+    parameters-TemplatedReportCategoryId:
+      schema:
+        $ref: '#/components/schemas/TemplatedReportCategoryId'
+      required: true
+      description: Templated Report Category ID
+      in: path
+      name: category_id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id
+    ReportVersion:
+      schema:
+        allOf:
+        - $ref: '#/components/schemas/ReportVersion'
+        - type: integer
+      required: true
+      description: Report Version
+      in: path
+      name: version
+      example: 1
+  schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    UpdateTemplatedReportCategoryRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9 \-_]*$
+        description:
+          type: string
+          maxLength: 256
+      additionalProperties: false
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    PagedTemplatedReportCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/TemplatedReportCategoryResponse'
+        type: object
+    TemplatedReportCategoryId:
+      type: string
+      format: uuid
+    TemplatedReportCategoryResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9 \-_]*$
+        company_id:
+          type: string
+        description:
+          type: string
+          maxLength: 256
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - name
+      - company_id
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+    SearchEmbeddedReportRowsRequestFilter:
+      type: object
+      properties:
+        report_version:
+          type: integer
+        sheet_name:
+          type: string
+      additionalProperties: false
+    PagedTemplatedReportList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/TemplatedReportResponse'
+    TemplatedReportCategoryFilterFieldsWithPrefix:
+      properties:
+        category.id:
+          type: string
+        category.name:
+          type: string
+        category.description:
+          type: string
+        category.company_id:
+          type: string
+        category.created_by:
+          type: string
+        category.created_at:
+          type: string
+        category.updated_by:
+          type: string
+        category.updated_at:
+          type: string
+      type: object
+    TemplatedReportCategoryFilter:
+      properties:
+        filter:
+          description: A filter object for Templated Report Categories where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              company_id:
+                type: string
+          type: object
+    TemplatedReportFilter:
+      properties:
+        filter:
+          description: A filter object for Templated Reports where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - $ref: '#/components/schemas/TemplatedReportFilterFields'
+          type: object
+    ReportWithTemplatedReportAndVersionsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - locked
+          - unlocked
+          - archived
+        templated_report_name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^\w+$
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        versions:
+          type: array
+          items:
+            type: object
+            properties:
+              report_id:
+                type: string
+                format: uuid
+              version:
+                type: integer
+              is_current:
+                type: boolean
+              s3_object_id:
+                type: string
+              definition_version:
+                type: string
+              status:
+                type: string
+                enum:
+                - exporting
+                - failed
+                - success
+              row_styling_headers:
+                type: object
+                additionalProperties:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+              created_at:
+                anyOf:
+                - type: string
+                  format: date-time
+                - type: string
+                  nullable: true
+                - nullable: true
+              created_by:
+                type: string
+                format: uuid
+            required:
+            - report_id
+            - version
+            - is_current
+            - status
+            - created_at
+            - created_by
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - versions
+      additionalProperties: false
+    EmbeddedReportSort:
+      properties:
+        sort_by:
+          example: header_name.value
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EmbeddedReportSheetResponse:
+      type: object
+      properties:
+        name:
+          type: string
+        display_name:
+          type: string
+        position:
+          type: integer
+        headers:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              display_name:
+                type: string
+              position:
+                type: integer
+              measurement_type:
+                type: string
+              measurement_unit:
+                type: string
+            required:
+            - position
+      required:
+      - name
+      - display_name
+      - position
+      - headers
+      additionalProperties: false
+    ReportVersion:
+      type: object
+      properties:
+        report_id:
+          type: string
+          format: uuid
+        version:
+          type: integer
+        is_current:
+          type: boolean
+        s3_object_id:
+          type: string
+        definition_version:
+          type: string
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        row_styling_headers:
+          type: object
+          additionalProperties:
+            type: string
+            minLength: 3
+            maxLength: 64
+            pattern: ^[A-Za-z0-9_]+$
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+      required:
+      - report_id
+      - version
+      - is_current
+      - status
+      - created_at
+      - created_by
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    PagedEmbeddedReportSheetList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/EmbeddedReportSheetResponse'
+        type: object
+    ReportWithTemplatedReportAndVersionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - locked
+          - unlocked
+          - archived
+        templated_report_name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^\w+$
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        version:
+          type: object
+          properties:
+            report_id:
+              type: string
+              format: uuid
+            version:
+              type: integer
+            is_current:
+              type: boolean
+            s3_object_id:
+              type: string
+            definition_version:
+              type: string
+            status:
+              type: string
+              enum:
+              - exporting
+              - failed
+              - success
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            created_by:
+              type: string
+              format: uuid
+          required:
+          - report_id
+          - version
+          - is_current
+          - status
+          - created_at
+          - created_by
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - version
+      additionalProperties: false
+    TemplatedReportWithCategoryResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^\w+$
+        display_name:
+          type: string
+          minLength: 3
+          maxLength: 64
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+          default: active
+        input_schema:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              display_name:
+                type: string
+                minLength: 3
+                maxLength: 64
+              data_type:
+                type: string
+                enum:
+                - boolean
+                - number
+                - integer
+                - pick-list
+                - multi-pick-list
+                - string
+                - geo_point
+                - number-array
+                - lookup
+                - date
+                - date-time
+                - date-time-range
+                - file
+              description:
+                type: string
+                maxLength: 256
+              is_required:
+                type: boolean
+              lookup_entity_type:
+                type: string
+                enum:
+                - equipment
+                - device
+                - facility
+                - flow
+                - asset_group
+                - form_schema
+              lookup_entity_attribute:
+                type: string
+              pick_list_values:
+                type: array
+                items:
+                  type: string
+              order:
+                type: integer
+            required:
+            - display_name
+            - data_type
+            - description
+            - is_required
+            additionalProperties: false
+          default: {}
+        is_embedded:
+          type: boolean
+          default: false
+        use_data_layer_v2:
+          type: boolean
+          default: false
+        description:
+          type: string
+          maxLength: 256
+        deduplication_columns:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^[A-Za-z0-9_]+$
+            maxItems: 20
+        row_styling_headers:
+          type: object
+          additionalProperties:
+            type: string
+            minLength: 3
+            maxLength: 64
+            pattern: ^[A-Za-z0-9_]+$
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        category:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^[a-zA-Z0-9 \-_]*$
+      required:
+      - name
+      - display_name
+      - created_at
+      - updated_at
+      - category
+    EmbeddedReportRowResponse:
+      type: object
+      properties:
+        row_id:
+          type: string
+          format: uuid
+        cells:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              value:
+                type: string
+              style:
+                type: string
+            required:
+            - value
+            additionalProperties: false
+          example:
+            header_a:
+              value: '1'
+              style: success
+            header_b:
+              value: '2'
+              style: error
+      required:
+      - row_id
+      - cells
+      additionalProperties: false
+    ReportSort:
+      properties:
+        sort_by:
+          enum:
+          - display_name
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    PagedTemplatedReportWithCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/TemplatedReportWithCategoryResponse'
+    PagedReportList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+            type: array
+        type: object
+    TriggerReportRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9 \-_]*$
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+      required:
+      - name
+      - templated_report_name
+      additionalProperties: false
+    ReportFilterV2:
+      properties:
+        filter:
+          description: A filter object for V2 Reports where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            templated_report_name:
+              type: string
+            status:
+              $ref: '#/components/schemas/TemplatedReportStatus'
+            created_at:
+              type: string
+            created_by:
+              type: string
+            updated_at:
+              type: string
+            updated_by:
+              type: string
+            templated_report.name:
+              type: string
+            templated_report.display_name:
+              type: string
+            templated_report.status:
+              $ref: '#/components/schemas/TemplatedReportStatus'
+            templated_report.created_at:
+              format: date-time
+              type: string
+            templated_report.updated_at:
+              format: date-time
+              type: string
+            latest_version.input:
+              type: object
+            latest_version.status:
+              type: string
+            latest_version.created_at:
+              format: date-time
+              type: string
+            latest_version.created_by:
+              type: string
+          type: object
+      type: object
+    TemplatedReportSort:
+      properties:
+        sort_by:
+          enum:
+          - display_name
+          - name
+          - status
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    TemplatedReportResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^\w+$
+        display_name:
+          type: string
+          minLength: 3
+          maxLength: 64
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+          default: active
+        input_schema:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              display_name:
+                type: string
+                minLength: 3
+                maxLength: 64
+              data_type:
+                type: string
+                enum:
+                - boolean
+                - number
+                - integer
+                - pick-list
+                - multi-pick-list
+                - string
+                - geo_point
+                - number-array
+                - lookup
+                - date
+                - date-time
+                - date-time-range
+                - file
+              description:
+                type: string
+                maxLength: 256
+              is_required:
+                type: boolean
+              lookup_entity_type:
+                type: string
+                enum:
+                - equipment
+                - device
+                - facility
+                - flow
+                - asset_group
+                - form_schema
+              lookup_entity_attribute:
+                type: string
+              pick_list_values:
+                type: array
+                items:
+                  type: string
+              order:
+                type: integer
+            required:
+            - display_name
+            - data_type
+            - description
+            - is_required
+            additionalProperties: false
+          default: {}
+        is_embedded:
+          type: boolean
+          default: false
+        use_data_layer_v2:
+          type: boolean
+          default: false
+        description:
+          type: string
+          maxLength: 256
+        deduplication_columns:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^[A-Za-z0-9_]+$
+            maxItems: 20
+        row_styling_headers:
+          type: object
+          additionalProperties:
+            type: string
+            minLength: 3
+            maxLength: 64
+            pattern: ^[A-Za-z0-9_]+$
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+      required:
+      - name
+      - display_name
+      - created_at
+      - updated_at
+    GetExistingReportInputsResponse:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: string
+      example:
+        input_1:
+        - value 1
+        - value 2
+        input_2:
+        - value 3
+        - value 4
+    CreateTemplatedReportCategoryRequestBody:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^[a-zA-Z0-9 \-_]*$
+        description:
+          type: string
+          maxLength: 256
+      required:
+      - name
+      additionalProperties: false
+    ReportWithTemplatedReportResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        s3_object_id:
+          type: string
+        report_version:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
+    PagedEmbeddedReportRowList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/EmbeddedReportRowResponse'
+        type: object
+    TemplatedReportCategorySort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    TemplatedReportFilterFields:
+      properties:
+        display_name:
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+      type: object
+    ReportWithTemplatedReportAndLatestVersionResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - locked
+          - unlocked
+          - archived
+        templated_report_name:
+          type: string
+          minLength: 3
+          maxLength: 64
+          pattern: ^\w+$
+        input:
+          type: object
+          additionalProperties:
+            nullable: true
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            nullable: true
+          - nullable: true
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        latest_version:
+          type: object
+          properties:
+            version:
+              type: integer
+            status:
+              type: string
+              enum:
+              - exporting
+              - failed
+              - success
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type: string
+                nullable: true
+              - nullable: true
+            created_by:
+              type: string
+              format: uuid
+          required:
+          - version
+          - status
+          - created_at
+          - created_by
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      - latest_version
+      additionalProperties: false
+    PagedReportsLatestVersionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ReportWithTemplatedReportAndLatestVersionResponse'
+        type: object
+    ReportFilter:
+      properties:
+        filter:
+          description: A filter object for Reports where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            $or:
+            - created_by: c3e9446d-4cc0-4e7b-bb43-43fff9361957
+            - name:
+                $like: Subpart W
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            templated_report_name:
+              type: string
+            status:
+              $ref: '#/components/schemas/TemplatedReportStatus'
+            created_at:
+              type: string
+            created_by:
+              type: string
+            updated_at:
+              type: string
+            updated_by:
+              type: string
+            templated_report.display_name:
+              type: string
+            templated_report.status:
+              $ref: '#/components/schemas/TemplatedReportStatus'
+          type: object
+      type: object
+    ReportId:
+      type: string
+      format: uuid
+    AddTemplatedReportCompanyRequestBody:
+      type: object
+      properties:
+        category_id:
+          type: string
+          format: uuid
+      required:
+      - category_id
+      additionalProperties: false

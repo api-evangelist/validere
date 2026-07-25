@@ -1,0 +1,233 @@
+openapi: 3.0.1
+info:
+  description: Activity Log
+  title: CarbonHub activities form_categories API
+  version: 1.0.0
+servers:
+- url: https://api.validere.io
+security:
+- Staging: []
+- Integration: []
+- Local: []
+tags:
+- description: Form Categories
+  name: form_categories
+paths:
+  /app/v1/form_categories:
+    get:
+      operationId: list_form_category
+      parameters:
+      - $ref: '#/components/parameters/FormCategoryName'
+      - $ref: '#/components/parameters/FormCategoryArchived'
+      - $ref: '#/components/parameters/RelatedEntityIdQuery'
+      - $ref: '#/components/parameters/MeasurementTypeQuery'
+      - $ref: '#/components/parameters/PageSize'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/SortBy'
+      - $ref: '#/components/parameters/SortDirection'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Pagination'
+                - properties:
+                    data:
+                      items:
+                        $ref: '#/components/schemas/FormCategory'
+                      type: array
+                  type: object
+          description: A successful operation
+      summary: List form categories
+      tags:
+      - form_categories
+    post:
+      operationId: create_form_category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormCategoryInput'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormCategory'
+          description: A successful operation
+      summary: Create a form category
+      tags:
+      - form_categories
+  /app/v1/form_categories/{id}:
+    delete:
+      operationId: delete_form_category
+      parameters:
+      - $ref: '#/components/parameters/FormCategoryId'
+      responses:
+        '200':
+          description: A successful operation
+      summary: Delete a form category
+      tags:
+      - form_categories
+    get:
+      operationId: get_form_category
+      parameters:
+      - $ref: '#/components/parameters/FormCategoryId'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormCategory'
+          description: A successful operation
+      summary: Get a form category
+      tags:
+      - form_categories
+    put:
+      operationId: put_form_category
+      parameters:
+      - $ref: '#/components/parameters/FormCategoryId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FormCategoryUpdate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormCategory'
+          description: A successful operation
+      summary: Update a form category
+      tags:
+      - form_categories
+components:
+  parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    FormCategoryName:
+      description: Form Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    MeasurementTypeQuery:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: query
+      name: measurement_type
+      required: false
+      schema:
+        type: string
+    RelatedEntityIdQuery:
+      description: device id or facility id or equipment id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: related_entity_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FormCategoryId:
+      description: Form Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    FormCategoryArchived:
+      description: Form Category archived
+      in: query
+      name: archived
+      required: false
+      schema:
+        default: false
+        type: boolean
+  schemas:
+    FormCategory:
+      properties:
+        archived:
+          type: boolean
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    FormCategoryInput:
+      properties:
+        archived:
+          default: false
+          example: false
+          type: boolean
+        name:
+          example: Truck Tickets
+          type: string
+      type: object
+    FormCategoryUpdate:
+      properties:
+        archived:
+          type: boolean
+        name:
+          type: string
+      type: object
