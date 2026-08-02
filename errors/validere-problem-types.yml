@@ -1,0 +1,67 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com/guides/api/errors + https://docs.validere.com/guides/api/data/errors
+format: json
+envelope: Standard HTTP response codes with JSON bodies; synchronous schema-validation failures return
+  400; asynchronous ingestion errors surface via the Transactions API
+problems:
+- status: 400
+  title: Bad Request
+  detail: The request was invalid (missing required parameter, invalid data shape, or failed JSON Schema
+    validation on synchronous data pushes)
+- status: 401
+  title: Unauthorized
+  detail: Authentication failed
+- status: 403
+  title: Forbidden
+  detail: Credentials provided do not have permission for the requested action
+- status: 404
+  title: Not found
+  detail: The requested resource was not found
+- status: 429
+  title: Conflict
+  detail: The request conflicts with either another request or data configured in the system (name and
+    code as published in the docs status table)
+- status: 500
+  title: Server error
+  detail: An error occurred on the Validere server
+- status: 502
+  title: Server error
+  detail: An error occurred on the Validere server
+- status: 503
+  title: Server error
+  detail: An error occurred on the Validere server
+- status: 504
+  title: Server error
+  detail: An error occurred on the Validere server
+- status: 422
+  title: Calculator validation error
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_estimation_method_configuration
+- status: 422
+  title: Validation Error
+  detail: FastAPI-style request validation error on every Data Platform Source API operation
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#register_json_data_data_json_post
+pipeline_errors:
+- code: UnsafeFileError
+  step: Validation
+  description: Data was scanned for malicious content, was deemed unsafe and will be quarantined
+- code: InvalidSchemaError
+  step: Validation
+  description: Data fails the configured data schema for that specific dataset; details via the Transactions
+    API
+- code: OperationError
+  step: Transformation
+  description: The configured operation/transformation failed to execute
+- code: ObjectAlreadyExistsError
+  step: Sink
+  description: The provided data is a duplicate of another data object in the platform
+- code: MissingLookupError
+  step: Sink
+  description: Provided data references fail to find an association (e.g. measurement cannot match a source
+    object)
+- code: LookupCollisionError
+  step: Sink
+  description: Provided data references resolve to more than one association; outcome ambiguous
+- code: RequestExceptionError
+  step: Sink
+  description: An internal error occurred on the Validere server

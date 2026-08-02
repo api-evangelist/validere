@@ -1,0 +1,58 @@
+# Validere Platform
+
+## Validere Platform
+
+- [Introduction](https://docs.validere.com/getting-started/readme.md)
+- [Getting Started](https://docs.validere.com/getting-started/getting_started.md)
+- [Single Sign-On (SSO)](https://docs.validere.com/getting-started/sso.md)
+- [API](https://docs.validere.com/guides/api.md)
+- [Authentication](https://docs.validere.com/guides/api/authentication.md)
+- [Errors](https://docs.validere.com/guides/api/errors.md)
+- [App API](https://docs.validere.com/guides/api/app.md)
+- [Activity Log](https://docs.validere.com/guides/api/app/activity_log.md)
+- [Configurable Attributes](https://docs.validere.com/guides/api/app/custom_attributes.md)
+- [Measurements](https://docs.validere.com/guides/api/app/measurements.md)
+- [Measurement Series](https://docs.validere.com/guides/api/app/measurement_series.md)
+- [Devices](https://docs.validere.com/guides/api/app/devices.md)
+- [Equipment](https://docs.validere.com/guides/api/app/equipment.md)
+- [Facilities](https://docs.validere.com/guides/api/app/facilities.md)
+- [Flows](https://docs.validere.com/guides/api/app/flows.md)
+- [Asset Groups](https://docs.validere.com/guides/api/app/asset_groups.md)
+- [Form Submissions](https://docs.validere.com/guides/api/app/form_submissions.md)
+- [Records](https://docs.validere.com/guides/api/app/records.md)
+- [Users](https://docs.validere.com/guides/api/app/users.md)
+- [Roles](https://docs.validere.com/guides/api/app/roles.md)
+- [User Groups](https://docs.validere.com/guides/api/app/user_groups.md)
+- [Workflows](https://docs.validere.com/guides/api/app/workflows.md)
+- [Data API](https://docs.validere.com/guides/api/data.md)
+- [Json](https://docs.validere.com/guides/api/data/json.md)
+- [File Upload](https://docs.validere.com/guides/api/data/file_upload.md)
+- [Errors](https://docs.validere.com/guides/api/data/errors.md)
+- [Transactions API](https://docs.validere.com/guides/api/transactions.md)
+- [Transactions](https://docs.validere.com/guides/api/transactions/transactions.md)
+- [Data Ingestion Interfaces](https://docs.validere.com/guides/data_interfaces.md)
+- [Data APIs](https://docs.validere.com/guides/data_interfaces/api.md)
+- [sFTP](https://docs.validere.com/guides/data_interfaces/sftp.md)
+- [IoT](https://docs.validere.com/guides/data_interfaces/iot.md)
+- [Email](https://docs.validere.com/guides/data_interfaces/email.md)
+- [3rd Party APIs](https://docs.validere.com/guides/data_interfaces/third_party_apis.md)
+- [Glossary](https://docs.validere.com/supporting-information/glossary.md)
+- [Data model](https://docs.validere.com/supporting-information/glossary/data_model.md)
+- [Data components](https://docs.validere.com/supporting-information/glossary/data_components.md)
+- [Data security and compliance](https://docs.validere.com/supporting-information/data-security-and-compliance.md)
+
+
+---
+
+# Agent Instructions
+This documentation is published with GitBook. GitBook is the documentation platform designed so that both humans and AI agents can read, navigate, and reason over technical content effectively. Learn more at gitbook.com.
+
+## Querying This Documentation
+If you need additional information, you can query the documentation dynamically by asking a question.
+Perform an HTTP GET request on a page URL with the `ask` query parameter:
+```
+GET https://docs.validere.com/getting-started/readme.md?ask=<question>
+```
+The question should be specific, self-contained, and written in natural language.
+The response will contain a direct answer to the question and relevant excerpts and sources from the documentation.
+Use this mechanism when the answer is not explicitly present in the current page, you need clarification or additional context, or you want to retrieve related documentation sections.

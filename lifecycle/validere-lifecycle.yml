@@ -1,0 +1,36 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com + https://www.validere.com/security + OpenAPI deprecated flags
+versioning:
+  scheme: uri-path
+  current: v1 (App API /app/v1 with some /app/v2 endpoints; Data Platform /platform/v1 with a /v2 transactions
+    details endpoint)
+  docs: https://docs.validere.com/guides/api
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy; deprecated operations are flagged in the OpenAPI
+sla:
+  url: https://www.validere.com/security
+  uptime_target: 99.9%
+  rpo: 24 hours
+  rto: 12 hours
+status_page: null
+deprecated_operations:
+- openapi/validere-carbonhub-openapi-original.json#create_asset_group
+- openapi/validere-carbonhub-openapi-original.json#list_user_groups
+- openapi/validere-carbonhub-openapi-original.json#run_estimation_methods
+- openapi/validere-carbonhub-openapi-original.json#list_events
+- openapi/validere-carbonhub-openapi-original.json#add_event_equipment
+- openapi/validere-carbonhub-openapi-original.json#remove_event_equipment
+- openapi/validere-carbonhub-openapi-original.json#add_event_facilities
+- openapi/validere-carbonhub-openapi-original.json#remove_event_facilities
+- openapi/validere-carbonhub-openapi-original.json#list_devices
+- openapi/validere-carbonhub-openapi-original.json#search_flows
+- openapi/validere-carbonhub-openapi-original.json#search_form_submissions_answers
+- openapi/validere-carbonhub-openapi-original.json#search_reports
+- openapi/validere-carbonhub-openapi-original.json#get_report_v2
+- openapi/validere-carbonhub-openapi-original.json#delete_report
+- openapi/validere-carbonhub-openapi-original.json#trigger_report_v2
+- openapi/validere-carbonhub-openapi-original.json#get_calculators
+- openapi/validere-dataplatform-source-openapi-original.json#get_sink_summary_by_transaction_by_id_transactions__transaction_id__sink_summary_get

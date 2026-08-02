@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com/guides/api + https://www.validere.com/security
+standards:
+- id: oauth2
+  conforms: true
+  evidence: 'Docs: OAuth 2.0 client_credentials grant against https://validere.auth0.com/oauth/token,
+    JWT bearer tokens (https://docs.validere.com/guides/api/authentication)'
+- id: oidc
+  conforms: true
+  evidence: Auth0 tenant publishes OIDC discovery at https://validere.auth0.com/.well-known/openid-configuration
+    (HTTP 200); platform SSO documented at https://docs.validere.com/getting-started/sso
+- id: json-schema
+  conforms: true
+  evidence: Data API validates every ingested dataset against a registered JSON Schema (draft-06/2020-12
+    examples) — https://docs.validere.com/guides/api/data and /guides/api/data/errors
+- id: pagination
+  conforms: true
+  evidence: App API search endpoints share page/page_size/sort_by/sort_direction parameters (https://docs.validere.com/guides/api/app)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are plain JSON with standard HTTP status codes; no application/problem+json in specs
+    or docs
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key contract documented; sink-side duplicate detection (ObjectAlreadyExistsError)
+    only
+- id: scim
+  conforms: false
+  evidence: No SCIM surface in specs or docs
+- id: json:api
+  conforms: false
+  evidence: Resource-oriented REST but not JSON:API media type
+compliance:
+  url: https://www.validere.com/security
+  programs:
+  - SOC 1 Type II
+  - SOC 2 Type II
+  - ISO 27001
+  - ISO 27018
+  - ISO 9001
+  - ISO 14001
+  - ISO 45001
+  - GDPR
+  - US & Canada privacy regulations
+  evidence: 'validere.com/security: "Validere has successfully completed SOC 1 and SOC 2 Type II audits";
+    ISO framework list; GDPR'

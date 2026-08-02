@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: validere-push-json-data.md
+  name: Push JSON data into the Validere platform
+  api: openapi/validere-dataplatform-source-openapi-original.json
+  operations:
+  - register_json_data_data_json_post
+  - get_file_upload_url_data_file_upload_url_get
+- file: validere-track-data-transactions.md
+  name: Track data ingestion transactions
+  api: openapi/validere-dataplatform-source-openapi-original.json
+  operations:
+  - list_all_transactions_transactions_get
+  - get_transaction_by_id_transactions__transaction_id__get
+  - get_transaction_details_by_id_transactions__transaction_id__details_get
+  - retry_transaction_by_id_transactions__transaction_id__retry_post
+  - list_all_transaction_errors_type_metadata_transaction_errors_get
+- file: validere-query-assets-and-measurements.md
+  name: Query assets and measurements in CarbonHub
+  api: openapi/validere-carbonhub-openapi-original.json
+  operations:
+  - get_facilities_filter
+  - get_facility
+  - search_equipment
+  - get_equipment
+  - search_device
+  - list_measurement_series
+  - get_aggregated_measurements
+  - get_measurements

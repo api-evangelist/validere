@@ -1,23 +1,822 @@
 aid: validere
 name: Validere
-description: 'Validere is a company surfaced as a portfolio company of greylock, wing-venture-capital
-  and added to the API Evangelist network as a stub for enrichment. Sector: applications. This profile
-  is a lead awaiting the enrichment pipeline.'
+description: >-
+  Validere is an enterprise environmental operations and emissions data
+  management platform for the energy industry. Upstream, midstream, refining,
+  utility, and CCUS operators use it to unify operational, measurement, and
+  emissions data for regulatory and voluntary emissions reporting, methane
+  management, EHS compliance, asset management, and production accounting. Its
+  public REST API at api.validere.io spans the CarbonHub App API (facilities,
+  equipment, flows, devices, measurements, estimation methods, records,
+  workflows, and reports) and the Data Platform Source API for pushing JSON or
+  file data validated against registered JSON Schemas, with ingestion tracked
+  through a Transactions API.
 url: https://raw.githubusercontent.com/api-evangelist/validere/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://github.com/ValidereInc.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - greylock
 - wing-venture-capital
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profile
+x-tier-reason: public API with published OpenAPI, docs, and llms.txt
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Applications
-apis: []
+- Energy
+- Emissions
+- Methane
+- Oil And Gas
+- Environmental Data
+- Measurement
+- Carbon Intensity
+- EHS
+apis:
+- aid: validere:validere-activities-api
+  name: Validere activities API
+  description: Activity Log
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - activities
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-activities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-asset-groups-api
+  name: Validere asset_groups API
+  description: Asset Groups
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - asset_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-asset-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-assets-api
+  name: Validere assets API
+  description: Assets
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - assets
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-calculator-results-api
+  name: Validere calculator_results API
+  description: Calculator Results
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - calculator_results
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-calculator-results-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-charts-api
+  name: Validere charts API
+  description: Charts
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - charts
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-charts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-comments-api
+  name: Validere comments API
+  description: Comments
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-comments-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-company-api
+  name: Validere company API
+  description: Company
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - company
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-company-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-company-equipment-type-groups-api
+  name: Validere company_equipment_type_groups API
+  description: Company <> Equipment Type Groups
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - company_equipment_type_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-company-equipment-type-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-company-feature-flags-api
+  name: Validere company_feature_flags API
+  description: Company Feature Flags
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - company_feature_flags
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-company-feature-flags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-company-unit-config-api
+  name: Validere company_unit_config API
+  description: Company Unit Configuration
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - company_unit_config
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-company-unit-config-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-credit-owner-api
+  name: Validere credit_owner API
+  description: Credit Owners
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - credit_owner
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-credit-owner-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-custom-attribute-definition-api
+  name: Validere custom_attribute_definition API
+  description: Manage Custom Attribute Definitions
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - custom_attribute_definition
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-custom-attribute-definition-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-dashboards-api
+  name: Validere dashboards API
+  description: Dashboards
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-data-api
+  name: Validere data API
+  description: The data API from Validere — 2 operation(s) for data.
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - data
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-default-record-value-configuration-api
+  name: Validere default_record_value_configuration API
+  description: Default Record Value Configurations
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - default_record_value_configuration
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-default-record-value-configuration-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-device-types-api
+  name: Validere device_types API
+  description: Manage Device Types
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - device_types
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-device-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-devices-api
+  name: Validere devices API
+  description: Manage Devices
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - devices
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-devices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-emissions-calculator-api
+  name: Validere emissions_calculator API
+  description: Emission Calculator
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - emissions_calculator
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-emissions-calculator-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-equipment-api
+  name: Validere equipment API
+  description: Manage Equipment
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - equipment
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-equipment-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-equipment-types-api
+  name: Validere equipment_types API
+  description: Manage Equipment Types
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - equipment_types
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-equipment-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-estimation-methods-api
+  name: Validere estimation_methods API
+  description: Estimation Methods
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - estimation_methods
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-estimation-methods-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-estimation-methods-default-records-api
+  name: Validere estimation_methods_default_records API
+  description: Estimation Methods Default Records
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - estimation_methods_default_records
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-estimation-methods-default-records-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-event-categories-api
+  name: Validere event_categories API
+  description: Event Categories
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - event_categories
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-event-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-event-schemas-api
+  name: Validere event_schemas API
+  description: Event Schemas
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - event_schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-event-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-events-api
+  name: Validere events API
+  description: Emission Events
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-events-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-facilities-api
+  name: Validere facilities API
+  description: Manage Facilities
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - facilities
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-facilities-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-feature-flags-api
+  name: Validere feature_flags API
+  description: Feature Flags
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - feature_flags
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-feature-flags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-flows-api
+  name: Validere flows API
+  description: Manage Flows
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - flows
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-flows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-form-categories-api
+  name: Validere form_categories API
+  description: Form Categories
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - form_categories
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-form-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-form-schemas-api
+  name: Validere form_schemas API
+  description: Form Schemas
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - form_schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-form-schemas-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-form-submissions-api
+  name: Validere form_submissions API
+  description: Form Submissions
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - form_submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-form-submissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-group-categories-api
+  name: Validere group_categories API
+  description: Manage Group Categories
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - group_categories
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-group-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-job-api
+  name: Validere job API
+  description: Bulk Job status
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - job
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-job-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-ledger-api
+  name: Validere ledger API
+  description: Ledger
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - ledger
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-ledger-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-measurement-series-api
+  name: Validere measurement_series API
+  description: Manage Measurement series
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - measurement_series
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-measurement-series-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-measurement-types-api
+  name: Validere measurement_types API
+  description: Manage Measurement Types
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - measurement_types
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-measurement-types-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-measurements-api
+  name: Validere measurements API
+  description: Manage Measurements
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - measurements
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-measurements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-networks-api
+  name: Validere networks API
+  description: Manage Networks
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - networks
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-networks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-permissions-api
+  name: Validere permissions API
+  description: Permission
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - permissions
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-permissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-project-group-api
+  name: Validere project_group API
+  description: Project Groups
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - project_group
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-project-group-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-records-api
+  name: Validere records API
+  description: Manage Records
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - records
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-records-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-reporting-groups-api
+  name: Validere reporting_groups API
+  description: Reporting Groups
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - reporting_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-reporting-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-reports-api
+  name: Validere reports API
+  description: Reports
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - reports
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-roles-api
+  name: Validere roles API
+  description: Roles
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - roles
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-roles-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-templated-configurations-api
+  name: Validere templated_configurations API
+  description: Templated Configurations
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - templated_configurations
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-templated-configurations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-transactions-api
+  name: Validere transactions API
+  description: The transactions API from Validere — 7 operation(s) for transactions.
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-type-metadata-api
+  name: Validere type_metadata API
+  description: Types used across the APIs
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - type_metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-type-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-typemetadata-api
+  name: Validere TypeMetadata API
+  description: The TypeMetadata API from Validere — 4 operation(s) for typemetadata.
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - TypeMetadata
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-typemetadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-user-groups-api
+  name: Validere user_groups API
+  description: Manage User Groups
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - user_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-user-unit-config-api
+  name: Validere user_unit_config API
+  description: User Unit Configuration
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - user_unit_config
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-user-unit-config-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-users-api
+  name: Validere users API
+  description: User
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-workflow-categories-api
+  name: Validere workflow_categories API
+  description: Workflow Categories
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - workflow_categories
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-workflow-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-workflow-tasks-api
+  name: Validere workflow_tasks API
+  description: Workflow Tasks
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - workflow_tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-workflow-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-workflow-templates-api
+  name: Validere workflow_templates API
+  description: Workflow Templates
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - workflow_templates
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-workflow-templates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
+- aid: validere:validere-workflows-api
+  name: Validere workflows API
+  description: Workflow
+  humanURL: https://docs.validere.com/guides/api/app
+  baseURL: https://api.validere.io/app
+  tags:
+  - workflows
+  properties:
+  - type: OpenAPI
+    url: openapi/validere-workflows-api-openapi.yml
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/app
+  - type: Documentation
+    url: https://docs.validere.com/guides/api/data
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -26,3 +825,52 @@ maintainers:
 common:
 - type: Website
   url: https://validere.com/
+- type: Documentation
+  url: https://docs.validere.com/
+- type: APIReference
+  url: https://docs.validere.com/guides/api
+- type: GettingStarted
+  url: https://docs.validere.com/getting-started/getting_started
+- type: Authentication
+  url: authentication/validere-authentication.yml
+- type: Blog
+  url: https://blog.validere.com/
+- type: Support
+  url: https://www.validere.com/contact
+- type: Login
+  url: https://my.validere.com/
+- type: GitHubOrganization
+  url: https://github.com/ValidereInc
+- type: TermsOfService
+  url: https://www.validere.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.validere.com/privacy-policy
+- type: Compliance
+  url: https://www.validere.com/security
+- type: TrustCenter
+  url: security/validere-trust-center.yml
+- type: DomainSecurity
+  url: security/validere-domain-security.yml
+- type: Conformance
+  url: conformance/validere-conformance.yml
+- type: ErrorCatalog
+  url: errors/validere-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/validere-lifecycle.yml
+- type: Conventions
+  url: conventions/validere-conventions.yml
+- type: DataModel
+  url: data-model/validere-data-model.yml
+- type: LLMsTxt
+  url: llms/validere-llms.txt
+- type: WellKnown
+  url: well-known/validere-well-known.yml
+- type: MCPServer
+  url: mcp/validere-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 21
+  pass: local-v1

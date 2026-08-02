@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com/guides/api/authentication
+docs: https://docs.validere.com/guides/api/authentication
+summary:
+  types:
+  - oauth2
+  - http
+  - apiKey
+  api_key_in:
+  - header
+  oauth2_flows:
+  - clientCredentials
+notes: >-
+  Validere's Public API uses OAuth 2.0 client_credentials against the company's
+  Auth0 tenant. Clients obtain an auth0 client_id/client_secret from Validere's
+  Data Services Consulting team (no self-serve signup), exchange them for a
+  machine JWT at https://validere.auth0.com/oauth/token with audience
+  https://validere360.com/api, and send the JWT as a Bearer token. The
+  documented example token lifetime is expires_in 86400 seconds; caching the
+  token until expiry is recommended. The Data Platform Source API spec
+  additionally declares an X-API-Key header scheme. The CarbonHub App API spec
+  references Staging/Integration/Local security schemes without defining them
+  in components.securitySchemes.
+schemes:
+- name: OAuth2ClientCredentials
+  type: oauth2
+  flows:
+  - flow: clientCredentials
+    tokenUrl: https://validere.auth0.com/oauth/token
+    audience: https://validere360.com/api
+  sources:
+  - https://docs.validere.com/guides/api/authentication
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/validere-dataplatform-source-openapi-original.json
+  - https://docs.validere.com/guides/api/authentication
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/validere-dataplatform-source-openapi-original.json

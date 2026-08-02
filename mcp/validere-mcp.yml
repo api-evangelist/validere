@@ -1,0 +1,1247 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/validere-carbonhub-openapi-original.json + openapi/validere-dataplatform-source-openapi-original.json
+notes: No official Validere MCP server found (docs, npm, GitHub ValidereInc, MCP registries). Candidate
+  tool list derived from the two published OpenAPI documents.
+server:
+  name: validere
+  transport: http
+tools:
+- name: search_activities
+  description: Search and list Activities
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_activities
+- name: search_activities_resource_type
+  description: Search and list Activities for a resource type
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_activities_resource_type
+- name: create_asset_group
+  description: Create an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_asset_group
+- name: create_asset_group_v2
+  description: Create an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_asset_group_v2
+- name: get_asset_group
+  description: Get an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_asset_group
+- name: put_asset_group
+  description: Update an Asset Group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_asset_group
+- name: delete_asset_group
+  description: Delete an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_asset_group
+- name: update_asset_group_assets
+  description: Update all the assets in an asset group.
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_asset_group_assets
+- name: add_asset_to_asset_group
+  description: Add an asset to an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_asset_to_asset_group
+- name: remove_asset_to_asset_group
+  description: Remove an asset to an asset group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_asset_to_asset_group
+- name: search_asset_groups
+  description: Search and list Asset Groups
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_asset_groups
+- name: calculator_results
+  description: Search and aggregate Calculator Result
+  source_operation: openapi/validere-carbonhub-openapi-original.json#calculator_results
+- name: export_calculator_results
+  description: Export Calculator Results
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_calculator_results
+- name: get_calculator_results_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator_results_filter
+- name: post_calculator_results_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_calculator_results_filter
+- name: delete_calculator_results_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_calculator_results_filter
+- name: put_calculator_results_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_calculator_results_filter
+- name: create_chart
+  description: Create a chart
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_chart
+- name: delete_chart
+  description: Delete a chart
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_chart
+- name: get_chart
+  description: Get a chart
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_chart
+- name: put_chart
+  description: Update a Chart
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_chart
+- name: search_company_unit_config
+  description: Search company unit configs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_company_unit_config
+- name: get_company_unit_config
+  description: Get a company unit config
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_company_unit_config
+- name: upsert_company_unit_config
+  description: Create or update a company unit config
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_company_unit_config
+- name: delete_company_unit_config
+  description: Delete a company unit configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_company_unit_config
+- name: get_company_unit_config_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_company_unit_config_filter
+- name: post_company_unit_config_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_company_unit_config_filter
+- name: delete_company_unit_config_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_company_unit_config_filter
+- name: put_company_unit_config_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_company_unit_config_filter
+- name: search_user_unit_config
+  description: Search user unit configs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_user_unit_config
+- name: get_user_unit_config
+  description: Get a user unit config
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_unit_config
+- name: upsert_user_unit_config
+  description: Create or update a user unit config
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_user_unit_config
+- name: delete_user_unit_config
+  description: Delete a user unit configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_user_unit_config
+- name: get_user_unit_config_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_unit_config_filter
+- name: post_user_unit_config_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_user_unit_config_filter
+- name: delete_user_unit_config_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_user_unit_config_filter
+- name: put_user_unit_config_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_user_unit_config_filter
+- name: create_user
+  description: Create a user
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_user
+- name: search_users
+  description: Search users
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_users
+- name: get_user_myself
+  description: Get the current user info
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_myself
+- name: get_user
+  description: Get a user
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user
+- name: update_user
+  description: Update a user
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_user
+- name: delete_user
+  description: Delete a user
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_user
+- name: list_user_groups
+  description: List groups a user belongs to
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_user_groups
+- name: list_user_roles
+  description: List roles a user belongs to
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_user_roles
+- name: get_user_permission_decision
+  description: Check whether a user has been granted permissions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_permission_decision
+- name: get_user_permission
+  description: Get user permission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_permission
+- name: create_role
+  description: Create a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_role
+- name: search_roles
+  description: Must be Company member -  Search roles
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_roles
+- name: get_role
+  description: Must be Company member - Get a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_role
+- name: update_role
+  description: Update a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_role
+- name: delete_role
+  description: Delete a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_role
+- name: list_role_members
+  description: Must be Company member - Show Memberships for a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_role_members
+- name: add_member
+  description: Add a user to a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_member
+- name: remove_member
+  description: Remove a user from a role
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_member
+- name: update_role_permission
+  description: Update role permission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_role_permission
+- name: get_role_permission
+  description: Get role permission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_role_permission
+- name: update_single_role_permission
+  description: Update single permission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_single_role_permission
+- name: remove_single_role_permission
+  description: Remove single permission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_single_role_permission
+- name: create_user_group
+  description: Create a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_user_group
+- name: search_user_groups
+  description: Search user groups
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_user_groups
+- name: get_user_group
+  description: Get a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_user_group
+- name: update_user_group
+  description: Update a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_user_group
+- name: delete_user_group
+  description: Delete a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_user_group
+- name: list_user_group_members
+  description: Show Memberships for a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_user_group_members
+- name: add_user_group_member
+  description: Add a user to a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_user_group_member
+- name: remove_user_group_member
+  description: Remove a user from a user group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_user_group_member
+- name: create_company
+  description: Must be System Admin - Create a company
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_company
+- name: search_companies
+  description: Must be System Admin - Search companies
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_companies
+- name: get_company
+  description: Must be System Admin or Company member - Get a company
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_company
+- name: update_company
+  description: Must be System Admin - Update a company
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_company
+- name: delete_company
+  description: Must be System Admin - Delete a company
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_company
+- name: search_feature_flags
+  description: Search feature flags
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_feature_flags
+- name: get_feature_flag
+  description: Get a feature flag
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_feature_flag
+- name: update_comment
+  description: Update comment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_comment
+- name: delete_comment
+  description: Delete comment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_comment
+- name: get_comments
+  description: List comments for a specific entity
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_comments
+- name: create_comment
+  description: Create comment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_comment
+- name: get_comment_count
+  description: Count comments
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_comment_count
+- name: search_all_company_feature_flags
+  description: Search all company feature flags
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_all_company_feature_flags
+- name: search_company_feature_flags
+  description: Must be Company member - Search company feature flags
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_company_feature_flags
+- name: create_company_feature_flag
+  description: Create a company feature flag
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_company_feature_flag
+- name: delete_company_feature_flag
+  description: Delete a company feature flag
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_company_feature_flag
+- name: list_permissions
+  description: List permissions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_permissions
+- name: upsert_default_record_value_configuration
+  description: Upsert a default record value configuration for an asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_default_record_value_configuration
+- name: apply_default_record_value_configuration
+  description: Apply default record value configurations for a set of year months
+  source_operation: openapi/validere-carbonhub-openapi-original.json#apply_default_record_value_configuration
+- name: search_default_record_value_configuration
+  description: Search default record value configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_default_record_value_configuration
+- name: get_default_record_value_configuration
+  description: Get a default record value configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_default_record_value_configuration
+- name: delete_default_record_value_configuration
+  description: Delete a default record value configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_default_record_value_configuration
+- name: bulk_add_estimation_method
+  description: Bulk create estimation methods
+  source_operation: openapi/validere-carbonhub-openapi-original.json#bulk_add_estimation_method
+- name: run_estimation_methods
+  description: Run calculators based on filtered configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_estimation_methods
+- name: run_estimation_methods_v2
+  description: Bulk run calculators based on filtered configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_estimation_methods_v2
+- name: run_async_estimation_methods_v2
+  description: Start an asynchronous job to bulk run calculators based on filtered configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_async_estimation_methods_v2
+- name: search_estimation_methods
+  description: Search and list Estimation Methods
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_estimation_methods
+- name: search_estimation_method_configurations
+  description: Search and list Estimation Methods with calculator configs and runs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_estimation_method_configurations
+- name: export_estimation_methods
+  description: Export estimation methods based on search input
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_estimation_methods
+- name: export_estimation_method_configurations
+  description: Search and export Estimation Methods with calculator configs and runs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_estimation_method_configurations
+- name: add_estimation_method
+  description: Add Estimation Method to Entity
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_estimation_method
+- name: get_estimation_method
+  description: Get an estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_estimation_method
+- name: update_estimation_method
+  description: Update an estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_estimation_method
+- name: delete_estimation_method
+  description: Delete an estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_estimation_method
+- name: list_estimation_method_runs
+  description: List runs for a given estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_estimation_method_runs
+- name: get_estimation_method_configuration
+  description: Get an estimation method configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_estimation_method_configuration
+- name: update_estimation_method_configuration
+  description: Update an estimation method configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_estimation_method_configuration
+- name: apply_defaults_estimation_method_configuration
+  description: Re-apply defaults to a calculator configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#apply_defaults_estimation_method_configuration
+- name: bulk_apply_defaults_estimation_method_configuration
+  description: Re-apply defaults to multiple calculator configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#bulk_apply_defaults_estimation_method_configuration
+- name: bulk_apply_defaults_estimation_method_configuration_async
+  description: Start an asynchronous job to re-apply defaults to multiple calculator configurations
+  source_operation: openapi/validere-carbonhub-openapi-original.json#bulk_apply_defaults_estimation_method_configuration_async
+- name: get_estimation_method_configuration_run
+  description: Get a calculator run
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_estimation_method_configuration_run
+- name: run_estimation_method_configuration
+  description: Run estimation method calculator for a single period
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_estimation_method_configuration
+- name: set_calculator_input_record
+  description: Set the input record for a given calculator configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#set_calculator_input_record
+- name: get_calculator_input_record
+  description: Get the input record for a given calculator configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator_input_record
+- name: delete_calculator_input_record
+  description: Delete the input record for a given calculator configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_calculator_input_record
+- name: set_calculator_input_record_target_asset
+  description: Set the input record for a given calculator configuration and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#set_calculator_input_record_target_asset
+- name: get_calculator_input_record_target_asset
+  description: Get the input record for a given calculator configuration and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator_input_record_target_asset
+- name: delete_calculator_input_record_target_asset
+  description: Delete the input record for a given calculator configuration and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_calculator_input_record_target_asset
+- name: list_estimation_method_default_record
+  description: List the default input records for a given estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_estimation_method_default_record
+- name: create_estimation_method_default_record
+  description: Create the default input record for a given estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_estimation_method_default_record
+- name: update_estimation_method_default_record
+  description: Update the default input record for a given estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_estimation_method_default_record
+- name: delete_estimation_method_default_record
+  description: Delete the default input record for a given estimation method
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_estimation_method_default_record
+- name: list_estimation_method_default_record_target_asset_id
+  description: List the default input records for a given estimation method and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_estimation_method_default_record_target_asset_id
+- name: get_estimation_method_default_record_target_asset_id
+  description: Get the default input record for a given estimation method and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_estimation_method_default_record_target_asset_id
+- name: create_estimation_method_default_record_target_asset_id
+  description: Create the default input record for a given estimation method and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_estimation_method_default_record_target_asset_id
+- name: update_estimation_method_default_record_target_asset_id
+  description: Update the default input record for a given estimation method and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_estimation_method_default_record_target_asset_id
+- name: delete_estimation_method_default_record_target_asset_id
+  description: Delete the default input record for a given estimation method and target asset
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_estimation_method_default_record_target_asset_id
+- name: list_event_category
+  description: List event categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_event_category
+- name: create_event_category
+  description: Create an event category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_event_category
+- name: get_event_category
+  description: Get an event category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_event_category
+- name: put_event_category
+  description: Update an event category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_event_category
+- name: delete_event_category
+  description: Delete an event category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_event_category
+- name: create_event_schema
+  description: Create an event schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_event_schema
+- name: update_event_schema
+  description: Update an event schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_event_schema
+- name: delete_event_schema
+  description: Delete an event schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_event_schema
+- name: get_event_schema
+  description: Get an event schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_event_schema
+- name: search_event_schemas
+  description: Search and list event schemas
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_event_schemas
+- name: list_events
+  description: List events
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_events
+- name: create_event
+  description: Create an event
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_event
+- name: search_events
+  description: Search and list events
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_events
+- name: get_event
+  description: Get an event
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_event
+- name: update_event
+  description: Update an event
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_event
+- name: delete_event
+  description: Delete an event
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_event
+- name: add_event_equipment
+  description: Add an event/equipment relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_equipment
+- name: remove_event_equipment
+  description: Remove an event/equipment relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_equipment
+- name: add_event_measurement_series
+  description: Add an event/measurement_series relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_measurement_series
+- name: remove_event_measurement_series
+  description: Remove an event/measurement_series relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_measurement_series
+- name: add_event_facilities
+  description: Add an event/facilities relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_facilities
+- name: remove_event_facilities
+  description: Remove an event/facilities relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_facilities
+- name: add_event_asset
+  description: Add an event/asset relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_asset
+- name: remove_event_asset
+  description: Remove an event/asset relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_asset
+- name: add_event_form_submissions
+  description: Add an event/form_submissions relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_form_submissions
+- name: remove_event_form_submissions
+  description: Remove an event/form_submissions relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_form_submissions
+- name: list_event_alerts
+  description: List an event/alerts relationships
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_event_alerts
+- name: add_event_alerts
+  description: Add an event/alerts relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_event_alerts
+- name: remove_event_alerts
+  description: Remove an event/alerts relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_event_alerts
+- name: list_company_equipment_type_groups
+  description: List company equipment type groups
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_company_equipment_type_groups
+- name: create_company_equipment_type_group
+  description: Create an association between a company and equipment type group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_company_equipment_type_group
+- name: get_events_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_events_filter
+- name: post_events_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_events_filter
+- name: delete_events_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_events_filter
+- name: put_events_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_events_filter
+- name: delete_company_equipment_type_group
+  description: Delete a company equipment type group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_company_equipment_type_group
+- name: get_company_equipment_type_group
+  description: Get company equipment type group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_company_equipment_type_group
+- name: list_custom_attribute_data_types
+  description: List Custom Attribute Data Types
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_custom_attribute_data_types
+- name: ListCustomAttributeDefinition
+  description: List Custom Attribute Definitions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#ListCustomAttributeDefinition
+- name: createCustomAttributeDefinition
+  description: Create a Custom Attribute Definition
+  source_operation: openapi/validere-carbonhub-openapi-original.json#createCustomAttributeDefinition
+- name: deleteCustomAttributeDefinition
+  description: Delete a Custom Attribute Definition
+  source_operation: openapi/validere-carbonhub-openapi-original.json#deleteCustomAttributeDefinition
+- name: updateCustomAttributeDefinition
+  description: Update a Custom Attribute Definition
+  source_operation: openapi/validere-carbonhub-openapi-original.json#updateCustomAttributeDefinition
+- name: list_custom_attribute_entities
+  description: List Custom Attribute Entity Types
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_custom_attribute_entities
+- name: list_dashboard
+  description: List dashboards
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_dashboard
+- name: create_dashboard
+  description: Create a dashboard
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_dashboard
+- name: delete_dashboard
+  description: Delete a dashboard
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_dashboard
+- name: get_dashboard
+  description: Get a dashboard
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_dashboard
+- name: put_dashboard
+  description: Update a dashboard
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_dashboard
+- name: list_device_types
+  description: Get Device Type List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_device_types
+- name: list_devices
+  description: List devices
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_devices
+- name: post_device
+  description: Create a Device
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_device
+- name: get_device_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_device_filter
+- name: post_device_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_device_filter
+- name: delete_devices_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_devices_filter
+- name: put_device_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_device_filter
+- name: search_device
+  description: Search Devices
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_device
+- name: export_devices
+  description: Export devices
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_devices
+- name: delete_device
+  description: Delete a Device
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_device
+- name: get_device
+  description: Get a Device by ID
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_device
+- name: put_device
+  description: Update a Device
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_device
+- name: archive_device
+  description: Archive a Device
+  source_operation: openapi/validere-carbonhub-openapi-original.json#archive_device
+- name: create_equipment
+  description: Create an Equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_equipment
+- name: get_equipment_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_equipment_filter
+- name: post_equipment_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_equipment_filter
+- name: delete_equipment_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_equipment_filter
+- name: put_equipment_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_equipment_filter
+- name: search_equipment
+  description: Search and list equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_equipment
+- name: export_equipment
+  description: Export equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_equipment
+- name: delete_equipment
+  description: Delete Equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_equipment
+- name: get_equipment
+  description: Get an Equipment by ID
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_equipment
+- name: update_equipment
+  description: Update Equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_equipment
+- name: list_equipment_types
+  description: Get Equipment Type List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_equipment_types
+- name: get_equipment_type
+  description: Get Equipment Type
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_equipment_type
+- name: createFacility
+  description: Create a Facility
+  source_operation: openapi/validere-carbonhub-openapi-original.json#createFacility
+- name: get_facilities_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_facilities_filter
+- name: post_facility_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_facility_filter
+- name: delete_facilities_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_facilities_filter
+- name: put_facilities_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_facilities_filter
+- name: searchAssets
+  description: Search Assets
+  source_operation: openapi/validere-carbonhub-openapi-original.json#searchAssets
+- name: searchFacility
+  description: Search Facilities
+  source_operation: openapi/validere-carbonhub-openapi-original.json#searchFacility
+- name: exportFacilities
+  description: Export facilities
+  source_operation: openapi/validere-carbonhub-openapi-original.json#exportFacilities
+- name: delete_facility
+  description: Delete a Facility and its Equipment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_facility
+- name: get_facility
+  description: Get Facility by Id
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_facility
+- name: update_facility
+  description: Update a Facility
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_facility
+- name: create_flow
+  description: Create a flow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_flow
+- name: search_flows
+  description: Search and list Flows
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_flows
+- name: search_flows_v2
+  description: Search and list Flows
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_flows_v2
+- name: export_flows
+  description: Export Flows
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_flows
+- name: get_flow
+  description: Get a flow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_flow
+- name: update_flow
+  description: Update a flow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_flow
+- name: delete_flow
+  description: Delete a flow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_flow
+- name: get_flow_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_flow_filter
+- name: post_flow_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_flow_filter
+- name: delete_flow_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_flow_filter
+- name: put_flow_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_flow_filter
+- name: list_flow_types
+  description: List Flow Types
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_flow_types
+- name: list_product_types
+  description: List Product Types
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_product_types
+- name: list_product_categories
+  description: List Product Categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_product_categories
+- name: list_event_statuses
+  description: List Event Statuses
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_event_statuses
+- name: list_facility_types
+  description: List Facility Types
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_facility_types
+- name: list_facility_statuses
+  description: List Facility Statuses
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_facility_statuses
+- name: list_form_category
+  description: List form categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_form_category
+- name: create_form_category
+  description: Create a form category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_form_category
+- name: delete_form_category
+  description: Delete a form category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_form_category
+- name: get_form_category
+  description: Get a form category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_form_category
+- name: put_form_category
+  description: Update a form category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_form_category
+- name: list_form_schema
+  description: List form schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_form_schema
+- name: create_form_schema
+  description: Create a form schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_form_schema
+- name: get_form_schema
+  description: Get a form schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_form_schema
+- name: update_form_schema
+  description: Update a form schema
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_form_schema
+- name: list_form_schema_versions
+  description: List form schema versions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_form_schema_versions
+- name: search_form_schemas
+  description: Search form schemas
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_form_schemas
+- name: create_form_submission
+  description: Create a form submission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_form_submission
+- name: get_form_submissions_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_form_submissions_filter
+- name: post_form_submissions_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_form_submissions_filter
+- name: delete_form_submissions_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_form_submissions_filter
+- name: put_form_submissions_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_form_submissions_filter
+- name: search_form_submissions
+  description: Search form submissions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_form_submissions
+- name: search_form_submissions_answers
+  description: Search form submissions by answers
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_form_submissions_answers
+- name: search_form_submissions_answers
+  description: Search form submissions by answers
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_form_submissions_answers
+- name: export_form_submissions
+  description: Export Form Submissions for a specific Form Schema/ Template
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_form_submissions
+- name: export_form_metadata
+  description: Form metadata for imports and exports
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_form_metadata
+- name: get_form_submission
+  description: Get a form submission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_form_submission
+- name: update_form_submission
+  description: Update a form submission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_form_submission
+- name: edit_form_submission
+  description: Edit a form submission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#edit_form_submission
+- name: delete_form_submission
+  description: Delete a Form Submission
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_form_submission
+- name: create_group_category
+  description: Create a Group Category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_group_category
+- name: get_group_category
+  description: Get a Group Category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_group_category
+- name: put_group_category
+  description: Update a Group Category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_group_category
+- name: delete_group_category
+  description: Delete a Group Category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_group_category
+- name: search_group_categories
+  description: Search Group Categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_group_categories
+- name: list_industry_segment
+  description: List Industry Segment
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_industry_segment
+- name: search_jobs
+  description: Search jobs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_jobs
+- name: get_job_v2
+  description: Get a job
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_job_v2
+- name: get_job_items
+  description: List job items
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_job_items
+- name: create_ledger_entry
+  description: Add a ledger entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_ledger_entry
+- name: search_ledger_entries
+  description: Search and list ledger entries
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_ledger_entries
+- name: get_ledger_entry
+  description: Get a ledger entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_ledger_entry
+- name: update_ledger_entry
+  description: Update a ledger entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_ledger_entry
+- name: delete_ledger_entry
+  description: Delete a ledger entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_ledger_entry
+- name: public_search_ledger_entries
+  description: Public search and list ledger entries
+  source_operation: openapi/validere-carbonhub-openapi-original.json#public_search_ledger_entries
+- name: create_project_group
+  description: Add a project group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_project_group
+- name: search_project_groups
+  description: Search and list project groups
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_project_groups
+- name: get_project_group_entry
+  description: Get a project_groups entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_project_group_entry
+- name: update_project_groups_entry
+  description: Update a project group entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_project_groups_entry
+- name: delete_project_groups_entry
+  description: Delete a project group entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_project_groups_entry
+- name: public_search_project_groups
+  description: Public search and list ledger entries
+  source_operation: openapi/validere-carbonhub-openapi-original.json#public_search_project_groups
+- name: public_get_project
+  description: Public search and list ledger entries
+  source_operation: openapi/validere-carbonhub-openapi-original.json#public_get_project
+- name: public_get_all_project_group_summary
+  description: Get the summary across all projects
+  source_operation: openapi/validere-carbonhub-openapi-original.json#public_get_all_project_group_summary
+- name: create_credit_owner
+  description: Add a credit owner
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_credit_owner
+- name: search_credit_owners
+  description: Search and list credit owners
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_credit_owners
+- name: get_credit_owner
+  description: Get a credit_owners entry
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_credit_owner
+- name: update_credit_owners
+  description: Update a credit owner
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_credit_owners
+- name: delete_credit_owner
+  description: Delete a credit owner
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_credit_owner
+- name: list_measurement_series
+  description: List a Measurement series
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_measurement_series
+- name: create_measurement_series
+  description: Create Measurement series
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_measurement_series
+- name: get_measurement_series
+  description: Get a Measurement series
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_measurement_series
+- name: update_measurement_series
+  description: Update a Measurement series
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_measurement_series
+- name: delete_measurement_series
+  description: Delete a Measurement series
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_measurement_series
+- name: list_measurement_types
+  description: Get Measurement Type List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_measurement_types
+- name: list_measurement_types_v2
+  description: Get Measurement Type List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_measurement_types_v2
+- name: list_measurement_quantities
+  description: Get Measurement Quantity List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_measurement_quantities
+- name: list_all_measurement_units
+  description: Get Measurement Unit List
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_all_measurement_units
+- name: list_measurement_units
+  description: Get Measurement Unit List for a quantity
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_measurement_units
+- name: get_aggregated_measurements
+  description: Get aggregated list of measurements
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_aggregated_measurements
+- name: plot_measurements
+  description: Get measurements for a measurement type
+  source_operation: openapi/validere-carbonhub-openapi-original.json#plot_measurements
+- name: get_measurements
+  description: Get list of measurements
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_measurements
+- name: add_measurement
+  description: Upsert a measurement
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_measurement
+- name: get_network_monthly
+  description: Gets a list of network proration inputs and results
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_network_monthly
+- name: upsert_network_monthly
+  description: Upsert configuration for a network monthly proration input
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_network_monthly
+- name: delete_network_monthly
+  description: Delete a month configuration. Returns the default configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_network_monthly
+- name: run_network_monthly
+  description: Triggers the calculation and returns the table along with the results
+  source_operation: openapi/validere-carbonhub-openapi-original.json#run_network_monthly
+- name: migrate_network
+  description: Migrates the network and it's configurations to estimation methods
+  source_operation: openapi/validere-carbonhub-openapi-original.json#migrate_network
+- name: list_workflow_template_statuses
+  description: List workflow template statuses
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_workflow_template_statuses
+- name: list_workflow_statuses
+  description: List workflow statuses
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_workflow_statuses
+- name: list_workflow_task_statuses
+  description: List workflow task statuses
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_workflow_task_statuses
+- name: search_reports
+  description: Search and list generated reports
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_reports
+- name: get_report_v2
+  description: Get report with download URL
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_report_v2
+- name: delete_report
+  description: Delete report
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_report
+- name: trigger_report_v2
+  description: Trigger report generation
+  source_operation: openapi/validere-carbonhub-openapi-original.json#trigger_report_v2
+- name: trigger_report_v3
+  description: Trigger report generation
+  source_operation: openapi/validere-carbonhub-openapi-original.json#trigger_report_v3
+- name: search_reports_v3
+  description: Search reports with latest version
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_reports_v3
+- name: get_existing_report_inputs
+  description: Get existing report inputs for a templated report
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_existing_report_inputs
+- name: get_report_with_latest_version_v3
+  description: Get Report with latest version
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_report_with_latest_version_v3
+- name: update_report
+  description: Update report status
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_report
+- name: delete_report
+  description: Delete report
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_report
+- name: trigger_report_next_version_v3
+  description: Trigger next version report generation
+  source_operation: openapi/validere-carbonhub-openapi-original.json#trigger_report_next_version_v3
+- name: get_report_versions_v3
+  description: Get report with list of versions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_report_versions_v3
+- name: get_report_version_v3
+  description: Get report version
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_report_version_v3
+- name: get_embedded_report_sheets
+  description: Get and list embedded report sheets
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_embedded_report_sheets
+- name: search_embedded_report_rows
+  description: Search and list embedded report rows
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_embedded_report_rows
+- name: search_templated_report
+  description: Search templated reports [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_templated_report
+- name: search_company_templated_report
+  description: Search a company's templated reports
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_company_templated_report
+- name: get_templated_report
+  description: Get templated report
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_report
+- name: add_templated_report_to_company
+  description: Make templated report available to a company [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_templated_report_to_company
+- name: remove_templated_report_from_company
+  description: Remove a templated report from a company [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_templated_report_from_company
+- name: create_templated_report_category
+  description: Must be Company Admin - Create templated report category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_templated_report_category
+- name: get_templated_report_category
+  description: Get templated report category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_report_category
+- name: update_templated_report_category
+  description: Must be Company Admin - Update templated report category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_templated_report_category
+- name: delete_templated_report_category
+  description: Must be Company Admin - Delete templated report category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_templated_report_category
+- name: search_company_templated_report_categories
+  description: Search templated report categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_company_templated_report_categories
+- name: get_libraries
+  description: Get all calculation libraries
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_libraries
+- name: get_library
+  description: Get library
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_library
+- name: get_calculators
+  description: Get all calculators
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculators
+- name: get_calculators_v2
+  description: Get all calculators
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculators_v2
+- name: get_calculator
+  description: Get calculator
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator
+- name: get_calculator_versions
+  description: Get calculator versions
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator_versions
+- name: get_calculator_version
+  description: Get calculator version
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_calculator_version
+- name: list_reporting_group
+  description: List Reporting Groups
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_reporting_group
+- name: create_reporting_group
+  description: Create new Reporting Group
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_reporting_group
+- name: get_reporting_group
+  description: Get a Reporting Group by Id
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_reporting_group
+- name: update_reporting_group
+  description: Update a Reporting Group by Id
+  source_operation: openapi/validere-carbonhub-openapi-original.json#update_reporting_group
+- name: delete_reporting_group
+  description: Delete a Reporting Group by Id
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_reporting_group
+- name: add_estimation_method_reporting_group
+  description: Add a reporting_group/estimation_method relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_estimation_method_reporting_group
+- name: remove_estimation_method_reporting_group
+  description: Remove a reporting_group/estimation_method relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_estimation_method_reporting_group
+- name: create_record
+  description: Create new record
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_record
+- name: upsert_record
+  description: Create or update a record
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_record
+- name: search_records
+  description: Search and list records
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_records
+- name: lock_records_by_search
+  description: Search records and set status of their record values
+  source_operation: openapi/validere-carbonhub-openapi-original.json#lock_records_by_search
+- name: export_records
+  description: Export records based on search input
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_records
+- name: apply_record_configuration
+  description: Apply record configuration using filter parameters
+  source_operation: openapi/validere-carbonhub-openapi-original.json#apply_record_configuration
+- name: apply_default_configuration
+  description: Apply default record configuration using filter parameters
+  source_operation: openapi/validere-carbonhub-openapi-original.json#apply_default_configuration
+- name: apply_default_configuration_async
+  description: Start an asynchronous job to bulk apply default record configuration using filter parameters
+  source_operation: openapi/validere-carbonhub-openapi-original.json#apply_default_configuration_async
+- name: get_record
+  description: Get record and values
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_record
+- name: delete_record
+  description: Delete record and values
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_record
+- name: lock_record_values_of_record
+  description: Set status of values of a record (lock/unlock)
+  source_operation: openapi/validere-carbonhub-openapi-original.json#lock_record_values_of_record
+- name: search_input_records
+  description: Search and list records that are calculator inputs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_input_records
+- name: export_input_records
+  description: Export records that are calculator inputs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_input_records
+- name: get_record_value
+  description: Get record value
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_record_value
+- name: upsert_record_value
+  description: Upsert record value
+  source_operation: openapi/validere-carbonhub-openapi-original.json#upsert_record_value
+- name: delete_record_value
+  description: Delete record value
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_record_value
+- name: lock_record_value
+  description: Set record value status (lock/unlock)
+  source_operation: openapi/validere-carbonhub-openapi-original.json#lock_record_value
+- name: get_records_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_records_filter
+- name: post_records_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_records_filter
+- name: delete_records_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_records_filter
+- name: put_records_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_records_filter
+- name: list_workflow_category
+  description: List workflow categories
+  source_operation: openapi/validere-carbonhub-openapi-original.json#list_workflow_category
+- name: create_workflow_category
+  description: Create a workflow category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_workflow_category
+- name: get_workflow_category
+  description: Get a workflow category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow_category
+- name: put_workflow_category
+  description: Update a workflow category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_workflow_category
+- name: delete_workflow_category
+  description: Delete a workflow category
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_workflow_category
+- name: create_workflow_template
+  description: Create a Workflow Template
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_workflow_template
+- name: search_workflow_templates
+  description: Search Workflow Templates
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_workflow_templates
+- name: get_workflow_template
+  description: Get a workflow template
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow_template
+- name: put_workflow_template
+  description: Update a workflow template
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_workflow_template
+- name: delete_workflow_template
+  description: Delete a workflow template
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_workflow_template
+- name: create_workflow
+  description: Trigger a Workflow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_workflow
+- name: search_workflows
+  description: Search Workflows
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_workflows
+- name: get_workflow
+  description: Get a workflow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow
+- name: put_workflow
+  description: Update a workflow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_workflow
+- name: delete_workflow
+  description: Delete a workflow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_workflow
+- name: search_workflow_form_submissions
+  description: Search form submissions on a workflow
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_workflow_form_submissions
+- name: search_workflow_tasks
+  description: Search Workflow Tasks
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_workflow_tasks
+- name: get_workflow_action
+  description: Get a workflow action
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow_action
+- name: search_workflow_steps
+  description: Search Workflow Steps
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_workflow_steps
+- name: get_workflow_task
+  description: Get a workflow task
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow_task
+- name: put_workflow_task
+  description: Update a workflow task
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_workflow_task
+- name: add_workflow_task_form
+  description: Add a workflow task/form submission relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_workflow_task_form
+- name: delete_workflow_task_form
+  description: Remove a workflow task/form submission relationship
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_workflow_task_form
+- name: get_workflow_tasks_filter
+  description: List Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_workflow_tasks_filter
+- name: post_workflow_tasks_filter
+  description: Create Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#post_workflow_tasks_filter
+- name: delete_workflow_tasks_filter
+  description: Delete Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#delete_workflow_tasks_filter
+- name: put_workflow_tasks_filter
+  description: Update Filter
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_workflow_tasks_filter
+- name: get_templated_configuration
+  description: Get a templated configuration
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_configuration
+- name: get_templated_configuration_inputs
+  description: Generate an input schema for a templated configuration, enriched with entity subtype specific
+    custom attributes if applicable.
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_configuration_inputs
+- name: search_templated_configuration
+  description: Search templated configurations [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_templated_configuration
+- name: search_company_templated_configuration
+  description: Search for the templated configurations available to the company of the requesting user
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_company_templated_configuration
+- name: add_templated_configuration_to_company
+  description: Make a templated configuration available to a company [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#add_templated_configuration_to_company
+- name: remove_templated_configuration_from_company
+  description: Remove a templated configuration from a company [System Admin]
+  source_operation: openapi/validere-carbonhub-openapi-original.json#remove_templated_configuration_from_company
+- name: create_templated_configuration_run
+  description: Create a templated configuration run
+  source_operation: openapi/validere-carbonhub-openapi-original.json#create_templated_configuration_run
+- name: get_templated_configuration_run
+  description: Get a templated configuration run
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_configuration_run
+- name: put_templated_configuration_run
+  description: Update a templated configuration run
+  source_operation: openapi/validere-carbonhub-openapi-original.json#put_templated_configuration_run
+- name: search_templated_configuration_runs
+  description: Search templated configuration runs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#search_templated_configuration_runs
+- name: export_templated_configuration_runs
+  description: Export templated configuration runs
+  source_operation: openapi/validere-carbonhub-openapi-original.json#export_templated_configuration_runs
+- name: get_templated_configuration_run_dependency_graph
+  description: Get templated configuration run dependency graph from a resource
+  source_operation: openapi/validere-carbonhub-openapi-original.json#get_templated_configuration_run_dependency_graph
+- name: register_json_data_data_json_post
+  description: Register Json Data
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#register_json_data_data_json_post
+- name: get_file_upload_url_data_file_upload_url_get
+  description: Get File Upload Url
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#get_file_upload_url_data_file_upload_url_get
+- name: list_all_transactions_transactions_get
+  description: List All Transactions
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transactions_transactions_get
+- name: get_transaction_by_id_transactions__transaction_id__get
+  description: Get Transaction By Id
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#get_transaction_by_id_transactions__transaction_id__get
+- name: download_transaction_file_version_transactions__transaction_id__download_get
+  description: Download Transaction File Version
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#download_transaction_file_version_transactions__transaction_id__download_get
+- name: get_sink_summary_by_transaction_by_id_transactions__transaction_id__sink_summary_get
+  description: Get Sink Summary By Transaction By Id
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#get_sink_summary_by_transaction_by_id_transactions__transaction_id__sink_summary_get
+- name: retry_transaction_by_id_transactions__transaction_id__retry_post
+  description: Retry Transaction By Id
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#retry_transaction_by_id_transactions__transaction_id__retry_post
+- name: get_transaction_details_by_id_transactions__transaction_id__details_get
+  description: Get Transaction Details By Id
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#get_transaction_details_by_id_transactions__transaction_id__details_get
+- name: get_transaction_details_page_v2_v2_transactions__transaction_id__details_get
+  description: Get Transaction Details Page V2
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#get_transaction_details_page_v2_v2_transactions__transaction_id__details_get
+- name: list_all_transaction_states_type_metadata_transaction_states_get
+  description: List All Transaction States
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transaction_states_type_metadata_transaction_states_get
+- name: list_all_transaction_statuses_type_metadata_transaction_statuses_get
+  description: List All Transaction Statuses
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transaction_statuses_type_metadata_transaction_statuses_get
+- name: list_all_transaction_steps_type_metadata_transaction_steps_get
+  description: List All Transaction Steps
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transaction_steps_type_metadata_transaction_steps_get
+- name: list_all_transaction_errors_type_metadata_transaction_errors_get
+  description: List All Transaction Errors
+  source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transaction_errors_type_metadata_transaction_errors_get

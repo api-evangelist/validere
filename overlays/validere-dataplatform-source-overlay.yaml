@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Validere Data Platform Source API
+  version: 1.0.0
+extends: openapi/validere-dataplatform-source-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: validere
+      harvested: '2026-07-21'
+      source: https://sources.dataplatform.validere.com/openapi.json
+      notes:
+      - Docs base URL is https://api.validere.io/platform/v1; spec publishes no servers[].
+      - 'Auth: HTTPBearer (Auth0 client_credentials JWT) or X-API-Key header.'
+- target: $
+  update:
+    servers:
+    - url: https://api.validere.io/platform/v1
+      description: Production (from https://docs.validere.com/guides/api/data)

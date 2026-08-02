@@ -1,0 +1,80 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com/supporting-information/glossary/data_model (+ OpenAPI tags)
+entities:
+- name: Facility
+  description: Discrete physical location (refinery, plant, storage) grouping interconnected processes
+    and emissions sources
+- name: Equipment
+  description: Base object for emissions quantification (tanks, pipelines, processing units, combustion
+    processes); must exist within a Facility
+- name: Flow
+  description: Models interconnectivity and commodity streams between Equipment, Facilities, or other
+    Flows
+- name: AssetGroup
+  description: Higher-level grouping of Equipment/Facilities/Flows, itself treated as an asset for estimation
+    methods and reporting
+- name: Device
+  description: Real-world measurement collector (meter, gauge) tracking measurement type, location, and
+    values
+- name: MeasurementSeries
+  description: Series a measurement is submitted through
+- name: Measurement
+  description: Value submitted via a measurement series; has type, unit, source, and subject
+- name: EstimationMethod
+  description: Air-emissions estimation method associated with equipment to calculate emission exchanges
+- name: Record
+  description: Operational/emissions record managed by the App API
+- name: Event
+  description: Operational event associated with equipment/facilities
+- name: FormSubmission
+  description: Field-captured form data against a form schema
+- name: Workflow
+  description: Configured workflow with categories, templates, and tasks
+relationships:
+- from: Facility
+  to: Equipment
+  kind: has_many
+  evidence: 'docs: "equipment must exist within the context of a higher level facility"'
+- from: Equipment
+  to: Facility
+  kind: belongs_to
+- from: Equipment
+  to: EstimationMethod
+  kind: has_many
+  evidence: 'docs: emission magnitude calculated by associating an estimation method with equipment'
+- from: Flow
+  to: Equipment
+  kind: connects
+  evidence: 'docs: flows model interconnectivity between Equipment, Facilities, or other Flows'
+- from: Flow
+  to: Facility
+  kind: connects
+- from: AssetGroup
+  to: Equipment
+  kind: has_many
+- from: AssetGroup
+  to: Facility
+  kind: has_many
+- from: AssetGroup
+  to: Flow
+  kind: has_many
+- from: MeasurementSeries
+  to: Measurement
+  kind: has_many
+  evidence: GET /app/v1/measurements/{measurement_series_id} lists measurements of a series
+- from: Device
+  to: Measurement
+  kind: has_many
+  via: device_id
+  evidence: 'docs: device_id references the source of aggregated measurements'
+- from: Event
+  to: Equipment
+  kind: has_many
+  via: equipment_id
+  evidence: PUT/DELETE /app/v1/events/{id}/equipment/{equipment_id}
+- from: Event
+  to: Facility
+  kind: has_many
+  via: facility_id
+  evidence: PUT/DELETE /app/v1/events/{id}/facilities/{facility_id}

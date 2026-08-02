@@ -1,0 +1,55 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.validere.com/guides/api (+ app/data sub-pages)
+authentication:
+  style: OAuth 2.0 client_credentials (Auth0) exchanged for a machine JWT used as a Bearer token; Data
+    Platform Source API also declares an X-API-Key header scheme
+  token_endpoint: https://validere.auth0.com/oauth/token
+  audience: https://validere360.com/api
+  credentials: client_id/client_secret issued by Validere technical support (no self-serve signup)
+  token_lifetime: expires_in 86400 seconds in the documented example; caching recommended
+  artifact: authentication/validere-authentication.yml
+idempotency:
+  supported: false
+  notes: No idempotency-key contract documented; duplicate submissions surface as ObjectAlreadyExistsError
+    at the data sink step
+pagination:
+  style: page-number
+  params:
+  - page
+  - page_size
+  - sort_by
+  - sort_direction
+  notes: Shared by all App API search/bulk-fetch endpoints
+filtering:
+  style: mongo-like query object in the filter parameter
+  operators:
+  - $in
+  - $or
+  - field:value equality
+  - multiple keys = AND
+  docs: https://docs.validere.com/guides/api/app
+versioning:
+  scheme: uri-path (v1/v2)
+  artifact: lifecycle/validere-lifecycle.yml
+errors:
+  envelope: standard HTTP status codes; sync schema validation errors return 400; async ingestion errors
+    via Transactions API
+  artifact: errors/validere-problem-types.yml
+rate_limits:
+  documented: false
+data_ingestion:
+  required_parameters:
+  - client_id
+  - dataset_id
+  - registered JSON Schema for the dataset
+  interfaces:
+  - REST API (JSON push + S3 presigned file upload)
+  - sFTP
+  - IoT
+  - Email
+  docs: https://docs.validere.com/guides/data_interfaces
+request_tracing:
+  documented: false
+field_expansion:
+  documented: false

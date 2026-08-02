@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Validere CarbonHub API
+  version: 1.0.0
+extends: openapi/validere-carbonhub-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: validere
+      harvested: '2026-07-21'
+      source: https://docs.validere.com/guides/api/app (GitBook openapi block swagger.json)
+      notes:
+      - Global security references Staging/Integration/Local schemes that are not defined in components.securitySchemes;
+        the documented auth is an Auth0 client_credentials JWT used as a Bearer token.
+      - Only 2 of 399 operations declare 4xx responses; error semantics documented in prose at https://docs.validere.com/guides/api/errors.
+- target: $.servers
+  update:
+  - url: https://api.validere.io
+    description: 'Production (docs: App API under /app, e.g. /app/v1)'
