@@ -1,0 +1,2210 @@
+{
+  "item": [
+    {
+      "id": "72139125-c1fe-4da4-ab2b-b2c84e7e6cb4",
+      "name": "records",
+      "description": {
+        "content": "Manage Records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f7455901-9072-4bbf-b2c4-a540c330a8e2",
+          "name": "Create new record",
+          "request": {
+            "name": "Create new record",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a6e8d476-a26f-4d25-8c43-41a79d3cc7e1",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"created_at\": \"1950-01-27T21:03:49.802Z\",\n  \"updated_at\": \"1996-04-06T13:28:59.643Z\",\n  \"created_by\": \"e07748ad-d587-7fda-7478-a154545c4760\",\n  \"updated_by\": \"70a170fd-b2c4-fbcb-bb98-a1f1846716db\",\n  \"id\": \"045243f9-aff7-7d0d-8fd1-fea92ddc6032\",\n  \"asset_type\": \"flow\",\n  \"company_id\": \"44607399-7d5f-0c0a-cc93-7857d9ccc1d5\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1980-01-14T09:40:19.423Z\",\n      \"updated_at\": \"1978-09-18T10:00:45.640Z\",\n      \"created_by\": \"347570e4-d330-0555-c27a-8e8069fcbdc7\",\n      \"updated_by\": \"1def8930-697d-d911-8cff-e1f2fc0ebec7\",\n      \"id\": \"9cdc0eec-92f2-2062-a43a-9c3bc437628e\",\n      \"record_id\": \"661525af-7358-d968-0c07-73c561708f63\",\n      \"measurement_type\": \"string\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1964-01-15T20:13:31.432Z\",\n      \"updated_at\": \"1952-08-13T03:34:44.606Z\",\n      \"created_by\": \"13303d5d-165c-9eaa-6c2b-43e0e947b38b\",\n      \"updated_by\": \"72155de5-9e68-8078-a095-11437bea81bf\",\n      \"id\": \"92fd7e0c-a5f5-53dc-8688-609a32243841\",\n      \"record_id\": \"ac47aa57-0680-309d-7866-f29520f85860\",\n      \"measurement_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "708ee877-ac56-4c7d-862d-0f3d3fd9a6e4",
+          "name": "Create or update a record",
+          "request": {
+            "name": "Create or update a record",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fa685af4-6c00-4a85-a40b-61e373e7d29c",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {},\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"measurement_type\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"created_at\": \"1962-08-17T13:52:56.356Z\",\n  \"updated_at\": \"1964-06-06T00:28:45.020Z\",\n  \"created_by\": \"ded066f2-ae36-310f-ccec-85c7d8a2e527\",\n  \"updated_by\": \"d3810d96-9ef3-57d1-1318-c2d94dc1dd53\",\n  \"id\": \"9e5f18d4-d91c-3440-5022-5cff715c284a\",\n  \"asset_type\": \"equipment\",\n  \"company_id\": \"43d5dc83-b92e-6ad6-a8e7-e0a955f761bc\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1947-03-08T04:04:15.881Z\",\n      \"updated_at\": \"2019-09-20T03:10:15.876Z\",\n      \"created_by\": \"3141f024-6328-b2a5-a5a5-c204cbe241fc\",\n      \"updated_by\": \"7d82ed74-fc30-e5dc-2d6e-a50a159c5613\",\n      \"id\": \"29be2653-a241-b9f2-05dd-753215612641\",\n      \"record_id\": \"d32b904c-e5f4-7aab-476e-0de534401536\",\n      \"measurement_type\": \"string\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1963-07-05T04:32:17.380Z\",\n      \"updated_at\": \"1950-08-26T03:41:08.529Z\",\n      \"created_by\": \"faa171d2-2981-c68a-d7e7-eb341019cf13\",\n      \"updated_by\": \"08cc714b-113b-6786-2b9c-5f9effb34b16\",\n      \"id\": \"d82de527-9584-2486-26c7-b9e51f3ee1cc\",\n      \"record_id\": \"165eab7f-143b-f50a-84bb-b8c6c3516d55\",\n      \"measurement_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dec5eb3-31c5-4fe8-8c4f-403284795fe4",
+          "name": "Search and list records",
+          "request": {
+            "name": "Search and list records",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asset_detail",
+                  "value": "<string>",
+                  "description": "set to true to include asset detail when group by <asset_type>.id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "140068b2-0714-4db1-8847-f9a436558a05",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset_detail",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"year_month\",\n    \"year_month\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"5250f52e-98dc-dd40-a608-511eb6ed96b3\",\n      \"reporting_group_id\": \"string\",\n      \"year_month\": \"string\",\n      \"values\": [\n        {\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\",\n          \"value\": 0.22,\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\",\n          \"value\": 0.22,\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    },\n    {\n      \"id\": \"c9d095c3-1a7d-039e-5391-90e3c349ea9a\",\n      \"reporting_group_id\": \"string\",\n      \"year_month\": \"string\",\n      \"values\": [\n        {\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\",\n          \"value\": 0.22,\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\",\n          \"value\": 0.22,\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed145099-f458-4a66-836e-4f0c7cfd9bc6",
+          "name": "Search records and set status of their record values",
+          "request": {
+            "name": "Search records and set status of their record values",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a2fe730-bc2c-4df0-aa8c-bf5fa88a7eac",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"affected\": 109\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46554c92-ce3d-4864-8d83-c07c9105552a",
+          "name": "Export records based on search input",
+          "request": {
+            "name": "Export records based on search input",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "asset_detail",
+                  "value": "<string>",
+                  "description": "set to true to include asset detail when group by <asset_type>.id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a5c57ccc-19a5-47a1-92fa-e6a6e1396cf3",
+              "name": "A successful with the link to download report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "asset_detail",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"year_month\",\n    \"year_month\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"029c17e6-16f6-c7df-c781-c8b3093af44f\",\n  \"name\": \"string\",\n  \"company_id\": \"1ae72506-8cbd-26a9-d948-86fba0ff25df\",\n  \"status\": \"exporting\",\n  \"created_at\": \"1965-02-27T20:39:03.441Z\",\n  \"updated_at\": \"1973-10-04T18:54:30.182Z\",\n  \"created_by\": \"ccc53db9-b755-3a60-f8b8-8cc8700a8881\",\n  \"updated_by\": \"85e463a6-635d-5ace-3521-fdf8ba647731\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"PjRz2rgcO\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1969-12-23T06:11:58.640Z\",\n    \"updated_at\": \"1947-01-04T09:37:24.163Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"0G0G\",\n        \"IrFKX\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"CKCXKVB\",\n      \"key_1\": \"mnI2s\",\n      \"key_2\": \"ih03iEh\",\n      \"key_3\": \"tcW2Z\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec313564-9413-4d68-acc4-145351377ebd",
+          "name": "Apply record configuration using filter parameters",
+          "request": {
+            "name": "Apply record configuration using filter parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "apply_configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4e1a877-2055-4b35-8761-a17c687bae8a",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "apply_configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"records\": [\n    \"cb51796d-1588-c338-9677-722a36c92e6d\",\n    \"eb2120f0-922a-e9da-f493-836f4a390bd8\"\n  ],\n  \"updated_record_values\": [\n    \"1a89beba-a4f0-a40c-5cf9-cce9bfa805ab\",\n    \"6563ec93-42ef-042d-e51e-be09cadd4e43\"\n  ],\n  \"failed_record_values\": [\n    \"e9c78c33-ee91-55c9-c25c-17d1e9ac6407\",\n    \"af5f56b9-5048-118a-2300-76c8461699d2\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de78751b-d917-4654-bd20-a07205aadc8e",
+          "name": "Apply default record configuration using filter parameters",
+          "request": {
+            "name": "Apply default record configuration using filter parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "apply_default_configuration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"overwrite_all_values\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d063ba5b-4851-4785-bcc5-030b705aeb7b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "apply_default_configuration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"overwrite_all_values\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"failed\",\n  \"data\": {\n    \"key_0\": {\n      \"status\": \"failed\",\n      \"upserts\": [\n        {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"measurement_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"note\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"attachment_ref\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"attachment_filename\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"created_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updated_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"created_by\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updated_by\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"0692d6e0-d36d-cc52-4945-18d7eb16375b\",\n          \"record_id\": \"5eb5824f-6338-0710-0697-7a1878f153bb\",\n          \"measurement_type\": \"string\"\n        },\n        {\n          \"value\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"measurement_unit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"configuration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"note\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"attachment_ref\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"attachment_filename\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"created_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updated_at\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"created_by\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"updated_by\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"5f32913a-82b6-5efd-8b58-ef9da2354d9a\",\n          \"record_id\": \"9d148aee-6283-0c40-ea37-3d30ac8a448c\",\n          \"measurement_type\": \"string\"\n        }\n      ]\n    }\n  },\n  \"skippedCount\": 9630.394282123942\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "723e89c4-eedd-47a5-a065-35d62ad040fe",
+          "name": "Start an asynchronous job to bulk apply default record configuration using filter parameters",
+          "request": {
+            "name": "Start an asynchronous job to bulk apply default record configuration using filter parameters",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "apply_default_configuration_async"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"overwrite_all_values\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e538358e-f72e-4645-92f6-d225433dd6c9",
+              "name": "Successfully starts an asynchronous job to bulk apply default record configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "apply_default_configuration_async"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"overwrite_all_values\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"success\",\n  \"job\": {\n    \"id\": \"2a2314d1-a369-afeb-c48b-0692a86a1a8b\",\n    \"company_id\": \"60ab3886-0ce1-73d9-6b28-a398e5e7ff56\",\n    \"status\": \"started\",\n    \"type\": \"run_calculation\",\n    \"started_at\": \"2024-11-05T18:39:50.316Z\",\n    \"finished_at\": \"1957-07-15T11:20:18.429Z\",\n    \"duration\": 2288.583011568133,\n    \"input\": {},\n    \"output\": {},\n    \"total_items\": 3102.518669711133,\n    \"processed_items\": 7405.193438823522,\n    \"item_status_counts\": {\n      \"success\": 8698.623545681588,\n      \"failed\": 8295.6870612474,\n      \"skipped\": 3717.8451558785387\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd76d1ec-2349-4247-a1cf-3b756660d48a",
+          "name": "Get record and values",
+          "request": {
+            "name": "Get record and values",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db68a891-7742-472c-b300-e5d93e8cfbe7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"<uuid>\",\n  \"asset_filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\"\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"year_month\": \"<string>\",\n  \"created_at\": \"2005-09-26T00:17:19.353Z\",\n  \"updated_at\": \"1963-05-11T03:44:07.509Z\",\n  \"created_by\": \"29c6acd9-3190-7c8d-5730-5b723ab9fae6\",\n  \"updated_by\": \"157d4c61-71d0-86c0-312d-41641547d758\",\n  \"id\": \"8be85ab2-6d94-1e7f-8677-93440aba6c4e\",\n  \"asset_type\": \"<string>\",\n  \"company_id\": \"1b814dc1-e8d3-57a0-8ed8-209da6834325\",\n  \"values\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1999-09-21T14:29:49.536Z\",\n      \"updated_at\": \"1948-01-06T17:00:25.733Z\",\n      \"created_by\": \"8a733962-1a9b-8e9c-8012-f0ca239c22e7\",\n      \"updated_by\": \"8913f303-504c-9702-02a9-823e679520a1\",\n      \"id\": \"1a929efa-3a41-fa80-9f11-c53b2085e950\",\n      \"record_id\": \"f6c221f1-aee5-7f74-1ec6-30449109c729\",\n      \"measurement_type\": \"string\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1994-08-28T04:28:37.198Z\",\n      \"updated_at\": \"2002-03-07T06:16:43.047Z\",\n      \"created_by\": \"fd883b97-d6d6-b98b-f9b0-cc7a8913c2e5\",\n      \"updated_by\": \"496f8634-69b9-c477-9cca-1ecc98884e6d\",\n      \"id\": \"21ffa544-12e1-e04c-b081-50ad632ae124\",\n      \"record_id\": \"c6171a77-ec99-f6e6-9354-de019a7953f1\",\n      \"measurement_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e6f06e5-fb32-4e11-a0b8-3bd5f191bbc1",
+          "name": "Delete record and values",
+          "request": {
+            "name": "Delete record and values",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be99f1e4-83bd-447c-8a03-de92dc9202d4",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b19ef690-71e9-4d59-a932-3dff490f4035",
+          "name": "Set status of values of a record (lock/unlock)",
+          "request": {
+            "name": "Set status of values of a record (lock/unlock)",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a7e5bc4e-dd0b-4df7-9332-57bda289b998",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurement_types\": [\n    \"volume\",\n    \"volume\"\n  ],\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"recordValues\": [\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1983-02-05T01:25:48.349Z\",\n      \"updated_at\": \"1977-02-18T00:15:45.996Z\",\n      \"created_by\": \"c511eacd-acf4-1364-91a6-a86d66c810da\",\n      \"updated_by\": \"af4f0b1d-7604-de06-2bf7-c7e6144fbb32\",\n      \"id\": \"8298cf47-0b42-1287-eea4-56ea4dd0a943\",\n      \"record_id\": \"e21dfe6a-fe11-df45-d788-bf49f07d4e29\",\n      \"measurement_type\": \"string\"\n    },\n    {\n      \"value\": \"<number>\",\n      \"measurement_unit\": \"<string>\",\n      \"configuration\": {\n        \"sources\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"note\": \"<string>\",\n      \"attachment_ref\": \"<string>\",\n      \"attachment_filename\": \"<string>\",\n      \"created_at\": \"1951-12-24T22:58:06.528Z\",\n      \"updated_at\": \"1995-04-03T04:52:33.586Z\",\n      \"created_by\": \"3189f8f7-7590-d5a2-c94c-1eb5b94fcae4\",\n      \"updated_by\": \"c4c775b2-1c35-37a6-2924-570de5d90ec6\",\n      \"id\": \"e3be87a9-c13f-3d6a-1eab-eca24156f534\",\n      \"record_id\": \"ca83295d-2a89-cfd5-8791-a7443045a7fa\",\n      \"measurement_type\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4f9c8e5-32a2-4f96-8645-3e439b33f55b",
+          "name": "Search and list records that are calculator inputs",
+          "request": {
+            "name": "Search and list records that are calculator inputs",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":entity_type",
+                "input_records",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Asset Type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08d664e0-81a1-4512-b42f-eb22b434db70",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":entity_type",
+                    "input_records",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Asset Type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"asset_id\": \"<uuid>\",\n      \"asset_filter\": {\n        \"description\": \"Either asset_id or asset_filter is required\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"reporting_group_id\": \"<string>\",\n      \"year_month\": \"<string>\",\n      \"created_at\": \"1995-03-19T21:26:43.288Z\",\n      \"updated_at\": \"1986-04-11T14:32:38.370Z\",\n      \"created_by\": \"48b9361e-111a-6088-d2e6-c72f8c1eec55\",\n      \"updated_by\": \"6c49d754-538e-0595-12a3-cc5069546766\",\n      \"id\": \"b6d85211-998a-92e8-848e-e9a8fcef2e15\",\n      \"company_id\": \"51e471b9-ff73-7ca1-e1b5-5650b1cd7594\",\n      \"record_value\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"asset\": {\n        \"id\": \"c52623b5-c8ea-a883-c1a1-00ccddde49b3\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"reporting_group\": {\n        \"company_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"asset_id\": \"<uuid>\",\n      \"asset_filter\": {\n        \"description\": \"Either asset_id or asset_filter is required\",\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"reporting_group_id\": \"<string>\",\n      \"year_month\": \"<string>\",\n      \"created_at\": \"1984-06-25T10:26:22.104Z\",\n      \"updated_at\": \"1983-10-05T20:37:08.264Z\",\n      \"created_by\": \"f9e01df6-d266-8f8e-cc13-d396ace359f5\",\n      \"updated_by\": \"b1fa3a29-8155-d51f-d2a1-4b1adc487fa7\",\n      \"id\": \"20587df5-212a-0b22-a799-72accf7f4f5d\",\n      \"company_id\": \"76118d49-02a5-ba70-6d23-67c15260fe6e\",\n      \"record_value\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"asset\": {\n        \"id\": \"0044918b-f8f6-d0f0-a610-3a9b8260795c\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"reporting_group\": {\n        \"company_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "67c0b66d-3cdf-4e94-8206-e5d07b4bb9ec",
+          "name": "Export records that are calculator inputs",
+          "request": {
+            "name": "Export records that are calculator inputs",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":entity_type",
+                "input_records",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Asset Type"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "358491b0-5099-437d-8f9e-12d394ceab7c",
+              "name": "A successful with the link to download report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":entity_type",
+                    "input_records",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Asset Type"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"ef6d8eb6-7976-4e00-a14b-d6f958b0b43a\",\n  \"name\": \"string\",\n  \"company_id\": \"26da5c42-8693-684f-eea2-7057a9ef8974\",\n  \"status\": \"failed\",\n  \"created_at\": \"1994-06-29T01:19:44.488Z\",\n  \"updated_at\": \"2025-06-07T04:22:28.029Z\",\n  \"created_by\": \"cdc9e0fb-46dd-77f0-4d74-b3cd1ea47a9b\",\n  \"updated_by\": \"c60e7547-b837-3baf-92e3-0767437f60a4\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"uVfBkbO4Kif\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1964-02-28T13:32:33.745Z\",\n    \"updated_at\": \"1991-03-01T04:07:42.079Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"txth\",\n        \"cKhPvd\"\n      ],\n      \"key_1\": [\n        \"tjlJ0iaa4\",\n        \"X6glw\"\n      ],\n      \"key_2\": [\n        \"lbypiy\",\n        \"MNDi1\"\n      ],\n      \"key_3\": [\n        \"TZFvm\",\n        \"7FlltB1HiL\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"XdBGSu2\",\n      \"key_1\": \"ceU1QkV\",\n      \"key_2\": \"HrC9Owd\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f11c736-79ba-48aa-afdf-833cd4ab59f8",
+          "name": "Get record value",
+          "request": {
+            "name": "Get record value",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id",
+                "value",
+                ":measurement_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "measurement_type",
+                  "description": "(Required) Measurement type of the measurements being retrieved"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0bf3bb8-98bc-4651-8ae5-66b1d1fba3ee",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id",
+                    "value",
+                    ":measurement_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "measurement_type",
+                      "description": "(Required) Measurement type of the measurements being retrieved"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<number>\",\n  \"measurement_unit\": \"<string>\",\n  \"configuration\": {\n    \"configuration_type\": \"manual\",\n    \"value\": 3450.6112618882935\n  },\n  \"note\": \"<string>\",\n  \"attachment_ref\": \"<string>\",\n  \"attachment_filename\": \"<string>\",\n  \"created_at\": \"1974-05-15T22:30:25.260Z\",\n  \"updated_at\": \"1964-10-31T02:11:23.999Z\",\n  \"created_by\": \"a46342f3-d250-6925-8966-6c06521e3982\",\n  \"updated_by\": \"16bf3a28-6f52-911b-dcdf-a6ae22c49b05\",\n  \"id\": \"26998d30-b296-1172-c27b-47ccd208a57f\",\n  \"record_id\": \"2b16f361-801a-95ae-b166-8fdf6174c6e2\",\n  \"measurement_type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f622e408-6bce-4854-9b26-599e5dd8c380",
+          "name": "Upsert record value",
+          "request": {
+            "name": "Upsert record value",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id",
+                "value",
+                ":measurement_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "measurement_type",
+                  "description": "(Required) Measurement type of the measurements being retrieved"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<number>\",\n  \"measurement_unit\": \"<string>\",\n  \"configuration\": {\n    \"configuration_type\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"note\": \"<string>\",\n  \"attachment_ref\": \"<string>\",\n  \"attachment_filename\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcb73923-4521-424f-9787-034870702aa7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id",
+                    "value",
+                    ":measurement_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "measurement_type",
+                      "description": "(Required) Measurement type of the measurements being retrieved"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<number>\",\n  \"measurement_unit\": \"<string>\",\n  \"configuration\": {\n    \"configuration_type\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"note\": \"<string>\",\n  \"attachment_ref\": \"<string>\",\n  \"attachment_filename\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<number>\",\n  \"measurement_unit\": \"<string>\",\n  \"configuration\": {\n    \"configuration_type\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"note\": \"<string>\",\n  \"attachment_ref\": \"<string>\",\n  \"attachment_filename\": \"<string>\",\n  \"created_at\": \"1953-01-09T15:04:14.489Z\",\n  \"updated_at\": \"2019-06-22T04:35:50.661Z\",\n  \"created_by\": \"d9d6a405-5c33-bec0-3349-5637bfee2f9e\",\n  \"updated_by\": \"076a3dcc-7272-cdf7-bfbb-cdcc465b5727\",\n  \"id\": \"7eb6b12e-4644-e260-1445-03c445481f67\",\n  \"record_id\": \"74c8a4e0-bfd4-0209-b4d5-f905bbbff42a\",\n  \"measurement_type\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d063de42-5c00-4096-a805-4d0dbc580053",
+          "name": "Delete record value",
+          "request": {
+            "name": "Delete record value",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id",
+                "value",
+                ":measurement_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "measurement_type",
+                  "description": "(Required) Measurement type of the measurements being retrieved"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bc5725ae-4488-48a3-9b15-d48b2ec6a9f4",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id",
+                    "value",
+                    ":measurement_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "measurement_type",
+                      "description": "(Required) Measurement type of the measurements being retrieved"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0c75a1f-a4bd-4536-978a-46a359c0417b",
+          "name": "Set record value status (lock/unlock)",
+          "request": {
+            "name": "Set record value status (lock/unlock)",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                ":record_id",
+                "value",
+                ":measurement_type",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) ID of the record"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "measurement_type",
+                  "description": "(Required) Measurement type of the measurements being retrieved"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4427568e-d612-4fd1-b667-4a9e2fbf489f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    ":record_id",
+                    "value",
+                    ":measurement_type",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) ID of the record"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "measurement_type",
+                      "description": "(Required) Measurement type of the measurements being retrieved"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": \"<number>\",\n  \"measurement_unit\": \"<string>\",\n  \"configuration\": {\n    \"configuration_type\": \"<string>\",\n    \"value\": \"<number>\"\n  },\n  \"note\": \"<string>\",\n  \"attachment_ref\": \"<string>\",\n  \"attachment_filename\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "803c7ee5-634c-40fa-8723-7ecbd55e2374",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter Status"
+                },
+                {
+                  "disabled": false,
+                  "key": "tag",
+                  "value": "<string>",
+                  "description": "Filter Tag"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<uuid>",
+                  "description": "Filter Creator"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter Name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb833dd3-0244-4b30-be08-368ed2dc7a9f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_by",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"d4caee0e-c9be-396f-40ac-fd32f7363cc9\",\n      \"filter\": {\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"record_value.id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_facility.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_equipment.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"year_month\",\n        \"year_month\"\n      ]\n    },\n    {\n      \"id\": \"92085015-9eac-4172-2154-336147777cb2\",\n      \"filter\": {\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"record_value.id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_facility.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_equipment.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"year_month\",\n        \"year_month\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "38160557-2cfc-4d66-9193-1f28a0b08713",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ec214b1-a746-4f36-809c-6714a982fd4f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"year_month\",\n    \"year_month\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"7441bde7-9fe0-7310-236b-946a3807fbb5\",\n      \"filter\": {\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"record_value.id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_facility.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_equipment.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"year_month\",\n        \"year_month\"\n      ]\n    },\n    {\n      \"id\": \"f9d2b576-479b-6baf-7ab6-5b1e3bcbc099\",\n      \"filter\": {\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"record_value.id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_facility.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow.associated_equipment.custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"year_month\",\n        \"year_month\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b8366da-5446-482d-955a-8e046b315843",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6273a776-0d2a-42c4-aee2-855139e31561",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5ddfb77-cdb6-4c3d-907b-efa7beffbf0c",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "records",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"<string>\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "552d797f-4598-4475-9c5c-1539ce9754df",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "records",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"reporting_group_id\": \"subpartw\",\n    \"year_month\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"record_value.id\": \"<uuid>\",\n    \"flow.associated_facility.custom_attributes\": \"<object>\",\n    \"flow.associated_equipment.custom_attributes\": \"<object>\"\n  },\n  \"group_by\": [\n    \"year_month\",\n    \"year_month\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8797ae97-08da-c6a1-ad76-0e259790fe67\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"id\": \"43c948f5-7a68-bb27-82f3-457b66e11560\",\n    \"version\": 7434,\n    \"current_version\": false,\n    \"status\": \"pending\",\n    \"form_category_id\": \"string\",\n    \"form_category.name\": \"test\",\n    \"form_schema.id\": \"string\",\n    \"form_schema.name\": \"string\",\n    \"form_schema.version\": 6334.644799807082,\n    \"form_schema.current_version\": false,\n    \"form_schema.status\": \"active\",\n    \"related_entity_id\": \"8fdf5fcc-afb4-8c0e-f308-f03431aa3e62\",\n    \"created_by\": \"72588ead-5f2c-61b4-48cf-2947fc47c22c\",\n    \"created_at\": \"1975-11-10T05:29:54.717Z\",\n    \"updated_at\": \"1965-08-20T21:06:34.231Z\",\n    \"event.id\": \"936fbd64-2e0d-dbf2-f27f-8c3cce72cd52\",\n    \"measurement.measurement_type\": \"string\",\n    \"measurement.measurement_unit\": \"string\",\n    \"measurement.source_id\": \"9147030a-b327-489c-8f4f-0b6b317c2fc3\",\n    \"measurement.subject_id\": \"25ecb4c3-c070-1396-232a-f907f9863541\",\n    \"measurement.form_submission_id\": \"3a578299-6f67-3f90-fe84-a067b7bb6f7a\",\n    \"measurement.section_id\": \"string\",\n    \"measurement.question_id\": \"string\",\n    \"measurement.question_index\": 942.1606546784278,\n    \"measurement.time\": \"1965-09-25T04:30:30.868Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a5cf7afa-8a9f-4689-b78a-11e189b3cb69",
+    "name": "CarbonHub activities records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

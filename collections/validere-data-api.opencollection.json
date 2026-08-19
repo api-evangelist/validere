@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register Json Data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/data/json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers new JSON data for the specified dataset.\n\nThe JSON request body must include the following fields:\n* `client_id` (UUID) - client making the request\n* `dataset_id` (UUID) - dataset uuid for which the payload is being ingested for.\n* `data` (List[object]) - data to ingest into the data platform"
+        },
+        {
+          "info": {
+            "name": "Get File Upload Url",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/data/file_upload_url",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "file_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "content_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "file_name",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Generates a presigned S3 upload url to upload files to the Data Platform.\n\nThe following fields should be passed as query parameters:\n\n* `file_name` (str) - Must include file extension. Must match the DatasetType that was registered for the dataset_id.\n* `content_type` (str) - Optional. Can be specified in request. Otherwise, will be interpreted from file_name.\n\nRequests made from systems authenticated via api-key must additionally pass the following fields:\n\n* `client_id` (uuid) - The Data Plat"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

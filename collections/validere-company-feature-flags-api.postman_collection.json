@@ -1,0 +1,448 @@
+{
+  "item": [
+    {
+      "id": "49632c8e-66df-46f1-975e-949d18d7de0a",
+      "name": "company_feature_flags",
+      "description": {
+        "content": "Company Feature Flags",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "97439d43-30e3-4e19-9071-34e3ca30d38f",
+          "name": "Search all company feature flags",
+          "request": {
+            "name": "Search all company feature flags",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "company_feature_flags",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenant_id",
+                  "value": "<string>",
+                  "description": "Tenant ID for admin users"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b194d2b4-c23e-40b5-926c-c5d7827ebf6b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "company_feature_flags",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenant_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"filter\": {\n    \"company_id\": \"<string>\",\n    \"feature_flag_name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"created_at\": \"2016-10-04T05:26:57.996Z\",\n      \"updated_at\": \"1995-09-28T21:55:04.463Z\",\n      \"created_by\": \"f3f13607-bdf3-2cb5-6e79-439672e15c20\",\n      \"updated_by\": \"99591b01-e4f9-1a2f-c6a6-1958f59c66a6\",\n      \"company_id\": \"string\",\n      \"feature_flag_name\": \"string\"\n    },\n    {\n      \"created_at\": \"2004-11-18T16:47:55.786Z\",\n      \"updated_at\": \"1988-10-03T10:35:41.906Z\",\n      \"created_by\": \"a04cc00a-9318-717c-0995-63d6293f9833\",\n      \"updated_by\": \"32387b3b-4835-6def-2b3f-ab5a83362a53\",\n      \"company_id\": \"string\",\n      \"feature_flag_name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af39110d-840f-4fe8-9c34-84ad6d56f01d",
+          "name": "Must be Company member - Search company feature flags",
+          "request": {
+            "name": "Must be Company member - Search company feature flags",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "company_feature_flags",
+                ":company_id",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5acaf956-12e5-42b9-bbf7-cddbf9080c2b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "company_feature_flags",
+                    ":company_id",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"filter\": {\n    \"feature_flag_name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"created_at\": \"1958-05-26T14:09:11.538Z\",\n      \"updated_at\": \"2001-03-22T14:04:53.090Z\",\n      \"created_by\": \"938ed250-5738-c13e-6c56-26ea201437d8\",\n      \"updated_by\": \"ba82acf5-bbfa-72b1-a99c-627745efd697\",\n      \"company_id\": \"string\",\n      \"feature_flag_name\": \"string\"\n    },\n    {\n      \"created_at\": \"1970-02-07T15:43:06.111Z\",\n      \"updated_at\": \"1993-04-27T14:28:50.889Z\",\n      \"created_by\": \"c198dcfc-f9c1-2ccd-b2de-e44d7b044c53\",\n      \"updated_by\": \"6833cbc6-103a-0a3d-c3e3-56ec53900a67\",\n      \"company_id\": \"string\",\n      \"feature_flag_name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6466649f-7899-41c6-bd9a-3cc8e217027d",
+          "name": "Create a company feature flag",
+          "request": {
+            "name": "Create a company feature flag",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "company_feature_flags",
+                ":company_id",
+                ":feature_flag_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feature_flag_name",
+                  "description": "(Required) Feature Flag Name (any version)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b09fd639-526f-4c40-86cc-4e426531cfa6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "company_feature_flags",
+                    ":company_id",
+                    ":feature_flag_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feature_flag_name",
+                      "description": "(Required) Feature Flag Name (any version)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"2007-06-25T18:51:58.962Z\",\n  \"updated_at\": \"2024-04-26T02:37:19.843Z\",\n  \"created_by\": \"d1827444-9355-7c3a-ad32-6927b1ade4ca\",\n  \"updated_by\": \"9ac3c9d7-2f30-c940-d184-d3d77e5887c2\",\n  \"company_id\": \"string\",\n  \"feature_flag_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4751443d-5e1b-476a-9286-cecb18efa601",
+          "name": "Delete a company feature flag",
+          "request": {
+            "name": "Delete a company feature flag",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "company_feature_flags",
+                ":company_id",
+                ":feature_flag_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "feature_flag_name",
+                  "description": "(Required) Feature Flag Name (any version)"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57e0c7d1-f1c3-4d26-8b85-be0c05607748",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "company_feature_flags",
+                    ":company_id",
+                    ":feature_flag_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "feature_flag_name",
+                      "description": "(Required) Feature Flag Name (any version)"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d23a92e9-6a55-40a9-abc7-483d5b7b70b8",
+    "name": "CarbonHub activities company_feature_flags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

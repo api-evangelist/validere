@@ -1,0 +1,143 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities dashboards API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "dashboards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List dashboards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/dashboards",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Dashboard name"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Dashboard description"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List dashboards"
+        },
+        {
+          "info": {
+            "name": "Create a dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/dashboards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a dashboard"
+        },
+        {
+          "info": {
+            "name": "Get a dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dashboard ID"
+              }
+            ]
+          },
+          "docs": "Get a dashboard"
+        },
+        {
+          "info": {
+            "name": "Update a dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dashboard ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a dashboard"
+        },
+        {
+          "info": {
+            "name": "Delete a dashboard",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/dashboards/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Dashboard ID"
+              }
+            ]
+          },
+          "docs": "Delete a dashboard"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

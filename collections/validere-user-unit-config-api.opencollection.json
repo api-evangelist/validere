@@ -1,0 +1,188 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities user_unit_config API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user_unit_config",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search user unit configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/user_unit_config/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search user unit configs"
+        },
+        {
+          "info": {
+            "name": "Get a user unit config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/user_unit_config/:measurement_type",
+            "params": [
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ]
+          },
+          "docs": "Get a user unit config"
+        },
+        {
+          "info": {
+            "name": "Create or update a user unit config",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/user_unit_config/:measurement_type",
+            "params": [
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a user unit config"
+        },
+        {
+          "info": {
+            "name": "Delete a user unit configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/user_unit_config/:measurement_type",
+            "params": [
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ]
+          },
+          "docs": "Delete a user unit configuration"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/user_unit_config/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/user_unit_config/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/user_unit_config/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/user_unit_config/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

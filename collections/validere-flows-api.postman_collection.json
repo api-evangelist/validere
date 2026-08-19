@@ -1,0 +1,1142 @@
+{
+  "item": [
+    {
+      "id": "f5c49bf0-1336-4de3-ac4c-636a0d094c57",
+      "name": "flows",
+      "description": {
+        "content": "Manage Flows",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47ca9a0b-0ee9-441a-8c32-0243179b7cd0",
+          "name": "Create a flow",
+          "request": {
+            "name": "Create a flow",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": \"<object>\",\n  \"associated_facility_id\": \"<uuid>\",\n  \"associated_equipment_id\": \"<uuid>\",\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"associated_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"upstream_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"downstream_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"associated_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"upstream_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"downstream_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52e25509-c530-488b-896a-a13e0aeae13e",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"associated_facility_id\": \"<uuid>\",\n  \"associated_equipment_id\": \"<uuid>\",\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"associated_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"upstream_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"downstream_facility_filter\": {\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  \"associated_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"upstream_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"downstream_equipment_filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"id\": \"7acf9128-cbf0-d0e9-186c-01de0329a153\",\n  \"associated_facility_id\": \"afb4e5fe-dc3e-4c60-2903-b9994ae476ad\",\n  \"associated_equipment_id\": \"c49c04e5-4602-602b-093b-b671f5c1e8d2\",\n  \"created_at\": \"1990-08-31T01:20:17.846Z\",\n  \"updated_at\": \"1976-12-20T21:52:52.874Z\",\n  \"created_by\": \"ce4527c6-c841-5c87-1174-d0ceda3eafa7\",\n  \"updated_by\": \"b881df4a-fa5e-4d31-bbb2-72d03ee21370\",\n  \"upstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"e539f8da-2cd5-2668-31e5-bb25060e7c8c\",\n      \"associated_facility_id\": \"d41b6c7b-01a3-6450-e034-8ea5cfe084cd\",\n      \"associated_equipment_id\": \"3830159b-ab06-96fc-951c-969ca339d0a1\",\n      \"created_at\": \"1977-11-02T14:55:36.803Z\",\n      \"updated_at\": \"1956-04-23T23:46:41.612Z\",\n      \"created_by\": \"ca61ddc5-93f7-816f-c7fe-289d6fa81051\",\n      \"updated_by\": \"4a93a5db-7cb2-f167-b5b3-d383a14aac59\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"f76c329b-4d0c-cdd3-0a0f-cba3138c3069\",\n      \"associated_facility_id\": \"23af06c1-358d-0190-bc44-f238d0e151f3\",\n      \"associated_equipment_id\": \"b1ba07ba-6d51-19f4-381c-a7bd8dae4537\",\n      \"created_at\": \"1992-08-23T05:08:26.602Z\",\n      \"updated_at\": \"1950-09-13T18:55:56.798Z\",\n      \"created_by\": \"0fd9118a-53e3-dbdf-bb31-4d6c9e505dca\",\n      \"updated_by\": \"01e0274f-a79a-e5cc-4687-915b0d81e0d5\"\n    }\n  ],\n  \"downstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"2ce582dc-f5f9-9b8b-6064-364222a02e04\",\n      \"associated_facility_id\": \"f32f0ca1-afc0-f679-235c-6bb0083bde4a\",\n      \"associated_equipment_id\": \"b3afa76d-9587-62ee-6cbd-23dcfb49f06c\",\n      \"created_at\": \"2022-11-09T09:47:17.824Z\",\n      \"updated_at\": \"2026-02-12T13:16:05.900Z\",\n      \"created_by\": \"eecc5bc4-0fa4-3323-6feb-48fefb0b1815\",\n      \"updated_by\": \"4305d4f3-1365-7721-3700-d0bfcc712eb5\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"d1ed1cd0-eda3-0d4c-732a-7a087120a330\",\n      \"associated_facility_id\": \"67ce1b74-a012-4fea-4592-44a94e7b8338\",\n      \"associated_equipment_id\": \"56dd56a8-9aed-8b59-f80a-774ac0eeff58\",\n      \"created_at\": \"2024-12-24T05:09:04.766Z\",\n      \"updated_at\": \"1947-03-18T13:26:46.213Z\",\n      \"created_by\": \"d26aeef0-d3b3-5144-713c-f08603fef4e5\",\n      \"updated_by\": \"3e506151-4efe-4acd-7d04-0e11795e21f1\"\n    }\n  ],\n  \"upstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"b04063ee-4a4e-a9be-e748-a42160040331\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  },\n  \"downstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"c7626034-6092-efcf-d05b-f6f2096b38fe\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9c27d6-ad8f-4430-a79c-c4baa6c05aa8",
+          "name": "Search and list Flows",
+          "request": {
+            "name": "Search and list Flows",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_type\": \"<string>\",\n    \"product_category\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"associated_facility_id\": \"<uuid>\",\n    \"associated_equipment_id\": \"<uuid>\",\n    \"upstream_facility_id\": \"<uuid>\",\n    \"upstream_equipment_id\": \"<uuid>\",\n    \"downstream_facility_id\": \"<uuid>\",\n    \"downstream_equipment_id\": \"<uuid>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"upstream_flows.id\": \"<uuid>\",\n    \"downstream_flows.id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82b4ce85-323c-42d8-813b-650b84567092",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"bf1d30da-0c36-2998-975d-0ac285d63e6a\",\n      \"associated_facility_id\": \"a7cdec16-d3e6-d16b-eb1f-53c6425bccf6\",\n      \"associated_equipment_id\": \"f506a7c8-169a-6e6b-c6fd-5d7563c5fc81\",\n      \"created_at\": \"1960-05-03T17:08:29.427Z\",\n      \"updated_at\": \"1962-01-10T05:14:08.878Z\",\n      \"created_by\": \"6edefaa1-c677-03ea-4146-e91409c2621a\",\n      \"updated_by\": \"14251710-5afe-39d9-a2f2-ff8e3c5533cf\",\n      \"upstream_flows\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"downstream_flows\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"upstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"e5519b20-7b93-8200-9e89-f5eaed38887b\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"downstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"03b955c9-b8db-7c68-9d4b-b993c9b4dcba\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"upstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"ac0d6afd-c195-f5e3-01af-153ddb903f7c\"\n      },\n      \"downstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"e69e6ec0-eda7-7107-7514-3c0812583f9c\"\n      },\n      \"associated_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"4520fc56-da40-9abd-977d-8a062f6446bc\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"associated_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"addacc82-ecd3-2206-cb00-9300aa89f837\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"d8d67235-92b7-bbed-4c40-e075e379248a\",\n      \"associated_facility_id\": \"6237bb68-c4e0-26f5-3ad3-4d5a4b23a11c\",\n      \"associated_equipment_id\": \"bf685fd3-eada-adfb-2426-55db177d179b\",\n      \"created_at\": \"2006-07-10T04:03:08.547Z\",\n      \"updated_at\": \"1986-12-12T01:21:49.333Z\",\n      \"created_by\": \"e7ea9a59-ca93-d461-3f55-60ca0fe4b661\",\n      \"updated_by\": \"bf14e488-045e-b566-b669-37b37b08f249\",\n      \"upstream_flows\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"downstream_flows\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_facility_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"associated_equipment_id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"upstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"50172299-05ea-ebe2-2862-43b1e87af842\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"downstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"c6b8f6b4-dad5-4176-80de-cbf13f97fbf4\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"upstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"b6cfa9b6-2bc3-4eb2-afb3-3a0ed8aaaccb\"\n      },\n      \"downstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"d631ba70-4cf4-8368-8012-87bbc7195362\"\n      },\n      \"associated_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"eda20211-b4ba-7e5f-44a4-fa3497e33ec9\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"associated_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"40770254-951d-90be-6918-537d2621682e\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a89a3a68-5c27-472b-a0cc-a95d3b0bff7e",
+          "name": "Search and list Flows",
+          "request": {
+            "name": "Search and list Flows",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "flows",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_type\": \"<string>\",\n    \"product_category\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"associated_facility_id\": \"<uuid>\",\n    \"associated_equipment_id\": \"<uuid>\",\n    \"upstream_facility_id\": \"<uuid>\",\n    \"upstream_equipment_id\": \"<uuid>\",\n    \"downstream_facility_id\": \"<uuid>\",\n    \"downstream_equipment_id\": \"<uuid>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"upstream_flows.id\": \"<uuid>\",\n    \"downstream_flows.id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "007e948b-a1c0-485f-81d9-d4c061cbaa2b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "flows",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flows_count\": 2106,\n      \"downstream_flows_count\": 5107,\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"31a7768d-6629-9c79-3429-2010ef22e50d\",\n      \"associated_facility_id\": \"9217ac03-e22c-e912-9908-9bc6c2379a07\",\n      \"associated_equipment_id\": \"f31e44f3-1017-0e5b-75f4-0c0b89ad7378\",\n      \"created_at\": \"1996-01-06T21:20:14.721Z\",\n      \"updated_at\": \"1966-09-20T14:51:48.755Z\",\n      \"created_by\": \"cba7a9c6-3a90-7b6b-ab6e-4413b7b126bf\",\n      \"updated_by\": \"ad7419ac-1c9e-ede0-f107-bb962a3e3633\",\n      \"upstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"99f95b34-3ac0-5f5a-bc2a-01b2f9a334c1\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"downstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"c40f102f-5eac-8619-6e9f-7761898ff821\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"upstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"19fe86f5-4063-c195-2050-62f5917b5a14\"\n      },\n      \"downstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"94dddf9b-c68f-72ae-68f6-2ecfea5857a6\"\n      },\n      \"associated_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"6467dc53-4744-d7da-b099-50120770fd03\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"associated_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"49669714-4311-fd5c-8b42-6c67b96ce5b6\"\n      }\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flows_count\": 1998,\n      \"downstream_flows_count\": 5066,\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"e8e0a395-a0c3-0583-6e08-6c4381293722\",\n      \"associated_facility_id\": \"e0b313b5-a055-7913-4bb7-4ec7a4ef6d2d\",\n      \"associated_equipment_id\": \"bbc5ab2c-c200-33f4-8fb0-20d3c20e5f1b\",\n      \"created_at\": \"1965-01-16T11:17:37.976Z\",\n      \"updated_at\": \"2021-08-02T11:31:51.372Z\",\n      \"created_by\": \"818e61a2-8887-3b3e-ad0b-b1e2427a01db\",\n      \"updated_by\": \"977d044c-8f92-26a2-b603-6aaba5f26700\",\n      \"upstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"fe9ea6e7-010c-e009-fc1c-b9b952bcdd94\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"downstream_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"17a753ba-3245-3805-2b5b-5d9804505e8e\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"upstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"fc3e248d-55e3-577e-8584-bbfddd724ec8\"\n      },\n      \"downstream_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"77b9cde6-fb08-20f4-4519-3c7629e2f959\"\n      },\n      \"associated_equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"462bdc32-15ac-b00f-c4e8-eb6096d14362\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"associated_facility\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"latitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"longitude\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": \"string\",\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"299b9272-ab01-1b15-a9ea-53842caa12b4\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f7a9108-5e29-4275-ad16-a8a5390b2267",
+          "name": "Export Flows",
+          "request": {
+            "name": "Export Flows",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_type\": \"<string>\",\n    \"product_category\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"associated_facility_id\": \"<uuid>\",\n    \"associated_equipment_id\": \"<uuid>\",\n    \"upstream_facility_id\": \"<uuid>\",\n    \"upstream_equipment_id\": \"<uuid>\",\n    \"downstream_facility_id\": \"<uuid>\",\n    \"downstream_equipment_id\": \"<uuid>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"upstream_flows.id\": \"<uuid>\",\n    \"downstream_flows.id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e14568ff-bbc7-47e7-bd11-58d1c0d5d9db",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c13ad349-9e07-fd5f-40e4-66b484e621fd\",\n  \"name\": \"string\",\n  \"company_id\": \"dc58073e-3e29-519c-b0f1-2d963a2d872c\",\n  \"status\": \"exporting\",\n  \"created_at\": \"1952-12-08T16:49:27.946Z\",\n  \"updated_at\": \"1985-03-25T18:55:16.169Z\",\n  \"created_by\": \"2f73e001-69a1-2f90-41f6-9f4f1c676fd1\",\n  \"updated_by\": \"2fe6ab21-3393-a722-d695-e7bb96865f24\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"Zns9XZl\",\n    \"display_name\": \"string\",\n    \"created_at\": \"2018-06-01T17:39:36.850Z\",\n    \"updated_at\": \"2003-06-29T15:34:52.138Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"8888\",\n        \"8rVx8L5NM\"\n      ],\n      \"key_1\": [\n        \"StR2\",\n        \"Lrs7p\"\n      ],\n      \"key_2\": [\n        \"vMwjGJVysm\",\n        \"MigvE95D53J\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"fhfh\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb5a3465-bc35-492c-9277-2e0099eeb452",
+          "name": "Get a flow",
+          "request": {
+            "name": "Get a flow",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Flow ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a732e1e-8ace-4a17-881e-fae80c2f52f5",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Flow ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"id\": \"7f44381e-a6ce-01cb-4328-744f8c5f7a60\",\n  \"associated_facility_id\": \"065637ec-5b22-e90d-fa84-d4378c9c993f\",\n  \"associated_equipment_id\": \"908c1bee-69d3-66d6-57aa-09f13ffb6190\",\n  \"created_at\": \"2024-06-22T13:27:01.918Z\",\n  \"updated_at\": \"1951-06-25T03:48:43.122Z\",\n  \"created_by\": \"0f88c8b9-9e64-0171-b655-b8fb9dce7f95\",\n  \"updated_by\": \"08f74e32-2ab5-b63f-d23a-46bbd1cd6d51\",\n  \"upstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"635fd743-5524-9d37-bf4d-fc977762008c\",\n      \"associated_facility_id\": \"ca7ce3f6-5e23-f3ba-a752-1844c6fce034\",\n      \"associated_equipment_id\": \"eb8aa454-438e-8334-8445-f16397e0d1c5\",\n      \"created_at\": \"2006-09-12T22:16:25.605Z\",\n      \"updated_at\": \"1989-08-09T14:59:04.871Z\",\n      \"created_by\": \"0c6975a0-4137-1662-97d2-325eb8cb0a02\",\n      \"updated_by\": \"984daccb-6b36-73a0-3a4a-01a2f120b324\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"5b5b1fed-c0ea-6125-a4ca-1aec262f612e\",\n      \"associated_facility_id\": \"9cdc8809-a4c3-9663-753d-c06a4647e4e0\",\n      \"associated_equipment_id\": \"6cffb446-0f24-48f0-486d-4feca6ba96c4\",\n      \"created_at\": \"1983-08-19T08:27:45.874Z\",\n      \"updated_at\": \"2015-03-03T12:43:20.822Z\",\n      \"created_by\": \"0e50e9ab-f171-fe32-9517-23d2358286df\",\n      \"updated_by\": \"83ccf09e-f792-7829-3969-c21658f50be2\"\n    }\n  ],\n  \"downstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"280ee478-fc5f-2ab1-1208-b686ccfe1f96\",\n      \"associated_facility_id\": \"ae3bded8-6228-772d-6bf5-543e0331c631\",\n      \"associated_equipment_id\": \"137b5d76-39d9-f77e-23ec-72ec2ab71898\",\n      \"created_at\": \"1958-12-12T02:06:38.098Z\",\n      \"updated_at\": \"1960-05-09T18:47:01.929Z\",\n      \"created_by\": \"714b6f20-4421-024a-4649-2f2cd13dcbf0\",\n      \"updated_by\": \"bb8238fc-9917-15cf-9519-2fc66ac62df2\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"d3f6e341-7ef5-7f8c-ee7e-31264bfb17b3\",\n      \"associated_facility_id\": \"0a957b95-3331-5d82-2534-9085d65d8e10\",\n      \"associated_equipment_id\": \"6d16fb85-63a0-362a-2f59-16b313b26086\",\n      \"created_at\": \"2012-02-21T19:22:18.322Z\",\n      \"updated_at\": \"2007-05-22T19:29:09.337Z\",\n      \"created_by\": \"17da819c-1161-a273-ac9e-588c2562f743\",\n      \"updated_by\": \"d27bf1bb-d0c3-5205-bf23-e0182a934db1\"\n    }\n  ],\n  \"upstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"e5fc6356-a784-9357-ccaa-304db7c92374\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  },\n  \"downstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"c800e09f-b506-256f-4738-c6b15b0a5ac1\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85d1f703-d374-4859-bc12-24745ac666b7",
+          "name": "Update a flow",
+          "request": {
+            "name": "Update a flow",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Flow ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": \"<object>\",\n  \"associated_facility_id\": \"<uuid>\",\n  \"associated_equipment_id\": \"<uuid>\",\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a284e593-2740-49b4-9889-6a8ae55a2bd6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Flow ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"associated_facility_id\": \"<uuid>\",\n  \"associated_equipment_id\": \"<uuid>\",\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"status\": \"<string>\",\n  \"product_category\": \"<string>\",\n  \"product_type\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"upstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"downstream_flow_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"upstream_flows_count\": \"<integer>\",\n  \"downstream_flows_count\": \"<integer>\",\n  \"upstream_facility_id\": \"<uuid>\",\n  \"downstream_facility_id\": \"<uuid>\",\n  \"upstream_equipment_id\": \"<uuid>\",\n  \"downstream_equipment_id\": \"<uuid>\",\n  \"id\": \"7f44381e-a6ce-01cb-4328-744f8c5f7a60\",\n  \"associated_facility_id\": \"065637ec-5b22-e90d-fa84-d4378c9c993f\",\n  \"associated_equipment_id\": \"908c1bee-69d3-66d6-57aa-09f13ffb6190\",\n  \"created_at\": \"2024-06-22T13:27:01.918Z\",\n  \"updated_at\": \"1951-06-25T03:48:43.122Z\",\n  \"created_by\": \"0f88c8b9-9e64-0171-b655-b8fb9dce7f95\",\n  \"updated_by\": \"08f74e32-2ab5-b63f-d23a-46bbd1cd6d51\",\n  \"upstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"635fd743-5524-9d37-bf4d-fc977762008c\",\n      \"associated_facility_id\": \"ca7ce3f6-5e23-f3ba-a752-1844c6fce034\",\n      \"associated_equipment_id\": \"eb8aa454-438e-8334-8445-f16397e0d1c5\",\n      \"created_at\": \"2006-09-12T22:16:25.605Z\",\n      \"updated_at\": \"1989-08-09T14:59:04.871Z\",\n      \"created_by\": \"0c6975a0-4137-1662-97d2-325eb8cb0a02\",\n      \"updated_by\": \"984daccb-6b36-73a0-3a4a-01a2f120b324\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"5b5b1fed-c0ea-6125-a4ca-1aec262f612e\",\n      \"associated_facility_id\": \"9cdc8809-a4c3-9663-753d-c06a4647e4e0\",\n      \"associated_equipment_id\": \"6cffb446-0f24-48f0-486d-4feca6ba96c4\",\n      \"created_at\": \"1983-08-19T08:27:45.874Z\",\n      \"updated_at\": \"2015-03-03T12:43:20.822Z\",\n      \"created_by\": \"0e50e9ab-f171-fe32-9517-23d2358286df\",\n      \"updated_by\": \"83ccf09e-f792-7829-3969-c21658f50be2\"\n    }\n  ],\n  \"downstream_flows\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"280ee478-fc5f-2ab1-1208-b686ccfe1f96\",\n      \"associated_facility_id\": \"ae3bded8-6228-772d-6bf5-543e0331c631\",\n      \"associated_equipment_id\": \"137b5d76-39d9-f77e-23ec-72ec2ab71898\",\n      \"created_at\": \"1958-12-12T02:06:38.098Z\",\n      \"updated_at\": \"1960-05-09T18:47:01.929Z\",\n      \"created_by\": \"714b6f20-4421-024a-4649-2f2cd13dcbf0\",\n      \"updated_by\": \"bb8238fc-9917-15cf-9519-2fc66ac62df2\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"status\": \"<string>\",\n      \"product_category\": \"<string>\",\n      \"product_type\": \"<string>\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"downstream_flow_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"upstream_flows_count\": \"<integer>\",\n      \"downstream_flows_count\": \"<integer>\",\n      \"upstream_facility_id\": \"<uuid>\",\n      \"downstream_facility_id\": \"<uuid>\",\n      \"upstream_equipment_id\": \"<uuid>\",\n      \"downstream_equipment_id\": \"<uuid>\",\n      \"id\": \"d3f6e341-7ef5-7f8c-ee7e-31264bfb17b3\",\n      \"associated_facility_id\": \"0a957b95-3331-5d82-2534-9085d65d8e10\",\n      \"associated_equipment_id\": \"6d16fb85-63a0-362a-2f59-16b313b26086\",\n      \"created_at\": \"2012-02-21T19:22:18.322Z\",\n      \"updated_at\": \"2007-05-22T19:29:09.337Z\",\n      \"created_by\": \"17da819c-1161-a273-ac9e-588c2562f743\",\n      \"updated_by\": \"d27bf1bb-d0c3-5205-bf23-e0182a934db1\"\n    }\n  ],\n  \"upstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"e5fc6356-a784-9357-ccaa-304db7c92374\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  },\n  \"downstream_equipment\": {\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"effective_date\": \"2022-01-01\",\n    \"id\": \"c800e09f-b506-256f-4738-c6b15b0a5ac1\",\n    \"latitude\": 51,\n    \"longitude\": -114,\n    \"name\": \"string\",\n    \"type\": {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69ffcf80-fd1a-41ea-a261-459123b3fccf",
+          "name": "Delete a flow",
+          "request": {
+            "name": "Delete a flow",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Flow ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b8c79266-7fb0-4af3-bacf-610fc8556660",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Flow ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e177576b-a8c3-4d3b-a33b-c3b1cd92d13f",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb90dbf0-b7d3-458c-b594-2d396d3d82a8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"30088be9-3515-67cc-ede1-fc9ff1d97c1c\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"type\": \"fuel\",\n            \"product_type\": \"natural_gas\",\n            \"product_category\": \"natural_gas\"\n          },\n          {\n            \"name\": {\n              \"$like\": \"test\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"db4a01a5-60d1-4bff-c8e9-ad852509b827\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"type\": \"fuel\",\n            \"product_type\": \"natural_gas\",\n            \"product_category\": \"natural_gas\"\n          },\n          {\n            \"name\": {\n              \"$like\": \"test\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cfde664-d1c5-46f9-aa2d-5a6f013c25e1",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_type\": \"<string>\",\n    \"product_category\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"associated_facility_id\": \"<uuid>\",\n    \"associated_equipment_id\": \"<uuid>\",\n    \"upstream_facility_id\": \"<uuid>\",\n    \"upstream_equipment_id\": \"<uuid>\",\n    \"downstream_facility_id\": \"<uuid>\",\n    \"downstream_equipment_id\": \"<uuid>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"upstream_flows.id\": \"<uuid>\",\n    \"downstream_flows.id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b8d13f0-6cca-4e69-b6da-8c5ced95326a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a45a871b-1933-7a81-f907-37d78398f3bb\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d22416b5-596c-4e25-9e3e-9792b7c32a70",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "530ac5e7-931f-4565-89a5-401d899ea2cd",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f61a85e-24fb-47d9-949e-1302e7cb41dd",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "flows",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"product_type\": \"<string>\",\n    \"product_category\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"associated_facility_id\": \"<uuid>\",\n    \"associated_equipment_id\": \"<uuid>\",\n    \"upstream_facility_id\": \"<uuid>\",\n    \"upstream_equipment_id\": \"<uuid>\",\n    \"downstream_facility_id\": \"<uuid>\",\n    \"downstream_equipment_id\": \"<uuid>\",\n    \"event.id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"upstream_flows.id\": \"<uuid>\",\n    \"downstream_flows.id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "47fc811c-9c7f-4241-9803-2fc77c53f6df",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "flows",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a45a871b-1933-7a81-f907-37d78398f3bb\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"$or\": [\n      {\n        \"type\": \"fuel\",\n        \"product_type\": \"natural_gas\",\n        \"product_category\": \"natural_gas\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"test\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "86fa2327-ac02-44a1-81cc-604c08e6a206",
+    "name": "CarbonHub activities flows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

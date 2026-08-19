@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities type_metadata API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "type_metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Attribute Data Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/custom_attribute_data_types"
+          },
+          "docs": "Returns the list of data types that custom attributes support"
+        },
+        {
+          "info": {
+            "name": "List Custom Attribute Entity Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/custom_attribute_entities"
+          },
+          "docs": "Returns the list of entity types that support custom attributes"
+        },
+        {
+          "info": {
+            "name": "List Flow Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/flow_types"
+          },
+          "docs": "Returns the list of flow types"
+        },
+        {
+          "info": {
+            "name": "List Product Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/product_types"
+          },
+          "docs": "Returns the list of product types"
+        },
+        {
+          "info": {
+            "name": "List Product Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/product_categories"
+          },
+          "docs": "Returns the list of product categories"
+        },
+        {
+          "info": {
+            "name": "List Event Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/event_statuses"
+          },
+          "docs": "Returns the list of event statuses"
+        },
+        {
+          "info": {
+            "name": "List Facility Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/facility_types"
+          },
+          "docs": "Returns the list of facility types"
+        },
+        {
+          "info": {
+            "name": "List Facility Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/facility_statuses"
+          },
+          "docs": "Returns the list of facility statuses"
+        },
+        {
+          "info": {
+            "name": "List Industry Segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/industry_segments"
+          },
+          "docs": "Returns the list of industry segments based on the US emission spreadsheet"
+        },
+        {
+          "info": {
+            "name": "List workflow template statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_template_statuses"
+          },
+          "docs": "Returns the list of workflow template statuses"
+        },
+        {
+          "info": {
+            "name": "List workflow statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_statuses"
+          },
+          "docs": "Returns the list of workflow statuses"
+        },
+        {
+          "info": {
+            "name": "List workflow task statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_task_statuses"
+          },
+          "docs": "Returns the list of workflow task statuses"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

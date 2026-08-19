@@ -1,0 +1,278 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities measurements API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "measurements",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get aggregated list of measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurements",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "query",
+                "description": "Id of device"
+              },
+              {
+                "name": "group_by",
+                "value": "measurement_type",
+                "type": "query",
+                "description": "group by"
+              },
+              {
+                "name": "interval",
+                "value": "1day",
+                "type": "query",
+                "description": "interval"
+              },
+              {
+                "name": "func",
+                "value": "avg",
+                "type": "query",
+                "description": "Aggregate Function"
+              },
+              {
+                "name": "start",
+                "value": "2022-11-20T09:12:28.000Z",
+                "type": "query",
+                "description": "start date - default value is current date time"
+              },
+              {
+                "name": "end",
+                "value": "2022-11-30T09:12:28.000Z",
+                "type": "query",
+                "description": "end date"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "Get aggregated list of measurements"
+        },
+        {
+          "info": {
+            "name": "Get measurements for a measurement type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurements/plot/:measurement_type",
+            "params": [
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              },
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "query",
+                "description": "ID of device"
+              },
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the entity you want to list the measurement types for"
+              },
+              {
+                "name": "subject_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the entity you want to list the measurement types for. Required if ID is defined."
+              },
+              {
+                "name": "include_forms",
+                "value": "",
+                "type": "query",
+                "description": "If form measurements should be included"
+              },
+              {
+                "name": "form_submission_statuses",
+                "value": "",
+                "type": "query",
+                "description": "Form submission status to filter on, can be comma separated list"
+              },
+              {
+                "name": "measurement_series_ids",
+                "value": "",
+                "type": "query",
+                "description": "a comma-separated list of measurement series ids"
+              },
+              {
+                "name": "start",
+                "value": "2022-11-20T09:12:28.000Z",
+                "type": "query",
+                "description": "start date - default value is current date time"
+              },
+              {
+                "name": "end",
+                "value": "2022-11-30T09:12:28.000Z",
+                "type": "query",
+                "description": "end date"
+              },
+              {
+                "name": "interval",
+                "value": "1day",
+                "type": "query",
+                "description": "interval"
+              },
+              {
+                "name": "func",
+                "value": "avg",
+                "type": "query",
+                "description": "Aggregate Function"
+              }
+            ]
+          },
+          "docs": "Get measurements for a measurement type"
+        },
+        {
+          "info": {
+            "name": "Get list of measurements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurements/:measurement_series_id",
+            "params": [
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              },
+              {
+                "name": "group_by",
+                "value": "measurement_type",
+                "type": "query",
+                "description": "group by"
+              },
+              {
+                "name": "interval",
+                "value": "1day",
+                "type": "query",
+                "description": "interval"
+              },
+              {
+                "name": "func",
+                "value": "avg",
+                "type": "query",
+                "description": "Aggregate Function"
+              },
+              {
+                "name": "start",
+                "value": "2022-11-20T09:12:28.000Z",
+                "type": "query",
+                "description": "start date - default value is current date time"
+              },
+              {
+                "name": "end",
+                "value": "2022-11-30T09:12:28.000Z",
+                "type": "query",
+                "description": "end date"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              },
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the entity you want to list the measurements for"
+              },
+              {
+                "name": "subject_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the entity you want to list the measurements for. Required if ID is defined."
+              }
+            ]
+          },
+          "docs": "Get list of measurements"
+        },
+        {
+          "info": {
+            "name": "Upsert a measurement",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/measurements/:measurement_series_id",
+            "params": [
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert a measurement"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

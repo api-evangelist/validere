@@ -1,0 +1,1331 @@
+{
+  "item": [
+    {
+      "id": "16baf7d4-6f99-4de0-814b-8a89ea622d4d",
+      "name": "estimation_methods_default_records",
+      "description": {
+        "content": "Estimation Methods Default Records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3fd46d1-9bee-45e5-8197-85cbcf27358c",
+          "name": "List the default input records for a given estimation method",
+          "request": {
+            "name": "List the default input records for a given estimation method",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a89ec97-429c-44d5-b949-2fd061867425",
+              "name": "Successfully returns the list of default input records for a given estimation method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"method_id\": \"c1f5b6f1-4e14-0bd5-3339-d33c0c6d7ea6\",\n      \"input_name\": \"string\",\n      \"measurement_type\": \"wind_speed\",\n      \"asset\": {\n        \"id\": \"6eb12f32-4b08-b0ca-e603-f2bb0985a79a\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"equipment\": {\n          \"custom_attributes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"latitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"longitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"asset_id\": \"0b6cb496-822b-3a96-59a7-eaf2e470f1f1\",\n      \"target_asset_id\": \"4587925b-4cee-15e9-87fd-6713f6a2b3b2\",\n      \"reporting_group_id\": \"string\",\n      \"reporting_group\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"b461b246-ee7e-5e37-5a00-2fad9eed49d2\"\n      },\n      \"company_id\": \"ea0ee50e-6dc4-51c8-d454-60e50f7a295d\",\n      \"created_at\": \"1982-01-23T10:34:03.635Z\",\n      \"created_by\": \"81cf0a85-bf54-e9d8-3b6f-feb94320d2e7\",\n      \"updated_at\": \"1993-07-15T17:09:47.067Z\",\n      \"updated_by\": \"a6ea6b19-e791-6db0-b00d-120ddd573978\"\n    },\n    {\n      \"method_id\": \"710c67c4-852f-577a-602a-8319f567467a\",\n      \"input_name\": \"string\",\n      \"measurement_type\": \"wind_speed\",\n      \"asset\": {\n        \"id\": \"950e123c-403a-0cef-9d6e-4fac83520d7b\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"equipment\": {\n          \"custom_attributes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"latitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"longitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"asset_id\": \"184871c6-88ae-fc31-23de-f840c92fd3a2\",\n      \"target_asset_id\": \"6bf94a07-d1ca-c6d0-df88-367b63453ef4\",\n      \"reporting_group_id\": \"string\",\n      \"reporting_group\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"147bc2be-8ceb-093e-e9c4-0c84494fd979\"\n      },\n      \"company_id\": \"638ff828-d17f-f5fe-70d4-3845bd1353a4\",\n      \"created_at\": \"1967-03-14T22:58:55.729Z\",\n      \"created_by\": \"5d3f6c3b-7e30-c014-8b5e-01667d5f40cc\",\n      \"updated_at\": \"2007-01-18T07:24:52.969Z\",\n      \"updated_by\": \"d586a0c0-105b-ba29-af9b-5205fde16760\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36c9bc7b-bf42-4ff0-a8de-714bab392845",
+          "name": "Create the default input record for a given estimation method",
+          "request": {
+            "name": "Create the default input record for a given estimation method",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_type\": \"<string>\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a17f49c-9efd-4a6c-a757-7a8cb7b228fe",
+              "name": "Successfully returns the default input record for a given estimation method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurement_type\": \"wind_speed\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"method_id\": \"e83315f1-0ee3-0188-19af-19ab59119407\",\n  \"input_name\": \"string\",\n  \"measurement_type\": \"wind_speed\",\n  \"asset\": {\n    \"id\": \"d463d2ba-c9d4-0ece-08aa-2175871bc1f7\",\n    \"asset_type\": \"facility\",\n    \"flow\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"inactive\",\n      \"product_category\": \"string\",\n      \"product_type\": \"string\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"e46f604f-740b-4c2b-473f-ed4c27248244\",\n        \"2c1a01b0-2a1f-4cd4-2c86-cdc46e4da8dc\"\n      ],\n      \"downstream_flow_ids\": [\n        \"5397db17-e897-0110-0320-617af2982146\",\n        \"41d70424-edc7-45cd-6713-1cd98e5706a8\"\n      ],\n      \"upstream_flows_count\": 364,\n      \"downstream_flows_count\": 9676,\n      \"upstream_facility_id\": \"b7d7fab7-269b-4dc4-0a58-ebefed094342\",\n      \"downstream_facility_id\": \"33c195c0-62a2-b960-216f-ac8119633a2e\",\n      \"upstream_equipment_id\": \"8112dccc-d54a-293f-f495-716f99e604c0\",\n      \"downstream_equipment_id\": \"2a2927ca-f5b4-d912-cd9d-fd1057db6a8e\",\n      \"id\": \"81867195-429c-a047-fb3a-d42e82a76d00\",\n      \"associated_facility_id\": \"eaaf2521-0a7c-8689-4ac8-41c86722fb08\",\n      \"associated_equipment_id\": \"ec2d762a-aea6-5075-9ff7-fd9c55e1319b\",\n      \"created_at\": \"1977-02-27T17:38:34.134Z\",\n      \"updated_at\": \"2012-01-02T20:35:54.376Z\",\n      \"created_by\": \"46708e47-0264-f57b-d6ad-b538e811c6b9\",\n      \"updated_by\": \"f51e2686-c6dd-af90-9167-4e967fbab544\"\n    },\n    \"equipment\": {\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"id\": \"3bff100e-40e0-429a-3261-48b9d654bfe8\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"asset_id\": \"df7fe5ca-a9f7-75cf-9751-366627819f24\",\n  \"target_asset_id\": \"4d35dfaf-6cf2-cbf9-11d8-d811b301eba9\",\n  \"reporting_group_id\": \"string\",\n  \"reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\",\n    \"created_at\": \"1976-11-17T09:14:28.116Z\",\n    \"updated_at\": \"2017-11-13T11:19:27.591Z\",\n    \"created_by\": \"52450327-4b9e-0b0b-2459-fa50f0e1e5f4\",\n    \"updated_by\": \"6aebf503-b996-c484-67a2-ec39f941c04c\",\n    \"company_id\": \"c0599885-ba66-54a6-3b7b-c5d4a1c58085\"\n  },\n  \"company_id\": \"7cca9062-123b-9d3c-d573-a1d9d41a84fd\",\n  \"created_at\": \"1996-07-08T17:58:34.405Z\",\n  \"created_by\": \"0c2cc482-366a-cbb1-e30d-8a7b8ee1c258\",\n  \"updated_at\": \"1973-02-12T20:45:35.266Z\",\n  \"updated_by\": \"a004a8d2-6324-0a00-8da8-acaf3d504b21\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45e83559-470a-47e7-b08a-7ec5bda3cd05",
+          "name": "Update the default input record for a given estimation method",
+          "request": {
+            "name": "Update the default input record for a given estimation method",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_type\": \"<string>\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d11d73a1-c0b4-4fb3-8d87-6947978c6602",
+              "name": "Successfully update the default input record for a given estimation method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurement_type\": \"wind_speed\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"method_id\": \"ef5852fb-c03e-270b-980b-6c0fe01ec381\",\n  \"input_name\": \"string\",\n  \"measurement_type\": \"wind_speed\",\n  \"asset\": {\n    \"id\": \"3f6021a9-ecf2-4927-07d9-e7f5b1c206f6\",\n    \"asset_type\": \"flow\",\n    \"flow\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"inactive\",\n      \"product_category\": \"string\",\n      \"product_type\": \"string\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"dd023c42-8b62-94ae-509d-a3d1f43e9472\",\n        \"66c6bc8a-8add-f18d-8454-657a763bd051\"\n      ],\n      \"downstream_flow_ids\": [\n        \"11fac394-fc46-9298-9322-a69c93aa407c\",\n        \"f1707d7c-d5a4-6765-43c5-37473e49b8e6\"\n      ],\n      \"upstream_flows_count\": 117,\n      \"downstream_flows_count\": 7086,\n      \"upstream_facility_id\": \"b24071b3-304f-f3b9-fedc-a25482adbcea\",\n      \"downstream_facility_id\": \"9066e7f1-16d4-0464-b626-513653508039\",\n      \"upstream_equipment_id\": \"68d511da-2d56-952d-6cfe-cec8e29c1b5f\",\n      \"downstream_equipment_id\": \"d79a2d7a-be0e-2d49-99d9-f10cb80eee7c\",\n      \"id\": \"7dfdfc35-79cb-069c-57ed-e79b7570dd82\",\n      \"associated_facility_id\": \"661900b3-ae4d-1e41-adec-f5fd6850a03e\",\n      \"associated_equipment_id\": \"5929352b-aefb-279b-a301-5644392de21f\",\n      \"created_at\": \"2022-03-17T00:20:44.495Z\",\n      \"updated_at\": \"2004-09-21T06:27:54.890Z\",\n      \"created_by\": \"cf188ab8-1050-71b3-b989-4d1524057bc1\",\n      \"updated_by\": \"35e52e24-b349-d434-8768-72eab207a671\"\n    },\n    \"equipment\": {\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"id\": \"61acea4d-5f97-8388-db76-960e0e155da2\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"asset_id\": \"f81f1e13-c6d7-196d-b903-1a73707b98a6\",\n  \"target_asset_id\": \"114dca8e-be3e-49a5-9aaf-aaee7cdc6cf2\",\n  \"reporting_group_id\": \"string\",\n  \"reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\",\n    \"created_at\": \"1983-02-06T22:03:32.224Z\",\n    \"updated_at\": \"2010-10-20T18:42:17.050Z\",\n    \"created_by\": \"e559e0fd-0869-36dd-58cd-89ea7cfed59e\",\n    \"updated_by\": \"224d7f0f-d6d2-e468-6308-2017e220951a\",\n    \"company_id\": \"15ec2d92-9367-2bb3-e2a3-bba9bda716ca\"\n  },\n  \"company_id\": \"bb3c8179-fdc7-b7d7-7a7a-a95a40ec2f2b\",\n  \"created_at\": \"1955-04-30T00:41:11.426Z\",\n  \"created_by\": \"4e60b124-fe2f-44c5-8af7-9a1beddb23bd\",\n  \"updated_at\": \"1957-08-04T08:29:41.644Z\",\n  \"updated_by\": \"669ada3a-b979-6731-f549-83b3fd0c56a2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "196d7ef8-2d44-44f2-987d-c7fb46703040",
+          "name": "Delete the default input record for a given estimation method",
+          "request": {
+            "name": "Delete the default input record for a given estimation method",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3b45dd3-2002-4bbc-b14f-4715367e8e2e",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3855bf26-84ab-4403-8ea5-fe709aa99eb9",
+          "name": "List the default input records for a given estimation method and target asset",
+          "request": {
+            "name": "List the default input records for a given estimation method and target asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":target_asset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target_asset_id",
+                  "description": "(Required) Target Asset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b505e01c-fa3d-4313-abf7-a54aa962e58a",
+              "name": "Successfully returns the list of default input records for a given estimation method  and target asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":target_asset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target_asset_id",
+                      "description": "(Required) Target Asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"method_id\": \"a10560f6-18f6-b3a3-bf6f-4bd4fc220d97\",\n      \"input_name\": \"string\",\n      \"measurement_type\": \"wind_speed\",\n      \"asset\": {\n        \"id\": \"9f8f1398-dff0-0ffa-eccc-9e9a18c0e48a\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"equipment\": {\n          \"custom_attributes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"latitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"longitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"asset_id\": \"74c23100-409f-ccac-a2a9-6e0386954818\",\n      \"target_asset_id\": \"b22c0ff3-6040-dac6-a60a-9cb27ab5697a\",\n      \"reporting_group_id\": \"string\",\n      \"reporting_group\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"56cfd703-bf1a-1d11-79de-c13de59d842e\"\n      },\n      \"company_id\": \"334f9a6e-5e2c-742d-2ab1-672acb84ffb9\",\n      \"created_at\": \"1968-04-17T01:23:25.098Z\",\n      \"created_by\": \"74140601-0341-3b31-14fc-9f5be758ca89\",\n      \"updated_at\": \"1968-09-26T20:12:44.825Z\",\n      \"updated_by\": \"4d8ea9c0-8108-8125-aadd-271e00925f0e\"\n    },\n    {\n      \"method_id\": \"99b36862-4970-4537-f32f-eb254121c49f\",\n      \"input_name\": \"string\",\n      \"measurement_type\": \"wind_speed\",\n      \"asset\": {\n        \"id\": \"fc5bb513-deb7-3783-6b54-23a33fb9832e\",\n        \"asset_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"flow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"equipment\": {\n          \"custom_attributes\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"effective_date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"latitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"longitude\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      \"asset_id\": \"8fae67c1-78a0-9b11-22b0-bce10372cb07\",\n      \"target_asset_id\": \"3b1970ba-8856-bcfc-a0b1-7c370b71b0eb\",\n      \"reporting_group_id\": \"string\",\n      \"reporting_group\": {\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"eee5acb4-1be5-128e-0675-4f2148e78e7e\"\n      },\n      \"company_id\": \"7126e89d-83ce-08a9-f4e8-a8944ac899b1\",\n      \"created_at\": \"1962-02-22T11:45:03.700Z\",\n      \"created_by\": \"d5b876dc-6069-cd8f-405e-3dfbb5cff390\",\n      \"updated_at\": \"1981-12-28T09:55:41.956Z\",\n      \"updated_by\": \"51b27371-fbda-9563-394e-cf433ab74453\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0ea29c5-d5b8-4879-ac26-bda613da9340",
+          "name": "Get the default input record for a given estimation method and target asset",
+          "request": {
+            "name": "Get the default input record for a given estimation method and target asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":target_asset_id",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target_asset_id",
+                  "description": "(Required) Target Asset ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95d94a5e-2892-4aac-b8a1-97c4f658696e",
+              "name": "Successfully returns the default input record for a given estimation method and target asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":target_asset_id",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target_asset_id",
+                      "description": "(Required) Target Asset ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"method_id\": \"ef5852fb-c03e-270b-980b-6c0fe01ec381\",\n  \"input_name\": \"string\",\n  \"measurement_type\": \"wind_speed\",\n  \"asset\": {\n    \"id\": \"3f6021a9-ecf2-4927-07d9-e7f5b1c206f6\",\n    \"asset_type\": \"flow\",\n    \"flow\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"inactive\",\n      \"product_category\": \"string\",\n      \"product_type\": \"string\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"dd023c42-8b62-94ae-509d-a3d1f43e9472\",\n        \"66c6bc8a-8add-f18d-8454-657a763bd051\"\n      ],\n      \"downstream_flow_ids\": [\n        \"11fac394-fc46-9298-9322-a69c93aa407c\",\n        \"f1707d7c-d5a4-6765-43c5-37473e49b8e6\"\n      ],\n      \"upstream_flows_count\": 117,\n      \"downstream_flows_count\": 7086,\n      \"upstream_facility_id\": \"b24071b3-304f-f3b9-fedc-a25482adbcea\",\n      \"downstream_facility_id\": \"9066e7f1-16d4-0464-b626-513653508039\",\n      \"upstream_equipment_id\": \"68d511da-2d56-952d-6cfe-cec8e29c1b5f\",\n      \"downstream_equipment_id\": \"d79a2d7a-be0e-2d49-99d9-f10cb80eee7c\",\n      \"id\": \"7dfdfc35-79cb-069c-57ed-e79b7570dd82\",\n      \"associated_facility_id\": \"661900b3-ae4d-1e41-adec-f5fd6850a03e\",\n      \"associated_equipment_id\": \"5929352b-aefb-279b-a301-5644392de21f\",\n      \"created_at\": \"2022-03-17T00:20:44.495Z\",\n      \"updated_at\": \"2004-09-21T06:27:54.890Z\",\n      \"created_by\": \"cf188ab8-1050-71b3-b989-4d1524057bc1\",\n      \"updated_by\": \"35e52e24-b349-d434-8768-72eab207a671\"\n    },\n    \"equipment\": {\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"id\": \"61acea4d-5f97-8388-db76-960e0e155da2\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"asset_id\": \"f81f1e13-c6d7-196d-b903-1a73707b98a6\",\n  \"target_asset_id\": \"114dca8e-be3e-49a5-9aaf-aaee7cdc6cf2\",\n  \"reporting_group_id\": \"string\",\n  \"reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\",\n    \"created_at\": \"1983-02-06T22:03:32.224Z\",\n    \"updated_at\": \"2010-10-20T18:42:17.050Z\",\n    \"created_by\": \"e559e0fd-0869-36dd-58cd-89ea7cfed59e\",\n    \"updated_by\": \"224d7f0f-d6d2-e468-6308-2017e220951a\",\n    \"company_id\": \"15ec2d92-9367-2bb3-e2a3-bba9bda716ca\"\n  },\n  \"company_id\": \"bb3c8179-fdc7-b7d7-7a7a-a95a40ec2f2b\",\n  \"created_at\": \"1955-04-30T00:41:11.426Z\",\n  \"created_by\": \"4e60b124-fe2f-44c5-8af7-9a1beddb23bd\",\n  \"updated_at\": \"1957-08-04T08:29:41.644Z\",\n  \"updated_by\": \"669ada3a-b979-6731-f549-83b3fd0c56a2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bc1e838-9a38-4619-95e3-ff23b0c43710",
+          "name": "Create the default input record for a given estimation method and target asset",
+          "request": {
+            "name": "Create the default input record for a given estimation method and target asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":target_asset_id",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target_asset_id",
+                  "description": "(Required) Target Asset ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_type\": \"<string>\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e04cc065-f0e0-4113-a250-e5bbda895817",
+              "name": "Successfully returns the default input record for a given estimation method and target asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":target_asset_id",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target_asset_id",
+                      "description": "(Required) Target Asset ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurement_type\": \"wind_speed\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"method_id\": \"ef5852fb-c03e-270b-980b-6c0fe01ec381\",\n  \"input_name\": \"string\",\n  \"measurement_type\": \"wind_speed\",\n  \"asset\": {\n    \"id\": \"3f6021a9-ecf2-4927-07d9-e7f5b1c206f6\",\n    \"asset_type\": \"flow\",\n    \"flow\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"inactive\",\n      \"product_category\": \"string\",\n      \"product_type\": \"string\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"dd023c42-8b62-94ae-509d-a3d1f43e9472\",\n        \"66c6bc8a-8add-f18d-8454-657a763bd051\"\n      ],\n      \"downstream_flow_ids\": [\n        \"11fac394-fc46-9298-9322-a69c93aa407c\",\n        \"f1707d7c-d5a4-6765-43c5-37473e49b8e6\"\n      ],\n      \"upstream_flows_count\": 117,\n      \"downstream_flows_count\": 7086,\n      \"upstream_facility_id\": \"b24071b3-304f-f3b9-fedc-a25482adbcea\",\n      \"downstream_facility_id\": \"9066e7f1-16d4-0464-b626-513653508039\",\n      \"upstream_equipment_id\": \"68d511da-2d56-952d-6cfe-cec8e29c1b5f\",\n      \"downstream_equipment_id\": \"d79a2d7a-be0e-2d49-99d9-f10cb80eee7c\",\n      \"id\": \"7dfdfc35-79cb-069c-57ed-e79b7570dd82\",\n      \"associated_facility_id\": \"661900b3-ae4d-1e41-adec-f5fd6850a03e\",\n      \"associated_equipment_id\": \"5929352b-aefb-279b-a301-5644392de21f\",\n      \"created_at\": \"2022-03-17T00:20:44.495Z\",\n      \"updated_at\": \"2004-09-21T06:27:54.890Z\",\n      \"created_by\": \"cf188ab8-1050-71b3-b989-4d1524057bc1\",\n      \"updated_by\": \"35e52e24-b349-d434-8768-72eab207a671\"\n    },\n    \"equipment\": {\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"id\": \"61acea4d-5f97-8388-db76-960e0e155da2\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"asset_id\": \"f81f1e13-c6d7-196d-b903-1a73707b98a6\",\n  \"target_asset_id\": \"114dca8e-be3e-49a5-9aaf-aaee7cdc6cf2\",\n  \"reporting_group_id\": \"string\",\n  \"reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\",\n    \"created_at\": \"1983-02-06T22:03:32.224Z\",\n    \"updated_at\": \"2010-10-20T18:42:17.050Z\",\n    \"created_by\": \"e559e0fd-0869-36dd-58cd-89ea7cfed59e\",\n    \"updated_by\": \"224d7f0f-d6d2-e468-6308-2017e220951a\",\n    \"company_id\": \"15ec2d92-9367-2bb3-e2a3-bba9bda716ca\"\n  },\n  \"company_id\": \"bb3c8179-fdc7-b7d7-7a7a-a95a40ec2f2b\",\n  \"created_at\": \"1955-04-30T00:41:11.426Z\",\n  \"created_by\": \"4e60b124-fe2f-44c5-8af7-9a1beddb23bd\",\n  \"updated_at\": \"1957-08-04T08:29:41.644Z\",\n  \"updated_by\": \"669ada3a-b979-6731-f549-83b3fd0c56a2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f5bb5d7-b2ef-4101-a32d-065428bdac59",
+          "name": "Update the default input record for a given estimation method and target asset",
+          "request": {
+            "name": "Update the default input record for a given estimation method and target asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":target_asset_id",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target_asset_id",
+                  "description": "(Required) Target Asset ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"measurement_type\": \"<string>\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba58d50e-806f-49c5-affd-dedc571d452c",
+              "name": "Successfully update the default input record for a given estimation method and target asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":target_asset_id",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target_asset_id",
+                      "description": "(Required) Target Asset ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"measurement_type\": \"wind_speed\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"method_id\": \"ef5852fb-c03e-270b-980b-6c0fe01ec381\",\n  \"input_name\": \"string\",\n  \"measurement_type\": \"wind_speed\",\n  \"asset\": {\n    \"id\": \"3f6021a9-ecf2-4927-07d9-e7f5b1c206f6\",\n    \"asset_type\": \"flow\",\n    \"flow\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"status\": \"inactive\",\n      \"product_category\": \"string\",\n      \"product_type\": \"string\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"upstream_flow_ids\": [\n        \"dd023c42-8b62-94ae-509d-a3d1f43e9472\",\n        \"66c6bc8a-8add-f18d-8454-657a763bd051\"\n      ],\n      \"downstream_flow_ids\": [\n        \"11fac394-fc46-9298-9322-a69c93aa407c\",\n        \"f1707d7c-d5a4-6765-43c5-37473e49b8e6\"\n      ],\n      \"upstream_flows_count\": 117,\n      \"downstream_flows_count\": 7086,\n      \"upstream_facility_id\": \"b24071b3-304f-f3b9-fedc-a25482adbcea\",\n      \"downstream_facility_id\": \"9066e7f1-16d4-0464-b626-513653508039\",\n      \"upstream_equipment_id\": \"68d511da-2d56-952d-6cfe-cec8e29c1b5f\",\n      \"downstream_equipment_id\": \"d79a2d7a-be0e-2d49-99d9-f10cb80eee7c\",\n      \"id\": \"7dfdfc35-79cb-069c-57ed-e79b7570dd82\",\n      \"associated_facility_id\": \"661900b3-ae4d-1e41-adec-f5fd6850a03e\",\n      \"associated_equipment_id\": \"5929352b-aefb-279b-a301-5644392de21f\",\n      \"created_at\": \"2022-03-17T00:20:44.495Z\",\n      \"updated_at\": \"2004-09-21T06:27:54.890Z\",\n      \"created_by\": \"cf188ab8-1050-71b3-b989-4d1524057bc1\",\n      \"updated_by\": \"35e52e24-b349-d434-8768-72eab207a671\"\n    },\n    \"equipment\": {\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"id\": \"61acea4d-5f97-8388-db76-960e0e155da2\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"asset_id\": \"f81f1e13-c6d7-196d-b903-1a73707b98a6\",\n  \"target_asset_id\": \"114dca8e-be3e-49a5-9aaf-aaee7cdc6cf2\",\n  \"reporting_group_id\": \"string\",\n  \"reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\",\n    \"created_at\": \"1983-02-06T22:03:32.224Z\",\n    \"updated_at\": \"2010-10-20T18:42:17.050Z\",\n    \"created_by\": \"e559e0fd-0869-36dd-58cd-89ea7cfed59e\",\n    \"updated_by\": \"224d7f0f-d6d2-e468-6308-2017e220951a\",\n    \"company_id\": \"15ec2d92-9367-2bb3-e2a3-bba9bda716ca\"\n  },\n  \"company_id\": \"bb3c8179-fdc7-b7d7-7a7a-a95a40ec2f2b\",\n  \"created_at\": \"1955-04-30T00:41:11.426Z\",\n  \"created_by\": \"4e60b124-fe2f-44c5-8af7-9a1beddb23bd\",\n  \"updated_at\": \"1957-08-04T08:29:41.644Z\",\n  \"updated_by\": \"669ada3a-b979-6731-f549-83b3fd0c56a2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "acd1ab2b-261a-4944-9420-452f63122dc5",
+          "name": "Delete the default input record for a given estimation method and target asset",
+          "request": {
+            "name": "Delete the default input record for a given estimation method and target asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "estimation_methods",
+                ":entity_type",
+                ":id",
+                "default_records",
+                ":target_asset_id",
+                ":input_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Estimation Method Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Estimation Method ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "target_asset_id",
+                  "description": "(Required) Target Asset ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "input_name",
+                  "description": "(Required) Input Name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f2769e19-b310-4a2f-aab5-dc784d014f82",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "estimation_methods",
+                    ":entity_type",
+                    ":id",
+                    "default_records",
+                    ":target_asset_id",
+                    ":input_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Estimation Method Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Estimation Method ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "target_asset_id",
+                      "description": "(Required) Target Asset ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "input_name",
+                      "description": "(Required) Input Name"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e5745787-e40c-4bee-b1a5-9e5e660e1394",
+    "name": "CarbonHub activities estimation_methods_default_records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

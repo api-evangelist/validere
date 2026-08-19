@@ -1,0 +1,1036 @@
+{
+  "item": [
+    {
+      "id": "3c1b89f4-eda7-427a-961d-0fa0af12db31",
+      "name": "equipment",
+      "description": {
+        "content": "Manage Equipment",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "162ffc3a-2692-4c76-88ed-8ed6db0e8eed",
+          "name": "Create an Equipment",
+          "request": {
+            "name": "Create an Equipment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_attributes\": \"<object>\",\n  \"effective_date\": \"<string>\",\n  \"facility_id\": \"<string>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91e2d73b-29dd-4867-909c-f1630d3071db",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"effective_date\": \"2022-01-01\",\n  \"facility_id\": \"<string>\",\n  \"latitude\": 51,\n  \"longitude\": -114,\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"type_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1955-02-28T18:23:28.844Z\",\n  \"updated_at\": \"2021-02-28T16:14:42.720Z\",\n  \"created_by\": \"d961fbb3-ce1f-2f44-2167-2a72c59dbdfe\",\n  \"updated_by\": \"fd6dd006-88da-4565-e5ce-dda6edaa8de3\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"effective_date\": \"2022-01-01\",\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"id\": \"string\",\n  \"latitude\": 51,\n  \"longitude\": -114,\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"type\": {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb360a68-f251-4c6e-ab54-1b41d0c280c5",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c502671-193f-464c-8201-2394c0992251",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"703e5d30-ea96-a6e1-8659-d8ed736be921\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"facility.name\": \"WellSite1\"\n          }\n        ],\n        \"custom_attributes.hint\": \"View schema for all supported fields\",\n        \"custom_attributes.operator\": {\n          \"$in\": [\n            \"Bob\",\n            \"Alice\",\n            \"Eve\"\n          ]\n        },\n        \"name\": {\n          \"$like\": \"Compressor\"\n        }\n      },\n      \"entity_type\": \"equipment\"\n    },\n    {\n      \"id\": \"56cb206a-adce-963d-a58c-49af02f21509\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"facility.name\": \"WellSite1\"\n          }\n        ],\n        \"custom_attributes.hint\": \"View schema for all supported fields\",\n        \"custom_attributes.operator\": {\n          \"$in\": [\n            \"Bob\",\n            \"Alice\",\n            \"Eve\"\n          ]\n        },\n        \"name\": {\n          \"$like\": \"Compressor\"\n        }\n      },\n      \"entity_type\": \"equipment\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d9627910-bf23-4448-bb37-9f6b519ac267",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "084b6090-2f1a-40eb-9caa-9fe6c8352633",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7b3862ad-9c68-5e3b-72ff-045d46baa18a\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"entity_type\": \"equipment\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99a3ed0b-c9d9-4cf6-8b5f-1df4c9bc4be9",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1b58574-c625-43dd-a56c-e6c2467b4d0b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6ef1e55-faaf-4486-861d-3e1da3d4f462",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1ecfe0a9-66ca-4420-b9b5-1b522150cfac",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7b3862ad-9c68-5e3b-72ff-045d46baa18a\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  },\n  \"entity_type\": \"equipment\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fc7680d-d7c0-4d96-96f9-6f4e3028b716",
+          "name": "Search and list equipment",
+          "request": {
+            "name": "Search and list equipment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd66b4e4-f3d5-4c35-a7e6-17c4a90c24df",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"created_at\": \"2020-08-03T00:56:59.437Z\",\n      \"updated_at\": \"1970-04-23T11:48:46.783Z\",\n      \"created_by\": \"5f551794-e04d-f2b3-8cb9-0bbc5b10f017\",\n      \"updated_by\": \"9d794419-caf6-367c-a000-08ce1181ad58\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"id\": \"string\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"status\": \"<string>\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"created_at\": \"2006-05-03T15:13:42.505Z\",\n      \"updated_at\": \"2017-09-14T19:59:35.356Z\",\n      \"created_by\": \"9c820033-1126-4cc3-3f48-f98fb340e76c\",\n      \"updated_by\": \"6e404789-052f-93d6-29d1-32445545cfa3\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"effective_date\": \"2022-01-01\",\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"id\": \"string\",\n      \"latitude\": 51,\n      \"longitude\": -114,\n      \"name\": \"string\",\n      \"status\": \"<string>\",\n      \"type\": {\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a6d2bf1c-7470-4b73-9c60-a40b401e4519",
+          "name": "Export equipment",
+          "request": {
+            "name": "Export equipment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66ffe2ef-b6ff-4697-bffb-33cbbe0e64bc",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type.id\": \"<string>\",\n    \"type.name\": \"<string>\",\n    \"custom_attributes\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a83641ea-c9db-b970-f3fb-6876e0ad2faa\",\n  \"name\": \"string\",\n  \"company_id\": \"b31bc97f-a247-b4c1-8527-b51b295ba607\",\n  \"status\": \"exporting\",\n  \"created_at\": \"2014-11-30T19:29:40.718Z\",\n  \"updated_at\": \"1950-03-23T10:13:31.663Z\",\n  \"created_by\": \"8383b3e8-0bd6-0bd9-2702-4fc82d0d2b9d\",\n  \"updated_by\": \"4478aea9-6e14-1bd4-1a45-5b0ca7ee1627\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"aL0QCltlY\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1981-10-29T15:48:33.077Z\",\n    \"updated_at\": \"2003-06-22T03:57:36.682Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"rvZM\",\n        \"x_x7SD1tE\"\n      ],\n      \"key_1\": [\n        \"maGLW\",\n        \"6666\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"JbjdvjefdK\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b1bbf83-6cf6-493a-9d68-9f77c18c2b17",
+          "name": "Delete Equipment",
+          "request": {
+            "name": "Delete Equipment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                ":equipment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "equipment_id",
+                  "description": "(Required) Id of equipment"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a4a7a6ab-f1ce-4d80-8e5c-0bb01f3c79a3",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    ":equipment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "equipment_id",
+                      "description": "(Required) Id of equipment"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86ec6fd9-cda1-4f64-af04-022c16709025",
+          "name": "Get an Equipment by ID",
+          "request": {
+            "name": "Get an Equipment by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                ":equipment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "equipment_id",
+                  "description": "(Required) Id of equipment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20600216-d025-4c80-b4ed-5514718183c7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    ":equipment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "equipment_id",
+                      "description": "(Required) Id of equipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1955-02-28T18:23:28.844Z\",\n  \"updated_at\": \"2021-02-28T16:14:42.720Z\",\n  \"created_by\": \"d961fbb3-ce1f-2f44-2167-2a72c59dbdfe\",\n  \"updated_by\": \"fd6dd006-88da-4565-e5ce-dda6edaa8de3\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"effective_date\": \"2022-01-01\",\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"id\": \"string\",\n  \"latitude\": 51,\n  \"longitude\": -114,\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"type\": {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e96f709f-63a7-42c3-b8f3-d15983175ac0",
+          "name": "Update Equipment",
+          "request": {
+            "name": "Update Equipment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "equipment",
+                ":equipment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "equipment_id",
+                  "description": "(Required) Id of equipment"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_attributes\": \"<object>\",\n  \"latitude\": \"<number>\",\n  \"longitude\": \"<number>\",\n  \"name\": \"<string>\",\n  \"type_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"facility_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "067dea5f-1642-461a-9ea1-5449690df0e8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "equipment",
+                    ":equipment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "equipment_id",
+                      "description": "(Required) Id of equipment"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"latitude\": 51,\n  \"longitude\": -114,\n  \"name\": \"<string>\",\n  \"type_id\": \"ng_pneumatic_devices\",\n  \"status\": \"<string>\",\n  \"facility_id\": \"<uuid>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"effective_date\": \"2022-01-01\",\n  \"id\": \"83e9a4a5-27b6-6d5e-0a9d-f1452682c2f2\",\n  \"latitude\": 51,\n  \"longitude\": -114,\n  \"name\": \"string\",\n  \"type\": {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8dbe350b-6baa-4281-9d8d-afc21a15bf21",
+    "name": "CarbonHub activities equipment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,692 @@
+{
+  "item": [
+    {
+      "id": "abe68777-d2c8-46d1-9aef-a239f4025411",
+      "name": "networks",
+      "description": {
+        "content": "Manage Networks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9cee3b94-abfe-4991-9239-dd616705ce93",
+          "name": "Gets a list of network proration inputs and results",
+          "request": {
+            "name": "Gets a list of network proration inputs and results",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "networks",
+                ":id",
+                ":year_month"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "year_month",
+                  "description": "(Required) YearMonth"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b7fa436-a1e8-4d85-913a-43147d0b8161",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "networks",
+                    ":id",
+                    ":year_month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "year_month",
+                      "description": "(Required) YearMonth"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {},\n  \"reporting_group_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "651916c9-0a46-4803-bc39-b2e9a81f9f5d",
+          "name": "Upsert configuration for a network monthly proration input",
+          "request": {
+            "name": "Upsert configuration for a network monthly proration input",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "networks",
+                ":id",
+                ":year_month"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "year_month",
+                  "description": "(Required) YearMonth"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"input\": {\n    \"key_0\": {\n      \"adjustable\": \"<boolean>\"\n    }\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2b8e69aa-ca3e-4539-b0f3-52bc1799e7c4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "networks",
+                    ":id",
+                    ":year_month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "year_month",
+                      "description": "(Required) YearMonth"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"input\": {\n    \"3fa85f64-5717-4562-b3fc-2c963f66afa6\": {\n      \"adjustable\": true\n    }\n  },\n  \"reporting_group_id\": \"<string>\",\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {},\n  \"reporting_group_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bd1e5f9-5336-4596-b2ec-111fe02b16f0",
+          "name": "Delete a month configuration. Returns the default configuration",
+          "request": {
+            "name": "Delete a month configuration. Returns the default configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "networks",
+                ":id",
+                ":year_month"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "year_month",
+                  "description": "(Required) YearMonth"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9ef7ad0-68e3-40f9-b119-77c0f2d60642",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "networks",
+                    ":id",
+                    ":year_month"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "year_month",
+                      "description": "(Required) YearMonth"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {},\n  \"reporting_group_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1c70b73-cc26-41aa-9c0c-00f68e8ac3be",
+          "name": "Triggers the calculation and returns the table along with the results",
+          "request": {
+            "name": "Triggers the calculation and returns the table along with the results",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "networks",
+                ":id",
+                ":year_month",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "year_month",
+                  "description": "(Required) YearMonth"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"promote_to_record\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93bda154-f616-4733-b401-6b279039993c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "networks",
+                    ":id",
+                    ":year_month",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "year_month",
+                      "description": "(Required) YearMonth"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"promote_to_record\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {},\n  \"reporting_group_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f333bb39-86d5-4e2f-aa88-403fb1b51ff1",
+          "name": "Migrates the network and it's configurations to estimation methods",
+          "request": {
+            "name": "Migrates the network and it's configurations to estimation methods",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "networks",
+                ":id",
+                "migrate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reporting_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "072d9547-c9d4-48ef-81e8-06f162a1fe91",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "networks",
+                    ":id",
+                    "migrate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reporting_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"inactive\",\n  \"asset_group_type_id\": \"network\",\n  \"default_network_reporting_group_id\": \"string\",\n  \"default_network_reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\"\n  },\n  \"default_estimation_method_id\": \"fed635c3-41ca-fcb5-f7be-76dcf3ef55fe\",\n  \"default_estimation_method\": {\n    \"id\": \"749185bd-16e7-3dc4-341c-e2a1a666c7f0\",\n    \"company_id\": \"06af3e06-8fb1-236e-e65c-15044ff226b6\",\n    \"asset_id\": \"1be11bef-a1fc-1031-c939-fa3d204f4320\",\n    \"analytics_library_id\": \"2024-SubpartW\",\n    \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n    \"name\": \"SubpartW AGR Method\",\n    \"status\": \"active\",\n    \"default_values\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_1\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_2\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_3\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      }\n    },\n    \"default_asset_values\": {\n      \"key_0\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_1\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_3\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_2\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      }\n    },\n    \"created_at\": \"1969-10-10T20:18:24.547Z\",\n    \"updated_at\": \"1996-10-13T19:20:07.215Z\",\n    \"created_by\": \"ca25a7b0-e77c-2d2b-1fd3-0fc9cc27d2d6\",\n    \"updated_by\": \"7d647bd0-5b44-aa2c-f917-59a90b39f133\"\n  },\n  \"id\": \"866f5885-c314-1862-7063-118e65dd0659\",\n  \"company_id\": \"60bdf8b0-aadb-0bb3-c3fc-a876b7ffc52a\",\n  \"created_at\": \"2022-01-19T21:17:55.617Z\",\n  \"created_by\": \"6d485bff-95d7-77ca-bfd8-1cf0a1cb71c2\",\n  \"updated_at\": \"2016-11-21T15:23:06.467Z\",\n  \"updated_by\": \"9406e61d-1cb7-9f33-2a21-f002fa3aeaa4\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7b3d425b-2b85-4723-b5e1-4a2f941b98f1",
+    "name": "CarbonHub activities networks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities roles API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "roles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a role"
+        },
+        {
+          "info": {
+            "name": "Must be Company member -  Search roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/roles/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be Company member -  Search roles"
+        },
+        {
+          "info": {
+            "name": "Must be Company member - Get a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ]
+          },
+          "docs": "Must be Company member - Get a role"
+        },
+        {
+          "info": {
+            "name": "Update a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a role"
+        },
+        {
+          "info": {
+            "name": "Delete a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/roles/:role_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ]
+          },
+          "docs": "Delete a role"
+        },
+        {
+          "info": {
+            "name": "Must be Company member - Show Memberships for a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/members",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ]
+          },
+          "docs": "Must be Company member - Show Memberships for a role"
+        },
+        {
+          "info": {
+            "name": "Add a user to a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/members/:member_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "Member ID"
+              }
+            ]
+          },
+          "docs": "Add a user to a role"
+        },
+        {
+          "info": {
+            "name": "Remove a user from a role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/members/:member_id",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "Member ID"
+              }
+            ]
+          },
+          "docs": "Remove a user from a role"
+        },
+        {
+          "info": {
+            "name": "Get role permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/permissions",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ]
+          },
+          "docs": "Get role permission"
+        },
+        {
+          "info": {
+            "name": "Update role permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/permissions",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update role permission"
+        },
+        {
+          "info": {
+            "name": "Update single permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/permissions/:permission_name",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              },
+              {
+                "name": "permission_name",
+                "value": "",
+                "type": "path",
+                "description": "Permission name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update single permission"
+        },
+        {
+          "info": {
+            "name": "Remove single permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/roles/:role_id/permissions/:permission_name",
+            "params": [
+              {
+                "name": "role_id",
+                "value": "",
+                "type": "path",
+                "description": "Role ID"
+              },
+              {
+                "name": "permission_name",
+                "value": "",
+                "type": "path",
+                "description": "Permission name"
+              }
+            ]
+          },
+          "docs": "Remove single permission"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

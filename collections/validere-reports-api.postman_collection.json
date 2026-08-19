@@ -1,0 +1,2403 @@
+{
+  "item": [
+    {
+      "id": "78d12ffd-af88-4d96-9b10-8894726685c0",
+      "name": "reports",
+      "description": {
+        "content": "Reports",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "775ea118-ca85-4bc8-a982-8138b992ed58",
+          "name": "Search and list generated reports",
+          "request": {
+            "name": "Search and list generated reports",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "reports",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"templated_report_name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"updated_at\": \"<string>\",\n    \"updated_by\": \"<string>\",\n    \"templated_report.display_name\": \"<string>\",\n    \"templated_report.status\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49347c2f-fef6-493e-b7e1-e0a9ce8dacb6",
+              "name": "List of generated reports",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "reports",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"created_by\": \"c3e9446d-4cc0-4e7b-bb43-43fff9361957\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"Subpart W\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"d7b60ed2-dcd2-1479-65aa-06be19980f2b\",\n      \"name\": \"string\",\n      \"company_id\": \"851bc0e3-aadd-4e2d-5d0e-331b45ba8faa\",\n      \"status\": \"success\",\n      \"created_at\": \"2018-04-02T14:50:58.940Z\",\n      \"updated_at\": \"1985-06-06T18:35:17.331Z\",\n      \"created_by\": \"cbe8687b-e5b3-0f87-4b2a-048982024297\",\n      \"updated_by\": \"bfcf0707-2f98-876c-d888-4847f4fda5e4\",\n      \"templated_report_name\": \"string\",\n      \"input\": {\n        \"key_0\": {}\n      },\n      \"s3_object_id\": \"string\",\n      \"report_version\": \"string\",\n      \"templated_report\": {\n        \"name\": \"GivBZiaPh0\",\n        \"display_name\": \"string\",\n        \"created_at\": \"1962-08-19T15:55:56.774Z\",\n        \"updated_at\": \"2022-10-30T23:55:06.377Z\",\n        \"status\": \"active\",\n        \"input_schema\": {},\n        \"is_embedded\": false,\n        \"use_data_layer_v2\": false,\n        \"description\": \"string\",\n        \"deduplication_columns\": {\n          \"key_0\": [\n            \"kNLRWEjGZc\",\n            \"qNm6B0Cm5\"\n          ],\n          \"key_1\": [\n            \"B_gYLStNpzu\",\n            \"oEl\"\n          ]\n        },\n        \"row_styling_headers\": {\n          \"key_0\": \"fRrYAt\",\n          \"key_1\": \"iBleOFM0p\",\n          \"key_2\": \"bdp\"\n        }\n      },\n      \"s3_download_link\": \"string\"\n    },\n    {\n      \"id\": \"adf32fbe-ac56-2f5e-faad-704fb49d77a2\",\n      \"name\": \"string\",\n      \"company_id\": \"33465e55-56e8-acc0-5e9a-1a43048858d9\",\n      \"status\": \"success\",\n      \"created_at\": \"2023-07-30T06:08:47.185Z\",\n      \"updated_at\": \"2012-04-21T13:42:06.624Z\",\n      \"created_by\": \"e5386fe5-ee1e-9b63-cf51-86ae097ffeeb\",\n      \"updated_by\": \"aaaadb02-a8c4-dd50-f9e1-6a4bba43b9fd\",\n      \"templated_report_name\": \"string\",\n      \"input\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"s3_object_id\": \"string\",\n      \"report_version\": \"string\",\n      \"templated_report\": {\n        \"name\": \"ijRRxp\",\n        \"display_name\": \"string\",\n        \"created_at\": \"1980-04-02T01:32:26.216Z\",\n        \"updated_at\": \"2018-12-23T02:52:54.827Z\",\n        \"status\": \"active\",\n        \"input_schema\": {},\n        \"is_embedded\": false,\n        \"use_data_layer_v2\": false,\n        \"description\": \"string\",\n        \"deduplication_columns\": {\n          \"key_0\": [\n            \"9R9R\",\n            \"WHWH\"\n          ],\n          \"key_1\": [\n            \"nGYnhRw4D\",\n            \"vQmu9\"\n          ]\n        },\n        \"row_styling_headers\": {\n          \"key_0\": \"PzcOzEZMC\",\n          \"key_1\": \"kV6\"\n        }\n      },\n      \"s3_download_link\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db9a53de-1aaa-44de-a120-a5e034a548f4",
+          "name": "Get report with download URL",
+          "request": {
+            "name": "Get report with download URL",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0577de0f-ebe8-4169-83ec-6d59b682b0d5",
+              "name": "Report object plus link",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"13b30aa4-4aa7-c7b7-957a-d6e785451bd3\",\n  \"name\": \"string\",\n  \"company_id\": \"d3188a0c-12c0-b131-e73f-93395f237132\",\n  \"status\": \"failed\",\n  \"created_at\": \"1981-03-13T20:47:35.607Z\",\n  \"updated_at\": \"2001-08-02T11:36:01.261Z\",\n  \"created_by\": \"a8aba136-1872-d95b-ac4a-22503ec2c023\",\n  \"updated_by\": \"138f393b-5aec-d1ed-6e71-f02d6c9e100b\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"cl2\",\n    \"display_name\": \"string\",\n    \"created_at\": \"2026-07-02T03:10:17.605Z\",\n    \"updated_at\": \"1966-02-02T00:11:09.252Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"ak6Rpr1iT8D\",\n        \"OfyP\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"5pHiC5g\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0af76be1-9782-4c68-a694-a374030f5168",
+          "name": "Delete report",
+          "request": {
+            "name": "Delete report",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11458d0e-d701-43d6-bd9c-5fe3a6981243",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2797a071-9bfc-40c6-ac47-04f293167f75",
+          "name": "Trigger report generation",
+          "request": {
+            "name": "Trigger report generation",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"templated_report_name\": \"<string>\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "768fd6bc-21c7-4afb-8751-b1ab388a6fd1",
+              "name": "Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templated_report_name\": \"<string>\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"13b30aa4-4aa7-c7b7-957a-d6e785451bd3\",\n  \"name\": \"string\",\n  \"company_id\": \"d3188a0c-12c0-b131-e73f-93395f237132\",\n  \"status\": \"failed\",\n  \"created_at\": \"1981-03-13T20:47:35.607Z\",\n  \"updated_at\": \"2001-08-02T11:36:01.261Z\",\n  \"created_by\": \"a8aba136-1872-d95b-ac4a-22503ec2c023\",\n  \"updated_by\": \"138f393b-5aec-d1ed-6e71-f02d6c9e100b\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"cl2\",\n    \"display_name\": \"string\",\n    \"created_at\": \"2026-07-02T03:10:17.605Z\",\n    \"updated_at\": \"1966-02-02T00:11:09.252Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"ak6Rpr1iT8D\",\n        \"OfyP\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"5pHiC5g\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d43c92f0-8982-4e38-96bb-7d3a9ded449b",
+          "name": "Trigger report generation",
+          "request": {
+            "name": "Trigger report generation",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"templated_report_name\": \"<string>\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f920e6c-e751-4c93-8944-6493c28d48a7",
+              "name": "Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"templated_report_name\": \"<string>\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b74fdb7f-1b94-8c4e-7d13-b1fba313337a\",\n  \"name\": \"string\",\n  \"company_id\": \"d6431204-94ab-2ac4-9aa9-004c8ca1dfe1\",\n  \"status\": \"archived\",\n  \"created_at\": \"1958-04-04T03:40:09.483Z\",\n  \"updated_at\": \"1993-05-05T22:14:07.259Z\",\n  \"created_by\": \"e45d30cf-6267-34e3-6426-0dd730e94121\",\n  \"updated_by\": \"369ce77b-e5d7-b716-665b-74f9a8af5154\",\n  \"latest_version\": {\n    \"version\": 5341,\n    \"status\": \"success\",\n    \"created_at\": \"1986-03-29T20:19:13.497Z\",\n    \"created_by\": \"369f066c-698e-0f76-5c61-8e7bd8ef9b15\",\n    \"row_styling_headers\": {\n      \"key_0\": \"6Bgh5\",\n      \"key_1\": \"S3gDo_GIMH6\"\n    }\n  },\n  \"templated_report_name\": \"20UP\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"_t_t\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1989-03-20T19:50:54.380Z\",\n    \"updated_at\": \"1983-11-01T15:01:12.569Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"FFH\",\n        \"PUCMlLBWfV\"\n      ],\n      \"key_1\": [\n        \"rhjAFi83\",\n        \"xoxo\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"G_E\",\n      \"key_1\": \"zzzz\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8fe2286d-107d-4c1b-894d-600906d3536a",
+          "name": "Search reports with latest version",
+          "request": {
+            "name": "Search reports with latest version",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"templated_report_name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"updated_at\": \"<string>\",\n    \"updated_by\": \"<string>\",\n    \"templated_report.name\": \"<string>\",\n    \"templated_report.display_name\": \"<string>\",\n    \"templated_report.status\": \"<string>\",\n    \"templated_report.created_at\": \"<dateTime>\",\n    \"templated_report.updated_at\": \"<dateTime>\",\n    \"latest_version.input\": \"<object>\",\n    \"latest_version.status\": \"<string>\",\n    \"latest_version.created_at\": \"<dateTime>\",\n    \"latest_version.created_by\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2ead19c7-0fe1-4fae-86cd-b71c02287748",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"templated_report_name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"updated_at\": \"<string>\",\n    \"updated_by\": \"<string>\",\n    \"templated_report.name\": \"<string>\",\n    \"templated_report.display_name\": \"<string>\",\n    \"templated_report.status\": \"<string>\",\n    \"templated_report.created_at\": \"<dateTime>\",\n    \"templated_report.updated_at\": \"<dateTime>\",\n    \"latest_version.input\": \"<object>\",\n    \"latest_version.status\": \"<string>\",\n    \"latest_version.created_at\": \"<dateTime>\",\n    \"latest_version.created_by\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ce733c8-47c6-457c-8c0f-5049b4b0e76e",
+          "name": "Get existing report inputs for a templated report",
+          "request": {
+            "name": "Get existing report inputs for a templated report",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                "inputs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "templated_report_name",
+                  "value": "<string>",
+                  "description": "(Required) Templated Report Name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a9c91283-14ee-4160-aa87-2e583c194523",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    "inputs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "templated_report_name",
+                      "value": "v2_report"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input_1\": [\n    \"value 1\",\n    \"value 2\"\n  ],\n  \"input_2\": [\n    \"value 3\",\n    \"value 4\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "845c9bd0-a6c6-4f1e-925f-59a105516c6d",
+          "name": "Get Report with latest version",
+          "request": {
+            "name": "Get Report with latest version",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c48a17b0-e459-4e6f-9e69-ddecba948623",
+              "name": "Report with latest version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c1b8f635-3729-9525-1ae9-f4cae5818716\",\n  \"name\": \"string\",\n  \"company_id\": \"32f2f9fd-1f94-10b6-d03d-063a4f4f2967\",\n  \"status\": \"archived\",\n  \"created_at\": \"1981-09-07T19:02:19.952Z\",\n  \"updated_at\": \"1974-06-12T03:02:54.365Z\",\n  \"created_by\": \"4e847bc9-2079-1f55-628b-52b681e33814\",\n  \"updated_by\": \"754815d1-fab7-fc53-23a4-b3db6143c660\",\n  \"latest_version\": {\n    \"version\": 5033,\n    \"status\": \"failed\",\n    \"created_at\": \"2009-03-30T07:36:37.565Z\",\n    \"created_by\": \"eba7ffea-369e-a1c7-a7c6-818707b95d7d\",\n    \"row_styling_headers\": {\n      \"key_0\": \"aMbsxadY64\"\n    }\n  },\n  \"templated_report_name\": \"eJDYaV\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"xNhJ6FH\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1975-04-29T20:15:01.679Z\",\n    \"updated_at\": \"1975-08-16T04:23:40.657Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"Czk\",\n        \"ISS\"\n      ],\n      \"key_1\": [\n        \"BcY\",\n        \"OnOn\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"wIkv3\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "676349b8-5dcb-4d8b-b98a-620e74182711",
+          "name": "Update report status",
+          "request": {
+            "name": "Update report status",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0973d156-5884-4809-b0f5-2522c741cd31",
+              "name": "Report with Templated Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c1b8f635-3729-9525-1ae9-f4cae5818716\",\n  \"name\": \"string\",\n  \"company_id\": \"32f2f9fd-1f94-10b6-d03d-063a4f4f2967\",\n  \"status\": \"archived\",\n  \"created_at\": \"1981-09-07T19:02:19.952Z\",\n  \"updated_at\": \"1974-06-12T03:02:54.365Z\",\n  \"created_by\": \"4e847bc9-2079-1f55-628b-52b681e33814\",\n  \"updated_by\": \"754815d1-fab7-fc53-23a4-b3db6143c660\",\n  \"latest_version\": {\n    \"version\": 5033,\n    \"status\": \"failed\",\n    \"created_at\": \"2009-03-30T07:36:37.565Z\",\n    \"created_by\": \"eba7ffea-369e-a1c7-a7c6-818707b95d7d\",\n    \"row_styling_headers\": {\n      \"key_0\": \"aMbsxadY64\"\n    }\n  },\n  \"templated_report_name\": \"eJDYaV\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"xNhJ6FH\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1975-04-29T20:15:01.679Z\",\n    \"updated_at\": \"1975-08-16T04:23:40.657Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"Czk\",\n        \"ISS\"\n      ],\n      \"key_1\": [\n        \"BcY\",\n        \"OnOn\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"wIkv3\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "529a9686-9b64-4dee-bae2-fbcddd75e63d",
+          "name": "Delete report",
+          "request": {
+            "name": "Delete report",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63e2944a-7c2c-4405-935e-8299acf2acd3",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b31cde2-f080-469e-bb19-2be3e958cb03",
+          "name": "Trigger next version report generation",
+          "request": {
+            "name": "Trigger next version report generation",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f245c504-8427-47ca-8871-5e99f4583a81",
+              "name": "Report",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c1b8f635-3729-9525-1ae9-f4cae5818716\",\n  \"name\": \"string\",\n  \"company_id\": \"32f2f9fd-1f94-10b6-d03d-063a4f4f2967\",\n  \"status\": \"archived\",\n  \"created_at\": \"1981-09-07T19:02:19.952Z\",\n  \"updated_at\": \"1974-06-12T03:02:54.365Z\",\n  \"created_by\": \"4e847bc9-2079-1f55-628b-52b681e33814\",\n  \"updated_by\": \"754815d1-fab7-fc53-23a4-b3db6143c660\",\n  \"latest_version\": {\n    \"version\": 5033,\n    \"status\": \"failed\",\n    \"created_at\": \"2009-03-30T07:36:37.565Z\",\n    \"created_by\": \"eba7ffea-369e-a1c7-a7c6-818707b95d7d\",\n    \"row_styling_headers\": {\n      \"key_0\": \"aMbsxadY64\"\n    }\n  },\n  \"templated_report_name\": \"eJDYaV\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"xNhJ6FH\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1975-04-29T20:15:01.679Z\",\n    \"updated_at\": \"1975-08-16T04:23:40.657Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"Czk\",\n        \"ISS\"\n      ],\n      \"key_1\": [\n        \"BcY\",\n        \"OnOn\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"wIkv3\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8391e338-645d-4f48-9b85-d2fd4d6b0b89",
+          "name": "Get report with list of versions",
+          "request": {
+            "name": "Get report with list of versions",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id",
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a7772a6-4a58-49db-9b78-6e90f2904351",
+              "name": "Report with list of versions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id",
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"a621e6f2-d098-a950-ce28-0daac6de9f4e\",\n  \"name\": \"string\",\n  \"company_id\": \"ecbf2a4f-57ba-3c0f-c88c-1430da148d45\",\n  \"status\": \"archived\",\n  \"created_at\": \"2016-10-24T05:43:39.878Z\",\n  \"updated_at\": \"1948-07-17T23:20:44.973Z\",\n  \"created_by\": \"b54ba0bd-f008-1a22-da2c-6a2c37020111\",\n  \"updated_by\": \"54a7b3f1-71c4-8e98-ef68-5c8344d8a1e5\",\n  \"versions\": [\n    {\n      \"report_id\": \"9c1ff8ad-2d79-4025-6fa6-3556fd052a4a\",\n      \"version\": 8112,\n      \"is_current\": true,\n      \"status\": \"success\",\n      \"created_at\": \"2023-11-07T21:10:56.919Z\",\n      \"created_by\": \"726619e6-81ac-cdf1-a691-de3e89a9307e\",\n      \"s3_object_id\": \"string\",\n      \"definition_version\": \"string\",\n      \"row_styling_headers\": {\n        \"key_0\": \"PInTgxIQi\",\n        \"key_1\": \"WuWu\",\n        \"key_2\": \"e0m2pNuxE\"\n      }\n    },\n    {\n      \"report_id\": \"f4299166-032a-9661-e40c-21b2398ce2e3\",\n      \"version\": 4680,\n      \"is_current\": true,\n      \"status\": \"success\",\n      \"created_at\": \"1960-06-04T10:52:01.666Z\",\n      \"created_by\": \"4fe0a70c-afbc-297c-8bc3-c726ca4cc05f\",\n      \"s3_object_id\": \"string\",\n      \"definition_version\": \"string\",\n      \"row_styling_headers\": {\n        \"key_0\": \"GUZOdopUZ5p\"\n      }\n    }\n  ],\n  \"templated_report_name\": \"a_R\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"tiiC\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1947-04-27T03:19:52.869Z\",\n    \"updated_at\": \"2009-08-03T15:43:00.000Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"0WAL2j1\",\n        \"UUUU\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"h1iBN0uS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ae5cf32-767a-4c89-93e7-feb00375a8aa",
+          "name": "Get report version",
+          "request": {
+            "name": "Get report version",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id",
+                "versions",
+                ":version"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<Error: Could not resolve allOf schema",
+                  "key": "version",
+                  "description": "(Required) Report Version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e619905c-df68-4e19-8b3b-3c7f19b860ef",
+              "name": "Report with version",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id",
+                    "versions",
+                    ":version"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<Error: Could not resolve allOf schema",
+                      "key": "version",
+                      "description": "(Required) Report Version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"649eb540-ec5d-e3b8-00ed-7ca2b617a347\",\n  \"name\": \"string\",\n  \"company_id\": \"18c0cd5d-bbca-ddad-ba13-51f62a0c5f0e\",\n  \"status\": \"unlocked\",\n  \"created_at\": \"2026-06-10T07:52:56.902Z\",\n  \"updated_at\": \"2013-02-16T12:10:53.473Z\",\n  \"created_by\": \"d0af1974-a390-29fd-8d76-34e60797599a\",\n  \"updated_by\": \"fe8dfdb7-7d47-545c-1603-f266cb6ba68d\",\n  \"version\": {\n    \"report_id\": \"ff587e87-a2d2-bbb2-c12f-59f77221a6ba\",\n    \"version\": 422,\n    \"is_current\": false,\n    \"status\": \"failed\",\n    \"created_at\": \"1992-08-13T09:10:10.317Z\",\n    \"created_by\": \"753bc2f0-6b5c-21d8-ff86-1e9119932498\",\n    \"s3_object_id\": \"string\",\n    \"definition_version\": \"string\",\n    \"row_styling_headers\": {\n      \"key_0\": \"xkH3o\"\n    }\n  },\n  \"templated_report_name\": \"ewbGiwgGh61\",\n  \"input\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"templated_report\": {\n    \"name\": \"5SqEZhEefCw\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1992-02-02T11:41:45.980Z\",\n    \"updated_at\": \"1987-03-24T04:50:45.210Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"E_eQsgQ6b1\",\n        \"VJ98N\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"xMO\",\n      \"key_1\": \"kyRQW1t\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a1a1bea-5714-4085-b25e-c888b9dabffa",
+          "name": "Get and list embedded report sheets",
+          "request": {
+            "name": "Get and list embedded report sheets",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id",
+                "versions",
+                ":version",
+                "embedded",
+                "sheets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<Error: Could not resolve allOf schema",
+                  "key": "version",
+                  "description": "(Required) Report Version"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7367425e-6968-40b8-b5a1-5dad1ec4991f",
+              "name": "List of embedded report sheets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id",
+                    "versions",
+                    ":version",
+                    "embedded",
+                    "sheets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<Error: Could not resolve allOf schema",
+                      "key": "version",
+                      "description": "(Required) Report Version"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"position\": 1717,\n      \"headers\": {\n        \"key_0\": {\n          \"position\": 3406,\n          \"display_name\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\"\n        }\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"display_name\": \"string\",\n      \"position\": 6695,\n      \"headers\": {\n        \"key_0\": {\n          \"position\": 4603,\n          \"display_name\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_unit\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af692304-7ff2-41d8-bcf1-1190ffe71b35",
+          "name": "Search and list embedded report rows",
+          "request": {
+            "name": "Search and list embedded report rows",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v3",
+                "reports",
+                ":report_id",
+                "embedded",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "report_id",
+                  "description": "(Required) Report ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filter\": {\n    \"report_version\": \"<integer>\",\n    \"sheet_name\": \"<string>\"\n  },\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "22efefff-66f1-4ad1-8120-5a86d0715922",
+              "name": "List of embedded report rows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v3",
+                    "reports",
+                    ":report_id",
+                    "embedded",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "report_id",
+                      "description": "(Required) Report ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"report_version\": \"<integer>\",\n    \"sheet_name\": \"<string>\"\n  },\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"header_name.value\",\n  \"sort_direction\": \"desc\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"row_id\": \"c6006a8b-6b34-bf78-8bbe-b13aa0c8680f\",\n      \"cells\": {\n        \"header_a\": {\n          \"value\": \"1\",\n          \"style\": \"success\"\n        },\n        \"header_b\": {\n          \"value\": \"2\",\n          \"style\": \"error\"\n        }\n      }\n    },\n    {\n      \"row_id\": \"afe042d3-ba22-aa37-049a-40c3fc03405b\",\n      \"cells\": {\n        \"header_a\": {\n          \"value\": \"1\",\n          \"style\": \"success\"\n        },\n        \"header_b\": {\n          \"value\": \"2\",\n          \"style\": \"error\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "287ee822-b68b-450e-b833-23b7cf2c77a0",
+          "name": "Search templated reports [System Admin]",
+          "request": {
+            "name": "Search templated reports [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_reports",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenant_id",
+                  "value": "<string>",
+                  "description": "Tenant ID for admin users"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c85f13e1-b573-4cf0-85f5-f0d8b97110a7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_reports",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenant_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"display_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"a5gUUjigC2\",\n      \"display_name\": \"string\",\n      \"created_at\": \"1953-10-27T16:12:16.330Z\",\n      \"updated_at\": \"1993-01-21T17:08:26.827Z\",\n      \"status\": \"active\",\n      \"input_schema\": {},\n      \"is_embedded\": false,\n      \"use_data_layer_v2\": false,\n      \"description\": \"string\",\n      \"deduplication_columns\": {\n        \"key_0\": [\n          \"jjjj\",\n          \"G6UeJ7k\"\n        ]\n      },\n      \"row_styling_headers\": {\n        \"key_0\": \"O3XZbcvEpjT\"\n      }\n    },\n    {\n      \"name\": \"uneIBa\",\n      \"display_name\": \"string\",\n      \"created_at\": \"2019-05-05T07:45:13.816Z\",\n      \"updated_at\": \"1967-09-23T01:53:08.211Z\",\n      \"status\": \"active\",\n      \"input_schema\": {},\n      \"is_embedded\": false,\n      \"use_data_layer_v2\": false,\n      \"description\": \"string\",\n      \"deduplication_columns\": {\n        \"key_0\": [\n          \"iJZcDzh\",\n          \"PPPP\"\n        ],\n        \"key_1\": [\n          \"WWWW\",\n          \"iKpIZ\"\n        ],\n        \"key_2\": [\n          \"HrRW6IdsV\",\n          \"6262\"\n        ],\n        \"key_3\": [\n          \"HMRIqhj4W3\",\n          \"hbnh\"\n        ],\n        \"key_4\": [\n          \"oooo\",\n          \"mgNyqlSnNH\"\n        ]\n      },\n      \"row_styling_headers\": {\n        \"key_0\": \"OtXW4zB9hQx\",\n        \"key_1\": \"Vk68\",\n        \"key_2\": \"4GU\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "761f299f-8ef3-44a3-90db-57822dc5a18e",
+          "name": "Search a company's templated reports",
+          "request": {
+            "name": "Search a company's templated reports",
+            "description": {
+              "content": "This is scoped to what is enabled to the company and automatically filters only active reports",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_reports",
+                "search_company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"display_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"category.id\": \"<string>\",\n    \"category.name\": \"<string>\",\n    \"category.description\": \"<string>\",\n    \"category.company_id\": \"<string>\",\n    \"category.created_by\": \"<string>\",\n    \"category.created_at\": \"<string>\",\n    \"category.updated_by\": \"<string>\",\n    \"category.updated_at\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1c3b5e4-8d32-4384-9901-189dfe2e4209",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_reports",
+                    "search_company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"display_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"category.id\": \"<string>\",\n    \"category.name\": \"<string>\",\n    \"category.description\": \"<string>\",\n    \"category.company_id\": \"<string>\",\n    \"category.created_by\": \"<string>\",\n    \"category.created_at\": \"<string>\",\n    \"category.updated_by\": \"<string>\",\n    \"category.updated_at\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"Z1Z1\",\n      \"display_name\": \"string\",\n      \"created_at\": \"2007-04-09T12:34:30.051Z\",\n      \"updated_at\": \"2021-07-04T03:39:00.449Z\",\n      \"category\": {\n        \"id\": \"30160548-b75e-8565-df02-c59e244427ee\",\n        \"name\": \"    \"\n      },\n      \"status\": \"active\",\n      \"input_schema\": {},\n      \"is_embedded\": false,\n      \"use_data_layer_v2\": false,\n      \"description\": \"string\",\n      \"deduplication_columns\": {\n        \"key_0\": [\n          \"Nz9ImGB\",\n          \"8byflLaru\"\n        ]\n      },\n      \"row_styling_headers\": {\n        \"key_0\": \"S605\",\n        \"key_1\": \"kKU\",\n        \"key_2\": \"BeBe\"\n      }\n    },\n    {\n      \"name\": \"ifBX6jfu\",\n      \"display_name\": \"string\",\n      \"created_at\": \"2025-08-28T12:36:37.992Z\",\n      \"updated_at\": \"1966-04-11T11:28:59.443Z\",\n      \"category\": {\n        \"id\": \"3cb028e6-2247-4ae0-0644-0a6aea7a9c24\",\n        \"name\": \"JXElq4d0w\"\n      },\n      \"status\": \"active\",\n      \"input_schema\": {},\n      \"is_embedded\": false,\n      \"use_data_layer_v2\": false,\n      \"description\": \"string\",\n      \"deduplication_columns\": {\n        \"key_0\": [\n          \"yh3NaMzV\",\n          \"_qtK\"\n        ],\n        \"key_1\": [\n          \"vFWZPaxcYxs\",\n          \"rrrr\"\n        ]\n      },\n      \"row_styling_headers\": {\n        \"key_0\": \"oSxyhP7rwv0\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f8fb254-aadb-45c4-ad56-811593660d8c",
+          "name": "Get templated report",
+          "request": {
+            "name": "Get templated report",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_reports",
+                ":templated_report_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenant_id",
+                  "value": "<string>",
+                  "description": "Tenant ID for admin users"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_report_name",
+                  "description": "(Required) Templated Report Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f59661b3-3cc9-4468-b2bd-f9c6c349d6e1",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_reports",
+                    ":templated_report_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenant_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_report_name",
+                      "description": "(Required) Templated Report Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"DIiQSC\",\n  \"display_name\": \"string\",\n  \"created_at\": \"2004-04-13T08:22:14.692Z\",\n  \"updated_at\": \"1988-10-21T16:48:00.207Z\",\n  \"category\": {\n    \"id\": \"e4505a32-7931-5300-c9dc-fbfc589296f3\",\n    \"name\": \"Ggg\"\n  },\n  \"status\": \"active\",\n  \"input_schema\": {},\n  \"is_embedded\": false,\n  \"use_data_layer_v2\": false,\n  \"description\": \"string\",\n  \"deduplication_columns\": {\n    \"key_0\": [\n      \"qUaQEF_\",\n      \"3L4CfU1nII\"\n    ],\n    \"key_1\": [\n      \"nXXfRpcBcu\",\n      \"n3L_\"\n    ],\n    \"key_2\": [\n      \"EmpIp0\",\n      \"qZHsFAs5c\"\n    ]\n  },\n  \"row_styling_headers\": {\n    \"key_0\": \"gF1WuW6\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0283c270-30a0-4776-b97f-e62d234ee403",
+          "name": "Make templated report available to a company [System Admin]",
+          "request": {
+            "name": "Make templated report available to a company [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_reports",
+                ":templated_report_name",
+                "company",
+                ":company_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_report_name",
+                  "description": "(Required) Templated Report Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"category_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d5c6b5f4-e0bf-4f80-b0c7-e026d8242246",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_reports",
+                    ":templated_report_name",
+                    "company",
+                    ":company_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_report_name",
+                      "description": "(Required) Templated Report Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"category_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "018e1187-3459-4286-b9c7-52a44653421d",
+          "name": "Remove a templated report from a company [System Admin]",
+          "request": {
+            "name": "Remove a templated report from a company [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_reports",
+                ":templated_report_name",
+                "company",
+                ":company_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_report_name",
+                  "description": "(Required) Templated Report Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a83f78d-1d6b-4ff7-bd6c-237b96aedc2d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_reports",
+                    ":templated_report_name",
+                    "company",
+                    ":company_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_report_name",
+                      "description": "(Required) Templated Report Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "36922c64-b2a4-44ab-9ff9-09d179c62439",
+          "name": "Must be Company Admin - Create templated report category",
+          "request": {
+            "name": "Must be Company Admin - Create templated report category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "templated_report_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b17b3b15-807a-4228-8bf4-b6ca4a5af9dc",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "templated_report_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"acbf9672-0f50-f98b-e4a9-e99d90f50710\",\n  \"name\": \"dOa43\",\n  \"company_id\": \"string\",\n  \"created_at\": \"1953-08-02T12:39:44.756Z\",\n  \"updated_at\": \"1966-12-17T04:05:38.419Z\",\n  \"created_by\": \"5de52b1d-9b73-9ba9-ae41-de565b6a5e76\",\n  \"updated_by\": \"876f65e7-8287-0f0f-2f75-4809d9ab37ef\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "edbce2b4-8107-44c7-b542-6309c3b9710f",
+          "name": "Get templated report category",
+          "request": {
+            "name": "Get templated report category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "templated_report_categories",
+                ":templated_report_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "category_id",
+                  "description": "(Required) Templated Report Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8cc78408-3379-4f85-9a02-9aca429162a8",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "templated_report_categories",
+                    ":templated_report_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "category_id",
+                      "description": "(Required) Templated Report Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"acbf9672-0f50-f98b-e4a9-e99d90f50710\",\n  \"name\": \"dOa43\",\n  \"company_id\": \"string\",\n  \"created_at\": \"1953-08-02T12:39:44.756Z\",\n  \"updated_at\": \"1966-12-17T04:05:38.419Z\",\n  \"created_by\": \"5de52b1d-9b73-9ba9-ae41-de565b6a5e76\",\n  \"updated_by\": \"876f65e7-8287-0f0f-2f75-4809d9ab37ef\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "decbc3be-6a8b-41d2-818a-124e989466c9",
+          "name": "Must be Company Admin - Update templated report category",
+          "request": {
+            "name": "Must be Company Admin - Update templated report category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "templated_report_categories",
+                ":templated_report_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "category_id",
+                  "description": "(Required) Templated Report Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cdfe9a52-f05e-423a-bfdb-3dd9c19ca86a",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "templated_report_categories",
+                    ":templated_report_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "category_id",
+                      "description": "(Required) Templated Report Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"acbf9672-0f50-f98b-e4a9-e99d90f50710\",\n  \"name\": \"dOa43\",\n  \"company_id\": \"string\",\n  \"created_at\": \"1953-08-02T12:39:44.756Z\",\n  \"updated_at\": \"1966-12-17T04:05:38.419Z\",\n  \"created_by\": \"5de52b1d-9b73-9ba9-ae41-de565b6a5e76\",\n  \"updated_by\": \"876f65e7-8287-0f0f-2f75-4809d9ab37ef\",\n  \"description\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d999ca43-127a-48ae-8407-a70749853221",
+          "name": "Must be Company Admin - Delete templated report category",
+          "request": {
+            "name": "Must be Company Admin - Delete templated report category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "templated_report_categories",
+                ":templated_report_category_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "category_id",
+                  "description": "(Required) Templated Report Category ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18295ae4-ed91-477c-b37c-15f92e75edb7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "templated_report_categories",
+                    ":templated_report_category_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "category_id",
+                      "description": "(Required) Templated Report Category ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "028aed73-99d5-4c1b-8e67-8e0fd5bc1230",
+          "name": "Search templated report categories",
+          "request": {
+            "name": "Search templated report categories",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "templated_report_categories",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0003a8f5-c7e3-4697-9550-a5e88837e3a9",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "templated_report_categories",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"company_id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1cc89fa6-b3d9-48ad-ae2f-aac903304e2c",
+    "name": "CarbonHub activities reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

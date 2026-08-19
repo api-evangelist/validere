@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "e451542b-f5ad-4137-a828-2d9c1a0401b2",
+      "name": "group_categories",
+      "description": {
+        "content": "Manage Group Categories",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f1441da-7f30-459d-b981-1045dd4534c2",
+          "name": "Create a Group Category",
+          "request": {
+            "name": "Create a Group Category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "group_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68d96d77-10a1-4f6d-950c-9668d8b1f615",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "group_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"1986-03-02T21:21:30.782Z\",\n  \"updated_at\": \"1965-01-28T08:58:40.880Z\",\n  \"created_by\": \"f8025d2e-78c3-2554-0bca-a7a86438d186\",\n  \"updated_by\": \"dc76eaf8-873b-e1a5-4687-ada80bbd7162\",\n  \"id\": \"4f2cdeab-37d9-2490-e3dd-3c3424a09a6f\",\n  \"company_id\": \"87952ec3-9e23-0d2c-f532-b29b15fbd4a3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "755d7809-1927-49ef-a72a-b55651b3c1fe",
+          "name": "Get a Group Category",
+          "request": {
+            "name": "Get a Group Category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "group_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Group Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92e59712-2bdf-4aae-b2c9-41d5406b18dd",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "group_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Group Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"1986-03-02T21:21:30.782Z\",\n  \"updated_at\": \"1965-01-28T08:58:40.880Z\",\n  \"created_by\": \"f8025d2e-78c3-2554-0bca-a7a86438d186\",\n  \"updated_by\": \"dc76eaf8-873b-e1a5-4687-ada80bbd7162\",\n  \"id\": \"4f2cdeab-37d9-2490-e3dd-3c3424a09a6f\",\n  \"company_id\": \"87952ec3-9e23-0d2c-f532-b29b15fbd4a3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ded3001e-aa9c-49b9-bdf8-6dede5aa4723",
+          "name": "Update a Group Category",
+          "request": {
+            "name": "Update a Group Category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "group_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Group Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65507008-5ce8-4895-b1af-ad5c7a78039a",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "group_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Group Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"created_at\": \"1986-03-02T21:21:30.782Z\",\n  \"updated_at\": \"1965-01-28T08:58:40.880Z\",\n  \"created_by\": \"f8025d2e-78c3-2554-0bca-a7a86438d186\",\n  \"updated_by\": \"dc76eaf8-873b-e1a5-4687-ada80bbd7162\",\n  \"id\": \"4f2cdeab-37d9-2490-e3dd-3c3424a09a6f\",\n  \"company_id\": \"87952ec3-9e23-0d2c-f532-b29b15fbd4a3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f21d3987-27a1-4d5f-afaf-2dff541f4868",
+          "name": "Delete a Group Category",
+          "request": {
+            "name": "Delete a Group Category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "group_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Group Category ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "560d2070-4d1b-4944-861b-5c076755266f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "group_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Group Category ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75201ad4-aa26-4611-b286-c4fda44f0df6",
+          "name": "Search Group Categories",
+          "request": {
+            "name": "Search Group Categories",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "group_categories",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_by\": \"<uuid>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_by\": \"<uuid>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3389780-dad7-4f7a-88e6-c0e738ea1bb6",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "group_categories",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"created_by\": \"<uuid>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_by\": \"<uuid>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"1994-06-13T08:46:04.978Z\",\n      \"updated_at\": \"1991-01-27T21:49:07.945Z\",\n      \"created_by\": \"83286746-8620-cca2-678b-1ba5be7f2dc5\",\n      \"updated_by\": \"eba9365c-2407-45c3-12f1-a672fa4b0908\",\n      \"id\": \"c55bc06e-b520-f138-e2e4-a58005fddc00\",\n      \"company_id\": \"f3372806-fa36-aef8-1089-50d2aa478d63\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"created_at\": \"2016-07-06T05:20:05.119Z\",\n      \"updated_at\": \"1982-07-10T20:37:53.345Z\",\n      \"created_by\": \"9da3c8c8-4d52-cdae-2754-f0bb5a845909\",\n      \"updated_by\": \"58058415-68d4-e247-3bc6-ad2d960a8ec9\",\n      \"id\": \"bfb11da3-8788-5197-87d3-29db08fcf6e1\",\n      \"company_id\": \"dad06cc5-b0d3-da4a-e4e8-aac7aa8b3753\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1fba99d9-a2fb-4490-a6a4-d4f48b96ff3c",
+    "name": "CarbonHub activities group_categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

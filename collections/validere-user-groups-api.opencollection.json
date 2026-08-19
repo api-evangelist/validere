@@ -1,0 +1,178 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities user_groups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "user_groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/user_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a user group"
+        },
+        {
+          "info": {
+            "name": "Search user groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/user_groups/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search user groups"
+        },
+        {
+          "info": {
+            "name": "Get a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              }
+            ]
+          },
+          "docs": "Get a user group"
+        },
+        {
+          "info": {
+            "name": "Update a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a user group"
+        },
+        {
+          "info": {
+            "name": "Delete a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              }
+            ]
+          },
+          "docs": "Delete a user group"
+        },
+        {
+          "info": {
+            "name": "Show Memberships for a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id/members",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              }
+            ]
+          },
+          "docs": "Show Memberships for a user group"
+        },
+        {
+          "info": {
+            "name": "Add a user to a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id/members/:member_id",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "Member ID"
+              }
+            ]
+          },
+          "docs": "Add a user to a user group"
+        },
+        {
+          "info": {
+            "name": "Remove a user from a user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/user_groups/:user_group_id/members/:member_id",
+            "params": [
+              {
+                "name": "user_group_id",
+                "value": "",
+                "type": "path",
+                "description": "User Group ID"
+              },
+              {
+                "name": "member_id",
+                "value": "",
+                "type": "path",
+                "description": "Member ID"
+              }
+            ]
+          },
+          "docs": "Remove a user from a user group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

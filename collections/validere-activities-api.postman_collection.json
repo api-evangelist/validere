@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "df29b176-801d-4f1e-ba3b-5ce2357c201c",
+      "name": "activities",
+      "description": {
+        "content": "Activity Log",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8747b734-7837-445e-a5e3-d314f6e4dc80",
+          "name": "Search and list Activities",
+          "request": {
+            "name": "Search and list Activities",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "activities",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"resource_type\": \"<string>\",\n    \"resource_id\": \"<string>\",\n    \"author_id\": \"<string>\",\n    \"action\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "77819043-b779-4c4c-9608-3d99321bc25b",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "activities",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"timestamp\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"resource_type\": \"<string>\",\n    \"resource_id\": \"<string>\",\n    \"author_id\": \"<string>\",\n    \"action\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"resource_type\": \"string\",\n      \"resource_id\": \"fdefa556-8a55-dd53-5422-f048d8fa3e38\",\n      \"author_id\": \"9672de47-77c4-b405-116e-81a8c371b7ec\",\n      \"action\": \"dc6d6246-27b7-de8e-614e-d0f87482234a\",\n      \"before\": {\n        \"name\": \"old name\",\n        \"description\": \"old description\"\n      },\n      \"after\": {\n        \"name\": \"new name\",\n        \"description\": \"new description\"\n      },\n      \"timestamp\": \"2018-03-05T09:03:21.742Z\"\n    },\n    {\n      \"resource_type\": \"string\",\n      \"resource_id\": \"90db62e6-d076-39ca-8ebf-3121f21f2e5c\",\n      \"author_id\": \"cb24ae74-7cf6-0f42-46a2-0bf9c83027e2\",\n      \"action\": \"6535a5d4-4e5b-4dec-dd7c-3c4591d998a7\",\n      \"before\": {\n        \"name\": \"old name\",\n        \"description\": \"old description\"\n      },\n      \"after\": {\n        \"name\": \"new name\",\n        \"description\": \"new description\"\n      },\n      \"timestamp\": \"1962-11-26T23:40:49.084Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "31b987d1-513b-4059-954f-101bc4d572e3",
+          "name": "Search and list Activities for a resource type",
+          "request": {
+            "name": "Search and list Activities for a resource type",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "activities",
+                ":resource_type",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_type",
+                  "description": "(Required) ResourceType"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"resource_type\": \"<string>\",\n    \"resource_id\": \"<string>\",\n    \"author_id\": \"<string>\",\n    \"action\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c196d878-318c-4734-9b26-d6c9bad1eb20",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "activities",
+                    ":resource_type",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_type",
+                      "description": "(Required) ResourceType"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"timestamp\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"resource_type\": \"<string>\",\n    \"resource_id\": \"<string>\",\n    \"author_id\": \"<string>\",\n    \"action\": \"<string>\",\n    \"timestamp\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"resource_type\": \"string\",\n      \"resource_id\": \"e3e0df61-7348-ccd8-a5b5-190bc1886cac\",\n      \"author_id\": \"fa1bff16-e86d-b0b5-8277-2f2f008b4209\",\n      \"action\": \"ac0f44c0-fffd-0412-3d3d-91e88fad610b\",\n      \"before\": {\n        \"name\": \"old name\",\n        \"description\": \"old description\"\n      },\n      \"after\": {\n        \"name\": \"new name\",\n        \"description\": \"new description\"\n      },\n      \"timestamp\": \"1971-01-24T02:36:27.871Z\"\n    },\n    {\n      \"resource_type\": \"string\",\n      \"resource_id\": \"a84f4fe7-dccf-5bc3-4591-022ead214fdd\",\n      \"author_id\": \"417800ad-cb76-36be-1c15-1ffed137e63b\",\n      \"action\": \"0ee8eb97-3a48-e9cb-07a5-ff0c4eb0945e\",\n      \"before\": {\n        \"name\": \"old name\",\n        \"description\": \"old description\"\n      },\n      \"after\": {\n        \"name\": \"new name\",\n        \"description\": \"new description\"\n      },\n      \"timestamp\": \"1992-06-26T13:33:27.098Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f51dacc5-3f4d-48bc-9ff1-39448c76db58",
+    "name": "CarbonHub activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

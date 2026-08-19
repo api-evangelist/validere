@@ -1,0 +1,603 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities events API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/events",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Event name"
+              },
+              {
+                "name": "description",
+                "value": "",
+                "type": "query",
+                "description": "Event description"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Event status"
+              },
+              {
+                "name": "classification",
+                "value": "",
+                "type": "query",
+                "description": "Event classification"
+              },
+              {
+                "name": "start_window",
+                "value": "",
+                "type": "query",
+                "description": "Returns all events that were ongoing during the start/end (in UTC)"
+              },
+              {
+                "name": "end_window",
+                "value": "",
+                "type": "query",
+                "description": "Returns all events that were ongoing during the start/end (in UTC)"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List events"
+        },
+        {
+          "info": {
+            "name": "Create an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/events",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an event"
+        },
+        {
+          "info": {
+            "name": "Search and list events",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/events/search",
+            "params": [
+              {
+                "name": "event_schema",
+                "value": "true",
+                "type": "query",
+                "description": "set to true to include event schema"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list events"
+        },
+        {
+          "info": {
+            "name": "Get an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              }
+            ]
+          },
+          "docs": "Get an event"
+        },
+        {
+          "info": {
+            "name": "Update an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an event"
+        },
+        {
+          "info": {
+            "name": "Delete an event",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              }
+            ]
+          },
+          "docs": "Delete an event"
+        },
+        {
+          "info": {
+            "name": "Add an event/equipment relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/equipment/:equipment_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "equipment_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of equipment"
+              }
+            ]
+          },
+          "docs": "Add an event/equipment relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/equipment relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/equipment/:equipment_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "equipment_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of equipment"
+              }
+            ]
+          },
+          "docs": "Remove an event/equipment relationship"
+        },
+        {
+          "info": {
+            "name": "Add an event/measurement_series relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/measurement_series/:measurement_series_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ]
+          },
+          "docs": "Add an event/measurement_series relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/measurement_series relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/measurement_series/:measurement_series_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ]
+          },
+          "docs": "Remove an event/measurement_series relationship"
+        },
+        {
+          "info": {
+            "name": "Add an event/facilities relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/facilities/:facility_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "facility_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of facility"
+              }
+            ]
+          },
+          "docs": "Add an event/facilities relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/facilities relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/facilities/:facility_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "facility_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of facility"
+              }
+            ]
+          },
+          "docs": "Remove an event/facilities relationship"
+        },
+        {
+          "info": {
+            "name": "Add an event/asset relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/asset/:asset_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Asset ID"
+              }
+            ]
+          },
+          "docs": "Add an event/asset relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/asset relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/asset/:asset_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Asset ID"
+              }
+            ]
+          },
+          "docs": "Remove an event/asset relationship"
+        },
+        {
+          "info": {
+            "name": "Add an event/form_submissions relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "",
+                "type": "path",
+                "description": "Form Submission ID"
+              },
+              {
+                "name": "form_submission_version",
+                "value": "",
+                "type": "query",
+                "description": "Form Submission Version"
+              }
+            ]
+          },
+          "docs": "Add an event/form_submissions relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/form_submissions relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/form_submissions/:form_submission_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "",
+                "type": "path",
+                "description": "Form Submission ID"
+              },
+              {
+                "name": "form_submission_version",
+                "value": "",
+                "type": "query",
+                "description": "Form Submission Version"
+              }
+            ]
+          },
+          "docs": "Remove an event/form_submissions relationship"
+        },
+        {
+          "info": {
+            "name": "List an event/alerts relationships",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/events/:id/alerts/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              }
+            ]
+          },
+          "docs": "List an event/alerts relationships"
+        },
+        {
+          "info": {
+            "name": "Add an event/alerts relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/:id/alerts/:alert_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert ID"
+              }
+            ]
+          },
+          "docs": "Add an event/alerts relationship"
+        },
+        {
+          "info": {
+            "name": "Remove an event/alerts relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/:id/alerts/:alert_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event ID"
+              },
+              {
+                "name": "alert_id",
+                "value": "",
+                "type": "path",
+                "description": "Alert ID"
+              }
+            ]
+          },
+          "docs": "Remove an event/alerts relationship"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/events/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/events/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/events/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/events/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,163 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities comments API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/comments/:comment_id",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "Comment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update comment"
+        },
+        {
+          "info": {
+            "name": "Delete comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/comments/:comment_id",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path",
+                "description": "Comment ID"
+              }
+            ]
+          },
+          "docs": "Delete comment"
+        },
+        {
+          "info": {
+            "name": "List comments for a specific entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/comments/:entity_type/:entity_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Entity Type"
+              },
+              {
+                "name": "entity_id",
+                "value": "",
+                "type": "path",
+                "description": "Entity ID"
+              },
+              {
+                "name": "additional_identifier",
+                "value": "",
+                "type": "query",
+                "description": "Additional Identifier"
+              },
+              {
+                "name": "created_before",
+                "value": "",
+                "type": "query",
+                "description": "Comment Created Before filter"
+              }
+            ]
+          },
+          "docs": "List comments for a specific entity"
+        },
+        {
+          "info": {
+            "name": "Create comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/comments/:entity_type/:entity_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Entity Type"
+              },
+              {
+                "name": "entity_id",
+                "value": "",
+                "type": "path",
+                "description": "Entity ID"
+              },
+              {
+                "name": "additional_identifier",
+                "value": "",
+                "type": "query",
+                "description": "Additional Identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create comment"
+        },
+        {
+          "info": {
+            "name": "Count comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/comments/count/:entity_type/:entity_ids",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Entity Type"
+              },
+              {
+                "name": "entity_ids",
+                "value": "",
+                "type": "path",
+                "description": "Entity IDs"
+              },
+              {
+                "name": "additional_identifier",
+                "value": "",
+                "type": "query",
+                "description": "Additional Identifier"
+              }
+            ]
+          },
+          "docs": "Count comments"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

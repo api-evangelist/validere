@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities ledger API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a ledger entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/ledger",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a ledger entry"
+        },
+        {
+          "info": {
+            "name": "Search and list ledger entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/ledger/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list ledger entries"
+        },
+        {
+          "info": {
+            "name": "Get a ledger entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/ledger/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Ledger Entry ID"
+              }
+            ]
+          },
+          "docs": "Get a ledger entry"
+        },
+        {
+          "info": {
+            "name": "Update a ledger entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/ledger/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Ledger Entry ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a ledger entry"
+        },
+        {
+          "info": {
+            "name": "Delete a ledger entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/ledger/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Ledger Entry ID"
+              }
+            ]
+          },
+          "docs": "Delete a ledger entry"
+        },
+        {
+          "info": {
+            "name": "Public search and list ledger entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/public/v1/ledger/:company_id/search",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Public search and list ledger entries"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

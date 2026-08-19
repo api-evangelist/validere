@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "activities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and list Activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/activities/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Activities"
+        },
+        {
+          "info": {
+            "name": "Search and list Activities for a resource type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/activities/:resource_type/search",
+            "params": [
+              {
+                "name": "resource_type",
+                "value": "",
+                "type": "path",
+                "description": "ResourceType"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Activities for a resource type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

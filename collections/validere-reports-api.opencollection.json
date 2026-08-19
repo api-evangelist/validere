@@ -1,0 +1,511 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities reports API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search and list generated reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/reports/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list generated reports"
+        },
+        {
+          "info": {
+            "name": "Get report with download URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v2/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Get report with download URL"
+        },
+        {
+          "info": {
+            "name": "Delete report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v2/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Delete report"
+        },
+        {
+          "info": {
+            "name": "Trigger report generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger report generation"
+        },
+        {
+          "info": {
+            "name": "Trigger report generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v3/reports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger report generation"
+        },
+        {
+          "info": {
+            "name": "Search reports with latest version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v3/reports/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search reports with latest version"
+        },
+        {
+          "info": {
+            "name": "Get existing report inputs for a templated report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v3/reports/inputs",
+            "params": [
+              {
+                "name": "templated_report_name",
+                "value": "v2_report",
+                "type": "query",
+                "description": "Templated Report Name"
+              }
+            ]
+          },
+          "docs": "Get existing report inputs for a templated report"
+        },
+        {
+          "info": {
+            "name": "Get Report with latest version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v3/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Get Report with latest version"
+        },
+        {
+          "info": {
+            "name": "Update report status",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v3/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Update report status"
+        },
+        {
+          "info": {
+            "name": "Delete report",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v3/reports/:report_id",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Delete report"
+        },
+        {
+          "info": {
+            "name": "Get report with list of versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v3/reports/:report_id/versions",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Get report with list of versions"
+        },
+        {
+          "info": {
+            "name": "Trigger next version report generation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v3/reports/:report_id/versions",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ]
+          },
+          "docs": "Trigger next version report generation"
+        },
+        {
+          "info": {
+            "name": "Get report version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v3/reports/:report_id/versions/:version",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              },
+              {
+                "name": "version",
+                "value": "1",
+                "type": "path",
+                "description": "Report Version"
+              }
+            ]
+          },
+          "docs": "Get report version"
+        },
+        {
+          "info": {
+            "name": "Get and list embedded report sheets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v3/reports/:report_id/versions/:version/embedded/sheets",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              },
+              {
+                "name": "version",
+                "value": "1",
+                "type": "path",
+                "description": "Report Version"
+              }
+            ]
+          },
+          "docs": "Get and list embedded report sheets"
+        },
+        {
+          "info": {
+            "name": "Search and list embedded report rows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v3/reports/:report_id/embedded/search",
+            "params": [
+              {
+                "name": "report_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Report ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list embedded report rows"
+        },
+        {
+          "info": {
+            "name": "Search templated reports [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_reports/search",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search templated reports [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Search a company's templated reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_reports/search_company",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This is scoped to what is enabled to the company and automatically filters only active reports"
+        },
+        {
+          "info": {
+            "name": "Get templated report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/templated_reports/:templated_report_name",
+            "params": [
+              {
+                "name": "templated_report_name",
+                "value": "v2_report",
+                "type": "path",
+                "description": "Templated Report Name"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ]
+          },
+          "docs": "Get templated report"
+        },
+        {
+          "info": {
+            "name": "Make templated report available to a company [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/templated_reports/:templated_report_name/company/:company_id",
+            "params": [
+              {
+                "name": "templated_report_name",
+                "value": "v2_report",
+                "type": "path",
+                "description": "Templated Report Name"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Make templated report available to a company [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Remove a templated report from a company [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/templated_reports/:templated_report_name/company/:company_id",
+            "params": [
+              {
+                "name": "templated_report_name",
+                "value": "v2_report",
+                "type": "path",
+                "description": "Templated Report Name"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ]
+          },
+          "docs": "Remove a templated report from a company [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Must be Company Admin - Create templated report category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/templated_report_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be Company Admin - Create templated report category"
+        },
+        {
+          "info": {
+            "name": "Get templated report category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v2/templated_report_categories/:templated_report_category_id",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Templated Report Category ID"
+              }
+            ]
+          },
+          "docs": "Get templated report category"
+        },
+        {
+          "info": {
+            "name": "Must be Company Admin - Update templated report category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v2/templated_report_categories/:templated_report_category_id",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Templated Report Category ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be Company Admin - Update templated report category"
+        },
+        {
+          "info": {
+            "name": "Must be Company Admin - Delete templated report category",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v2/templated_report_categories/:templated_report_category_id",
+            "params": [
+              {
+                "name": "category_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Templated Report Category ID"
+              }
+            ]
+          },
+          "docs": "Must be Company Admin - Delete templated report category"
+        },
+        {
+          "info": {
+            "name": "Search templated report categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/templated_report_categories/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search templated report categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

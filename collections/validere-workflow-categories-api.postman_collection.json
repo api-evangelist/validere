@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "9cdabd66-c8d1-484f-92d6-bf75f5a7deac",
+      "name": "workflow_categories",
+      "description": {
+        "content": "Workflow Categories",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a4ee294-57c8-4ef1-972e-1713c5b80e56",
+          "name": "List workflow categories",
+          "request": {
+            "name": "List workflow categories",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Workflow Category name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Workflow Category description"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8aa04c9f-3482-42d4-955b-73ce021de70f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"d7055f36-19da-e534-5163-a72baeb8e1ba\",\n      \"company_id\": \"142d1a68-65fa-6e16-249c-cc0eaf0c75c7\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"created_by\": \"84565eec-b6a6-0295-86b3-dae440254c1f\",\n      \"updated_by\": \"53ab425c-37a0-8395-98af-cf1db9a6003a\"\n    },\n    {\n      \"id\": \"952e7065-507b-d290-d9d8-984ac23c176b\",\n      \"company_id\": \"f5e9b62f-0771-6085-32fa-389dff590fc0\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"created_by\": \"d2239f84-256a-a476-b8e2-177f7e4511b1\",\n      \"updated_by\": \"5bd1f413-4860-51eb-4a8d-4ef7a2157b1a\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f5b9e98-4d18-4f4e-b20a-3523494dddaf",
+          "name": "Create a workflow category",
+          "request": {
+            "name": "Create a workflow category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a45b1b7b-a212-4967-9737-84aed4ed659f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"71d79e08-645a-e044-a651-cd5db70693b2\",\n  \"company_id\": \"c2388cb1-24a4-09c8-778b-3311a5d97350\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"136e0585-cafe-69e7-c1e7-48626d7bb97d\",\n  \"updated_by\": \"6177835f-9f7f-eff7-87a3-ad7e786b226c\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bb3f2b7-268e-4e96-b2ba-b0dd9c0ad7be",
+          "name": "Get a workflow category",
+          "request": {
+            "name": "Get a workflow category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35ca6694-0594-4603-b7ba-51e51c29ac3b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"71d79e08-645a-e044-a651-cd5db70693b2\",\n  \"company_id\": \"c2388cb1-24a4-09c8-778b-3311a5d97350\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"136e0585-cafe-69e7-c1e7-48626d7bb97d\",\n  \"updated_by\": \"6177835f-9f7f-eff7-87a3-ad7e786b226c\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "80d473dd-6e96-4ecb-8af1-b2ca9fc3cc37",
+          "name": "Update a workflow category",
+          "request": {
+            "name": "Update a workflow category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "37f8d891-fd86-4e95-8a32-33ed890ed95f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"71d79e08-645a-e044-a651-cd5db70693b2\",\n  \"company_id\": \"c2388cb1-24a4-09c8-778b-3311a5d97350\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"136e0585-cafe-69e7-c1e7-48626d7bb97d\",\n  \"updated_by\": \"6177835f-9f7f-eff7-87a3-ad7e786b226c\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a904eb36-610b-4f3f-ab0c-68782a33b09f",
+          "name": "Delete a workflow category",
+          "request": {
+            "name": "Delete a workflow category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Category ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fd83397-f148-441c-9543-1bbe591ec6fb",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Category ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "393e0205-cea0-4e8e-88af-e5dcd70841f9",
+    "name": "CarbonHub activities workflow_categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

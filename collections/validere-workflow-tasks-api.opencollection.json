@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities workflow_tasks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workflow_tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search Workflow Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Workflow Tasks"
+        },
+        {
+          "info": {
+            "name": "Get a workflow action",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/actions/:workflow_action_id",
+            "params": [
+              {
+                "name": "workflow_action_id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Action ID"
+              }
+            ]
+          },
+          "docs": "Get a workflow action"
+        },
+        {
+          "info": {
+            "name": "Search Workflow Steps",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/steps/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Workflow Steps"
+        },
+        {
+          "info": {
+            "name": "Get a workflow task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/:workflow_task_id",
+            "params": [
+              {
+                "name": "workflow_task_id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Task ID"
+              }
+            ]
+          },
+          "docs": "Get a workflow task"
+        },
+        {
+          "info": {
+            "name": "Update a workflow task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/:workflow_task_id",
+            "params": [
+              {
+                "name": "workflow_task_id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Task ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a workflow task"
+        },
+        {
+          "info": {
+            "name": "Add a workflow task/form submission relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/:workflow_task_id/form_submission/:form_submission_id",
+            "params": [
+              {
+                "name": "workflow_task_id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Task ID"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "",
+                "type": "path",
+                "description": "Form Submission ID"
+              },
+              {
+                "name": "form_submission_version",
+                "value": "",
+                "type": "query",
+                "description": "Form Submission Version"
+              }
+            ]
+          },
+          "docs": "Add a workflow task/form submission relationship"
+        },
+        {
+          "info": {
+            "name": "Remove a workflow task/form submission relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/:workflow_task_id/form_submission/:form_submission_id",
+            "params": [
+              {
+                "name": "workflow_task_id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Task ID"
+              },
+              {
+                "name": "form_submission_id",
+                "value": "",
+                "type": "path",
+                "description": "Form Submission ID"
+              },
+              {
+                "name": "form_submission_version",
+                "value": "",
+                "type": "query",
+                "description": "Form Submission Version"
+              }
+            ]
+          },
+          "docs": "Remove a workflow task/form submission relationship"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/workflow_tasks/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

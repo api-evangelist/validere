@@ -1,0 +1,269 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities flows API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "flows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/flows",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a flow"
+        },
+        {
+          "info": {
+            "name": "Search and list Flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/flows/search",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Flows"
+        },
+        {
+          "info": {
+            "name": "Search and list Flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/flows/search",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Flows"
+        },
+        {
+          "info": {
+            "name": "Export Flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/flows/export",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export Flows"
+        },
+        {
+          "info": {
+            "name": "Get a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/flows/:id",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Flow ID"
+              }
+            ]
+          },
+          "docs": "Get a flow"
+        },
+        {
+          "info": {
+            "name": "Update a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/flows/:id",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Flow ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a flow"
+        },
+        {
+          "info": {
+            "name": "Delete a flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/flows/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Flow ID"
+              }
+            ]
+          },
+          "docs": "Delete a flow"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/flows/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/flows/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/flows/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/flows/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

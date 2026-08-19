@@ -1,0 +1,310 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities devices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/devices",
+            "params": [
+              {
+                "name": "status",
+                "value": "active",
+                "type": "query",
+                "description": "Device status"
+              },
+              {
+                "name": "type_id",
+                "value": "emissions_monitor",
+                "type": "query",
+                "description": "Device type"
+              },
+              {
+                "name": "facility_id",
+                "value": "",
+                "type": "query",
+                "description": "Facility ID"
+              },
+              {
+                "name": "device_name",
+                "value": "My Device Name",
+                "type": "query",
+                "description": "Search for devices with a name containing this string"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in facility names"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List devices"
+        },
+        {
+          "info": {
+            "name": "Create a Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Device"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/devices/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/devices/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/devices/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/devices/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        },
+        {
+          "info": {
+            "name": "Search Devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/devices/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Devices"
+        },
+        {
+          "info": {
+            "name": "Export devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/devices/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export devices"
+        },
+        {
+          "info": {
+            "name": "Get a Device by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/devices/:device_id",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              },
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of device"
+              }
+            ]
+          },
+          "docs": "Get a Device by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/devices/:device_id",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of device"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Device"
+        },
+        {
+          "info": {
+            "name": "Delete a Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/devices/:device_id",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of device"
+              }
+            ]
+          },
+          "docs": "Delete a Device"
+        },
+        {
+          "info": {
+            "name": "Archive a Device",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/devices/:device_id/archive",
+            "params": [
+              {
+                "name": "device_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Id of device"
+              }
+            ]
+          },
+          "docs": "Archive a Device"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

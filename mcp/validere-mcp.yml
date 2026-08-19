@@ -1245,3 +1245,9 @@ tools:
 - name: list_all_transaction_errors_type_metadata_transaction_errors_get
   description: List All Transaction Errors
   source_operation: openapi/validere-dataplatform-source-openapi-original.json#list_all_transaction_errors_type_metadata_transaction_errors_get
+deployment:
+  mode: none
+  verified: derived
+  tools: 412
+  checked: '2026-08-12'
+  source: catalog MCP census

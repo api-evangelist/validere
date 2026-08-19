@@ -1,0 +1,638 @@
+{
+  "item": [
+    {
+      "id": "f272f5d3-42f9-4b08-a7fb-e4462b519db7",
+      "name": "calculator_results",
+      "description": {
+        "content": "Calculator Results",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9ea9ec2a-50b9-4d7a-9cab-e0eb79a62912",
+          "name": "Search and aggregate Calculator Result",
+          "request": {
+            "name": "Search and aggregate Calculator Result",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "74ee4a26-4442-4484-bb0a-25039a67e067",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"3393b4c7-0fcd-1af2-2871-fe857d0d9ebe\",\n      \"calculator_run_id\": \"b51d4eb4-317c-4675-02ee-617aa792b24a\",\n      \"result_category\": \"outputs\",\n      \"measurement_unit\": \"g\",\n      \"measurement_value\": 5770.979990598785,\n      \"estimation_method_id\": \"4a3d7e04-613c-6802-66fb-7c1d1fe0070a\",\n      \"year_month\": \"string\",\n      \"equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"2a99fcfc-ec67-36b4-5cf1-7d7ecc0bb20c\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"c0d9c33b-43d9-ae28-7d31-a1309e9491f2\",\n      \"calculator_run_id\": \"60599b7d-3c22-8a8c-a6c0-02676b43fabe\",\n      \"result_category\": \"outputs\",\n      \"measurement_unit\": \"g\",\n      \"measurement_value\": 7060.744311459141,\n      \"estimation_method_id\": \"6431510c-30b2-a6df-b1e0-7b00cbf2ffc6\",\n      \"year_month\": \"string\",\n      \"equipment\": {\n        \"custom_attributes\": {\n          \"attribute1\": 12345,\n          \"attribute2\": \"value1\"\n        },\n        \"effective_date\": \"2022-01-01\",\n        \"id\": \"946b28a8-86ab-550e-a40d-fb2ddf2c95de\",\n        \"latitude\": 51,\n        \"longitude\": -114,\n        \"name\": \"string\",\n        \"type\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fee5f326-db85-4501-af9d-4fcde2ddad69",
+          "name": "Export Calculator Results",
+          "request": {
+            "name": "Export Calculator Results",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7797182d-912c-41cd-9081-3204b56f7bce",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"72084615-9141-24ce-e2bd-b403fa577f05\",\n  \"name\": \"string\",\n  \"company_id\": \"1aa3137a-0c80-bcd6-8f2f-e510da439dcf\",\n  \"status\": \"failed\",\n  \"created_at\": \"1979-08-31T03:47:01.986Z\",\n  \"updated_at\": \"2004-03-27T08:56:13.858Z\",\n  \"created_by\": \"c3d4bb14-adc9-76d1-27c4-18c3a9c6294e\",\n  \"updated_by\": \"ba722b27-713e-eaba-197e-e740c3614c9e\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"UeSWG4sH\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1967-11-29T11:17:07.517Z\",\n    \"updated_at\": \"1986-05-26T04:42:54.814Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"9999\",\n        \"ZHLJ4fJ7A4\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"lxUgaQ9jB\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24c57228-ccec-4aca-8dcd-27870e35f445",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter Status"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<uuid>",
+                  "description": "Filter Creator"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf32e9b7-347b-4329-bee2-0b986741b52a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_by",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"dd5ce8d7-ab14-8b4e-674f-4645f3e13c1d\",\n      \"filter\": {\n        \"entity_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"entity_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reporting_group\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"year_month\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"entity_type\": \"calculator_result\"\n    },\n    {\n      \"id\": \"3eb77f75-a964-0211-7dd1-f35c8685323a\",\n      \"filter\": {\n        \"entity_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"entity_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"reporting_group\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"measurement_type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"year_month\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"group_by\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"entity_type\": \"calculator_result\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8440306-b766-4bfc-840a-bb615f868c0a",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5680a25-3734-4de2-82ab-77291019919a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b724ee0c-27a9-abda-b95e-32236c1c1e15\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"entity_type\": \"calculator_result\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "810362e9-834a-4e57-aecf-54f1ab6cde8e",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fbe7a44-267f-43f4-8df2-171e34ea760d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "098dcc0c-345b-497e-b942-376b90e84619",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "calculator_results",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce4147b6-ab7c-459d-bbd5-6ebf77d4863a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "calculator_results",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"b724ee0c-27a9-abda-b95e-32236c1c1e15\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"equipment.facility.custom_attributes\": \"<object>\",\n    \"equipment.facility.id\": \"<string>\",\n    \"equipment.facility.name\": \"<string>\",\n    \"equipment.facility.status\": \"<string>\",\n    \"estimation_method.id\": \"<string>\",\n    \"estimation_method.name\": \"<string>\",\n    \"estimation_method.entity_id\": \"<string>\",\n    \"estimation_method.analytics_library_id\": \"<string>\",\n    \"estimation_method.analytics_calculator_id\": \"<string>\",\n    \"estimation_method.created_at\": \"<string>\",\n    \"estimation_method.created_by\": \"<string>\",\n    \"estimation_method.updated_at\": \"<string>\",\n    \"estimation_method.updated_by\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"flow.equipment.custom_attributes\": \"<object>\",\n    \"flow.equipment.id\": \"<string>\",\n    \"flow.equipment.name\": \"<string>\",\n    \"flow.equipment.status\": \"<string>\",\n    \"flow.equipment.type.id\": \"<string>\",\n    \"flow.facility.custom_attributes\": \"<object>\",\n    \"flow.facility.id\": \"<string>\",\n    \"flow.facility.name\": \"<string>\",\n    \"flow.facility.status\": \"<string>\",\n    \"entity_type\": \"equipment\",\n    \"entity_id\": \"<uuid>\",\n    \"reporting_group\": \"subpartw\",\n    \"measurement_type\": \"<string>\",\n    \"year_month\": \"<string>\"\n  },\n  \"group_by\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"entity_type\": \"calculator_result\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ea8cabf0-c5e7-4d06-89a6-2a8f2dd59075",
+    "name": "CarbonHub activities calculator_results API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

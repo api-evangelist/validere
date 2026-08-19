@@ -1,0 +1,763 @@
+{
+  "item": [
+    {
+      "id": "765fffbd-f6a0-4cd6-9774-78c46a51b917",
+      "name": "measurements",
+      "description": {
+        "content": "Manage Measurements",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78fd4f2b-320b-4ca5-a71f-58e940c47fa8",
+          "name": "Get aggregated list of measurements",
+          "request": {
+            "name": "Get aggregated list of measurements",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<uuid>",
+                  "description": "(Required) Id of device"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_by",
+                  "value": "<string>",
+                  "description": "group by"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "interval"
+                },
+                {
+                  "disabled": false,
+                  "key": "func",
+                  "value": "<string>",
+                  "description": "Aggregate Function"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "start date - default value is current date time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "end date"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc29c4ed-34ab-42c0-a55a-688abd7616fb",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "748970de-fd1f-4494-ae3f-47cc21ff205f"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "measurement_type"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "1day"
+                    },
+                    {
+                      "key": "func",
+                      "value": "avg"
+                    },
+                    {
+                      "key": "start",
+                      "value": "2022-11-20T09:12:28.000Z"
+                    },
+                    {
+                      "key": "end",
+                      "value": "2022-11-30T09:12:28.000Z"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"measure_name\": \"methane_concentration\",\n      \"measure_value\": 456,\n      \"msid\": \"09cb05a8-7fdc-95f7-b26d-6e7829a77800\",\n      \"time\": \"1989-07-19T18:45:53.180Z\"\n    },\n    {\n      \"measure_name\": \"methane_concentration\",\n      \"measure_value\": 456,\n      \"msid\": \"cc8c0625-b250-ff56-bd89-e0bad2d46f9f\",\n      \"time\": \"1955-06-20T12:53:48.363Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75dde87a-9da3-432d-bf38-73c293e4278a",
+          "name": "Get measurements for a measurement type",
+          "request": {
+            "name": "Get measurements for a measurement type",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurements",
+                "plot",
+                ":measurement_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "device_id",
+                  "value": "<uuid>",
+                  "description": "ID of device"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_id",
+                  "value": "<uuid>",
+                  "description": "ID of the entity you want to list the measurement types for"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_type",
+                  "value": "<string>",
+                  "description": "Type of the entity you want to list the measurement types for. Required if ID is defined."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_forms",
+                  "value": "<boolean>",
+                  "description": "If form measurements should be included"
+                },
+                {
+                  "disabled": false,
+                  "key": "form_submission_statuses",
+                  "value": "<string>",
+                  "description": "Form submission status to filter on, can be comma separated list"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_series_ids",
+                  "value": "<string>",
+                  "description": "a comma-separated list of measurement series ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "start date - default value is current date time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "end date"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "interval"
+                },
+                {
+                  "disabled": false,
+                  "key": "func",
+                  "value": "<string>",
+                  "description": "Aggregate Function"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "measurement_type",
+                  "description": "(Required) Measurement type of the measurements being retrieved"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "58acb3b6-cece-48d6-b4fb-bfe7240bfdae",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurements",
+                    "plot",
+                    ":measurement_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "device_id",
+                      "value": "748970de-fd1f-4494-ae3f-47cc21ff205f"
+                    },
+                    {
+                      "key": "subject_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "subject_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include_forms",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "form_submission_statuses",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measurement_series_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "2022-11-20T09:12:28.000Z"
+                    },
+                    {
+                      "key": "end",
+                      "value": "2022-11-30T09:12:28.000Z"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "1day"
+                    },
+                    {
+                      "key": "func",
+                      "value": "avg"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "measurement_type",
+                      "description": "(Required) Measurement type of the measurements being retrieved"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"form\": {\n    \"data\": {\n      \"id\": \"a4e394d8-861b-47bd-1e9b-3ae7c294314c\",\n      \"measure_value\": 456,\n      \"time\": \"1963-02-28T01:31:38.654Z\",\n      \"form_submission_id\": \"2bd6ca16-684e-a503-6706-335588ddf3f0\",\n      \"form_submission_status\": \"pending\",\n      \"form_schema\": {\n        \"id\": \"acdb7653-e18b-85e1-7ddb-73220bac6a3c\",\n        \"name\": \"string\"\n      },\n      \"form_category\": {\n        \"id\": \"b7b7c49e-71c9-dfea-fd23-591e55bda23e\",\n        \"name\": \"string\"\n      }\n    }\n  },\n  \"series\": [\n    {\n      \"measurement_series_id\": \"5dc21705-6da7-3a06-4e43-c7ad60557f72\",\n      \"description\": \"string\",\n      \"data\": {\n        \"id\": \"7fba90fb-ca10-d294-9c09-8882fa1f4e44\",\n        \"measure_value\": 456,\n        \"time\": \"1947-07-20T01:49:00.506Z\",\n        \"form_submission_id\": \"06267cc9-6647-39e2-e197-9978a3c78de7\",\n        \"form_submission_status\": \"pending\",\n        \"form_schema\": {\n          \"id\": \"545cdff2-ce6b-773f-5d63-ea6bcba88aac\",\n          \"name\": \"string\"\n        },\n        \"form_category\": {\n          \"id\": \"de806303-d58a-aab5-e15f-17e862c5ea32\",\n          \"name\": \"string\"\n        }\n      }\n    },\n    {\n      \"measurement_series_id\": \"997e951a-81d6-1a5a-fa53-8cbfec8f1233\",\n      \"description\": \"string\",\n      \"data\": {\n        \"id\": \"3fc84e02-6f15-5551-7e43-86c5b2c7b092\",\n        \"measure_value\": 456,\n        \"time\": \"2012-11-06T12:44:06.921Z\",\n        \"form_submission_id\": \"ac7f4386-6aaf-6475-7dec-7e08ca32ffa2\",\n        \"form_submission_status\": \"pending\",\n        \"form_schema\": {\n          \"id\": \"ac8c9641-d72d-f796-2a79-5ce9ead3207a\",\n          \"name\": \"string\"\n        },\n        \"form_category\": {\n          \"id\": \"fdaebf11-9adb-1130-557d-a1241dc71032\",\n          \"name\": \"string\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04bc0214-4bf8-43de-aa88-78667de84719",
+          "name": "Get list of measurements",
+          "request": {
+            "name": "Get list of measurements",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurements",
+                ":measurement_series_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "group_by",
+                  "value": "<string>",
+                  "description": "group by"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>",
+                  "description": "interval"
+                },
+                {
+                  "disabled": false,
+                  "key": "func",
+                  "value": "<string>",
+                  "description": "Aggregate Function"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<dateTime>",
+                  "description": "start date - default value is current date time"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<dateTime>",
+                  "description": "end date"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_id",
+                  "value": "<uuid>",
+                  "description": "ID of the entity you want to list the measurements for"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_type",
+                  "value": "<string>",
+                  "description": "Type of the entity you want to list the measurements for. Required if ID is defined."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "measurement_series_id",
+                  "description": "(Required) ID of the measurement series"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "795638ec-4b9a-46ad-91ec-cd26dd7b4c04",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurements",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "group_by",
+                      "value": "measurement_type"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "1day"
+                    },
+                    {
+                      "key": "func",
+                      "value": "avg"
+                    },
+                    {
+                      "key": "start",
+                      "value": "2022-11-20T09:12:28.000Z"
+                    },
+                    {
+                      "key": "end",
+                      "value": "2022-11-30T09:12:28.000Z"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "subject_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "subject_type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"measure_name\": \"methane_concentration\",\n      \"measure_value\": 456,\n      \"msid\": \"711baae2-d7e1-66a6-9adb-0df96ab5fc52\",\n      \"time\": \"1970-10-31T16:48:35.194Z\"\n    },\n    {\n      \"measure_name\": \"methane_concentration\",\n      \"measure_value\": 456,\n      \"msid\": \"398383a3-366e-f3e3-db20-1e5434b0419a\",\n      \"time\": \"1980-01-29T20:40:23.099Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d776311-5b87-44c2-a737-c875ac33ecc3",
+          "name": "Upsert a measurement",
+          "request": {
+            "name": "Upsert a measurement",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurements",
+                ":measurement_series_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "measurement_series_id",
+                  "description": "(Required) ID of the measurement series"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"measurement_type\": \"<string>\",\n  \"measurement_unit\": \"<string>\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb17d886-f864-4aa9-a4ba-bc510b233048",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurements",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"measurement_type\": \"volume\",\n  \"measurement_unit\": \"bbl\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"recordsWritten\": 1,\n  \"success\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e389eec6-6294-4aaf-969b-a305dfef53a8",
+              "name": "unsuccessful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurements",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"records\": [\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    },\n    {\n      \"timestamp\": \"<dateTime>\",\n      \"value\": \"<number>\"\n    }\n  ],\n  \"measurement_type\": \"volume\",\n  \"measurement_unit\": \"bbl\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"error\": \"string\",\n  \"recordsRejected\": [\n    {\n      \"ExistingVersion\": 4460,\n      \"Reason\": \"string\",\n      \"RecordIndex\": 2349\n    },\n    {\n      \"ExistingVersion\": 8078,\n      \"Reason\": \"string\",\n      \"RecordIndex\": 2574\n    }\n  ],\n  \"recordsRejectedCount\": 8353\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "354bcb2e-bf47-4628-aba7-8b7f22dc5c1e",
+    "name": "CarbonHub activities measurements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

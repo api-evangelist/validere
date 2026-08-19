@@ -1,0 +1,429 @@
+{
+  "item": [
+    {
+      "id": "6edac07c-2771-4ad2-a6da-7b725cc3d37e",
+      "name": "measurement_types",
+      "description": {
+        "content": "Manage Measurement Types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28b2e3da-61d1-4bb9-9acc-7b21679b1e09",
+          "name": "Get Measurement Type List",
+          "request": {
+            "name": "Get Measurement Type List",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "subject_id",
+                  "value": "<uuid>",
+                  "description": "ID of the entity you want to list the measurement types for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b63494a1-d4ce-49c7-a8b6-f7a915987da0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subject_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"data_type\": \"int\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"units\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"data_type\": \"float\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"units\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99bc7e3f-8b89-4507-9b7c-aba4b53663b4",
+          "name": "Get Measurement Type List",
+          "request": {
+            "name": "Get Measurement Type List",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "measurement_types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "subject_id",
+                  "value": "<uuid>",
+                  "description": "ID of the entity you want to list the measurement types for"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a79c52a9-57fa-4da1-9560-7f5a25f89875",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "measurement_types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "subject_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"quantity\": \"string\",\n    \"default_unit\": \"string\",\n    \"default_unit_info\": {\n      \"name\": {\n        \"singular\": \"string\",\n        \"plural\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"to_anchor\": 2683.040865017562,\n      \"anchor_shift\": 8572.208860758008,\n      \"quantity\": \"string\",\n      \"id\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"quantity\": \"string\",\n    \"default_unit\": \"string\",\n    \"default_unit_info\": {\n      \"name\": {\n        \"singular\": \"string\",\n        \"plural\": \"string\",\n        \"symbol\": \"string\"\n      },\n      \"to_anchor\": 5146.641442359738,\n      \"anchor_shift\": 4540.53317733567,\n      \"quantity\": \"string\",\n      \"id\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e56d82e3-316c-46cd-8004-85d20c050db7",
+          "name": "Get Measurement Quantity List",
+          "request": {
+            "name": "Get Measurement Quantity List",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_quantities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f92afdd7-c8e7-4aa3-ba90-34ed3e99622f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_quantities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "159afe4a-2bfe-4307-bab8-3fac355990fb",
+          "name": "Get Measurement Unit List",
+          "request": {
+            "name": "Get Measurement Unit List",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_units"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cc867fb-1feb-44ab-8f8e-d705f8ad64e4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_units"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": {\n      \"singular\": \"string\",\n      \"plural\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"to_anchor\": 1972.2699891406403,\n    \"anchor_shift\": 2051.4886126003485,\n    \"quantity\": \"string\",\n    \"id\": \"string\"\n  },\n  {\n    \"name\": {\n      \"singular\": \"string\",\n      \"plural\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"to_anchor\": 9857.724980724679,\n    \"anchor_shift\": 1134.4906191661098,\n    \"quantity\": \"string\",\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8c0f6b1-9a24-42f8-a212-541a91cbeedd",
+          "name": "Get Measurement Unit List for a quantity",
+          "request": {
+            "name": "Get Measurement Unit List for a quantity",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_units",
+                ":quantity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quantity",
+                  "description": "(Required) ID of the measurement quantity"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa89557e-8769-4923-b319-0d3349efdb17",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_units",
+                    ":quantity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quantity",
+                      "description": "(Required) ID of the measurement quantity"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": {\n      \"singular\": \"string\",\n      \"plural\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"to_anchor\": 1972.2699891406403,\n    \"anchor_shift\": 2051.4886126003485,\n    \"quantity\": \"string\",\n    \"id\": \"string\"\n  },\n  {\n    \"name\": {\n      \"singular\": \"string\",\n      \"plural\": \"string\",\n      \"symbol\": \"string\"\n    },\n    \"to_anchor\": 9857.724980724679,\n    \"anchor_shift\": 1134.4906191661098,\n    \"quantity\": \"string\",\n    \"id\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6409de3f-4dbf-4c97-9e6a-1cb977233948",
+    "name": "CarbonHub activities measurement_types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

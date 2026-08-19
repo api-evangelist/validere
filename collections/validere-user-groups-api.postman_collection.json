@@ -1,0 +1,775 @@
+{
+  "item": [
+    {
+      "id": "39f0215d-c21a-41bc-b469-ab1fc49bffc8",
+      "name": "user_groups",
+      "description": {
+        "content": "Manage User Groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "69f980c6-dea3-4a24-9704-8d7758f0baec",
+          "name": "Create a user group",
+          "request": {
+            "name": "Create a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7b28c132-de9f-473f-9105-0bfe6e0aa0a7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\",\n  \"created_at\": \"1955-04-15T07:41:15.043Z\",\n  \"updated_at\": \"1961-06-22T11:43:15.488Z\",\n  \"created_by\": \"9055af4f-36d5-b24d-5c45-09769b241ef9\",\n  \"updated_by\": \"1a679153-da56-8bf6-51dd-a79abdf9bcd0\",\n  \"id\": \"22d0e9b2-ecd6-48d5-c76b-568424f4aa34\",\n  \"company_id\": \"3e9beb8a-5bea-422f-1da7-f1a9a162a030\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cdf572f4-b75a-44ee-a5f1-80cabdf5bfb1",
+          "name": "Search user groups",
+          "request": {
+            "name": "Search user groups",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2311cf1c-8a28-480f-a75d-051adcc3d1b0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"group_category_id\": \"<uuid>\",\n    \"user.id\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"group_category_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"created_by\": \"<uuid>\",\n      \"updated_by\": \"<uuid>\",\n      \"id\": \"301f5bec-52cd-ca3b-5c28-2d4a7f6ba502\",\n      \"company_id\": \"30d2d39a-30ae-2177-3826-eda77d2e6c97\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"group_category_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"created_by\": \"<uuid>\",\n      \"updated_by\": \"<uuid>\",\n      \"id\": \"6b6d2745-b6cc-0c62-d08e-c458959543b3\",\n      \"company_id\": \"26275a2a-311b-56ce-192c-e83b9a4f336d\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb4c5964-d55a-4e95-a80e-ddb78b09310b",
+          "name": "Get a user group",
+          "request": {
+            "name": "Get a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9b0a06cf-7821-4687-a2a7-e9fd43b4c0de",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_by\": \"<uuid>\",\n  \"updated_by\": \"<uuid>\",\n  \"id\": \"00839ed5-9059-bb67-4a45-1690f914b659\",\n  \"company_id\": \"89e3c9b0-740d-4dde-f62f-62938ea2f105\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ec27b84-20aa-4b62-bc49-f856d1a71461",
+          "name": "Update a user group",
+          "request": {
+            "name": "Update a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "796db570-d97e-45cc-a738-7ab900f3f3d7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"group_category_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_by\": \"<uuid>\",\n  \"updated_by\": \"<uuid>\",\n  \"id\": \"00839ed5-9059-bb67-4a45-1690f914b659\",\n  \"company_id\": \"89e3c9b0-740d-4dde-f62f-62938ea2f105\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75a66aea-c55a-42e0-958a-3b0ebdbd3db7",
+          "name": "Delete a user group",
+          "request": {
+            "name": "Delete a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87156f99-c651-4482-bd60-2c3854112853",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4f3e6e7-2500-4cb4-b811-722a1aacfd0e",
+          "name": "Show Memberships for a user group",
+          "request": {
+            "name": "Show Memberships for a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22830e8d-ae2b-4de9-965b-ed4015b50b84",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"7fbca574-d74a-3001-30f7-2f0093c5e94c\",\n    \"user_group_id\": \"65d568e4-cb2b-5c21-5db1-394fdb01da5e\",\n    \"user_id\": \"b72255b3-8a75-ff73-a8d2-7879a7ce5705\",\n    \"user\": {\n      \"id\": \"c78df071-2bbb-d994-808a-a62a90d6ebdc\",\n      \"name\": \"string\",\n      \"email\": \"V7NnNuHugPtSl@jl.bawh\"\n    }\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"35363207-5b69-6275-aa01-cc3ff02be536\",\n    \"user_group_id\": \"ab826306-6a4d-9f24-727b-e48ad86f6cad\",\n    \"user_id\": \"65affaed-3b95-92a8-090c-bf3ae44a2ad4\",\n    \"user\": {\n      \"id\": \"f73e9fb3-f9e5-98c0-a073-2ea70c702605\",\n      \"name\": \"string\",\n      \"email\": \"znh7pFd9RsFgt@xszzIRkRJ.cwhu\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a0701cd-98cf-4bcf-9633-7359e6cf0e55",
+          "name": "Add a user to a user group",
+          "request": {
+            "name": "Add a user to a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id",
+                "members",
+                ":member_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "member_id",
+                  "description": "(Required) Member ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4159b70e-ad19-4782-b4e1-c2889ca442a1",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id",
+                    "members",
+                    ":member_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "member_id",
+                      "description": "(Required) Member ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d911e8b-7147-4dfe-805b-fa6beede35d5",
+          "name": "Remove a user from a user group",
+          "request": {
+            "name": "Remove a user from a user group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "user_groups",
+                ":user_group_id",
+                "members",
+                ":member_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_group_id",
+                  "description": "(Required) User Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "member_id",
+                  "description": "(Required) Member ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21c9d011-99b4-4c8c-91e3-22f53c860b4a",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "user_groups",
+                    ":user_group_id",
+                    "members",
+                    ":member_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_group_id",
+                      "description": "(Required) User Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "member_id",
+                      "description": "(Required) Member ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5beee67d-5d5a-4311-b254-1c4409344ca0",
+    "name": "CarbonHub activities user_groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,487 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities records API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create new record",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new record"
+        },
+        {
+          "info": {
+            "name": "Create or update a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a record"
+        },
+        {
+          "info": {
+            "name": "Search and list records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/search",
+            "params": [
+              {
+                "name": "asset_detail",
+                "value": "true",
+                "type": "query",
+                "description": "set to true to include asset detail when group by <asset_type>.id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list records"
+        },
+        {
+          "info": {
+            "name": "Search records and set status of their record values",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records/status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search records and set status of their record values"
+        },
+        {
+          "info": {
+            "name": "Export records based on search input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/export",
+            "params": [
+              {
+                "name": "asset_detail",
+                "value": "true",
+                "type": "query",
+                "description": "set to true to include asset detail when group by <asset_type>.id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export records based on search input"
+        },
+        {
+          "info": {
+            "name": "Apply record configuration using filter parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/apply_configuration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply record configuration using filter parameters"
+        },
+        {
+          "info": {
+            "name": "Apply default record configuration using filter parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/apply_default_configuration",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply default record configuration using filter parameters"
+        },
+        {
+          "info": {
+            "name": "Start an asynchronous job to bulk apply default record configuration using filter parameters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/apply_default_configuration_async",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start an asynchronous job to bulk apply default record configuration using filter parameters"
+        },
+        {
+          "info": {
+            "name": "Get record and values",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/records/:record_id",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              }
+            ]
+          },
+          "docs": "Get record and values"
+        },
+        {
+          "info": {
+            "name": "Delete record and values",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/records/:record_id",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              }
+            ]
+          },
+          "docs": "Delete record and values"
+        },
+        {
+          "info": {
+            "name": "Set status of values of a record (lock/unlock)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records/:record_id/status",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set status of values of a record (lock/unlock)"
+        },
+        {
+          "info": {
+            "name": "Search and list records that are calculator inputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/:entity_type/input_records/search",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Asset Type"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list records that are calculator inputs"
+        },
+        {
+          "info": {
+            "name": "Export records that are calculator inputs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/:entity_type/input_records/export",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Asset Type"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export records that are calculator inputs"
+        },
+        {
+          "info": {
+            "name": "Get record value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/records/:record_id/value/:measurement_type",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              },
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ]
+          },
+          "docs": "Get record value"
+        },
+        {
+          "info": {
+            "name": "Upsert record value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records/:record_id/value/:measurement_type",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              },
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert record value"
+        },
+        {
+          "info": {
+            "name": "Delete record value",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/records/:record_id/value/:measurement_type",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              },
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ]
+          },
+          "docs": "Delete record value"
+        },
+        {
+          "info": {
+            "name": "Set record value status (lock/unlock)",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records/:record_id/value/:measurement_type/status",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the record"
+              },
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "path",
+                "description": "Measurement type of the measurements being retrieved"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set record value status (lock/unlock)"
+        },
+        {
+          "info": {
+            "name": "List Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/records/filters",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter Status"
+              },
+              {
+                "name": "tag",
+                "value": "",
+                "type": "query",
+                "description": "Filter Tag"
+              },
+              {
+                "name": "created_by",
+                "value": "",
+                "type": "query",
+                "description": "Filter Creator"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter Name"
+              }
+            ]
+          },
+          "docs": "List Filter"
+        },
+        {
+          "info": {
+            "name": "Create Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/records/filters",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Filter"
+        },
+        {
+          "info": {
+            "name": "Update Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/records/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Filter"
+        },
+        {
+          "info": {
+            "name": "Delete Filter",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/records/filters/:filter_id",
+            "params": [
+              {
+                "name": "filter_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Filter ID"
+              }
+            ]
+          },
+          "docs": "Delete Filter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

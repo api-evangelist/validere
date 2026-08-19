@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities equipment_types API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "equipment_types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Equipment Type List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/equipment_types"
+          },
+          "docs": "Get Equipment Type List"
+        },
+        {
+          "info": {
+            "name": "Get Equipment Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/equipment_types/:type_id",
+            "params": [
+              {
+                "name": "type_id",
+                "value": "acid_gas_removal",
+                "type": "path",
+                "description": "Equipment Type Id"
+              }
+            ]
+          },
+          "docs": "Get Equipment Type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

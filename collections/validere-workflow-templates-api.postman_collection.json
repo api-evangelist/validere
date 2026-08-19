@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "b9aaafee-3841-4699-8840-2816fb75b951",
+      "name": "workflow_templates",
+      "description": {
+        "content": "Workflow Templates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f594ae36-7d25-47f0-8fa1-15b19cf4eca0",
+          "name": "Create a Workflow Template",
+          "request": {
+            "name": "Create a Workflow Template",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"category_id\": \"<uuid>\",\n  \"config\": {\n    \"start\": \"<string>\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"input\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      }\n    },\n    \"workflow_name\": \"<string>\",\n    \"workflow_description\": \"<string>\"\n  },\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"<string>\"\n      },\n      \"cron\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"cron\": \"<string>\"\n    }\n  ],\n  \"output\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"asset_type\": \"<string>\",\n  \"asset_filter\": {\n    \"key_0\": {}\n  },\n  \"workflow_owner_id\": \"<uuid>\",\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"<string>\"\n    },\n    \"step_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"task_status\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facility_filter\": {\n    \"key_0\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "595ea56c-1d63-4d55-9133-3397252c846a",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"status\": \"<string>\",\n  \"category_id\": \"<uuid>\",\n  \"config\": {\n    \"start\": \"<string>\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      }\n    },\n    \"workflow_name\": \"<string>\",\n    \"workflow_description\": \"<string>\"\n  },\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\",\n        \"key_2\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\",\n        \"key_2\": \"$.answers.section1[0].question_leak.value\",\n        \"key_3\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    }\n  ],\n  \"output\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"asset_type\": \"<string>\",\n  \"asset_filter\": {\n    \"key_0\": {}\n  },\n  \"workflow_owner_id\": \"<uuid>\",\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"<string>\"\n    },\n    \"step_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"task_status\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"facility_filter\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"20d61792-ee5f-d7d9-9ed3-68b2cd7c3381\",\n  \"company_id\": \"27c58bcb-f553-cd05-2647-737c16c7c605\",\n  \"category_id\": \"85aebe37-020d-4d1a-b88c-e9c31de47217\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": 6220,\n  \"status\": \"archive\",\n  \"triggers\": [\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"days\",\n        \"duration\": 7524.863546510197,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"weeks\",\n        \"duration\": 9023.84825893374\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    },\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"months\",\n        \"duration\": 3819.2159384452702,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"days\",\n        \"duration\": 62.349012802962534\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    }\n  ],\n  \"config\": {\n    \"start\": \"string\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"fd18600a-5d64-8e2a-e492-20a5ce91713d\",\n          \"event_status\": \"open\",\n          \"output\": {\n            \"key_0\": \"$.answers.section1[0].question_leak.value\",\n            \"key_1\": \"$.answers.section1[0].question_leak.value\",\n            \"key_2\": \"$.answers.section1[0].question_leak.value\"\n          },\n          \"input\": {\n            \"key_0\": \"$TRIGGERING_ASSET_NAME\",\n            \"key_1\": \"$TRIGGERING_ASSET_NAME\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": true\n      },\n      \"key_1\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"1e8a0929-0ce0-10ac-2219-467c6de1d27c\",\n          \"event_status\": \"overdue\",\n          \"output\": {\n            \"key_0\": \"$.answers.section1[0].question_leak.value\",\n            \"key_1\": \"$.answers.section1[0].question_leak.value\"\n          },\n          \"input\": {\n            \"key_0\": \"$TRIGGERING_ASSET_NAME\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": true\n      },\n      \"key_2\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"cdb562bc-a9be-4140-d98f-f03c86f4730c\",\n          \"event_status\": \"overdue\",\n          \"output\": {\n            \"key_0\": \"$.answers.section1[0].question_leak.value\"\n          },\n          \"input\": {\n            \"key_0\": \"$TRIGGERING_ASSET_NAME\",\n            \"key_1\": \"$TRIGGERING_ASSET_NAME\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": true\n      }\n    },\n    \"workflow_name\": \"string\",\n    \"workflow_description\": \"string\"\n  },\n  \"output\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\",\n    \"key_2\": \"string\",\n    \"key_3\": \"string\"\n  },\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"owner\"\n      },\n      {\n        \"type\": \"owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"workflow_owner\"\n      },\n      {\n        \"type\": \"workflow_owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"string\"\n    },\n    \"step_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"task_status\": [\n      \"overdue\",\n      \"dismissed\"\n    ]\n  },\n  \"asset_type\": \"facility\",\n  \"asset_filter\": {\n    \"key_0\": {}\n  },\n  \"workflow_owner_id\": \"5b97a221-e4d8-f92e-1b96-cc8585c9234c\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"de0b260c-002a-0ddb-6902-a03bc0d7eb0b\",\n  \"updated_by\": \"4059e777-6365-9c5c-bd7c-77949d690355\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f85257e-dded-43eb-84da-24cf54a6ccc7",
+          "name": "Search Workflow Templates",
+          "request": {
+            "name": "Search Workflow Templates",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_templates",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"category_id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_by\": \"<uuid>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f32137d6-2f3a-4bca-8642-69fa94a8ebdb",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_templates",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"category_id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"created_by\": \"<uuid>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"e209a442-9a30-e413-09bb-34350900824e\",\n      \"company_id\": \"97d8fd84-9807-10e3-1a4f-3eb3368b0b3e\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"created_by\": \"de4c6d92-4e07-9b5c-fa6c-e1fe8bc9b66c\",\n      \"updated_by\": \"a7dcdc44-2c17-1480-298d-710a7c59f0c1\",\n      \"facilities\": {\n        \"page_number\": 0,\n        \"page_size\": 10,\n        \"total_entries\": 58,\n        \"total_pages\": 6,\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    },\n    {\n      \"id\": \"973e13b7-604a-1167-fb4f-4b653c1dd6e2\",\n      \"company_id\": \"f1d7d035-9d1d-f431-c3aa-ffdc0cab7fff\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"created_by\": \"de33cbfc-1f7f-b08b-dd91-df6f5a54c2a3\",\n      \"updated_by\": \"5caf4eaa-f852-c64a-46a1-ce94e79c5c82\",\n      \"facilities\": {\n        \"page_number\": 0,\n        \"page_size\": 10,\n        \"total_entries\": 58,\n        \"total_pages\": 6,\n        \"data\": [\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ea27a62-95c5-45c5-b8e9-a0a7d4e01761",
+          "name": "Get a workflow template",
+          "request": {
+            "name": "Get a workflow template",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "361e9f6c-60a8-44c8-a88b-e6e9193721a2",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"edf8a5a1-0a83-ed5b-0f87-18d07064ebc8\",\n  \"company_id\": \"37f9128c-e589-c214-9421-4db78d3deac6\",\n  \"category_id\": \"f90a382e-516d-5ea4-a44c-4f095b5aa4d5\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": 3387,\n  \"status\": \"archive\",\n  \"triggers\": [\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"days\",\n        \"duration\": 8590.72506916618,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"hours\",\n        \"duration\": 8861.606314159702\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    },\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"weeks\",\n        \"duration\": 5745.708417089779,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"days\",\n        \"duration\": 701.1325873095668\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    }\n  ],\n  \"config\": {\n    \"start\": \"string\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"5ea0c6b8-3bb9-cef9-be23-ebbcb2d88945\",\n          \"event_status\": \"open\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": false\n      },\n      \"key_1\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"98064524-fb82-5da7-bae6-4661c12492fa\",\n          \"event_status\": \"open\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": false\n      },\n      \"key_2\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"e53cfaa2-dd47-f19c-00d5-3a8c5a55864a\",\n          \"event_status\": \"overdue\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": true\n      }\n    },\n    \"workflow_name\": \"string\",\n    \"workflow_description\": \"string\"\n  },\n  \"output\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"owner\"\n      },\n      {\n        \"type\": \"owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"workflow_owner\"\n      },\n      {\n        \"type\": \"workflow_owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"string\"\n    },\n    \"step_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"task_status\": [\n      \"dismissed\",\n      \"open\"\n    ]\n  },\n  \"asset_type\": \"asset_group\",\n  \"asset_filter\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {},\n    \"key_3\": {},\n    \"key_4\": {}\n  },\n  \"workflow_owner_id\": \"c2c51442-77b2-6259-3e64-4d84345c4cdf\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"e55752e3-0774-6593-6ae6-5f2f8a1ecf51\",\n  \"updated_by\": \"88229964-a1bb-3255-aef8-a52f5db9b6f6\",\n  \"facility_filter\": {\n    \"custom_attributes\": {},\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"status\": \"string\",\n    \"event.id\": \"string\",\n    \"created_at\": \"1968-12-24T20:52:49.185Z\",\n    \"updated_at\": \"1997-06-24T07:56:02.508Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbbbdd10-5c97-4ac2-9bdd-e7365c029d31",
+          "name": "Update a workflow template",
+          "request": {
+            "name": "Update a workflow template",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"config\": {\n    \"start\": \"<string>\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"key_1\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"input\": {\n            \"key_0\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      }\n    },\n    \"workflow_name\": \"<string>\",\n    \"workflow_description\": \"<string>\"\n  },\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"<string>\"\n      },\n      \"cron\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      },\n      \"cron\": \"<string>\"\n    }\n  ],\n  \"output\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\",\n    \"key_3\": \"<string>\"\n  },\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"<string>\"\n    },\n    \"step_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"task_status\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"asset_type\": \"<string>\",\n  \"asset_filter\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"workflow_owner_id\": \"<uuid>\",\n  \"facility_filter\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7a338c0-a4a1-4095-a237-f61a56d6d352",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"config\": {\n    \"start\": \"<string>\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      },\n      \"key_1\": {\n        \"type\": \"<string>\",\n        \"name\": \"<string>\",\n        \"task\": {\n          \"type\": \"<string>\",\n          \"event_schema_id\": \"<uuid>\",\n          \"event_status\": \"<string>\",\n          \"output\": {\n            \"$TRIGGERING_ASSET_ID\": \"$.asset_trigger.metadata.id\",\n            \"$LEAK_EQUIPMENT\": \"$.answers.section1[0].question_leak.value\",\n            \"$ASSOCIATED_ASSET_ID\": \"$.asset.id\",\n            \"$ASSOCIATED_ASSET_NAME\": \"$.asset.name\",\n            \"$ASSOCIATED_ASSET_TYPE\": \"$.asset.asset_type\",\n            \"$FOO\": \"bar\"\n          },\n          \"input\": {\n            \"$.description\": \"foo\",\n            \"$.questions.question_leak.default_answer\": \"$LEAK_EQUIPMENT\"\n          }\n        },\n        \"description\": \"<string>\",\n        \"next\": \"<string>\",\n        \"end\": \"<boolean>\"\n      }\n    },\n    \"workflow_name\": \"<string>\",\n    \"workflow_description\": \"<string>\"\n  },\n  \"triggers\": [\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"due_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\",\n        \"start_variable\": \"<string>\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"<string>\",\n        \"duration\": \"<number>\"\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\",\n        \"key_2\": \"$.answers.section1[0].question_leak.value\",\n        \"key_3\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    }\n  ],\n  \"output\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"<string>\"\n      },\n      {\n        \"type\": \"<string>\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"<string>\"\n    },\n    \"step_ids\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"task_status\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"asset_type\": \"<string>\",\n  \"asset_filter\": {\n    \"key_0\": {}\n  },\n  \"workflow_owner_id\": \"<uuid>\",\n  \"facility_filter\": {\n    \"key_0\": {}\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"99af5e95-3bd1-f687-1510-dab54c0d2547\",\n  \"company_id\": \"8f14e2da-9e3d-3da6-f358-20bac20a8891\",\n  \"category_id\": \"5e697aff-a063-d72c-fcb6-ff484758e1a1\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"version\": 8151,\n  \"status\": \"draft\",\n  \"triggers\": [\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"days\",\n        \"duration\": 6731.717820711142,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"months\",\n        \"duration\": 6307.696914965976\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    },\n    {\n      \"type\": \"scheduled\",\n      \"due_date\": {\n        \"time_period\": \"weeks\",\n        \"duration\": 9245.317763938758,\n        \"start_variable\": \"string\"\n      },\n      \"notification_date\": {\n        \"time_period\": \"weeks\",\n        \"duration\": 2657.940027489911\n      },\n      \"output\": {\n        \"key_0\": \"$.answers.section1[0].question_leak.value\",\n        \"key_1\": \"$.answers.section1[0].question_leak.value\"\n      },\n      \"cron\": \"0 8 * * ? *\"\n    }\n  ],\n  \"config\": {\n    \"start\": \"string\",\n    \"steps\": {\n      \"key_0\": {\n        \"type\": \"system_action\",\n        \"name\": \"string\",\n        \"task\": {\n          \"type\": \"create_event\",\n          \"event_schema_id\": \"bf46b7f4-09da-2a3d-0aff-2ca5f2698aae\",\n          \"event_status\": \"open\",\n          \"output\": {\n            \"key_0\": \"$.answers.section1[0].question_leak.value\",\n            \"key_1\": \"$.answers.section1[0].question_leak.value\",\n            \"key_2\": \"$.answers.section1[0].question_leak.value\"\n          },\n          \"input\": {\n            \"key_0\": \"$TRIGGERING_ASSET_NAME\",\n            \"key_1\": \"$TRIGGERING_ASSET_NAME\"\n          }\n        },\n        \"description\": \"string\",\n        \"next\": \"string\",\n        \"end\": false\n      }\n    },\n    \"workflow_name\": \"string\",\n    \"workflow_description\": \"string\"\n  },\n  \"output\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"workflow_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"owner\"\n      },\n      {\n        \"type\": \"owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ]\n  },\n  \"workflow_task_notifications\": {\n    \"events\": [\n      {\n        \"type\": \"created\"\n      },\n      {\n        \"type\": \"created\"\n      }\n    ],\n    \"recipients\": [\n      {\n        \"type\": \"workflow_owner\"\n      },\n      {\n        \"type\": \"workflow_owner\"\n      }\n    ],\n    \"channels\": [\n      {\n        \"type\": \"email\"\n      },\n      {\n        \"type\": \"email\"\n      }\n    ],\n    \"input\": {\n      \"$.description\": \"string\"\n    },\n    \"step_ids\": [\n      \"string\",\n      \"string\"\n    ],\n    \"task_status\": [\n      \"open\",\n      \"overdue\"\n    ]\n  },\n  \"asset_type\": \"flow\",\n  \"asset_filter\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"workflow_owner_id\": \"794e98f8-8149-fcfd-f71a-139d20f4d02d\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"created_by\": \"7f7423f3-5f60-4b8e-d3dd-394f4f46a560\",\n  \"updated_by\": \"6c8e50d2-c965-b29c-9286-8c0efd0ae14d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f0d67ae-90aa-4028-8769-d35a4cbc0830",
+          "name": "Delete a workflow template",
+          "request": {
+            "name": "Delete a workflow template",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_templates",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Workflow Template ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c643082b-effb-46b1-a838-d21778f85a4b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_templates",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Workflow Template ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aab04eec-94c8-43f0-b9d8-8cfbcc5e444b",
+    "name": "CarbonHub activities workflow_templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

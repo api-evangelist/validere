@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities TypeMetadata API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TypeMetadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Transaction States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/type_metadata/transaction_states"
+          },
+          "docs": "Lists all transaction states."
+        },
+        {
+          "info": {
+            "name": "List All Transaction Statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/type_metadata/transaction_statuses"
+          },
+          "docs": "Lists all transaction statuses."
+        },
+        {
+          "info": {
+            "name": "List All Transaction Steps",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/type_metadata/transaction_steps"
+          },
+          "docs": "Lists all transaction steps."
+        },
+        {
+          "info": {
+            "name": "List All Transaction Errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/type_metadata/transaction_errors"
+          },
+          "docs": "Lists all transaction errors."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

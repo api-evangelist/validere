@@ -1,0 +1,723 @@
+{
+  "item": [
+    {
+      "id": "50ff8414-4c49-4139-b628-aa308c082d27",
+      "name": "reporting_groups",
+      "description": {
+        "content": "Reporting Groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9e1f33e9-ece1-4689-b606-f5f3b63d3276",
+          "name": "List Reporting Groups",
+          "request": {
+            "name": "List Reporting Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "String to search for in reporting group IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "String to search for in reporting group names"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4c3cdc75-b1aa-4b58-a500-5123802283cb",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"SubpartW\",\n      \"description\": \"my reporting group\",\n      \"priority\": 2,\n      \"id\": \"subpartw\",\n      \"created_at\": \"1970-01-05T05:51:07.517Z\",\n      \"updated_at\": \"1977-07-22T18:48:17.260Z\",\n      \"created_by\": \"4c3d7fdf-0a3a-f397-14eb-d5a5a55180a0\",\n      \"updated_by\": \"82dba5df-aad3-299d-357a-c10677262e0b\",\n      \"company_id\": \"02ea0e61-4f72-be16-28f7-c4239abf9747\"\n    },\n    {\n      \"name\": \"SubpartW\",\n      \"description\": \"my reporting group\",\n      \"priority\": 2,\n      \"id\": \"subpartw\",\n      \"created_at\": \"2020-11-29T11:04:16.370Z\",\n      \"updated_at\": \"1946-10-13T18:00:55.964Z\",\n      \"created_by\": \"1c40afea-0ec0-d914-d099-eff7ca73cdcb\",\n      \"updated_by\": \"918c9265-1829-80c0-3426-888d14c23232\",\n      \"company_id\": \"e6ffb4ee-7d4b-bafd-2637-33059e299984\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0b752f29-ddf8-4aaf-82eb-b62ccaca4430",
+          "name": "Create new Reporting Group",
+          "request": {
+            "name": "Create new Reporting Group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bda76a39-1ac2-4eda-ba0a-20d9a8e630cc",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"SubpartW\",\n  \"description\": \"my reporting group\",\n  \"priority\": 2,\n  \"id\": \"subpartw\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"SubpartW\",\n  \"description\": \"my reporting group\",\n  \"priority\": 2,\n  \"id\": \"subpartw\",\n  \"created_at\": \"2009-05-17T14:41:21.329Z\",\n  \"updated_at\": \"1975-03-27T00:30:34.084Z\",\n  \"created_by\": \"5494ce68-7b29-76c1-ed4f-3100f48f0d57\",\n  \"updated_by\": \"f9be6df1-2603-b130-1827-f8e175c4bcf7\",\n  \"company_id\": \"5eb9136a-4780-bd54-4e35-acb3f842a423\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f42f1b8-c3b3-48b8-9e05-438feca9a1df",
+          "name": "Get a Reporting Group by Id",
+          "request": {
+            "name": "Get a Reporting Group by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of report group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b22fa6da-462c-49dd-9ef3-d861aa2ca32b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of report group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"SubpartW\",\n  \"description\": \"my reporting group\",\n  \"priority\": 2,\n  \"id\": \"subpartw\",\n  \"created_at\": \"2009-05-17T14:41:21.329Z\",\n  \"updated_at\": \"1975-03-27T00:30:34.084Z\",\n  \"created_by\": \"5494ce68-7b29-76c1-ed4f-3100f48f0d57\",\n  \"updated_by\": \"f9be6df1-2603-b130-1827-f8e175c4bcf7\",\n  \"company_id\": \"5eb9136a-4780-bd54-4e35-acb3f842a423\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9300d70-6dc6-4370-946a-b3b8a0b9c478",
+          "name": "Update a Reporting Group by Id",
+          "request": {
+            "name": "Update a Reporting Group by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of report group"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"priority\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bad781a9-22e4-49bc-b38f-97fbb756418c",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of report group"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"SubpartW\",\n  \"description\": \"my reporting group\",\n  \"priority\": 2\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"SubpartW\",\n  \"description\": \"my reporting group\",\n  \"priority\": 2,\n  \"id\": \"subpartw\",\n  \"created_at\": \"2009-05-17T14:41:21.329Z\",\n  \"updated_at\": \"1975-03-27T00:30:34.084Z\",\n  \"created_by\": \"5494ce68-7b29-76c1-ed4f-3100f48f0d57\",\n  \"updated_by\": \"f9be6df1-2603-b130-1827-f8e175c4bcf7\",\n  \"company_id\": \"5eb9136a-4780-bd54-4e35-acb3f842a423\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a7791a7-56c0-4924-b77d-b259e51b3b28",
+          "name": "Delete a Reporting Group by Id",
+          "request": {
+            "name": "Delete a Reporting Group by Id",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of report group"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3033ac99-96ef-4831-889f-b6ff895ebadd",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of report group"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a7ba39a-5d19-46b7-9f7b-7c309eeba6ee",
+          "name": "Add a reporting_group/estimation_method relationship",
+          "request": {
+            "name": "Add a reporting_group/estimation_method relationship",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups",
+                ":id",
+                "estimation_methods",
+                ":estimation_method_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of report group"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "estimation_method_id",
+                  "description": "(Required) Estimation Method ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1158395-85d9-433e-b87f-bf2c288e0ffc",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups",
+                    ":id",
+                    "estimation_methods",
+                    ":estimation_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of report group"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "estimation_method_id",
+                      "description": "(Required) Estimation Method ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec6c9e6b-abf8-40f7-abb7-6e2224b49870",
+          "name": "Remove a reporting_group/estimation_method relationship",
+          "request": {
+            "name": "Remove a reporting_group/estimation_method relationship",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "reporting_groups",
+                ":id",
+                "estimation_methods",
+                ":estimation_method_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) ID of report group"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "estimation_method_id",
+                  "description": "(Required) Estimation Method ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd37abf9-c8eb-4a8f-bce5-d707792dd69e",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "reporting_groups",
+                    ":id",
+                    "estimation_methods",
+                    ":estimation_method_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) ID of report group"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "estimation_method_id",
+                      "description": "(Required) Estimation Method ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "999a8eb9-6f1c-4ad5-9204-b03780d97197",
+    "name": "CarbonHub activities reporting_groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

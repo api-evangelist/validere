@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities group_categories API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "group_categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Group Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/group_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Group Category"
+        },
+        {
+          "info": {
+            "name": "Get a Group Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/group_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Group Category ID"
+              }
+            ]
+          },
+          "docs": "Get a Group Category"
+        },
+        {
+          "info": {
+            "name": "Update a Group Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/group_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Group Category ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Group Category"
+        },
+        {
+          "info": {
+            "name": "Delete a Group Category",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/group_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Group Category ID"
+              }
+            ]
+          },
+          "docs": "Delete a Group Category"
+        },
+        {
+          "info": {
+            "name": "Search Group Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/group_categories/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Group Categories"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

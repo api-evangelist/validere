@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities company API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "company",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Must be System Admin - Create a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/companies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be System Admin - Create a company"
+        },
+        {
+          "info": {
+            "name": "Must be System Admin - Search companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/companies/search",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be System Admin - Search companies"
+        },
+        {
+          "info": {
+            "name": "Must be System Admin or Company member - Get a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ]
+          },
+          "docs": "Must be System Admin or Company member - Get a company"
+        },
+        {
+          "info": {
+            "name": "Must be System Admin - Update a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be System Admin - Update a company"
+        },
+        {
+          "info": {
+            "name": "Must be System Admin - Delete a company",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/companies/:company_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ]
+          },
+          "docs": "Must be System Admin - Delete a company"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

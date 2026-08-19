@@ -1,0 +1,193 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities reporting_groups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "reporting_groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Reporting Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/reporting_groups",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in reporting group IDs"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in reporting group names"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List Reporting Groups"
+        },
+        {
+          "info": {
+            "name": "Create new Reporting Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/reporting_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new Reporting Group"
+        },
+        {
+          "info": {
+            "name": "Get a Reporting Group by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/reporting_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of report group"
+              }
+            ]
+          },
+          "docs": "Get a Reporting Group by Id"
+        },
+        {
+          "info": {
+            "name": "Update a Reporting Group by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/reporting_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of report group"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Reporting Group by Id"
+        },
+        {
+          "info": {
+            "name": "Delete a Reporting Group by Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/reporting_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of report group"
+              }
+            ]
+          },
+          "docs": "Delete a Reporting Group by Id"
+        },
+        {
+          "info": {
+            "name": "Add a reporting_group/estimation_method relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/reporting_groups/:id/estimation_methods/:estimation_method_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of report group"
+              },
+              {
+                "name": "estimation_method_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              }
+            ]
+          },
+          "docs": "Add a reporting_group/estimation_method relationship"
+        },
+        {
+          "info": {
+            "name": "Remove a reporting_group/estimation_method relationship",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/reporting_groups/:id/estimation_methods/:estimation_method_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of report group"
+              },
+              {
+                "name": "estimation_method_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              }
+            ]
+          },
+          "docs": "Remove a reporting_group/estimation_method relationship"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

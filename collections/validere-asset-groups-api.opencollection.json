@@ -1,0 +1,203 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities asset_groups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "asset_groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/asset_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an asset group"
+        },
+        {
+          "info": {
+            "name": "Create an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/asset_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an asset group"
+        },
+        {
+          "info": {
+            "name": "Get an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              }
+            ]
+          },
+          "docs": "Get an asset group"
+        },
+        {
+          "info": {
+            "name": "Update an Asset Group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an Asset Group"
+        },
+        {
+          "info": {
+            "name": "Delete an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              }
+            ]
+          },
+          "docs": "Delete an asset group"
+        },
+        {
+          "info": {
+            "name": "Update all the assets in an asset group.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id/asset",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              }
+            ]
+          },
+          "docs": "Update all the assets in an asset group. Also updates estimation methods and default calculator input records that reference these AssetGroupAssets."
+        },
+        {
+          "info": {
+            "name": "Add an asset to an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id/asset/:asset_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Asset ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an asset to an asset group"
+        },
+        {
+          "info": {
+            "name": "Remove an asset to an asset group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/asset_groups/:id/asset/:asset_id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Asset ID"
+              }
+            ]
+          },
+          "docs": "Remove an asset to an asset group"
+        },
+        {
+          "info": {
+            "name": "Search and list Asset Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/asset_groups/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Asset Groups"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

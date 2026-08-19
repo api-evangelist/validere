@@ -1,0 +1,261 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities transactions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "transactions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Transactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/transactions",
+            "params": [
+              {
+                "name": "filter_out_file_uploads",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submitted_after",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "submitted_before",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "step",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "bucket",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "file_key",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "only_latest",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of transactions submitted to the Data Platform\n\nThe following fields should be passed as query parameters:\n\n* `submitted_after` (datetime) - Optional, otherwise defaults to 1 week before current datetime. Required in isoformat i.e. %Y-%m-%dT%H:%M:%S%Z\n* `submitted_before` (datetime) -  Optional, otherwise defaults to current datetime. Required in isoformat i.e. %Y-%m-%dT%H:%M:%S%Z"
+        },
+        {
+          "info": {
+            "name": "Get Transaction By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/transactions/:transaction_id",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "history",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches details/status of a transaction based on its UUID."
+        },
+        {
+          "info": {
+            "name": "Download Transaction File Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/transactions/:transaction_id/download",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "error_only",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download Transaction File Version"
+        },
+        {
+          "info": {
+            "name": "Get Sink Summary By Transaction By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/transactions/:transaction_id/sink/summary",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches details/status of a transaction based on its UUID.\nSoft deprecation in favour of GET /{transaction_id}/details\""
+        },
+        {
+          "info": {
+            "name": "Retry Transaction By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/transactions/:transaction_id/retry",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "transaction_retry_stage",
+                "value": "",
+                "type": "query",
+                "description": "Optional. Will default to latest transaction step if not provided"
+              }
+            ]
+          },
+          "docs": "Retry Transaction By Id"
+        },
+        {
+          "info": {
+            "name": "Get Transaction Details By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/transactions/:transaction_id/details",
+            "headers": [
+              {
+                "name": "accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Fetches details/status of a transaction based on its UUID."
+        },
+        {
+          "info": {
+            "name": "Get Transaction Details Page V2",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/v2/transactions/:transaction_id/details",
+            "params": [
+              {
+                "name": "transaction_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "continuation_token",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_filter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include_data",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns one page of transaction detail rows from DynamoDB using cursor-based pagination.\n\nPass `continuation_token` from the previous response to advance to the next page.\nWhen `status_filter` is supplied, DynamoDB applies the filter after reading\n`page_size` rows, so a page may return fewer rows than requested — keep paging\nuntil `continuation_token` is null."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

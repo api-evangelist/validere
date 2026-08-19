@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "c3211b63-e3fa-4b63-b800-ad53f75b4cc7",
+      "name": "dashboards",
+      "description": {
+        "content": "Dashboards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80c0e529-598b-4f2d-a01d-b6bffb2ce5c6",
+          "name": "List dashboards",
+          "request": {
+            "name": "List dashboards",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Dashboard name"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>",
+                  "description": "Dashboard description"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6edabcc7-6d7f-4deb-9c47-7d0f4a10c217",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"company_id\": \"c453da44-312f-7216-8a82-af347952369e\",\n      \"created_at\": \"2021-07-28T05:22:32.041Z\",\n      \"created_by\": \"d57bc85b-9b90-6cea-e0ca-f29f9f4bc05e\",\n      \"description\": \"string\",\n      \"id\": \"a5d51913-4ece-fd9a-53a1-91b649a93fda\",\n      \"name\": \"string\",\n      \"updated_at\": \"1984-11-23T08:54:09.635Z\"\n    },\n    {\n      \"company_id\": \"47e16362-ddc6-111d-3aa0-4456f4c3fc9a\",\n      \"created_at\": \"1987-04-08T03:38:14.926Z\",\n      \"created_by\": \"69c3a570-f50d-0faf-dd00-dcbb4593c568\",\n      \"description\": \"string\",\n      \"id\": \"5d0e48f6-1e36-6451-36f5-2877ed11ee52\",\n      \"name\": \"string\",\n      \"updated_at\": \"1962-08-07T20:52:05.570Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9c1fda0-350b-4e8e-8e46-b3b85286f90a",
+          "name": "Create a dashboard",
+          "request": {
+            "name": "Create a dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "dashboards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16719804-91c8-44c6-a94e-5d5d60295ca4",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "dashboards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"Description of Dashboard #1\",\n  \"name\": \"Dashboard #1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"59bed971-9b48-443e-5213-df374237ce7a\",\n  \"created_at\": \"2017-12-03T05:31:38.012Z\",\n  \"created_by\": \"99b5160f-b9ce-7c7e-fb68-bc5de1c4e04f\",\n  \"description\": \"string\",\n  \"id\": \"cfa98fef-1e1a-f56b-80eb-465f903e0f61\",\n  \"name\": \"string\",\n  \"updated_at\": \"1996-05-07T20:05:25.720Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aceabab-f597-424b-9245-c7731568d062",
+          "name": "Delete a dashboard",
+          "request": {
+            "name": "Delete a dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Dashboard ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38e136fb-5b65-410f-8e11-92e80ae16922",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Dashboard ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04582f1d-91ce-414a-afca-8f2752c58fa5",
+          "name": "Get a dashboard",
+          "request": {
+            "name": "Get a dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Dashboard ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b375d5b7-0803-471d-9efc-28a1466085d3",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Dashboard ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"5b4a018e-b5d7-5d2c-d48c-f9be7b721d71\",\n  \"created_at\": \"1974-08-25T01:52:41.436Z\",\n  \"created_by\": \"4390a304-67a6-b69a-0a95-124fb9481bd4\",\n  \"description\": \"string\",\n  \"id\": \"02aa9db8-66e1-a257-8f9d-3ef7987387de\",\n  \"name\": \"string\",\n  \"updated_at\": \"2012-03-04T05:06:34.519Z\",\n  \"chart\": [\n    {\n      \"created_at\": \"1966-11-23T11:29:48.945Z\",\n      \"created_by\": \"073045cb-ead0-a69c-23d2-e7031c5691c4\",\n      \"dashboard_id\": \"ee96b04d-7684-24a2-0c51-cce6c10e4e51\",\n      \"id\": \"94cf49af-bcf7-8222-055b-dd229689c437\",\n      \"json\": {},\n      \"name\": \"string\",\n      \"updated_at\": \"1972-09-15T01:35:50.301Z\"\n    },\n    {\n      \"created_at\": \"1980-02-14T00:18:47.847Z\",\n      \"created_by\": \"e41b070c-d944-22dd-069c-006854e8a30b\",\n      \"dashboard_id\": \"38c717f7-a7cf-d15f-031c-f9ff7ae50b59\",\n      \"id\": \"4f37da85-7b8f-fa6f-800b-130a2ca90f50\",\n      \"json\": {},\n      \"name\": \"string\",\n      \"updated_at\": \"1986-10-15T15:06:29.916Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c957dfee-d848-4a4d-8273-c6082446e6ed",
+          "name": "Update a dashboard",
+          "request": {
+            "name": "Update a dashboard",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "dashboards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Dashboard ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eefaa734-be97-43f3-9a13-c0c46a0321d8",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "dashboards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Dashboard ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"Description of Dashboard #1\",\n  \"name\": \"Dashboard #1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"company_id\": \"59bed971-9b48-443e-5213-df374237ce7a\",\n  \"created_at\": \"2017-12-03T05:31:38.012Z\",\n  \"created_by\": \"99b5160f-b9ce-7c7e-fb68-bc5de1c4e04f\",\n  \"description\": \"string\",\n  \"id\": \"cfa98fef-1e1a-f56b-80eb-465f903e0f61\",\n  \"name\": \"string\",\n  \"updated_at\": \"1996-05-07T20:05:25.720Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b42f7b34-4f98-4c07-8a69-4320a78abbdb",
+    "name": "CarbonHub activities dashboards API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

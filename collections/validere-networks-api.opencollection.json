@@ -1,0 +1,197 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities networks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Gets a list of network proration inputs and results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/networks/:id/:year_month",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "Gets a list of network proration inputs and results"
+        },
+        {
+          "info": {
+            "name": "Upsert configuration for a network monthly proration input",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/networks/:id/:year_month",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert configuration for a network monthly proration input"
+        },
+        {
+          "info": {
+            "name": "Delete a month configuration. Returns the default configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/networks/:id/:year_month",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "Delete a month configuration. Returns the default configuration"
+        },
+        {
+          "info": {
+            "name": "Triggers the calculation and returns the table along with the results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/networks/:id/:year_month/run",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Triggers the calculation and returns the table along with the results"
+        },
+        {
+          "info": {
+            "name": "Migrates the network and it's configurations to estimation methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/networks/:id/migrate",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Asset Group ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Migrates the network and it's configurations to estimation methods"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

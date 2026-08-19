@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "b8e48f6f-49f5-46e0-9aec-5a2325788318",
+      "name": "event_schemas",
+      "description": {
+        "content": "Event Schemas",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f8151b71-d8bb-4702-8d57-02b3107f0ec1",
+          "name": "Create an event schema",
+          "request": {
+            "name": "Create an event schema",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "event_schemas"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": \"<boolean>\",\n    \"due_date\": {\n      \"relative_time\": \"<boolean>\",\n      \"time_period\": \"<string>\",\n      \"duration\": \"<number>\"\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suggested_templates\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": \"<boolean>\",\n      \"has_source\": \"<boolean>\"\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "672e82b1-eb9c-41ac-8d34-93eefaebf085",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "event_schemas"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": true,\n    \"due_date\": {\n      \"relative_time\": true,\n      \"time_period\": \"days\",\n      \"duration\": 7\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\",\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\"\n      ],\n      \"suggested_templates\": [\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\",\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": true,\n      \"has_source\": true\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": true,\n    \"due_date\": {\n      \"relative_time\": true,\n      \"time_period\": \"days\",\n      \"duration\": 7\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\",\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\"\n      ],\n      \"suggested_templates\": [\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\",\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": true,\n      \"has_source\": true\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\",\n  \"id\": \"caae2493-5585-a3d2-bf09-e7637f3dd951\",\n  \"company_id\": \"64318de7-6271-cef1-c34f-5badd8aea850\",\n  \"created_at\": \"1963-10-30T13:27:48.316Z\",\n  \"created_by\": \"33410fe1-9900-b221-a43f-55adc34b8eb9\",\n  \"updated_at\": \"2014-12-18T06:29:59.969Z\",\n  \"updated_by\": \"54916b35-2eaa-441c-5999-9861ba490faf\",\n  \"form_schemas\": [\n    {\n      \"id\": \"b008ba46-7e25-ffa3-af7d-76acf33d187b\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"6ce62a1c-fe2e-de68-6e98-2cc0077b3499\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    },\n    {\n      \"id\": \"6d05e507-02d7-31bd-72fb-a8df524e96f3\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"78a7b158-0b54-7600-3da8-a399395d4b48\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "358fa5a0-1973-4a8b-aef1-d1bf6cb17a2c",
+          "name": "Update an event schema",
+          "request": {
+            "name": "Update an event schema",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "event_schemas",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Event Schema ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": \"<boolean>\",\n    \"due_date\": {\n      \"relative_time\": \"<boolean>\",\n      \"time_period\": \"<string>\",\n      \"duration\": \"<number>\"\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"suggested_templates\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": \"<boolean>\",\n      \"has_source\": \"<boolean>\"\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f94f24da-d5c9-4a61-abff-42132f75950f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "event_schemas",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Event Schema ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": true,\n    \"due_date\": {\n      \"relative_time\": true,\n      \"time_period\": \"days\",\n      \"duration\": 7\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\",\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\"\n      ],\n      \"suggested_templates\": [\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\",\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": true,\n      \"has_source\": true\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": true,\n    \"due_date\": {\n      \"relative_time\": true,\n      \"time_period\": \"days\",\n      \"duration\": 7\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\",\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\"\n      ],\n      \"suggested_templates\": [\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\",\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": true,\n      \"has_source\": true\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\",\n  \"id\": \"64dde3fe-7e33-746b-addd-bb89665f8ec1\",\n  \"company_id\": \"1070427c-515d-c2e6-ec1e-a009cf184fcc\",\n  \"created_at\": \"2026-04-03T21:23:35.039Z\",\n  \"created_by\": \"c2320ed1-9515-6135-f87e-4ec3bc4f9dd9\",\n  \"updated_at\": \"2007-03-22T01:13:29.030Z\",\n  \"updated_by\": \"4489fd2b-5295-fd42-25b2-0c1fd62a3ea3\",\n  \"form_schemas\": [\n    {\n      \"id\": \"51204129-c1f2-b999-12ce-b74c8949e53f\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"5cbc7904-f19a-eaf5-a0d3-258268d49825\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    },\n    {\n      \"id\": \"ff232321-a38f-d353-fc5b-cfa7cfbc9cb8\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"ad00af06-5962-71dc-bfdf-257abe29e711\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d027083-27f8-4e67-bba5-53e180e3ee0e",
+          "name": "Delete an event schema",
+          "request": {
+            "name": "Delete an event schema",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "event_schemas",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Event Schema ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6419fd34-c315-4f5a-8f46-1b19f64a4048",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "event_schemas",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Event Schema ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83fd1285-fa66-4f4a-a3b3-e85835f25f26",
+          "name": "Get an event schema",
+          "request": {
+            "name": "Get an event schema",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "event_schemas",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Event Schema ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a2f5003-29a0-49b6-893d-eabde0013c19",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "event_schemas",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Event Schema ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"status\": \"<string>\",\n  \"description\": \"<string>\",\n  \"config\": {\n    \"has_due_date\": true,\n    \"due_date\": {\n      \"relative_time\": true,\n      \"time_period\": \"days\",\n      \"duration\": 7\n    },\n    \"has_forms\": \"<boolean>\",\n    \"forms\": {\n      \"required_templates\": [\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\",\n        \"c482584f-0402-4b6f-9ca4-124e2775a172\"\n      ],\n      \"suggested_templates\": [\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\",\n        \"43c0aab0-2a67-47c1-aa7d-cb16055d6432\"\n      ]\n    },\n    \"has_alerts\": \"<boolean>\",\n    \"has_flows\": \"<boolean>\",\n    \"has_equipment\": \"<boolean>\",\n    \"equipment\": {\n      \"is_mandatory\": true,\n      \"has_source\": true\n    },\n    \"has_devices\": \"<boolean>\"\n  },\n  \"event_category_id\": \"<uuid>\",\n  \"id\": \"64dde3fe-7e33-746b-addd-bb89665f8ec1\",\n  \"company_id\": \"1070427c-515d-c2e6-ec1e-a009cf184fcc\",\n  \"created_at\": \"2026-04-03T21:23:35.039Z\",\n  \"created_by\": \"c2320ed1-9515-6135-f87e-4ec3bc4f9dd9\",\n  \"updated_at\": \"2007-03-22T01:13:29.030Z\",\n  \"updated_by\": \"4489fd2b-5295-fd42-25b2-0c1fd62a3ea3\",\n  \"form_schemas\": [\n    {\n      \"id\": \"51204129-c1f2-b999-12ce-b74c8949e53f\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"5cbc7904-f19a-eaf5-a0d3-258268d49825\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    },\n    {\n      \"id\": \"ff232321-a38f-d353-fc5b-cfa7cfbc9cb8\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"form_category\": {\n        \"id\": \"ad00af06-5962-71dc-bfdf-257abe29e711\",\n        \"name\": \"string\"\n      },\n      \"required\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed2c3846-09cf-445b-a7a4-7edc2e6e7346",
+          "name": "Search and list event schemas",
+          "request": {
+            "name": "Search and list event schemas",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "event_schemas",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"version\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"event_category.id\": \"<string>\",\n    \"event_category.name\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ffe1cb51-e23f-48ed-864a-6e450c5b3c4d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "event_schemas",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"version\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"event_category.id\": \"<string>\",\n    \"event_category.name\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"status\": \"<string>\",\n      \"description\": \"<string>\",\n      \"config\": {\n        \"has_due_date\": true,\n        \"due_date\": {\n          \"relative_time\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"time_period\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"duration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_forms\": \"<boolean>\",\n        \"forms\": {\n          \"required_templates\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"suggested_templates\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_alerts\": \"<boolean>\",\n        \"has_flows\": \"<boolean>\",\n        \"has_equipment\": \"<boolean>\",\n        \"equipment\": {\n          \"is_mandatory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"has_source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_devices\": \"<boolean>\"\n      },\n      \"event_category_id\": \"<uuid>\",\n      \"id\": \"26e5baf6-e0d1-8746-e718-c8bc6a53b16d\",\n      \"company_id\": \"04fa63fa-4b78-fe98-0654-1837f443ae76\",\n      \"created_at\": \"1958-05-04T00:33:57.312Z\",\n      \"created_by\": \"f214c9ff-29b1-ba6a-7fba-32a0887d477f\",\n      \"updated_at\": \"1998-08-06T01:34:55.086Z\",\n      \"updated_by\": \"3687ea5d-99d1-18a1-a2c3-9668a99f95e5\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"priority\": \"<string>\",\n      \"status\": \"<string>\",\n      \"description\": \"<string>\",\n      \"config\": {\n        \"has_due_date\": true,\n        \"due_date\": {\n          \"relative_time\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"time_period\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"duration\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_forms\": \"<boolean>\",\n        \"forms\": {\n          \"required_templates\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"suggested_templates\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_alerts\": \"<boolean>\",\n        \"has_flows\": \"<boolean>\",\n        \"has_equipment\": \"<boolean>\",\n        \"equipment\": {\n          \"is_mandatory\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"has_source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"has_devices\": \"<boolean>\"\n      },\n      \"event_category_id\": \"<uuid>\",\n      \"id\": \"aef05434-fa39-23f1-da9c-585ff53101c3\",\n      \"company_id\": \"2d8b1ea8-5fc6-cfb3-51e7-fcf57091d49e\",\n      \"created_at\": \"2012-10-23T17:13:09.143Z\",\n      \"created_by\": \"96656e93-3bf1-c7c5-3cce-c647d50fa148\",\n      \"updated_at\": \"1964-08-15T22:44:40.431Z\",\n      \"updated_by\": \"cb89bb7d-981d-5fa2-b262-3cc02d606453\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "410b6c91-784d-4636-ad8a-18bdb73120b9",
+    "name": "CarbonHub activities event_schemas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

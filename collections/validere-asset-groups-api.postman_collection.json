@@ -1,0 +1,915 @@
+{
+  "item": [
+    {
+      "id": "de13a400-a18f-4fea-83d1-cf36bd65f22e",
+      "name": "asset_groups",
+      "description": {
+        "content": "Asset Groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9fc39ff7-d95a-4b8b-90b6-d9fbafd35535",
+          "name": "Create an asset group",
+          "request": {
+            "name": "Create an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"<string>\",\n  \"asset_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"custom_attributes\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1337402c-da08-407a-8526-7f77e069594f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"<string>\",\n  \"asset_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"network\",\n  \"default_network_reporting_group_id\": \"string\",\n  \"default_network_reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\"\n  },\n  \"default_estimation_method_id\": \"130009f6-9b79-13d7-7345-2187b89eec16\",\n  \"default_estimation_method\": {\n    \"id\": \"3654becc-eeb5-476b-4b38-19fa0afda8ca\",\n    \"company_id\": \"6782fafa-1d13-96bb-7e46-2f90d1d4ba8a\",\n    \"asset_id\": \"01041a71-57dd-4482-375d-e1b27d87ca70\",\n    \"analytics_library_id\": \"2024-SubpartW\",\n    \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n    \"name\": \"SubpartW AGR Method\",\n    \"status\": \"inactive\",\n    \"default_values\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_1\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      }\n    },\n    \"default_asset_values\": {\n      \"key_0\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_1\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_3\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      }\n    },\n    \"created_at\": \"2012-07-14T23:25:25.084Z\",\n    \"updated_at\": \"2006-12-23T06:03:31.339Z\",\n    \"created_by\": \"50fd3e74-439f-625f-ae20-becec02673d2\",\n    \"updated_by\": \"e4a992db-952e-e229-5b5c-619e136d1a0f\"\n  },\n  \"id\": \"e8f0335f-9bdd-4e0c-a700-cfc38523346d\",\n  \"company_id\": \"2fa42786-3ca0-b498-e3f8-2f7c883feddc\",\n  \"created_at\": \"2005-11-26T04:29:56.378Z\",\n  \"created_by\": \"be3aa2e2-27ea-27ee-98f8-5aa60c69932c\",\n  \"updated_at\": \"1949-02-18T22:43:38.655Z\",\n  \"updated_by\": \"b9545d89-0958-a87c-3878-c065b281b501\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"assets\": [\n    {\n      \"id\": \"20210750-a4ea-5e44-b09f-0eb9a7531837\",\n      \"asset_type\": \"equipment\"\n    },\n    {\n      \"id\": \"6077d50b-6c0b-d0a8-8cc4-0bf36ca78be4\",\n      \"asset_type\": \"flow\"\n    }\n  ],\n  \"network_inlet_ids\": [\n    \"da3f68fd-61e7-bda8-418a-09a45bb4724d\",\n    \"04329086-c147-7f55-d2a6-9e036e450ef3\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e904bdb-6ae3-412b-9b26-217d3bf7f198",
+          "name": "Create an asset group",
+          "request": {
+            "name": "Create an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "asset_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"<string>\",\n  \"asset_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"custom_attributes\": \"<object>\",\n  \"reporting_group_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "025fc5ca-b9cb-426e-b2ad-908595fd0798",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "asset_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"<string>\",\n  \"asset_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"reporting_group_id\": \"<uuid>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"network\",\n  \"default_network_reporting_group_id\": \"string\",\n  \"default_network_reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\"\n  },\n  \"default_estimation_method_id\": \"e49627b6-35f4-9a3f-31a0-341ec63499f2\",\n  \"default_estimation_method\": {\n    \"id\": \"08bd7875-d956-1373-b0d5-7c7fbe40e595\",\n    \"company_id\": \"77240e9a-5045-0c97-9b42-109b2cd00eef\",\n    \"asset_id\": \"ddf7f518-4fab-ca1d-9fbb-504fbef1c999\",\n    \"analytics_library_id\": \"2024-SubpartW\",\n    \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n    \"name\": \"SubpartW AGR Method\",\n    \"status\": \"inactive\",\n    \"default_values\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_1\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_2\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      }\n    },\n    \"default_asset_values\": {\n      \"key_0\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_3\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_1\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_2\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_3\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_4\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      }\n    },\n    \"created_at\": \"1987-08-24T04:10:42.966Z\",\n    \"updated_at\": \"1954-05-14T14:04:23.529Z\",\n    \"created_by\": \"20d47c41-621b-e8a5-cfdc-0bfb73eb884e\",\n    \"updated_by\": \"03283b4b-10ef-06f2-f90c-200d2a00feb6\"\n  },\n  \"id\": \"84577c07-c33a-6fa4-367c-4976b940fc5d\",\n  \"company_id\": \"61cc654e-b47e-e2c6-002e-c0c58a1167b1\",\n  \"created_at\": \"1977-06-22T14:12:50.027Z\",\n  \"created_by\": \"2a08e9e7-9209-e24e-fb56-578c4d0f5b17\",\n  \"updated_at\": \"2016-05-30T05:54:52.273Z\",\n  \"updated_by\": \"791404af-8f8b-a0cf-a054-8f542ec17874\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"assets\": [\n    {\n      \"id\": \"3f0b69bd-79f5-5940-d539-bd43715790d7\",\n      \"asset_type\": \"facility\"\n    },\n    {\n      \"id\": \"94d23481-62c0-2545-b0e3-6d2a4be33add\",\n      \"asset_type\": \"equipment\"\n    }\n  ],\n  \"network_inlet_ids\": [\n    \"6280490d-d414-aea0-b450-82c1046b2209\",\n    \"a1098e5a-d966-36e1-2dfd-b9e574b39592\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53c10f8f-9a20-490b-bdc7-ff3835a6a387",
+          "name": "Get an asset group",
+          "request": {
+            "name": "Get an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5cdc8ee1-fe15-4589-b671-94175686175d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"network\",\n  \"default_network_reporting_group_id\": \"string\",\n  \"default_network_reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\"\n  },\n  \"default_estimation_method_id\": \"e49627b6-35f4-9a3f-31a0-341ec63499f2\",\n  \"default_estimation_method\": {\n    \"id\": \"08bd7875-d956-1373-b0d5-7c7fbe40e595\",\n    \"company_id\": \"77240e9a-5045-0c97-9b42-109b2cd00eef\",\n    \"asset_id\": \"ddf7f518-4fab-ca1d-9fbb-504fbef1c999\",\n    \"analytics_library_id\": \"2024-SubpartW\",\n    \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n    \"name\": \"SubpartW AGR Method\",\n    \"status\": \"inactive\",\n    \"default_values\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_1\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      },\n      \"key_2\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      }\n    },\n    \"default_asset_values\": {\n      \"key_0\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_3\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_1\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_2\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_3\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_4\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_2\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      }\n    },\n    \"created_at\": \"1987-08-24T04:10:42.966Z\",\n    \"updated_at\": \"1954-05-14T14:04:23.529Z\",\n    \"created_by\": \"20d47c41-621b-e8a5-cfdc-0bfb73eb884e\",\n    \"updated_by\": \"03283b4b-10ef-06f2-f90c-200d2a00feb6\"\n  },\n  \"id\": \"84577c07-c33a-6fa4-367c-4976b940fc5d\",\n  \"company_id\": \"61cc654e-b47e-e2c6-002e-c0c58a1167b1\",\n  \"created_at\": \"1977-06-22T14:12:50.027Z\",\n  \"created_by\": \"2a08e9e7-9209-e24e-fb56-578c4d0f5b17\",\n  \"updated_at\": \"2016-05-30T05:54:52.273Z\",\n  \"updated_by\": \"791404af-8f8b-a0cf-a054-8f542ec17874\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"assets\": [\n    {\n      \"id\": \"3f0b69bd-79f5-5940-d539-bd43715790d7\",\n      \"asset_type\": \"facility\"\n    },\n    {\n      \"id\": \"94d23481-62c0-2545-b0e3-6d2a4be33add\",\n      \"asset_type\": \"equipment\"\n    }\n  ],\n  \"network_inlet_ids\": [\n    \"6280490d-d414-aea0-b450-82c1046b2209\",\n    \"a1098e5a-d966-36e1-2dfd-b9e574b39592\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f257735-bf9b-45d4-81ba-44c62c0c814d",
+          "name": "Update an Asset Group",
+          "request": {
+            "name": "Update an Asset Group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d1bd434-4fb8-4e82-9c4d-b39498fc4d42",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"<string>\",\n  \"asset_group_type_id\": \"network\",\n  \"default_network_reporting_group_id\": \"string\",\n  \"default_network_reporting_group\": {\n    \"name\": \"SubpartW\",\n    \"description\": \"my reporting group\",\n    \"priority\": 2,\n    \"id\": \"subpartw\"\n  },\n  \"default_estimation_method_id\": \"9bf152a4-5798-0351-9339-4d392e164f1b\",\n  \"default_estimation_method\": {\n    \"id\": \"77c7d2b6-0576-715c-10b7-a07adf8f1f5e\",\n    \"company_id\": \"e6b26742-d960-8c93-93ce-d513d77eae57\",\n    \"asset_id\": \"0bcb6454-7931-75de-f02a-9326318a4714\",\n    \"analytics_library_id\": \"2024-SubpartW\",\n    \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n    \"name\": \"SubpartW AGR Method\",\n    \"status\": \"active\",\n    \"default_values\": {\n      \"key_0\": {\n        \"value\": \"string\",\n        \"unit\": \"string\",\n        \"measurement_type\": \"string\",\n        \"measurement_quantity\": \"string\"\n      }\n    },\n    \"default_asset_values\": {\n      \"key_0\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      },\n      \"key_1\": {\n        \"key_0\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        },\n        \"key_1\": {\n          \"value\": \"string\",\n          \"unit\": \"string\",\n          \"measurement_type\": \"string\",\n          \"measurement_quantity\": \"string\"\n        }\n      }\n    },\n    \"created_at\": \"2020-09-30T13:29:43.154Z\",\n    \"updated_at\": \"1990-07-24T03:47:06.913Z\",\n    \"created_by\": \"268166f8-d364-1e9c-926e-25d3cbcfb14d\",\n    \"updated_by\": \"8fdd3e94-0bfa-68a2-dde3-ffdf4d05ddf6\"\n  },\n  \"id\": \"a922a4b0-fa39-3589-3b09-df8bfc2d632f\",\n  \"company_id\": \"46c01a24-36d3-cb0c-a5a4-53543a5c925d\",\n  \"created_at\": \"1975-02-25T08:48:41.033Z\",\n  \"created_by\": \"031ebb1d-536c-73a8-a4b2-7f8974502a79\",\n  \"updated_at\": \"1981-09-04T12:42:43.490Z\",\n  \"updated_by\": \"5de81661-e694-6612-bd43-46ea73dc9cb4\",\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1254e3df-db77-49e6-ac86-9bac100899e2",
+          "name": "Delete an asset group",
+          "request": {
+            "name": "Delete an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41455eff-93a6-4d2b-8f6f-c43834e8906f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3a2db07-3d04-4071-aba9-8dc57b888afa",
+          "name": "Update all the assets in an asset group.",
+          "request": {
+            "name": "Update all the assets in an asset group.",
+            "description": {
+              "content": "Update all the assets in an asset group. Also updates estimation methods and default calculator input records that reference these AssetGroupAssets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id",
+                "asset"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c7da56b-c2fb-4cb2-ab6a-86db27f3a30d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id",
+                    "asset"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_ids\": [\n    \"5a822d4d-fb01-b821-5b18-86681c20b4c0\",\n    \"9115cad0-5634-4c8a-5ba3-6b41dad0ff6a\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "313d0f42-64ce-4e40-ad40-2e083e4516bc",
+          "name": "Add an asset to an asset group",
+          "request": {
+            "name": "Add an asset to an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id",
+                "asset",
+                ":asset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "asset_id",
+                  "description": "(Required) Asset ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"is_prorated\": \"<boolean>\",\n  \"default_values\": {\n    \"key_0\": {\n      \"value\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"measurement_type\": \"<string>\",\n      \"measurement_quantity\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f00ee99c-8412-45e6-8c1d-226b8e6b6a5c",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id",
+                    "asset",
+                    ":asset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) Asset ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_prorated\": \"<boolean>\",\n  \"default_values\": {\n    \"key_0\": {\n      \"value\": \"<string>\",\n      \"unit\": \"<string>\",\n      \"measurement_type\": \"<string>\",\n      \"measurement_quantity\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"asset_id\": \"3ff33183-b551-f463-14f7-4d285dc76640\",\n  \"asset_group_id\": \"961e8ab7-ed5e-40f8-f289-d5bb867d827e\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbb2a008-2d26-4ce1-950a-a081cf42a1a2",
+          "name": "Remove an asset to an asset group",
+          "request": {
+            "name": "Remove an asset to an asset group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                ":id",
+                "asset",
+                ":asset_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Asset Group ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "asset_id",
+                  "description": "(Required) Asset ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a26cd40d-0e44-4c46-9347-4955844a7e0b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    ":id",
+                    "asset",
+                    ":asset_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Asset Group ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "asset_id",
+                      "description": "(Required) Asset ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74732d81-ba12-4598-be6f-9b0cd397aecb",
+          "name": "Search and list Asset Groups",
+          "request": {
+            "name": "Search and list Asset Groups",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "asset_groups",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"asset.id\": \"<string>\",\n    \"created_at\": \"<string>\",\n    \"created_by\": \"<string>\",\n    \"updated_at\": \"<string>\",\n    \"updated_by\": \"<string>\",\n    \"custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3af9d591-9a95-44b9-a432-3b9189fa128b",
+              "name": "Successfully something",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "asset_groups",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"asset.asset_type\": \"equipment\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"Asset Group 1\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"string\",\n      \"status\": \"<string>\",\n      \"asset_group_type_id\": \"network\",\n      \"default_network_reporting_group_id\": \"string\",\n      \"default_network_reporting_group\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"default_estimation_method_id\": \"987a9372-de4f-c8f3-b876-b9db5974fec2\",\n      \"default_estimation_method\": {\n        \"id\": \"bbdc57b9-7f54-2a80-4ee5-7a97c2e8c948\",\n        \"company_id\": \"25821951-6d20-d4d0-1e0e-e6031d26dd11\",\n        \"asset_id\": \"5b9ff593-53be-abac-fcc4-b0b0e7c9079c\",\n        \"analytics_library_id\": \"2024-SubpartW\",\n        \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n        \"name\": \"SubpartW AGR Method\",\n        \"status\": \"inactive\",\n        \"default_values\": {\n          \"fuel_type\": {\n            \"value\": \"Eastern\",\n            \"unit\": \"\",\n            \"measurement_type\": \"measurement_type\",\n            \"measurement_quantity\": \"dimensionless_coefficient\"\n          },\n          \"volume\": {\n            \"value\": 5,\n            \"unit\": \"e3m3\",\n            \"measurement_type\": \"measurement_type\",\n            \"measurement_quantity\": \"volume\"\n          }\n        },\n        \"default_asset_values\": {\n          \"a04b4387-5145-4935-9edc-d53ecdb7a6c0\": {\n            \"fuel_type\": {\n              \"value\": \"Eastern\",\n              \"unit\": \"\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"dimensionless_coefficient\"\n            },\n            \"volume\": {\n              \"value\": 5,\n              \"unit\": \"e3m3\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"volume\"\n            }\n          },\n          \"99a45dd3-6ce1-4290-9d16-79415111cc43\": {\n            \"fuel_type\": {\n              \"value\": \"Eastern\",\n              \"unit\": \"\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"dimensionless_coefficient\"\n            },\n            \"volume\": {\n              \"value\": 5,\n              \"unit\": \"e3m3\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"volume\"\n            }\n          }\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": \"f6bd0dcf-d65e-bd14-d271-2dd49ee1c6ba\",\n        \"updated_by\": \"1beeaa28-fede-3de5-39cb-a09d1dcfe0d7\"\n      },\n      \"id\": \"36c8a2ff-b568-cd9d-91fc-06f057ae88a1\",\n      \"company_id\": \"d459734c-fd4a-9d7f-6e36-124efca4e26a\",\n      \"created_at\": \"1951-03-19T22:52:47.756Z\",\n      \"created_by\": \"61ba0661-bb1d-ba6a-83f9-7a7a21178fda\",\n      \"updated_at\": \"1951-05-14T01:41:39.461Z\",\n      \"updated_by\": \"5ac394c7-f389-058f-349c-e5bbd5b4efc2\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"assets\": [\n        {\n          \"id\": \"8d167049-9caf-bef5-257a-2ad211e4cacb\",\n          \"asset_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"f46c4f7f-1a38-3a5e-8bc9-ddd8411df6ab\",\n          \"asset_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"network_inlet_ids\": [\n        \"2670ce79-0fab-47e2-a1e1-9cea8e604994\",\n        \"5f475737-373a-9c52-ca2f-0262a00ff0a1\"\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"status\": \"<string>\",\n      \"asset_group_type_id\": \"network\",\n      \"default_network_reporting_group_id\": \"string\",\n      \"default_network_reporting_group\": {\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"default_estimation_method_id\": \"f3300b34-e58d-55dc-81e3-9f5d9af51cc8\",\n      \"default_estimation_method\": {\n        \"id\": \"f45fee9b-accc-056e-7e11-63cba34980f1\",\n        \"company_id\": \"953ea918-835d-4426-20b2-58d282d6252e\",\n        \"asset_id\": \"f87cbbdd-8814-70f5-4d44-dd4f96305189\",\n        \"analytics_library_id\": \"2024-SubpartW\",\n        \"analytics_calculator_id\": \"2024-SubpartW-AcidGasRemovalMethod1\",\n        \"name\": \"SubpartW AGR Method\",\n        \"status\": \"inactive\",\n        \"default_values\": {\n          \"fuel_type\": {\n            \"value\": \"Eastern\",\n            \"unit\": \"\",\n            \"measurement_type\": \"measurement_type\",\n            \"measurement_quantity\": \"dimensionless_coefficient\"\n          },\n          \"volume\": {\n            \"value\": 5,\n            \"unit\": \"e3m3\",\n            \"measurement_type\": \"measurement_type\",\n            \"measurement_quantity\": \"volume\"\n          }\n        },\n        \"default_asset_values\": {\n          \"a04b4387-5145-4935-9edc-d53ecdb7a6c0\": {\n            \"fuel_type\": {\n              \"value\": \"Eastern\",\n              \"unit\": \"\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"dimensionless_coefficient\"\n            },\n            \"volume\": {\n              \"value\": 5,\n              \"unit\": \"e3m3\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"volume\"\n            }\n          },\n          \"99a45dd3-6ce1-4290-9d16-79415111cc43\": {\n            \"fuel_type\": {\n              \"value\": \"Eastern\",\n              \"unit\": \"\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"dimensionless_coefficient\"\n            },\n            \"volume\": {\n              \"value\": 5,\n              \"unit\": \"e3m3\",\n              \"measurement_type\": \"measurement_type\",\n              \"measurement_quantity\": \"volume\"\n            }\n          }\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": \"5687b5e9-2a3c-4b8e-4a5c-7d435b1bd001\",\n        \"updated_by\": \"0714f14d-927a-f796-2535-09dcd5343f03\"\n      },\n      \"id\": \"0b1cbfe0-9f7f-785d-7219-494f619710cc\",\n      \"company_id\": \"8127b07f-8961-5be1-a10e-432ee16b3c8c\",\n      \"created_at\": \"1975-10-26T14:08:15.970Z\",\n      \"created_by\": \"17f5c6c9-8008-0db0-1b4b-e2955e62046f\",\n      \"updated_at\": \"1958-12-03T23:47:51.570Z\",\n      \"updated_by\": \"4982550b-4f5c-b5ea-5567-1757553eb94e\",\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"assets\": [\n        {\n          \"id\": \"2f557264-3917-8801-13d8-49034164cbdb\",\n          \"asset_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": \"b019f62b-1a16-6fc7-7b2f-be5fadf66fa4\",\n          \"asset_type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"network_inlet_ids\": [\n        \"20b10c6c-bd1b-77e9-321a-001e3ff257c6\",\n        \"2c04a960-3e7f-eb42-1e49-2568468daf9b\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "818f9269-be36-49bf-8783-88450befc989",
+    "name": "CarbonHub activities asset_groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

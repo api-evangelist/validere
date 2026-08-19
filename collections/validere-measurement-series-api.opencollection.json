@@ -1,0 +1,173 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities measurement_series API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "measurement_series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List a Measurement series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_series",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              },
+              {
+                "name": "measurement_series_ids",
+                "value": "",
+                "type": "query",
+                "description": "a comma-separated list of measurement series ids"
+              },
+              {
+                "name": "measurement_series_description",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in measurement series descriptions"
+              },
+              {
+                "name": "measurement_series_device_name",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in device names"
+              },
+              {
+                "name": "measurement_series_device_id",
+                "value": "",
+                "type": "query",
+                "description": "UUID of the device to filter on"
+              },
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the entity you want to list the measurements for"
+              },
+              {
+                "name": "subject_type",
+                "value": "",
+                "type": "query",
+                "description": "Type of the entity you want to list the measurements for. Required if ID is defined."
+              },
+              {
+                "name": "event_id",
+                "value": "",
+                "type": "query",
+                "description": "Event ID"
+              }
+            ]
+          },
+          "docs": "List a Measurement series"
+        },
+        {
+          "info": {
+            "name": "Create Measurement series",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/measurement_series",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Measurement series"
+        },
+        {
+          "info": {
+            "name": "Get a Measurement series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_series/:measurement_series_id",
+            "params": [
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ]
+          },
+          "docs": "Get a Measurement series"
+        },
+        {
+          "info": {
+            "name": "Update a Measurement series",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/measurement_series/:measurement_series_id",
+            "params": [
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Measurement series"
+        },
+        {
+          "info": {
+            "name": "Delete a Measurement series",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/measurement_series/:measurement_series_id",
+            "params": [
+              {
+                "name": "measurement_series_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement series"
+              }
+            ]
+          },
+          "docs": "Delete a Measurement series"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

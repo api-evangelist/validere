@@ -1,0 +1,126 @@
+{
+  "item": [
+    {
+      "id": "f10e98e8-fec6-46ca-a961-a397e07c9c1d",
+      "name": "assets",
+      "description": {
+        "content": "Assets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ac67aa43-51d9-4915-bd38-66f6694e8807",
+          "name": "Search Assets",
+          "request": {
+            "name": "Search Assets",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "assets",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": \"<object>\",\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"asset_group.id\": \"<string>\",\n    \"asset_group.name\": \"<string>\",\n    \"asset_group.status\": \"<string>\",\n    \"asset_group.asset_group_type_id\": \"<string>\",\n    \"asset_group.custom_attributes\": \"<object>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d73da30c-5561-4741-92bd-051a994262b7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "assets",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"equipment.custom_attributes\": \"<object>\",\n    \"equipment.id\": \"<string>\",\n    \"equipment.name\": \"<string>\",\n    \"equipment.status\": \"<string>\",\n    \"equipment.type.id\": \"<string>\",\n    \"equipment.type.name\": \"<string>\",\n    \"device.attributes\": \"<object>\",\n    \"device.custom_attributes\": \"<object>\",\n    \"device.id\": \"<string>\",\n    \"device.measurement_types\": \"<string>\",\n    \"device.name\": \"<string>\",\n    \"device.status\": \"<string>\",\n    \"device.type_id\": \"<string>\",\n    \"flow.id\": \"<string>\",\n    \"flow.name\": \"<string>\",\n    \"flow.status\": \"<string>\",\n    \"flow.type\": \"<string>\",\n    \"flow.product_type\": \"<string>\",\n    \"flow.product_category\": \"<string>\",\n    \"flow.custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"flow.associated_facility_id\": \"<uuid>\",\n    \"flow.associated_equipment_id\": \"<uuid>\",\n    \"asset_group.id\": \"<string>\",\n    \"asset_group.name\": \"<string>\",\n    \"asset_group.status\": \"<string>\",\n    \"asset_group.asset_group_type_id\": \"<string>\",\n    \"asset_group.custom_attributes\": \"<object>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {\n    \"id\": \"f5c28fbd-56a9-e569-68f7-5d171a9f7334\",\n    \"asset_type\": \"flow\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "39d1201d-f97d-45af-ad79-d16d29e13d07",
+    "name": "CarbonHub activities assets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,794 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities estimation_methods API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "estimation_methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Bulk create estimation methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk create estimation methods"
+        },
+        {
+          "info": {
+            "name": "Run calculators based on filtered configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/run",
+            "params": [
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation without saving the results (true)"
+              },
+              {
+                "name": "promote_to_record",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation and create records from the results"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run calculators based on filtered configurations"
+        },
+        {
+          "info": {
+            "name": "Bulk run calculators based on filtered configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/estimation_methods/run",
+            "params": [
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation without saving the results (true)"
+              },
+              {
+                "name": "promote_to_record",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation and create records from the results"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk run calculators based on filtered configurations"
+        },
+        {
+          "info": {
+            "name": "Start an asynchronous job to bulk run calculators based on filtered configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v2/estimation_methods/run_async",
+            "params": [
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation without saving the results (true)"
+              },
+              {
+                "name": "promote_to_record",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation and create records from the results"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start an asynchronous job to bulk run calculators based on filtered configurations"
+        },
+        {
+          "info": {
+            "name": "Search and list Estimation Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/search",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Estimation Methods"
+        },
+        {
+          "info": {
+            "name": "Search and list Estimation Methods with calculator configs and runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/search/configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list Estimation Methods with calculator configs and runs"
+        },
+        {
+          "info": {
+            "name": "Export estimation methods based on search input",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/export",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export estimation methods based on search input"
+        },
+        {
+          "info": {
+            "name": "Search and export Estimation Methods with calculator configs and runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/export/configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and export Estimation Methods with calculator configs and runs"
+        },
+        {
+          "info": {
+            "name": "Add Estimation Method to Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Estimation Method to Entity"
+        },
+        {
+          "info": {
+            "name": "Get an estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query",
+                "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+              }
+            ]
+          },
+          "docs": "Get an estimation method"
+        },
+        {
+          "info": {
+            "name": "Update an estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an estimation method"
+        },
+        {
+          "info": {
+            "name": "Delete an estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              }
+            ]
+          },
+          "docs": "Delete an estimation method"
+        },
+        {
+          "info": {
+            "name": "List runs for a given estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/runs",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List runs for a given estimation method"
+        },
+        {
+          "info": {
+            "name": "Get an estimation method configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/configuration/:year_month",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              }
+            ]
+          },
+          "docs": "Get an estimation method configuration"
+        },
+        {
+          "info": {
+            "name": "Update an estimation method configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/configuration/:year_month",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an estimation method configuration"
+        },
+        {
+          "info": {
+            "name": "Re-apply defaults to a calculator configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/configuration/:year_month/apply_defaults",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "Year month (YYYYMM)"
+              }
+            ]
+          },
+          "docs": "Re-apply defaults to a calculator configuration"
+        },
+        {
+          "info": {
+            "name": "Re-apply defaults to multiple calculator configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/configurations/apply_defaults",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Re-apply defaults to multiple calculator configurations"
+        },
+        {
+          "info": {
+            "name": "Start an asynchronous job to re-apply defaults to multiple calculator configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/configurations/apply_defaults_async",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Start an asynchronous job to re-apply defaults to multiple calculator configurations"
+        },
+        {
+          "info": {
+            "name": "Get a calculator run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/configuration/:year_month/run",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              }
+            ]
+          },
+          "docs": "Get a calculator run"
+        },
+        {
+          "info": {
+            "name": "Run estimation method calculator for a single period",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/configuration/:year_month/run",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "preview",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation without saving the results (true)"
+              },
+              {
+                "name": "promote_to_record",
+                "value": "",
+                "type": "query",
+                "description": "Run calculation and create records from the results"
+              }
+            ]
+          },
+          "docs": "Run estimation method calculator for a single period"
+        },
+        {
+          "info": {
+            "name": "Get the input record for a given calculator configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Get the input record for a given calculator configuration"
+        },
+        {
+          "info": {
+            "name": "Set the input record for a given calculator configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the input record for a given calculator configuration"
+        },
+        {
+          "info": {
+            "name": "Delete the input record for a given calculator configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Delete the input record for a given calculator configuration"
+        },
+        {
+          "info": {
+            "name": "Get the input record for a given calculator configuration and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Get the input record for a given calculator configuration and target asset"
+        },
+        {
+          "info": {
+            "name": "Set the input record for a given calculator configuration and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the input record for a given calculator configuration and target asset"
+        },
+        {
+          "info": {
+            "name": "Delete the input record for a given calculator configuration and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/record/:year_month/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "year_month",
+                "value": "202210",
+                "type": "path",
+                "description": "YearMonth"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Delete the input record for a given calculator configuration and target asset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,606 @@
+{
+  "item": [
+    {
+      "id": "52b9e7c4-7759-4515-ab38-90fca7877093",
+      "name": "ledger",
+      "description": {
+        "content": "Ledger",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42701176-0fb5-4e09-b154-6f3a87822b8e",
+          "name": "Add a ledger entry",
+          "request": {
+            "name": "Add a ledger entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "ledger"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"owner_id\": \"<uuid>\",\n  \"project_group_id\": \"<uuid>\",\n  \"vintage\": \"<string>\",\n  \"status\": \"<string>\",\n  \"range_start\": \"<integer>\",\n  \"range_end\": \"<integer>\",\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5ec2ca4f-3254-481c-9e56-5f401345ffe6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "ledger"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"owner_id\": \"<uuid>\",\n  \"project_group_id\": \"<uuid>\",\n  \"vintage\": \"<string>\",\n  \"status\": \"<string>\",\n  \"range_start\": \"<integer>\",\n  \"range_end\": \"<integer>\",\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"<uuid>\",\n  \"project_group_id\": \"<uuid>\",\n  \"vintage\": \"<string>\",\n  \"status\": \"<string>\",\n  \"range_start\": \"<integer>\",\n  \"range_end\": \"<integer>\",\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\",\n  \"created_at\": \"2023-10-06T13:23:07.423Z\",\n  \"updated_at\": \"1968-09-29T16:08:24.708Z\",\n  \"created_by\": \"a98a32dc-5a0f-401a-4a6e-10ea3ae308cd\",\n  \"updated_by\": \"0c3e388d-4260-335f-f00e-09b7a1fd440c\",\n  \"company_id\": \"25745ddd-0633-c18c-7283-ea64b0f9da48\",\n  \"id\": \"127775b1-f431-43b9-7d79-d4bdd1575fc0\",\n  \"serial_number_range\": \"string\",\n  \"credit_owner\": {\n    \"name\": \"string\",\n    \"visibility\": \"private\",\n    \"buffer_holder\": false,\n    \"created_at\": \"2010-01-18T14:06:59.084Z\",\n    \"updated_at\": \"2004-12-15T21:39:56.785Z\",\n    \"created_by\": \"2cbaacde-c2fc-5850-0b94-423f6cc6b6d5\",\n    \"updated_by\": \"04a0999c-6eac-953c-a3db-8b873262d497\",\n    \"company_id\": \"5f1e1cae-dc09-3f19-782d-d6873b1e2ef0\",\n    \"id\": \"01df1686-8522-a01c-ab07-f7ae3e9c956f\",\n    \"public_name\": \"string\"\n  },\n  \"project_group\": {\n    \"name\": \"string\",\n    \"status\": \"closed\",\n    \"project_developer\": \"string\",\n    \"start_date\": \"1962-10-31\",\n    \"end_date\": \"2014-10-18\",\n    \"protocol\": \"string\",\n    \"country\": \"string\",\n    \"created_at\": \"2020-10-27T17:41:49.888Z\",\n    \"updated_at\": \"1987-12-17T08:18:44.513Z\",\n    \"created_by\": \"bc0c9b25-07f5-0077-a830-6c09f314890f\",\n    \"updated_by\": \"aecf970e-09c1-2c1d-3384-62ad008163ca\",\n    \"company_id\": \"69c65e09-add6-abbf-884e-dc3a8a29378f\",\n    \"id\": \"c8691d59-b090-9c78-c897-302d50c9dd10\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e61af46-8533-48f1-974c-ce4bdb4a617d",
+          "name": "Search and list ledger entries",
+          "request": {
+            "name": "Search and list ledger entries",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "ledger",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"owner_id\": \"<uuid>\",\n    \"project_group_id\": \"<uuid>\",\n    \"vintage\": \"<string>\",\n    \"status\": \"<string>\",\n    \"holding\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "260b974b-5757-4ff7-9dfc-4403ed71e4fa",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "ledger",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"holding\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"owner_id\": \"<uuid>\",\n    \"project_group_id\": \"<uuid>\",\n    \"vintage\": \"<string>\",\n    \"status\": \"<string>\",\n    \"holding\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"owner_id\": \"<uuid>\",\n      \"project_group_id\": \"<uuid>\",\n      \"vintage\": \"<string>\",\n      \"status\": \"<string>\",\n      \"range_start\": \"<integer>\",\n      \"range_end\": \"<integer>\",\n      \"holding\": \"<boolean>\",\n      \"serial_number_prefix\": \"<string>\",\n      \"created_at\": \"1948-06-17T01:10:24.313Z\",\n      \"updated_at\": \"1958-02-12T08:54:37.269Z\",\n      \"created_by\": \"f6f3cf9d-cf99-8df9-adfb-9b2e4f9fd0f9\",\n      \"updated_by\": \"e3d5cada-1faa-bd0c-22d2-98ef62136bf4\",\n      \"company_id\": \"79a3e7e9-5b68-0aea-584c-c2cd761238df\",\n      \"id\": \"6d224c8e-76aa-782f-0ace-792d289456d8\",\n      \"serial_number_range\": \"string\",\n      \"credit_owner\": {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"visibility\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"buffer_holder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"79f53141-1c2d-051a-0472-c0451188a808\",\n        \"id\": \"9b664f58-eaa2-7d39-bff6-adf9db166df1\",\n        \"public_name\": \"string\"\n      },\n      \"project_group\": {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"project_developer\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"start_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"end_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"protocol\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"country\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"59fa2e85-98bc-b59b-d402-d39b725073a2\",\n        \"id\": \"b6394ce1-2b7c-4667-b730-62920a9d05c4\"\n      }\n    },\n    {\n      \"owner_id\": \"<uuid>\",\n      \"project_group_id\": \"<uuid>\",\n      \"vintage\": \"<string>\",\n      \"status\": \"<string>\",\n      \"range_start\": \"<integer>\",\n      \"range_end\": \"<integer>\",\n      \"holding\": \"<boolean>\",\n      \"serial_number_prefix\": \"<string>\",\n      \"created_at\": \"1978-09-14T17:04:03.173Z\",\n      \"updated_at\": \"1955-10-01T07:29:54.435Z\",\n      \"created_by\": \"d9c4b32a-70e9-e615-ab1b-4106585dd1a2\",\n      \"updated_by\": \"6e752e89-9c13-0805-6387-9e2c50bb3d7d\",\n      \"company_id\": \"df609a17-dbed-283a-68e3-7c0e689ebb10\",\n      \"id\": \"e3cb1435-3720-8c59-bdb8-056e4e76ce40\",\n      \"serial_number_range\": \"string\",\n      \"credit_owner\": {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"visibility\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"buffer_holder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"08210080-157a-65ea-c791-dfb3e9d5ae09\",\n        \"id\": \"b4e36db4-3320-6443-8c3b-3415423ba52a\",\n        \"public_name\": \"string\"\n      },\n      \"project_group\": {\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"project_developer\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"start_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"end_date\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"protocol\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"country\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_at\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"updated_by\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"company_id\": \"f3ac6a9d-b05e-4d9e-509b-d91c9dc7a850\",\n        \"id\": \"b80dd2f0-2cc4-5097-c37e-6c390c37a121\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61c5adb8-e960-4594-ac50-eeace098da93",
+          "name": "Get a ledger entry",
+          "request": {
+            "name": "Get a ledger entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "ledger",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Ledger Entry ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6574fb2e-caf0-4b24-a87d-7fb2f009d883",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "ledger",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Ledger Entry ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"<uuid>\",\n  \"project_group_id\": \"<uuid>\",\n  \"vintage\": \"<string>\",\n  \"status\": \"<string>\",\n  \"range_start\": \"<integer>\",\n  \"range_end\": \"<integer>\",\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\",\n  \"created_at\": \"2023-10-06T13:23:07.423Z\",\n  \"updated_at\": \"1968-09-29T16:08:24.708Z\",\n  \"created_by\": \"a98a32dc-5a0f-401a-4a6e-10ea3ae308cd\",\n  \"updated_by\": \"0c3e388d-4260-335f-f00e-09b7a1fd440c\",\n  \"company_id\": \"25745ddd-0633-c18c-7283-ea64b0f9da48\",\n  \"id\": \"127775b1-f431-43b9-7d79-d4bdd1575fc0\",\n  \"serial_number_range\": \"string\",\n  \"credit_owner\": {\n    \"name\": \"string\",\n    \"visibility\": \"private\",\n    \"buffer_holder\": false,\n    \"created_at\": \"2010-01-18T14:06:59.084Z\",\n    \"updated_at\": \"2004-12-15T21:39:56.785Z\",\n    \"created_by\": \"2cbaacde-c2fc-5850-0b94-423f6cc6b6d5\",\n    \"updated_by\": \"04a0999c-6eac-953c-a3db-8b873262d497\",\n    \"company_id\": \"5f1e1cae-dc09-3f19-782d-d6873b1e2ef0\",\n    \"id\": \"01df1686-8522-a01c-ab07-f7ae3e9c956f\",\n    \"public_name\": \"string\"\n  },\n  \"project_group\": {\n    \"name\": \"string\",\n    \"status\": \"closed\",\n    \"project_developer\": \"string\",\n    \"start_date\": \"1962-10-31\",\n    \"end_date\": \"2014-10-18\",\n    \"protocol\": \"string\",\n    \"country\": \"string\",\n    \"created_at\": \"2020-10-27T17:41:49.888Z\",\n    \"updated_at\": \"1987-12-17T08:18:44.513Z\",\n    \"created_by\": \"bc0c9b25-07f5-0077-a830-6c09f314890f\",\n    \"updated_by\": \"aecf970e-09c1-2c1d-3384-62ad008163ca\",\n    \"company_id\": \"69c65e09-add6-abbf-884e-dc3a8a29378f\",\n    \"id\": \"c8691d59-b090-9c78-c897-302d50c9dd10\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "50a804a8-1ac5-44a8-b32a-c4993dd8eb34",
+          "name": "Update a ledger entry",
+          "request": {
+            "name": "Update a ledger entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "ledger",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Ledger Entry ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e89977a0-ea5c-4914-b724-b3dedc468589",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "ledger",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Ledger Entry ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"<uuid>\",\n  \"project_group_id\": \"<uuid>\",\n  \"vintage\": \"<string>\",\n  \"status\": \"<string>\",\n  \"range_start\": \"<integer>\",\n  \"range_end\": \"<integer>\",\n  \"holding\": \"<boolean>\",\n  \"serial_number_prefix\": \"<string>\",\n  \"created_at\": \"2023-10-06T13:23:07.423Z\",\n  \"updated_at\": \"1968-09-29T16:08:24.708Z\",\n  \"created_by\": \"a98a32dc-5a0f-401a-4a6e-10ea3ae308cd\",\n  \"updated_by\": \"0c3e388d-4260-335f-f00e-09b7a1fd440c\",\n  \"company_id\": \"25745ddd-0633-c18c-7283-ea64b0f9da48\",\n  \"id\": \"127775b1-f431-43b9-7d79-d4bdd1575fc0\",\n  \"serial_number_range\": \"string\",\n  \"credit_owner\": {\n    \"name\": \"string\",\n    \"visibility\": \"private\",\n    \"buffer_holder\": false,\n    \"created_at\": \"2010-01-18T14:06:59.084Z\",\n    \"updated_at\": \"2004-12-15T21:39:56.785Z\",\n    \"created_by\": \"2cbaacde-c2fc-5850-0b94-423f6cc6b6d5\",\n    \"updated_by\": \"04a0999c-6eac-953c-a3db-8b873262d497\",\n    \"company_id\": \"5f1e1cae-dc09-3f19-782d-d6873b1e2ef0\",\n    \"id\": \"01df1686-8522-a01c-ab07-f7ae3e9c956f\",\n    \"public_name\": \"string\"\n  },\n  \"project_group\": {\n    \"name\": \"string\",\n    \"status\": \"closed\",\n    \"project_developer\": \"string\",\n    \"start_date\": \"1962-10-31\",\n    \"end_date\": \"2014-10-18\",\n    \"protocol\": \"string\",\n    \"country\": \"string\",\n    \"created_at\": \"2020-10-27T17:41:49.888Z\",\n    \"updated_at\": \"1987-12-17T08:18:44.513Z\",\n    \"created_by\": \"bc0c9b25-07f5-0077-a830-6c09f314890f\",\n    \"updated_by\": \"aecf970e-09c1-2c1d-3384-62ad008163ca\",\n    \"company_id\": \"69c65e09-add6-abbf-884e-dc3a8a29378f\",\n    \"id\": \"c8691d59-b090-9c78-c897-302d50c9dd10\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "833c4f84-2a57-47b9-a19d-e6dd03749605",
+          "name": "Delete a ledger entry",
+          "request": {
+            "name": "Delete a ledger entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "ledger",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Ledger Entry ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d770edd-4268-4e2c-ac92-d185174f0b31",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "ledger",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Ledger Entry ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4268e50b-0d90-4086-b772-d1700130bfca",
+          "name": "Public search and list ledger entries",
+          "request": {
+            "name": "Public search and list ledger entries",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "ledger",
+                ":company_id",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"owner_name\": \"<string>\",\n    \"project_group_id\": \"<uuid>\",\n    \"vintage\": \"<string>\",\n    \"status\": \"<string>\",\n    \"holding\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45a5f0a3-9928-4859-a997-1c3003cdf48d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "ledger",
+                    ":company_id",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"range_start\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"owner_name\": \"Validere\",\n    \"project_group_id\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"owner_name\": \"string\",\n      \"vintage\": \"string\",\n      \"status\": \"<string>\",\n      \"range_start\": 5734,\n      \"range_end\": 6383,\n      \"holding\": false,\n      \"serial_number_prefix\": \"string\",\n      \"serial_number_range\": \"string\",\n      \"id\": \"cb58f732-f24b-0eb8-fa85-6afd77700e83\"\n    },\n    {\n      \"owner_name\": \"string\",\n      \"vintage\": \"string\",\n      \"status\": \"<string>\",\n      \"range_start\": 4866,\n      \"range_end\": 3621,\n      \"holding\": true,\n      \"serial_number_prefix\": \"string\",\n      \"serial_number_range\": \"string\",\n      \"id\": \"5e002662-fd3a-34da-b535-8f322ad06548\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc2bde24-ae88-495d-a29f-f3abd6500daa",
+    "name": "CarbonHub activities ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities form_categories API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "form_categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List form categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/form_categories",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Form Category name"
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Form Category archived"
+              },
+              {
+                "name": "related_entity_id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "query",
+                "description": "device id or facility id or equipment id"
+              },
+              {
+                "name": "measurement_type",
+                "value": "volume",
+                "type": "query",
+                "description": "Measurement type of the measurements being retrieved"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List form categories"
+        },
+        {
+          "info": {
+            "name": "Create a form category",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/form_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a form category"
+        },
+        {
+          "info": {
+            "name": "Get a form category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/form_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Category ID"
+              }
+            ]
+          },
+          "docs": "Get a form category"
+        },
+        {
+          "info": {
+            "name": "Update a form category",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/form_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Category ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a form category"
+        },
+        {
+          "info": {
+            "name": "Delete a form category",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/form_categories/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Category ID"
+              }
+            ]
+          },
+          "docs": "Delete a form category"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

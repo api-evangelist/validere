@@ -1,0 +1,954 @@
+{
+  "item": [
+    {
+      "id": "669aac87-7b3f-4f92-b3dc-03e3c10930ea",
+      "name": "users",
+      "description": {
+        "content": "User",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9453b503-5e0f-4aa2-9f4f-e1d6e7fa84ff",
+          "name": "Create a user",
+          "request": {
+            "name": "Create a user",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"id\": \"0007bb10-5367-4d41-ad10-b05468b52529\",\n  \"phone\": \"<string>\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"US/Central\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ef0f8e6-e82e-4949-a6f2-de3bc368e090",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"email\": \"<email>\",\n  \"id\": \"0007bb10-5367-4d41-ad10-b05468b52529\",\n  \"phone\": \"<string>\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"email\": \"bT2K@WliHBygkvFFDagqFW.ktgv\",\n  \"phone\": \"string\",\n  \"company_id\": \"e9916758-e214-b1bc-9c84-e36ba753f22b\",\n  \"created_at\": \"string\",\n  \"created_by\": \"b6f6add2-f49e-1959-6459-e28b19317c30\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"9ca3f15b-4383-43bc-2696-d83a7a51d214\",\n  \"id\": \"a6877768-18a7-4371-b3b2-f9a89f9dc6f2\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f9bda14-0675-4477-b8ea-5d2c40ab94d7",
+          "name": "Search users",
+          "request": {
+            "name": "Search users",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8bb4f49b-67e7-42ce-b6e9-c77b656f3e32",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"quicksight\": \"<boolean>\",\n    \"timezone\": \"America/Los_Angeles\",\n    \"status\": \"<string>\",\n    \"email\": \"<email>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae649d16-55b1-439e-a0a0-e836d9a2f7ab",
+          "name": "Get the current user info",
+          "request": {
+            "name": "Get the current user info",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                "myself"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f6613bd-3c67-4e48-8673-112d2bbc37e6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    "myself"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"email\": \"vvNAZ1ZW1q@NzodXLJcYgZoojCQctRqrQyEbpduAM.eab\",\n  \"phone\": \"string\",\n  \"company_id\": \"ee9912e1-e4c8-89cb-de2d-aa8676f41b9a\",\n  \"created_at\": \"string\",\n  \"created_by\": \"710ab5e2-6872-c8aa-2ab0-c00c4eeb8927\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"9c8d3f5a-e1c3-dde4-2c58-05a02881a80f\",\n  \"companies\": [\n    {\n      \"id\": \"e3ffcccd-34ca-b21f-d767-6db609ba6d47\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"2aaf5c3d-8604-5384-c331-71e188bbf27a\",\n      \"name\": \"string\"\n    }\n  ],\n  \"id\": \"6fe51353-233f-4745-84df-e51a7b9fe46f\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e04ac7de-6352-4dd5-b62b-6fc4146a9e63",
+          "name": "Get a user",
+          "request": {
+            "name": "Get a user",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6b5d5e5f-e896-4e34-8977-58637cdee7bd",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"email\": \"bT2K@WliHBygkvFFDagqFW.ktgv\",\n  \"phone\": \"string\",\n  \"company_id\": \"e9916758-e214-b1bc-9c84-e36ba753f22b\",\n  \"created_at\": \"string\",\n  \"created_by\": \"b6f6add2-f49e-1959-6459-e28b19317c30\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"9ca3f15b-4383-43bc-2696-d83a7a51d214\",\n  \"id\": \"a6877768-18a7-4371-b3b2-f9a89f9dc6f2\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b007c6fa-b131-4c9b-91a9-7ab7d64441e3",
+          "name": "Update a user",
+          "request": {
+            "name": "Update a user",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"US/Central\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18e55b9d-2c71-4334-b5c8-4490dd0f5869",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"email\": \"bT2K@WliHBygkvFFDagqFW.ktgv\",\n  \"phone\": \"string\",\n  \"company_id\": \"e9916758-e214-b1bc-9c84-e36ba753f22b\",\n  \"created_at\": \"string\",\n  \"created_by\": \"b6f6add2-f49e-1959-6459-e28b19317c30\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"9ca3f15b-4383-43bc-2696-d83a7a51d214\",\n  \"id\": \"a6877768-18a7-4371-b3b2-f9a89f9dc6f2\",\n  \"quicksight\": false,\n  \"status\": \"active\",\n  \"timezone\": \"America/Los_Angeles\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7180779d-5ccf-4a9b-83eb-4a6941c58f52",
+          "name": "Delete a user",
+          "request": {
+            "name": "Delete a user",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b632df1a-f819-4304-9449-e11bea4e4db8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "763602bc-cbf5-4728-8f30-93d2e60387e7",
+          "name": "List groups a user belongs to",
+          "request": {
+            "name": "List groups a user belongs to",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ab4e0e3-1e2d-4817-ba25-b742503312b6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"a3f244fe-7806-7f1f-ad62-82244d969125\",\n    \"role_id\": \"2ccee6d5-14d8-7acb-466e-4717c8649782\",\n    \"user_id\": \"e1030d33-cfba-54a9-b16f-9bc3fb055cdf\",\n    \"role\": {\n      \"id\": \"1e4d97db-f55a-b4d6-4343-1097e37b4a22\",\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"a0e90e7f-8608-145c-6be7-d95226da3e05\",\n    \"role_id\": \"195669c7-733a-9fa1-8505-1a5d4cee28d0\",\n    \"user_id\": \"54e23047-b122-898c-0ae0-4e8fce4abf51\",\n    \"role\": {\n      \"id\": \"840f8b64-82fe-176e-0bba-00273c9953ba\",\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d44c19b5-dd3b-4e2e-ab11-0c0196e0cfdc",
+          "name": "List roles a user belongs to",
+          "request": {
+            "name": "List roles a user belongs to",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ac9fb88-86ce-47ee-b6c2-8a6f2e2e0f6c",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"a3f244fe-7806-7f1f-ad62-82244d969125\",\n    \"role_id\": \"2ccee6d5-14d8-7acb-466e-4717c8649782\",\n    \"user_id\": \"e1030d33-cfba-54a9-b16f-9bc3fb055cdf\",\n    \"role\": {\n      \"id\": \"1e4d97db-f55a-b4d6-4343-1097e37b4a22\",\n      \"name\": \"string\"\n    }\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"a0e90e7f-8608-145c-6be7-d95226da3e05\",\n    \"role_id\": \"195669c7-733a-9fa1-8505-1a5d4cee28d0\",\n    \"user_id\": \"54e23047-b122-898c-0ae0-4e8fce4abf51\",\n    \"role\": {\n      \"id\": \"840f8b64-82fe-176e-0bba-00273c9953ba\",\n      \"name\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8711b0cf-65b3-4d61-b48a-34648e96b1e8",
+          "name": "Check whether a user has been granted permissions",
+          "request": {
+            "name": "Check whether a user has been granted permissions",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id",
+                "permissions",
+                "decision"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permissions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ad09eb3d-3245-4999-84ea-05863bbdaf83",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id",
+                    "permissions",
+                    "decision"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    \"facilities:read\",\n    \"facilities:write\",\n    \"facilities:delete\",\n    \"equipment:read\",\n    \"equipment:write\",\n    \"equipment:delete\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"facilities:read\": true,\n  \"equipment:read\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "842a5fae-cf5c-47fe-bbb4-c49d20fdeb84",
+          "name": "Get user permission",
+          "request": {
+            "name": "Get user permission",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "users",
+                ":id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) User ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "771190d5-ad70-47a4-8675-707efb234914",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "users",
+                    ":id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) User ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"facilities:read\",\n    \"active\": false,\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    }\n  },\n  {\n    \"name\": \"facilities:read\",\n    \"active\": true,\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fc6ee685-fbc8-477f-804a-d35d7fde809a",
+    "name": "CarbonHub activities users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

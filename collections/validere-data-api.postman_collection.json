@@ -1,0 +1,357 @@
+{
+  "item": [
+    {
+      "id": "5cac0aaf-2616-4745-a828-585445bc6914",
+      "name": "data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2c4ede36-4a78-459c-a56f-c3c31b7f5da2",
+          "name": "Register Json Data",
+          "request": {
+            "name": "Register Json Data",
+            "description": {
+              "content": "Registers new JSON data for the specified dataset.\n\nThe JSON request body must include the following fields:\n* `client_id` (UUID) - client making the request\n* `dataset_id` (UUID) - dataset uuid for which the payload is being ingested for.\n* `data` (List[object]) - data to ingest into the data platform",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_id\": \"<uuid>\",\n  \"dataset_id\": \"<uuid>\",\n  \"data\": [\n    {\n      \"key_0\": 5959.9348404883685,\n      \"key_1\": 2377,\n      \"key_2\": 3756\n    },\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bed89c2b-d42c-421f-b0a5-0f040f3a3da7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_id\": \"ffaaee85-3665-464b-a0a5-979cf3a46bcc\",\n  \"dataset_id\": \"9142d109-d86e-4820-bc72-da6b5b0c61d0\",\n  \"data\": [\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:52.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 23.0192\n    },\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:55.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 22.9441\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"type\": \"JSONData\",\n    \"transaction_id\": \"8372d109-d86e-4820-bc72-da6b5b0c61d0\",\n    \"total\": 2\n  },\n  \"data\": [\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:52.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 23.0192\n    },\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:55.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 22.9441\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5715550b-b8ab-4c38-9f48-309b8098ce90",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_id\": \"ffaaee85-3665-464b-a0a5-979cf3a46bcc\",\n  \"dataset_id\": \"9142d109-d86e-4820-bc72-da6b5b0c61d0\",\n  \"data\": [\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:52.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 23.0192\n    },\n    {\n      \"RecordDatetimeUTC\": \"2022-10-21T04:08:55.102Z\",\n      \"Tag\": \"Tank_A/Type_1_Tanks/Pressure/PVPct\",\n      \"Value\": 22.9441\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "efe1ae34-a68a-4831-a508-a9e6c771eab5",
+          "name": "Get File Upload Url",
+          "request": {
+            "name": "Get File Upload Url",
+            "description": {
+              "content": "Generates a presigned S3 upload url to upload files to the Data Platform.\n\nThe following fields should be passed as query parameters:\n\n* `file_name` (str) - Must include file extension. Must match the DatasetType that was registered for the dataset_id.\n* `content_type` (str) - Optional. Can be specified in request. Otherwise, will be interpreted from file_name.\n\nRequests made from systems authenticated via api-key must additionally pass the following fields:\n\n* `client_id` (uuid) - The Data Platform Client making the request.\n* `dataset_id` (uuid) - The Data Platform Dataset for which the payload is being ingested for.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "data",
+                "file_upload_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "company_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "dataset_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "file_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "content_type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "file_name",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "13c49ba4-256d-44fb-aee5-7e6c9860c97f",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "file_upload_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "company_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "file_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "file_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"type\": \"FileUploadUri\",\n    \"transaction_id\": \"6372d109-d86e-4820-bc72-da6b5b0c61d0\",\n    \"info\": \"Please make a PUT request with the file attachment to the attached `data[uri]`\"\n  },\n  \"data\": [\n    {\n      \"file_id\": \"6372d109-d86e-4820-bc72-da6b5b0c61d0\",\n      \"uri\": \"https://presignedurl.s3.us-west-2.amazonaws.com/image.png\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13341821-8b73-415a-9969-704c442b91a4",
+              "name": "Validation Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "file_upload_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "company_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "dataset_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "file_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "content_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "file_name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": [\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    },\n    {\n      \"loc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"msg\": \"string\",\n      \"type\": \"string\",\n      \"input\": {},\n      \"ctx\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1278c9c5-c7d5-4a4f-8081-87f92551473e",
+    "name": "CarbonHub activities data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

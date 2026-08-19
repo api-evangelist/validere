@@ -1,0 +1,478 @@
+{
+  "item": [
+    {
+      "id": "2957171f-2c82-43b3-bd52-141e59e4d27c",
+      "name": "default_record_value_configuration",
+      "description": {
+        "content": "Default Record Value Configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "da66ffb7-9ced-455a-a1c1-87961fb95624",
+          "name": "Upsert a default record value configuration for an asset",
+          "request": {
+            "name": "Upsert a default record value configuration for an asset",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "default_record_value_configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\",\n  \"measurement_type\": \"<string>\",\n  \"measurement_unit\": \"<string>\",\n  \"default_value\": \"<number>\",\n  \"configuration\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb76e06c-616d-4774-a09b-b603957bff72",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "default_record_value_configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\",\n  \"measurement_type\": \"volume\",\n  \"measurement_unit\": \"bbl\",\n  \"default_value\": \"<number>\",\n  \"configuration\": {\n    \"filter\": {\n      \"id\": \"<uuid>\",\n      \"version\": \"<integer>\",\n      \"current_version\": \"<boolean>\",\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"form_category_id\": \"<string>\",\n      \"form_category.name\": \"test\",\n      \"form_schema.id\": \"<string>\",\n      \"form_schema.name\": \"<string>\",\n      \"form_schema.version\": \"<number>\",\n      \"form_schema.current_version\": \"<boolean>\",\n      \"form_schema.status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"related_entity_id\": \"<uuid>\",\n      \"created_by\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"event.id\": \"<uuid>\",\n      \"measurement.measurement_type\": \"<string>\",\n      \"measurement.measurement_unit\": \"<string>\",\n      \"measurement.source_id\": \"<uuid>\",\n      \"measurement.subject_id\": \"<uuid>\",\n      \"measurement.form_submission_id\": \"<uuid>\",\n      \"measurement.section_id\": \"<string>\",\n      \"measurement.question_id\": \"<string>\",\n      \"measurement.question_index\": \"<number>\",\n      \"measurement.time\": \"<dateTime>\"\n    },\n    \"configuration_type\": \"<string>\",\n    \"aggregate_function\": \"<string>\",\n    \"sort\": \"<string>\",\n    \"sort_direction\": \"<string>\",\n    \"second_sort\": \"<string>\",\n    \"window\": \"1month\",\n    \"timezone\": \"America/Los_Angeles\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"fe22d7ed-5705-989e-f48e-4b48c639cbe9\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\",\n  \"measurement_type\": \"volume\",\n  \"measurement_unit\": \"bbl\",\n  \"default_value\": \"<number>\",\n  \"configuration\": {\n    \"filter\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"configuration_type\": \"<string>\",\n    \"aggregate_function\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"sort\": \"<string>\",\n    \"sort_direction\": \"<string>\",\n    \"second_sort\": \"<string>\",\n    \"window\": \"1month\",\n    \"timezone\": \"America/Los_Angeles\"\n  },\n  \"created_at\": \"1952-02-06T04:38:06.628Z\",\n  \"updated_at\": \"2014-10-04T17:02:52.701Z\",\n  \"created_by\": \"9c85465e-7848-38cd-e7ec-607081db3ba7\",\n  \"updated_by\": \"30a385b6-a52c-2336-eadb-897c9cd26b28\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4649ff8a-331b-4ee7-9fa8-078351e44684",
+          "name": "Apply default record value configurations for a set of year months",
+          "request": {
+            "name": "Apply default record value configurations for a set of year months",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "default_record_value_configurations",
+                "apply"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ab41d10-b127-4cc9-be81-6360f26e6429",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "default_record_value_configurations",
+                    "apply"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"measurement_unit\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"reporting_group_id\": \"<string>\",\n    \"reporting_group_name\": \"<string>\",\n    \"year_month\": {\n      \"$in\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"overwrite_all_values\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"asset_id\": \"082dc2c9-a702-38e6-6376-ab56d493293e\",\n    \"asset_filter\": {\n      \"facility.custom_attributes\": {},\n      \"facility.id\": \"string\",\n      \"facility.name\": \"string\",\n      \"facility.status\": \"string\",\n      \"equipment.custom_attributes\": {},\n      \"equipment.id\": \"string\",\n      \"equipment.name\": \"string\",\n      \"equipment.status\": \"deprecated\",\n      \"equipment.type.id\": \"string\",\n      \"equipment.type.name\": \"string\",\n      \"device.attributes\": {},\n      \"device.custom_attributes\": {},\n      \"device.id\": \"string\",\n      \"device.measurement_types\": \"string\",\n      \"device.name\": \"string\",\n      \"device.status\": \"string\",\n      \"device.type_id\": \"string\",\n      \"flow.id\": \"string\",\n      \"flow.name\": \"string\",\n      \"flow.status\": \"inactive\",\n      \"flow.type\": \"string\",\n      \"flow.product_type\": \"string\",\n      \"flow.product_category\": \"string\",\n      \"flow.custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"flow.associated_facility_id\": \"953203d1-8943-3e0e-0d67-1480b32cc775\",\n      \"flow.associated_equipment_id\": \"cacfe4e2-69f2-5fa2-5434-4661fac17541\",\n      \"equipment.facility.custom_attributes\": {},\n      \"equipment.facility.id\": \"string\",\n      \"equipment.facility.name\": \"string\",\n      \"equipment.facility.status\": \"string\",\n      \"flow.facility.custom_attributes\": {},\n      \"flow.facility.id\": \"string\",\n      \"flow.facility.name\": \"string\",\n      \"flow.facility.status\": \"string\"\n    },\n    \"reporting_group_id\": \"string\",\n    \"year_month\": \"string\",\n    \"created_at\": \"1999-12-16T07:49:59.334Z\",\n    \"updated_at\": \"2000-06-16T03:44:54.146Z\",\n    \"created_by\": \"30c1bdf5-8930-d434-9343-bd79433373f0\",\n    \"updated_by\": \"14c06f20-1e2c-ae42-91b2-a448861afc1c\",\n    \"id\": \"50afeb07-d16d-d054-e056-83500a696fce\",\n    \"asset_type\": \"device\",\n    \"company_id\": \"34e6a3ca-28f8-8403-e1de-6d2d00779ae0\",\n    \"values\": [\n      {\n        \"value\": 3316.7429889123046,\n        \"measurement_unit\": \"string\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"attachment_ref\": \"string\",\n        \"attachment_filename\": \"string\",\n        \"created_at\": \"1985-07-14T20:20:41.713Z\",\n        \"updated_at\": \"1948-12-22T16:52:35.313Z\",\n        \"created_by\": \"4d661c8c-19b7-2133-20b2-ac01153cb81c\",\n        \"updated_by\": \"95fb1815-bc13-2373-d4e0-e8542eb1128c\",\n        \"id\": \"09050efa-973f-ca67-ef53-d19a6faaa171\",\n        \"record_id\": \"7ef24d2e-c7a5-d984-2c26-48c75bf3b7bb\",\n        \"measurement_type\": \"string\"\n      },\n      {\n        \"value\": 3657.0076941855054,\n        \"measurement_unit\": \"string\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"attachment_ref\": \"string\",\n        \"attachment_filename\": \"string\",\n        \"created_at\": \"1963-11-04T19:49:18.283Z\",\n        \"updated_at\": \"1965-02-17T23:26:02.787Z\",\n        \"created_by\": \"aeb06973-902f-4a99-08a2-0637e15778d1\",\n        \"updated_by\": \"5ceb243e-3eb1-aa3e-63ae-9911d7a28823\",\n        \"id\": \"e14a9546-389e-a2e7-e62c-ef07bdcf4438\",\n        \"record_id\": \"6bb1bab5-b087-666d-085c-44fbc36e9eb7\",\n        \"measurement_type\": \"string\"\n      }\n    ]\n  },\n  {\n    \"asset_id\": \"e392400c-4251-8cc8-ad5a-5882b6ec2b1d\",\n    \"asset_filter\": {\n      \"facility.custom_attributes\": {},\n      \"facility.id\": \"string\",\n      \"facility.name\": \"string\",\n      \"facility.status\": \"string\",\n      \"equipment.custom_attributes\": {},\n      \"equipment.id\": \"string\",\n      \"equipment.name\": \"string\",\n      \"equipment.status\": \"active\",\n      \"equipment.type.id\": \"string\",\n      \"equipment.type.name\": \"string\",\n      \"device.attributes\": {},\n      \"device.custom_attributes\": {},\n      \"device.id\": \"string\",\n      \"device.measurement_types\": \"string\",\n      \"device.name\": \"string\",\n      \"device.status\": \"string\",\n      \"device.type_id\": \"string\",\n      \"flow.id\": \"string\",\n      \"flow.name\": \"string\",\n      \"flow.status\": \"inactive\",\n      \"flow.type\": \"string\",\n      \"flow.product_type\": \"string\",\n      \"flow.product_category\": \"string\",\n      \"flow.custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"flow.associated_facility_id\": \"9fbbab00-c4f6-a451-fc77-f08eb066ec0f\",\n      \"flow.associated_equipment_id\": \"deb67470-a472-291f-cd3b-659d99a13cca\",\n      \"equipment.facility.custom_attributes\": {},\n      \"equipment.facility.id\": \"string\",\n      \"equipment.facility.name\": \"string\",\n      \"equipment.facility.status\": \"string\",\n      \"flow.facility.custom_attributes\": {},\n      \"flow.facility.id\": \"string\",\n      \"flow.facility.name\": \"string\",\n      \"flow.facility.status\": \"string\"\n    },\n    \"reporting_group_id\": \"string\",\n    \"year_month\": \"string\",\n    \"created_at\": \"2000-05-17T12:52:10.217Z\",\n    \"updated_at\": \"2012-06-30T13:55:50.171Z\",\n    \"created_by\": \"545fbbe9-ef21-0c58-cc65-a2f15d3dd4d3\",\n    \"updated_by\": \"34a28346-a39d-d659-d1b2-9fcd89ab3b26\",\n    \"id\": \"8f75c22e-db6a-d1c8-4b4c-ea01b32ee64e\",\n    \"asset_type\": \"facility\",\n    \"company_id\": \"51a5ae2d-4548-a4ac-9e69-46bb3bf70104\",\n    \"values\": [\n      {\n        \"value\": 8624.41673157416,\n        \"measurement_unit\": \"string\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"attachment_ref\": \"string\",\n        \"attachment_filename\": \"string\",\n        \"created_at\": \"1976-04-01T13:17:31.438Z\",\n        \"updated_at\": \"2008-07-30T20:30:27.173Z\",\n        \"created_by\": \"17785d88-7828-23fc-2a24-f4487635ad86\",\n        \"updated_by\": \"68d45ce4-f463-3b5a-f06c-25145a9e8101\",\n        \"id\": \"5c2dd882-e6b5-62d2-6256-be3ca7011ba3\",\n        \"record_id\": \"22d3833e-7871-809f-4445-1e3d0baeaa1d\",\n        \"measurement_type\": \"string\"\n      },\n      {\n        \"value\": 3820.921679156245,\n        \"measurement_unit\": \"string\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": \"string\",\n        \"attachment_ref\": \"string\",\n        \"attachment_filename\": \"string\",\n        \"created_at\": \"2015-10-17T07:32:36.807Z\",\n        \"updated_at\": \"1955-11-23T02:59:03.830Z\",\n        \"created_by\": \"46a90f07-c612-cbcb-ecc7-f66f8f5db3c9\",\n        \"updated_by\": \"277f351c-aebc-18d8-702d-81c09b73cd37\",\n        \"id\": \"de9d65a6-8e62-df4c-e925-d02309a92322\",\n        \"record_id\": \"4eddf580-1068-e99f-c37d-2ea5e8c6b127\",\n        \"measurement_type\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22f6ab67-ad5b-4913-b294-549c24ba34f6",
+          "name": "Search default record value configurations",
+          "request": {
+            "name": "Search default record value configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "default_record_value_configurations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "abb8253f-c96a-413d-bf67-8b3540a408e3",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "default_record_value_configurations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"measurement_unit\": \"<string>\",\n    \"measurement_type\": \"<string>\",\n    \"asset_id\": \"<uuid>\",\n    \"asset_type\": \"<string>\",\n    \"reporting_group_id\": \"<string>\",\n    \"reporting_group_name\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"page_number\": 0,\n    \"page_size\": 10,\n    \"total_entries\": 58,\n    \"total_pages\": 6,\n    \"data\": [\n      {\n        \"id\": \"cb41afcd-d43e-dfc7-3ec6-3f2651301249\",\n        \"asset_id\": \"<uuid>\",\n        \"reporting_group_id\": \"<string>\",\n        \"measurement_type\": \"volume\",\n        \"measurement_unit\": \"bbl\",\n        \"default_value\": \"<number>\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": \"1992-11-10T22:03:28.503Z\",\n        \"updated_at\": \"1949-03-30T00:48:33.983Z\",\n        \"created_by\": \"aabf1469-c8e4-b2ae-cb00-c396edacfe7f\",\n        \"updated_by\": \"bb443eb8-f05d-32f9-cf46-bb3f383db13c\"\n      },\n      {\n        \"id\": \"2d7385b3-66d0-704f-dbe6-0e5025a7aa8c\",\n        \"asset_id\": \"<uuid>\",\n        \"reporting_group_id\": \"<string>\",\n        \"measurement_type\": \"volume\",\n        \"measurement_unit\": \"bbl\",\n        \"default_value\": \"<number>\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": \"1955-09-20T01:07:00.000Z\",\n        \"updated_at\": \"1994-06-09T13:01:54.606Z\",\n        \"created_by\": \"7213f6dd-530f-551f-08d5-034359359370\",\n        \"updated_by\": \"cd8ea1c8-8b36-3660-31e7-7e89aeecc3a2\"\n      }\n    ]\n  },\n  {\n    \"page_number\": 0,\n    \"page_size\": 10,\n    \"total_entries\": 58,\n    \"total_pages\": 6,\n    \"data\": [\n      {\n        \"id\": \"8694c5c6-3b37-0962-dc61-50fd7b0678df\",\n        \"asset_id\": \"<uuid>\",\n        \"reporting_group_id\": \"<string>\",\n        \"measurement_type\": \"volume\",\n        \"measurement_unit\": \"bbl\",\n        \"default_value\": \"<number>\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": \"1958-05-02T03:39:49.227Z\",\n        \"updated_at\": \"2012-04-21T07:52:26.220Z\",\n        \"created_by\": \"074fca7f-6a0e-0ef5-01fd-9a6965723de7\",\n        \"updated_by\": \"b073af85-4daa-ecd8-2f28-161d3469a46c\"\n      },\n      {\n        \"id\": \"ac3a11a9-780c-c76c-b831-2498f1be1bf1\",\n        \"asset_id\": \"<uuid>\",\n        \"reporting_group_id\": \"<string>\",\n        \"measurement_type\": \"volume\",\n        \"measurement_unit\": \"bbl\",\n        \"default_value\": \"<number>\",\n        \"configuration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"created_at\": \"2025-08-18T04:50:23.690Z\",\n        \"updated_at\": \"1949-05-06T06:17:06.343Z\",\n        \"created_by\": \"581140b2-9a08-5275-b604-e98a797ae3c7\",\n        \"updated_by\": \"c91707e9-be8e-ce9d-a640-078c7af6830e\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0bb0c437-7240-45e0-b59f-ef7e46ffd286",
+          "name": "Get a default record value configuration",
+          "request": {
+            "name": "Get a default record value configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "default_record_value_configurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Default Record Value Configuration ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff0149cb-6239-42d1-beba-9a79d58e9d5d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "default_record_value_configurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Default Record Value Configuration ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"fe22d7ed-5705-989e-f48e-4b48c639cbe9\",\n  \"asset_id\": \"<uuid>\",\n  \"reporting_group_id\": \"<string>\",\n  \"measurement_type\": \"volume\",\n  \"measurement_unit\": \"bbl\",\n  \"default_value\": \"<number>\",\n  \"configuration\": {\n    \"filter\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"configuration_type\": \"<string>\",\n    \"aggregate_function\": {\n      \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n    },\n    \"sort\": \"<string>\",\n    \"sort_direction\": \"<string>\",\n    \"second_sort\": \"<string>\",\n    \"window\": \"1month\",\n    \"timezone\": \"America/Los_Angeles\"\n  },\n  \"created_at\": \"1952-02-06T04:38:06.628Z\",\n  \"updated_at\": \"2014-10-04T17:02:52.701Z\",\n  \"created_by\": \"9c85465e-7848-38cd-e7ec-607081db3ba7\",\n  \"updated_by\": \"30a385b6-a52c-2336-eadb-897c9cd26b28\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "39bf02e9-f1c6-4c1d-ba70-61e9af23f374",
+          "name": "Delete a default record value configuration",
+          "request": {
+            "name": "Delete a default record value configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "default_record_value_configurations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Default Record Value Configuration ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6df2ef51-df5e-4f15-b171-ddb7faec3948",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "default_record_value_configurations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Default Record Value Configuration ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1e352639-88bb-4365-b0f0-f16299ae35ea",
+    "name": "CarbonHub activities default_record_value_configuration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

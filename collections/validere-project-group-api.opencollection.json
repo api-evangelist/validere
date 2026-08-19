@@ -1,0 +1,176 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities project_group API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "project_group",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a project group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/project_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a project group"
+        },
+        {
+          "info": {
+            "name": "Search and list project groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/project_groups/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list project groups"
+        },
+        {
+          "info": {
+            "name": "Get a project_groups entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/project_groups/:project_group_id",
+            "params": [
+              {
+                "name": "project_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Project Group ID"
+              }
+            ]
+          },
+          "docs": "Get a project_groups entry"
+        },
+        {
+          "info": {
+            "name": "Update a project group entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/project_groups/:project_group_id",
+            "params": [
+              {
+                "name": "project_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Project Group ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a project group entry"
+        },
+        {
+          "info": {
+            "name": "Delete a project group entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/project_groups/:project_group_id",
+            "params": [
+              {
+                "name": "project_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Project Group ID"
+              }
+            ]
+          },
+          "docs": "Delete a project group entry"
+        },
+        {
+          "info": {
+            "name": "Public search and list ledger entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/public/v1/project_groups/:company_id/search",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Public search and list ledger entries"
+        },
+        {
+          "info": {
+            "name": "Public search and list ledger entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/public/v1/project_groups/:company_id/:project_group_id",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              },
+              {
+                "name": "project_group_id",
+                "value": "",
+                "type": "path",
+                "description": "Project Group ID"
+              }
+            ]
+          },
+          "docs": "Public search and list ledger entries"
+        },
+        {
+          "info": {
+            "name": "Get the summary across all projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/public/v1/project_groups/:company_id/summary",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ]
+          },
+          "docs": "Get the summary across all projects"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

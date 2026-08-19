@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities feature_flags API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "feature_flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search feature flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/feature_flags/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search feature flags"
+        },
+        {
+          "info": {
+            "name": "Get a feature flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/feature_flags/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Feature Flag Name (any version)"
+              }
+            ]
+          },
+          "docs": "Get a feature flag"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

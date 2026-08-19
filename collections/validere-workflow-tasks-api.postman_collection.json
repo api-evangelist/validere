@@ -1,0 +1,1126 @@
+{
+  "item": [
+    {
+      "id": "b62d8a90-3056-4abd-b8f3-b66cf803214a",
+      "name": "workflow_tasks",
+      "description": {
+        "content": "Workflow Tasks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "17409641-8e00-4feb-b087-b9cb361ccf29",
+          "name": "Search Workflow Tasks",
+          "request": {
+            "name": "Search Workflow Tasks",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"workflow_template.id\": \"<uuid>\",\n    \"workflow_template.category_id\": \"<uuid>\",\n    \"workflow_template.name\": \"<string>\",\n    \"workflow_template.description\": \"<string>\",\n    \"workflow_template.asset_type\": \"<string>\",\n    \"workflow_template.status\": \"<string>\",\n    \"workflow_category.id\": \"<uuid>\",\n    \"workflow_category.name\": \"<string>\",\n    \"workflow_category.description\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"workflow_id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"assigned_to\": \"<uuid>\",\n    \"assignee_user\": \"<uuid>\",\n    \"assignee_group\": \"<uuid>\",\n    \"assignee_group.user_id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"workflow.facility_id\": \"<string>\",\n    \"workflow.due_date\": \"<dateTime>\",\n    \"workflow.status\": \"<string>\",\n    \"form_schema_id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce4c98f5-07c4-4047-b4f6-2ce24f50c0dd",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"created_at\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"26b91882-6cc8-409c-0745-f9e9d8030660\",\n      \"company_id\": \"2d86c892-cf61-de25-4d8f-0ef020e978cb\",\n      \"workflow_id\": \"8ec93504-cb2c-d45b-f93e-0e235e7515c0\",\n      \"step_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"overdue\",\n      \"type\": \"manual_task\",\n      \"restrict_assignee_completion\": true,\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"updated_by\": \"3111071a-e1db-cb00-ce05-91386cc5a9ec\",\n      \"is_dismissible\": false,\n      \"assignee_user\": \"string\",\n      \"assignee_group\": \"string\",\n      \"callback_token\": \"string\",\n      \"due_date\": \"string\"\n    },\n    {\n      \"id\": \"4a3f7093-8d72-3550-f6a6-930e19218e17\",\n      \"company_id\": \"8b398367-1767-7516-5312-d95a87962040\",\n      \"workflow_id\": \"876616d6-7c5b-0266-ff52-18c964160d99\",\n      \"step_id\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"open\",\n      \"type\": \"complete_event\",\n      \"restrict_assignee_completion\": true,\n      \"created_at\": \"string\",\n      \"updated_at\": \"string\",\n      \"updated_by\": \"c03fe618-3b8c-e4d6-bfe0-fd0d36127f9f\",\n      \"is_dismissible\": false,\n      \"assignee_user\": \"string\",\n      \"assignee_group\": \"string\",\n      \"callback_token\": \"string\",\n      \"due_date\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09eb6fc1-88ab-4d58-83cf-200ab6d1ec61",
+          "name": "Get a workflow action",
+          "request": {
+            "name": "Get a workflow action",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "actions",
+                ":workflow_action_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workflow_action_id",
+                  "description": "(Required) Workflow Action ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ef7fb8e1-e4ef-4711-978e-2911edcfa9b5",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "actions",
+                    ":workflow_action_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workflow_action_id",
+                      "description": "(Required) Workflow Action ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7ecf74dc-01ea-c7b8-1aae-3172ed1bb04f\",\n  \"company_id\": \"f068567a-7db2-f541-2413-d69fee15a788\",\n  \"workflow_id\": \"fb4850b7-000a-cdee-692a-285082950e49\",\n  \"step_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"type\": \"form_choice\",\n  \"created_at\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55bac788-b411-40eb-92d0-a9f6be627501",
+          "name": "Search Workflow Steps",
+          "request": {
+            "name": "Search Workflow Steps",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "steps",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"workflow_id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"type\": \"<string>\",\n    \"step_type\": \"<string>\",\n    \"status\": \"<string>\",\n    \"assigned_to\": \"<uuid>\",\n    \"assignee_user\": \"<uuid>\",\n    \"assignee_group\": \"<uuid>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb954f06-58f8-4688-b681-b6672f91e288",
+              "name": "Successfully operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "steps",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"created_at\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"f70f8714-54a8-bbf9-0f1b-d19cccaa9537\",\n      \"workflow_id\": \"7a327a6f-2340-3712-4e91-612b356893d7\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"due_date\": \"1985-06-13T19:42:27.481Z\",\n      \"is_dismissible\": true,\n      \"type\": \"form_choice\",\n      \"step_id\": \"string\",\n      \"assignee_user\": \"b0b11a18-5ba6-c69f-8188-4487fd07915f\",\n      \"assignee_group\": \"91e0111f-d6cb-df5f-94bd-3b3866ad07d2\",\n      \"assignee_to\": \"d1d27c6b-8a49-e741-001f-8969c88cbcb7\",\n      \"restrict_assignee_completion\": false,\n      \"entity_id\": \"077e8bc1-a5f6-2f48-fbab-72d6d8d90de2\",\n      \"entity_name\": \"string\",\n      \"created_at\": \"1947-09-03T17:31:45.080Z\",\n      \"updated_at\": \"1997-12-14T22:35:24.627Z\",\n      \"step_type\": \"user_task\",\n      \"status\": \"overdue\"\n    },\n    {\n      \"id\": \"7472cebd-3b9a-db71-5845-30b3b68a5587\",\n      \"workflow_id\": \"213c6f3e-d229-31f4-2a74-4fa0d3971817\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"due_date\": \"1981-07-30T04:38:53.200Z\",\n      \"is_dismissible\": true,\n      \"type\": \"create_event\",\n      \"step_id\": \"string\",\n      \"assignee_user\": \"3b116018-7254-b3bb-a92b-45da9e362c5b\",\n      \"assignee_group\": \"538c68fe-33c9-991e-e12e-6c43f658aba5\",\n      \"assignee_to\": \"a1d6b47c-f8bc-06c3-d773-4dbbd904cdcd\",\n      \"restrict_assignee_completion\": true,\n      \"entity_id\": \"bd92b9f1-b02f-6809-b2af-acefd36f983a\",\n      \"entity_name\": \"string\",\n      \"created_at\": \"1992-05-05T22:25:52.163Z\",\n      \"updated_at\": \"1970-04-23T09:54:07.308Z\",\n      \"step_type\": \"user_task\",\n      \"status\": \"open\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0b0e492-aa4a-4fd9-ad50-b4808f19467d",
+          "name": "Get a workflow task",
+          "request": {
+            "name": "Get a workflow task",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                ":workflow_task_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workflow_task_id",
+                  "description": "(Required) Workflow Task ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84d16587-2191-4a3a-9818-2d9c0c8f3fd9",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    ":workflow_task_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workflow_task_id",
+                      "description": "(Required) Workflow Task ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"85dafdd3-4177-568a-7445-9fc2072de0f5\",\n  \"company_id\": \"f6ff1f4e-a94f-b069-ed5a-ac005dc08ddb\",\n  \"workflow_id\": \"3cf95c96-8cb8-c4b0-f26a-bceb04304e4c\",\n  \"step_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"overdue\",\n  \"type\": \"submit_form\",\n  \"restrict_assignee_completion\": true,\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"0ba07090-b914-ad4b-8ce0-219c4f6a9859\",\n  \"is_dismissible\": false,\n  \"assignee_user\": \"string\",\n  \"assignee_group\": \"string\",\n  \"callback_token\": \"string\",\n  \"due_date\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8bac5a6-e3d7-41c8-bbc5-708ab6c95aa8",
+          "name": "Update a workflow task",
+          "request": {
+            "name": "Update a workflow task",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                ":workflow_task_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workflow_task_id",
+                  "description": "(Required) Workflow Task ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"assignee_user\": \"<string>\",\n  \"assignee_group\": \"<string>\",\n  \"choice\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "48c843d5-1fb8-4645-a643-5a62cb30b2fc",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    ":workflow_task_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workflow_task_id",
+                      "description": "(Required) Workflow Task ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"assignee_user\": \"<string>\",\n  \"assignee_group\": \"<string>\",\n  \"choice\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"85dafdd3-4177-568a-7445-9fc2072de0f5\",\n  \"company_id\": \"f6ff1f4e-a94f-b069-ed5a-ac005dc08ddb\",\n  \"workflow_id\": \"3cf95c96-8cb8-c4b0-f26a-bceb04304e4c\",\n  \"step_id\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"overdue\",\n  \"type\": \"submit_form\",\n  \"restrict_assignee_completion\": true,\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"updated_by\": \"0ba07090-b914-ad4b-8ce0-219c4f6a9859\",\n  \"is_dismissible\": false,\n  \"assignee_user\": \"string\",\n  \"assignee_group\": \"string\",\n  \"callback_token\": \"string\",\n  \"due_date\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bcdb612-8911-4c18-9eaf-5fdf7c80ad39",
+          "name": "Add a workflow task/form submission relationship",
+          "request": {
+            "name": "Add a workflow task/form submission relationship",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                ":workflow_task_id",
+                "form_submission",
+                ":form_submission_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "form_submission_version",
+                  "value": "<integer>",
+                  "description": "Form Submission Version"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workflow_task_id",
+                  "description": "(Required) Workflow Task ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "form_submission_id",
+                  "description": "(Required) Form Submission ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87cd9b45-10d2-4911-b203-d01cb1fafb7d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    ":workflow_task_id",
+                    "form_submission",
+                    ":form_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "form_submission_version",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workflow_task_id",
+                      "description": "(Required) Workflow Task ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "form_submission_id",
+                      "description": "(Required) Form Submission ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0da29d0b-8590-4c45-90c7-914ce45a501b",
+          "name": "Remove a workflow task/form submission relationship",
+          "request": {
+            "name": "Remove a workflow task/form submission relationship",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                ":workflow_task_id",
+                "form_submission",
+                ":form_submission_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "form_submission_version",
+                  "value": "<integer>",
+                  "description": "Form Submission Version"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "workflow_task_id",
+                  "description": "(Required) Workflow Task ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "form_submission_id",
+                  "description": "(Required) Form Submission ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b916065f-843f-4bb5-8641-8e8dfe001545",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    ":workflow_task_id",
+                    "form_submission",
+                    ":form_submission_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "form_submission_version",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "workflow_task_id",
+                      "description": "(Required) Workflow Task ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "form_submission_id",
+                      "description": "(Required) Form Submission ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83e39cdb-7e0d-4b53-9cc1-e340680b5937",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ef60c65-9d5a-4990-9aeb-78313e8058a1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"f768f92a-dc53-08e6-4254-728f91696553\",\n      \"filter\": {\n        \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n        \"status\": \"open\"\n      }\n    },\n    {\n      \"id\": \"bfb2dbc2-8eea-9086-ccca-cb543788b61b\",\n      \"filter\": {\n        \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n        \"status\": \"open\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85ed40dd-06bf-4e53-aab5-483d880ea7c8",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "07632c83-1684-44c2-9d6a-3959d4e4bfd1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8f3a17b0-b1e7-5483-3438-39d4d1747bba\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c09cb26b-739d-4d67-8f8e-1dc8e5456db9",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "234faf8a-2b11-4ce8-a719-2ff60b5f6da5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9c71d79-72ed-4eab-ae6c-c57d56281521",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "workflow_tasks",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"workflow_template.id\": \"<uuid>\",\n    \"workflow_template.category_id\": \"<uuid>\",\n    \"workflow_template.name\": \"<string>\",\n    \"workflow_template.description\": \"<string>\",\n    \"workflow_template.asset_type\": \"<string>\",\n    \"workflow_template.status\": \"<string>\",\n    \"workflow_category.id\": \"<uuid>\",\n    \"workflow_category.name\": \"<string>\",\n    \"workflow_category.description\": \"<string>\",\n    \"id\": \"<uuid>\",\n    \"workflow_id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"assigned_to\": \"<uuid>\",\n    \"assignee_user\": \"<uuid>\",\n    \"assignee_group\": \"<uuid>\",\n    \"assignee_group.user_id\": \"<uuid>\",\n    \"type\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"workflow.facility_id\": \"<string>\",\n    \"workflow.due_date\": \"<dateTime>\",\n    \"workflow.status\": \"<string>\",\n    \"form_schema_id\": \"<uuid>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5fc97e32-a882-450b-9bdd-7315383d95d6",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "workflow_tasks",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8f3a17b0-b1e7-5483-3438-39d4d1747bba\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"workflow_id\": \"1b154c71-67be-1f51-40ce-3aefb42a6480\",\n    \"status\": \"open\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d0d640cd-f8e3-44f8-b749-a0987c458360",
+    "name": "CarbonHub activities workflow_tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

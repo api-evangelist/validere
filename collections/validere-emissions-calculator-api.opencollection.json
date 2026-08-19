@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities emissions_calculator API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "emissions_calculator",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all calculation libraries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/libraries"
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get library",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/libraries/:library_id",
+            "params": [
+              {
+                "name": "library_id",
+                "value": "",
+                "type": "path",
+                "description": "Library ID"
+              }
+            ]
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get all calculators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/calculators"
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get all calculators",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v2/calculators",
+            "params": [
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Calculator Version Information Fields"
+              }
+            ]
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get calculator",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/calculators/:calculator_id",
+            "params": [
+              {
+                "name": "calculator_id",
+                "value": "",
+                "type": "path",
+                "description": "Calculator ID"
+              }
+            ]
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get calculator versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/calculators/:calculator_id/versions",
+            "params": [
+              {
+                "name": "calculator_id",
+                "value": "",
+                "type": "path",
+                "description": "Calculator ID"
+              }
+            ]
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        },
+        {
+          "info": {
+            "name": "Get calculator version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/calculators/:calculator_id/versions/:version_id",
+            "params": [
+              {
+                "name": "calculator_id",
+                "value": "",
+                "type": "path",
+                "description": "Calculator ID"
+              },
+              {
+                "name": "version_id",
+                "value": "",
+                "type": "path",
+                "description": "Calculator Version ID"
+              }
+            ]
+          },
+          "docs": "Refer to [Calculation Service](https://analytics-tools-development.corp.validere.xyz/emission_calculator/docs/) for schema"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

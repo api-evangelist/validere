@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities credit_owner API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "credit_owner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a credit owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/credit_owners",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a credit owner"
+        },
+        {
+          "info": {
+            "name": "Search and list credit owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/credit_owners/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list credit owners"
+        },
+        {
+          "info": {
+            "name": "Get a credit_owners entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/credit_owners/:credit_owner_id",
+            "params": [
+              {
+                "name": "credit_owner_id",
+                "value": "",
+                "type": "path",
+                "description": "Credit Owner ID"
+              }
+            ]
+          },
+          "docs": "Get a credit_owners entry"
+        },
+        {
+          "info": {
+            "name": "Update a credit owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/credit_owners/:credit_owner_id",
+            "params": [
+              {
+                "name": "credit_owner_id",
+                "value": "",
+                "type": "path",
+                "description": "Credit Owner ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a credit owner"
+        },
+        {
+          "info": {
+            "name": "Delete a credit owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/credit_owners/:credit_owner_id",
+            "params": [
+              {
+                "name": "credit_owner_id",
+                "value": "",
+                "type": "path",
+                "description": "Credit Owner ID"
+              }
+            ]
+          },
+          "docs": "Delete a credit owner"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

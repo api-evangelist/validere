@@ -1,0 +1,1201 @@
+{
+  "item": [
+    {
+      "id": "3dca1850-1214-4bf0-8675-d7ed24f4ba1a",
+      "name": "roles",
+      "description": {
+        "content": "Roles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b63f41e4-57a3-4aca-b92e-24e970d69f91",
+          "name": "Create a role",
+          "request": {
+            "name": "Create a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a523fc77-e2bd-40e7-8bee-f933bd4ca5b2",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"1982-04-20T16:34:31.884Z\",\n  \"updated_at\": \"2026-05-03T23:55:24.612Z\",\n  \"created_by\": \"d15144a1-62d3-bee9-1853-6aad3c91bbab\",\n  \"updated_by\": \"6ff15f9e-580d-7090-2ab8-44520f46e267\",\n  \"id\": \"79636841-ddf3-39e1-fef8-f1ab93755517\",\n  \"company_id\": \"7641f686-7e9f-b9ec-559a-1fda40fd24ce\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3131ecb-def6-48b9-83cd-9f74041842df",
+          "name": "Must be Company member -  Search roles",
+          "request": {
+            "name": "Must be Company member -  Search roles",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4d49fa98-29ba-4bd1-b925-e730a239a80d",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"id\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"user.id\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"created_by\": \"<uuid>\",\n      \"updated_by\": \"<uuid>\",\n      \"id\": \"dd9e9b37-9087-5143-4b98-21195b1b02fd\",\n      \"company_id\": \"c579af86-518f-0cff-733e-5376491b2dc6\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"created_by\": \"<uuid>\",\n      \"updated_by\": \"<uuid>\",\n      \"id\": \"1f9a9a7b-ff7c-03d6-dd71-a40dbb9413a5\",\n      \"company_id\": \"57a4d105-78ba-c6ef-9814-330852f72605\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3373cc9-3c48-457c-a639-08b93828312b",
+          "name": "Must be Company member - Get a role",
+          "request": {
+            "name": "Must be Company member - Get a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8475140-eb81-4bbf-89d2-7a3e64664e5e",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_by\": \"<uuid>\",\n  \"updated_by\": \"<uuid>\",\n  \"id\": \"9946f68c-a945-90e5-6b00-7b3d7c766ebc\",\n  \"company_id\": \"e7b398bf-b24a-33d9-6312-387c89b2804d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aa83abc-979f-4d51-885b-f997a619d77d",
+          "name": "Update a role",
+          "request": {
+            "name": "Update a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be575359-77b1-4df2-b4ed-587fb6e79914",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"created_by\": \"<uuid>\",\n  \"updated_by\": \"<uuid>\",\n  \"id\": \"9946f68c-a945-90e5-6b00-7b3d7c766ebc\",\n  \"company_id\": \"e7b398bf-b24a-33d9-6312-387c89b2804d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ac15bde-0f93-4cd5-a70e-60052297c46a",
+          "name": "Delete a role",
+          "request": {
+            "name": "Delete a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9141d355-6427-4de5-b0a0-a3a71cd8f70c",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58d7bd04-2603-412a-be2b-9eac98efe751",
+          "name": "Must be Company member - Show Memberships for a role",
+          "request": {
+            "name": "Must be Company member - Show Memberships for a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f43c5641-7575-4815-9867-c71b88aa9c1e",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"0be6675a-751c-7a53-3370-d8fed6c93d5b\",\n    \"role_id\": \"09079cb7-ee33-6cb3-8fd9-3ed4d8dd430f\",\n    \"user_id\": \"8a4979ce-f2a5-e855-aa64-af0655e526c8\",\n    \"user\": {\n      \"id\": \"e2b6249c-0a50-3b03-2c99-f7b777575349\",\n      \"name\": \"string\",\n      \"email\": \"C7Dw6I1W3m@QQKZCWlzawrtCOcgETzwPwTPpGyJvA.bxsy\"\n    }\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"company_id\": \"2249ca0f-11aa-5a63-86f1-9040e8917eba\",\n    \"role_id\": \"5efe3eca-b804-4a79-9d4e-1f759b6b950f\",\n    \"user_id\": \"efaa2660-f453-d164-8f3c-ff9a2fe93e19\",\n    \"user\": {\n      \"id\": \"2343bf57-4416-1174-7922-acc79202e67f\",\n      \"name\": \"string\",\n      \"email\": \"zkhxM4ptlN1gSZ1@hCtMdIqEaKIfTEBNfOCjwkhtix.ut\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "32f0aedd-71e9-40d8-b402-7f2d7c80430b",
+          "name": "Add a user to a role",
+          "request": {
+            "name": "Add a user to a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "members",
+                ":member_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "member_id",
+                  "description": "(Required) Member ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "832d6f84-75a2-425e-a494-4c3bd12f1255",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "members",
+                    ":member_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "member_id",
+                      "description": "(Required) Member ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0388bd74-c18b-4356-8915-87fd45336d1c",
+          "name": "Remove a user from a role",
+          "request": {
+            "name": "Remove a user from a role",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "members",
+                ":member_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "member_id",
+                  "description": "(Required) Member ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "24c26656-861f-48fd-8e20-cd01b69e5fed",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "members",
+                    ":member_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "member_id",
+                      "description": "(Required) Member ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "152db04f-f4c7-49bf-b596-34dbe30add6f",
+          "name": "Update role permission",
+          "request": {
+            "name": "Update role permission",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"name\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"filter\": \"<object>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"active\": \"<boolean>\",\n    \"filter\": \"<object>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "acc70f41-f5fe-43a6-8e72-193f0fa38814",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    }\n  },\n  {\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    }\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"2a9f2e30-c976-1f6e-101f-88721d11d405\",\n    \"role_id\": \"2133062e-482b-8f9f-3243-be92081f7e18\"\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"98f2fd2d-ebaa-1412-4233-15d32f3ba497\",\n    \"role_id\": \"d1be3b23-c4b4-ad96-7ecd-223e8ff5954f\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2723317a-423a-45f7-a72a-7991799b1957",
+          "name": "Get role permission",
+          "request": {
+            "name": "Get role permission",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7060eca-1f22-4bef-adde-63e66e3da73f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"88e060bb-5b56-5f85-b897-64e40ad10d44\",\n    \"role_id\": \"1e45424b-9e78-ea03-003a-c0e4a8e0877c\"\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"8796bd2a-9022-be0d-e29d-7498b090ce36\",\n    \"role_id\": \"a5ee76ae-0479-95a3-848f-2348a4152653\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da2a7762-1af4-4001-8ac4-797e45f58f60",
+          "name": "Update single permission",
+          "request": {
+            "name": "Update single permission",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "permissions",
+                ":permission_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "permission_name",
+                  "description": "(Required) Permission name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"active\": \"<boolean>\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "09d93c59-f53b-4a28-b362-b52524b65c5c",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "permissions",
+                    ":permission_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "permission_name",
+                      "description": "(Required) Permission name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"active\": \"<boolean>\",\n  \"filter\": {\n    \"$or\": [\n      {\n        \"custom_attributes.region\": \"US\"\n      },\n      {\n        \"name\": {\n          \"$like\": \"Facility 1\"\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"88e060bb-5b56-5f85-b897-64e40ad10d44\",\n    \"role_id\": \"1e45424b-9e78-ea03-003a-c0e4a8e0877c\"\n  },\n  {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"name\": \"facilities:read\",\n    \"active\": \"<boolean>\",\n    \"filter\": {\n      \"$or\": [\n        {\n          \"custom_attributes.region\": \"US\"\n        },\n        {\n          \"name\": {\n            \"$like\": \"Facility 1\"\n          }\n        }\n      ]\n    },\n    \"company_id\": \"8796bd2a-9022-be0d-e29d-7498b090ce36\",\n    \"role_id\": \"a5ee76ae-0479-95a3-848f-2348a4152653\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cc969981-8b80-4fcb-8c95-18d64f9ccf0f",
+          "name": "Remove single permission",
+          "request": {
+            "name": "Remove single permission",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "roles",
+                ":role_id",
+                "permissions",
+                ":permission_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "role_id",
+                  "description": "(Required) Role ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "permission_name",
+                  "description": "(Required) Permission name"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d4d1f33-dbbd-4405-9f5c-aa8c06aa5f9d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "roles",
+                    ":role_id",
+                    "permissions",
+                    ":permission_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "role_id",
+                      "description": "(Required) Role ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "permission_name",
+                      "description": "(Required) Permission name"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "269b0890-bd6e-4a52-bd7b-f9ca07892522",
+    "name": "CarbonHub activities roles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities form_schemas API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "form_schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List form schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/form_schemas",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Form Schema name"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Form Schema status"
+              },
+              {
+                "name": "form_category_id",
+                "value": "",
+                "type": "query",
+                "description": "Form Category ID"
+              },
+              {
+                "name": "form_category_name",
+                "value": "",
+                "type": "query",
+                "description": "Form Category name"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List form schema"
+        },
+        {
+          "info": {
+            "name": "Create a form schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/form_schemas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a form schema"
+        },
+        {
+          "info": {
+            "name": "Get a form schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/form_schemas/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Schema ID"
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "Form Schema Version"
+              }
+            ]
+          },
+          "docs": "Get a form schema"
+        },
+        {
+          "info": {
+            "name": "Update a form schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/form_schemas/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Schema ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a form schema"
+        },
+        {
+          "info": {
+            "name": "List form schema versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/form_schemas/:id/versions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Form Schema ID"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List form schema versions"
+        },
+        {
+          "info": {
+            "name": "Search form schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/form_schemas/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search form schemas"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

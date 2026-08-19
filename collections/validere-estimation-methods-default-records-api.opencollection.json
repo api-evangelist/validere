@@ -1,0 +1,379 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities estimation_methods_default_records API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "estimation_methods_default_records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List the default input records for a given estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List the default input records for a given estimation method"
+        },
+        {
+          "info": {
+            "name": "Create the default input record for a given estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the default input record for a given estimation method"
+        },
+        {
+          "info": {
+            "name": "Update the default input record for a given estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the default input record for a given estimation method"
+        },
+        {
+          "info": {
+            "name": "Delete the default input record for a given estimation method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Delete the default input record for a given estimation method"
+        },
+        {
+          "info": {
+            "name": "List the default input records for a given estimation method and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:target_asset_id",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List the default input records for a given estimation method and target asset"
+        },
+        {
+          "info": {
+            "name": "Get the default input record for a given estimation method and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Get the default input record for a given estimation method and target asset"
+        },
+        {
+          "info": {
+            "name": "Create the default input record for a given estimation method and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the default input record for a given estimation method and target asset"
+        },
+        {
+          "info": {
+            "name": "Update the default input record for a given estimation method and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the default input record for a given estimation method and target asset"
+        },
+        {
+          "info": {
+            "name": "Delete the default input record for a given estimation method and target asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/estimation_methods/:entity_type/:id/default_records/:target_asset_id/:input_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Estimation Method Entity Type"
+              },
+              {
+                "name": "id",
+                "value": "748970de-fd1f-4494-ae3f-47cc21ff205f",
+                "type": "path",
+                "description": "Estimation Method ID"
+              },
+              {
+                "name": "target_asset_id",
+                "value": "",
+                "type": "path",
+                "description": "Target Asset ID"
+              },
+              {
+                "name": "input_name",
+                "value": "",
+                "type": "path",
+                "description": "Input Name"
+              }
+            ]
+          },
+          "docs": "Delete the default input record for a given estimation method and target asset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

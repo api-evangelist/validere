@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities custom_attribute_definition API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "custom_attribute_definition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Attribute Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/custom_attribute_definition/:entity_type",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Supported attribute type for custom attribute"
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              },
+              {
+                "name": "field_name",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in field names"
+              },
+              {
+                "name": "entity_subtype",
+                "value": "",
+                "type": "query",
+                "description": "String to search for in entity subtype"
+              },
+              {
+                "name": "archived",
+                "value": "",
+                "type": "query",
+                "description": "Set true to return archived attribute definitions"
+              }
+            ]
+          },
+          "docs": "List Custom Attribute Definitions"
+        },
+        {
+          "info": {
+            "name": "Create a Custom Attribute Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/custom_attribute_definition/:entity_type",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Supported attribute type for custom attribute"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Custom Attribute Definition"
+        },
+        {
+          "info": {
+            "name": "Update a Custom Attribute Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/custom_attribute_definition/:entity_type/:field_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Supported attribute type for custom attribute"
+              },
+              {
+                "name": "field_name",
+                "value": "attribute_1",
+                "type": "path",
+                "description": "field name identifier for custom attribute"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Custom Attribute Definition"
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Attribute Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/custom_attribute_definition/:entity_type/:field_name",
+            "params": [
+              {
+                "name": "entity_type",
+                "value": "equipment",
+                "type": "path",
+                "description": "Supported attribute type for custom attribute"
+              },
+              {
+                "name": "field_name",
+                "value": "attribute_1",
+                "type": "path",
+                "description": "field name identifier for custom attribute"
+              }
+            ]
+          },
+          "docs": "Delete a Custom Attribute Definition"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

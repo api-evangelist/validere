@@ -1,0 +1,522 @@
+{
+  "item": [
+    {
+      "id": "cf824112-8ceb-4dc1-8221-cfbf71e7149f",
+      "name": "custom_attribute_definition",
+      "description": {
+        "content": "Manage Custom Attribute Definitions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff3bbe57-e821-41bc-891e-c81a73f66203",
+          "name": "List Custom Attribute Definitions",
+          "request": {
+            "name": "List Custom Attribute Definitions",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "custom_attribute_definition",
+                ":entity_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "field_name",
+                  "value": "<string>",
+                  "description": "String to search for in field names"
+                },
+                {
+                  "disabled": false,
+                  "key": "entity_subtype",
+                  "value": "<string>",
+                  "description": "String to search for in entity subtype"
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "<boolean>",
+                  "description": "Set true to return archived attribute definitions"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Supported attribute type for custom attribute"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "396e0c63-2b51-41e7-b556-9f314de12e4b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "custom_attribute_definition",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "field_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "entity_subtype",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Supported attribute type for custom attribute"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"archived\": false,\n      \"company_id\": \"string\",\n      \"data_type\": \"multi-pick-list\",\n      \"description\": \"string\",\n      \"display_name\": \"string\",\n      \"entity_type\": \"equipment\",\n      \"entity_subtype\": \"string\",\n      \"entity_subtypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"field_name\": \"string\",\n      \"is_required\": false,\n      \"lookup_entity_type\": \"asset_group\",\n      \"pick_list_values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"unit\": \"string\"\n    },\n    {\n      \"archived\": false,\n      \"company_id\": \"string\",\n      \"data_type\": \"boolean\",\n      \"description\": \"string\",\n      \"display_name\": \"string\",\n      \"entity_type\": \"equipment\",\n      \"entity_subtype\": \"string\",\n      \"entity_subtypes\": [\n        \"string\",\n        \"string\"\n      ],\n      \"field_name\": \"string\",\n      \"is_required\": true,\n      \"lookup_entity_type\": \"flow\",\n      \"pick_list_values\": [\n        \"string\",\n        \"string\"\n      ],\n      \"unit\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08a15701-e12e-41c6-b809-264d0ad11055",
+          "name": "Create a Custom Attribute Definition",
+          "request": {
+            "name": "Create a Custom Attribute Definition",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "custom_attribute_definition",
+                ":entity_type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Supported attribute type for custom attribute"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data_type\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"field_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_required\": \"<boolean>\",\n  \"lookup_entity_type\": \"<string>\",\n  \"entity_subtype\": \"<string>\",\n  \"entity_subtypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pick_list_values\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unit\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "743cf4c3-d062-4faa-9f90-b50f12107d2a",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "custom_attribute_definition",
+                    ":entity_type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Supported attribute type for custom attribute"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data_type\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"field_name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"is_required\": \"<boolean>\",\n  \"lookup_entity_type\": \"<string>\",\n  \"entity_subtype\": \"<string>\",\n  \"entity_subtypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"pick_list_values\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unit\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"archived\": false,\n  \"company_id\": \"string\",\n  \"data_type\": \"<string>\",\n  \"description\": \"string\",\n  \"display_name\": \"string\",\n  \"entity_type\": \"equipment\",\n  \"entity_subtype\": \"string\",\n  \"entity_subtypes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"field_name\": \"string\",\n  \"is_required\": false,\n  \"lookup_entity_type\": \"<string>\",\n  \"pick_list_values\": [\n    \"string\",\n    \"string\"\n  ],\n  \"unit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f13bf04-ce24-4aff-b5ec-d9247765b9a4",
+          "name": "Delete a Custom Attribute Definition",
+          "request": {
+            "name": "Delete a Custom Attribute Definition",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "custom_attribute_definition",
+                ":entity_type",
+                ":field_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Supported attribute type for custom attribute"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_name",
+                  "description": "(Required) field name identifier for custom attribute"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4d3a176-9e27-4aff-bb8c-c99f19a1c296",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "custom_attribute_definition",
+                    ":entity_type",
+                    ":field_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Supported attribute type for custom attribute"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_name",
+                      "description": "(Required) field name identifier for custom attribute"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff9d14f4-5a19-4980-91d4-e1208d9f5a73",
+          "name": "Update a Custom Attribute Definition",
+          "request": {
+            "name": "Update a Custom Attribute Definition",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "custom_attribute_definition",
+                ":entity_type",
+                ":field_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Supported attribute type for custom attribute"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "field_name",
+                  "description": "(Required) field name identifier for custom attribute"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archived\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"is_required\": \"<boolean>\",\n  \"pick_list_values\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unit\": \"<string>\",\n  \"entity_subtype\": \"<string>\",\n  \"entity_subtypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "449f4fd4-31fe-4af0-afee-5fbaa1947919",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "custom_attribute_definition",
+                    ":entity_type",
+                    ":field_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Supported attribute type for custom attribute"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "field_name",
+                      "description": "(Required) field name identifier for custom attribute"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archived\": \"<boolean>\",\n  \"description\": \"<string>\",\n  \"display_name\": \"<string>\",\n  \"is_required\": \"<boolean>\",\n  \"pick_list_values\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"unit\": \"<string>\",\n  \"entity_subtype\": \"<string>\",\n  \"entity_subtypes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"archived\": false,\n  \"company_id\": \"string\",\n  \"data_type\": \"<string>\",\n  \"description\": \"string\",\n  \"display_name\": \"string\",\n  \"entity_type\": \"equipment\",\n  \"entity_subtype\": \"string\",\n  \"entity_subtypes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"field_name\": \"string\",\n  \"is_required\": false,\n  \"lookup_entity_type\": \"<string>\",\n  \"pick_list_values\": [\n    \"string\",\n    \"string\"\n  ],\n  \"unit\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4adca826-e2ea-4952-b232-2d1b53ca2138",
+    "name": "CarbonHub activities custom_attribute_definition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

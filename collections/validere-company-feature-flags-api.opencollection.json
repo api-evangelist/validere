@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities company_feature_flags API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "company_feature_flags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search all company feature flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/company_feature_flags/search",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search all company feature flags"
+        },
+        {
+          "info": {
+            "name": "Must be Company member - Search company feature flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/company_feature_flags/:company_id/search",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Must be Company member - Search company feature flags"
+        },
+        {
+          "info": {
+            "name": "Create a company feature flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/company_feature_flags/:company_id/:feature_flag_name",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              },
+              {
+                "name": "feature_flag_name",
+                "value": "",
+                "type": "path",
+                "description": "Feature Flag Name (any version)"
+              }
+            ]
+          },
+          "docs": "Create a company feature flag"
+        },
+        {
+          "info": {
+            "name": "Delete a company feature flag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/company_feature_flags/:company_id/:feature_flag_name",
+            "params": [
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              },
+              {
+                "name": "feature_flag_name",
+                "value": "",
+                "type": "path",
+                "description": "Feature Flag Name (any version)"
+              }
+            ]
+          },
+          "docs": "Delete a company feature flag"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

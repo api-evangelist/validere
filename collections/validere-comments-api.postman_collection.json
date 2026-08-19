@@ -1,0 +1,615 @@
+{
+  "item": [
+    {
+      "id": "87a3ef37-13dd-451a-90a5-cc99ff8c47c0",
+      "name": "comments",
+      "description": {
+        "content": "Comments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82200c7b-375d-425b-8814-2732ae75efd8",
+          "name": "Update comment",
+          "request": {
+            "name": "Update comment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "comments",
+                ":comment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "comment_id",
+                  "description": "(Required) Comment ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"files\": [\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    },\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1264ef3b-0d63-486a-b3bc-8000cb0fc7c4",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "comments",
+                    ":comment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "comment_id",
+                      "description": "(Required) Comment ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"files\": [\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    },\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8d773f06-59b6-b649-1355-c394e10a328d\",\n  \"company_id\": \"c1f34707-6c9a-f35a-4928-12e74c82bc85\",\n  \"text\": \"string\",\n  \"created_by\": \"fce02fb8-b121-d864-4545-0552ce09426b\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"commented_at\": \"string\",\n  \"title_context\": \"string\",\n  \"is_deleted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92fa209e-d492-486b-8ec9-32b8e609a6d1",
+          "name": "Delete comment",
+          "request": {
+            "name": "Delete comment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "comments",
+                ":comment_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "comment_id",
+                  "description": "(Required) Comment ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b1c576bf-d3b4-4f76-9103-e09febf6e1a9",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "comments",
+                    ":comment_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "comment_id",
+                      "description": "(Required) Comment ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"8d773f06-59b6-b649-1355-c394e10a328d\",\n  \"company_id\": \"c1f34707-6c9a-f35a-4928-12e74c82bc85\",\n  \"text\": \"string\",\n  \"created_by\": \"fce02fb8-b121-d864-4545-0552ce09426b\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"commented_at\": \"string\",\n  \"title_context\": \"string\",\n  \"is_deleted\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10aef087-c1cc-46a9-ada9-26d0ae5a4658",
+          "name": "List comments for a specific entity",
+          "request": {
+            "name": "List comments for a specific entity",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "comments",
+                ":entity_type",
+                ":entity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additional_identifier",
+                  "value": "<uuid>",
+                  "description": "Additional Identifier"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_before",
+                  "value": "<string>",
+                  "description": "Comment Created Before filter"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "entity_id",
+                  "description": "(Required) Entity ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92ab610d-4979-4319-967d-ff3c2454779c",
+              "name": "Successfully retrieved comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "comments",
+                    ":entity_type",
+                    ":entity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additional_identifier",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "created_before",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "entity_id",
+                      "description": "(Required) Entity ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"73316eee-854b-5423-7d4c-b37ee99ad649\",\n    \"company_id\": \"c831604b-392d-4d9c-9f77-4ecc25c5c6aa\",\n    \"text\": \"string\",\n    \"created_by\": \"c64cb9a4-21d9-9db4-89e6-faf875225ba4\",\n    \"created_at\": \"string\",\n    \"updated_at\": \"string\",\n    \"commented_at\": \"string\",\n    \"files\": [\n      {\n        \"comment_id\": \"b9edf8b7-2f09-1477-a595-28e24dea71b8\",\n        \"file_id\": \"string\",\n        \"file_name\": \"string\",\n        \"created_at\": \"string\"\n      },\n      {\n        \"comment_id\": \"783233a3-aefd-47b5-8778-9afda1ea8cbd\",\n        \"file_id\": \"string\",\n        \"file_name\": \"string\",\n        \"created_at\": \"string\"\n      }\n    ],\n    \"user\": {\n      \"name\": \"string\",\n      \"id\": \"f3fb7d47-4b61-4589-bb91-ceae2bf2a621\"\n    },\n    \"entity_id\": \"79682831-1f56-51a9-6b97-a0baba73ffc0\",\n    \"entity_type\": \"workflow\",\n    \"title_context\": \"string\",\n    \"is_deleted\": false,\n    \"additional_identifier\": \"string\"\n  },\n  {\n    \"id\": \"d4d18ba3-dd31-e574-9f1f-45aef6dbad8e\",\n    \"company_id\": \"124ce8dc-dfa0-18d2-1f7e-6140e86ff11d\",\n    \"text\": \"string\",\n    \"created_by\": \"ac074810-44df-2f10-f14a-df30ac9aa106\",\n    \"created_at\": \"string\",\n    \"updated_at\": \"string\",\n    \"commented_at\": \"string\",\n    \"files\": [\n      {\n        \"comment_id\": \"c20eea1b-0a61-7322-6bc3-382b5ee84dc3\",\n        \"file_id\": \"string\",\n        \"file_name\": \"string\",\n        \"created_at\": \"string\"\n      },\n      {\n        \"comment_id\": \"78f7cb2d-0c24-0fa1-ffa2-e66d88b4197a\",\n        \"file_id\": \"string\",\n        \"file_name\": \"string\",\n        \"created_at\": \"string\"\n      }\n    ],\n    \"user\": {\n      \"name\": \"string\",\n      \"id\": \"f3fb7d47-4b61-4589-bb91-ceae2bf2a621\"\n    },\n    \"entity_id\": \"2e6ff2fb-e474-3ed2-f3b0-5a850acffe97\",\n    \"entity_type\": \"workflow\",\n    \"title_context\": \"string\",\n    \"is_deleted\": false,\n    \"additional_identifier\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec523637-4793-4f1f-b7e1-bbf2e93169b1",
+          "name": "Create comment",
+          "request": {
+            "name": "Create comment",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "comments",
+                ":entity_type",
+                ":entity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additional_identifier",
+                  "value": "<uuid>",
+                  "description": "Additional Identifier"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "entity_id",
+                  "description": "(Required) Entity ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"files\": [\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    },\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    }\n  ],\n  \"title_context\": \"<string>\",\n  \"commented_at\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7015ef10-bbd2-4293-8498-4dc15894b8d7",
+              "name": "Successfully create comment and attach comment to entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "comments",
+                    ":entity_type",
+                    ":entity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additional_identifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "entity_id",
+                      "description": "(Required) Entity ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"files\": [\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    },\n    {\n      \"file_id\": \"<string>\",\n      \"file_name\": \"<string>\"\n    }\n  ],\n  \"title_context\": \"<string>\",\n  \"commented_at\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"17170527-d065-9e68-421e-9c2003752383\",\n  \"company_id\": \"ac329dc2-5aa5-55e8-5e13-a8d35af12358\",\n  \"text\": \"string\",\n  \"created_by\": \"5e78ef01-ce74-97e5-620a-71f0c7009214\",\n  \"created_at\": \"string\",\n  \"updated_at\": \"string\",\n  \"commented_at\": \"string\",\n  \"files\": [\n    {\n      \"comment_id\": \"c9db79ec-5df4-cbf3-deae-36ecfe425cc3\",\n      \"file_id\": \"string\",\n      \"file_name\": \"string\",\n      \"created_at\": \"string\"\n    },\n    {\n      \"comment_id\": \"83dac4c0-2691-a655-a5a5-8ed251fbd669\",\n      \"file_id\": \"string\",\n      \"file_name\": \"string\",\n      \"created_at\": \"string\"\n    }\n  ],\n  \"user\": {\n    \"name\": \"string\",\n    \"id\": \"77f8dca6-6d8b-408e-b08b-4bc39d0df549\"\n  },\n  \"entity_id\": \"c2888e27-609a-8fbe-ac94-78c68b6f2bb6\",\n  \"entity_type\": \"report\",\n  \"title_context\": \"string\",\n  \"is_deleted\": false,\n  \"additional_identifier\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e97583a2-94c7-44ff-8e7c-4f62738ed2c3",
+          "name": "Count comments",
+          "request": {
+            "name": "Count comments",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "comments",
+                "count",
+                ":entity_type",
+                ":entity_ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "additional_identifier",
+                  "value": "<uuid>",
+                  "description": "Additional Identifier"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entity_type",
+                  "description": "(Required) Entity Type"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>,<uuid>",
+                  "key": "entity_ids",
+                  "description": "(Required) Entity IDs"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b9aa5ce-a3a8-4f40-9907-7b17458af83a",
+              "name": "Successfully retrieved comment count",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "comments",
+                    "count",
+                    ":entity_type",
+                    ":entity_ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "additional_identifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entity_type",
+                      "description": "(Required) Entity Type"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>,<uuid>",
+                      "key": "entity_ids",
+                      "description": "(Required) Entity IDs"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"entity_id\": \"f07e9858-a6a7-f87e-d25e-d4e83d25e43a\",\n    \"entity_type\": \"report\",\n    \"count\": 4192.634786371843,\n    \"additional_identifier\": \"string\"\n  },\n  {\n    \"entity_id\": \"b739837e-6ef7-75e0-00e5-c31005201df5\",\n    \"entity_type\": \"asset\",\n    \"count\": 137.34718554970325,\n    \"additional_identifier\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d023bfb4-b850-4680-8e6f-b7f549e9250f",
+    "name": "CarbonHub activities comments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

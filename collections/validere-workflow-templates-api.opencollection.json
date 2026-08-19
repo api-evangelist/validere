@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities workflow_templates API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workflow_templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Workflow Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/workflow_templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Workflow Template"
+        },
+        {
+          "info": {
+            "name": "Search Workflow Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/workflow_templates/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search Workflow Templates"
+        },
+        {
+          "info": {
+            "name": "Get a workflow template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/workflow_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Template ID"
+              }
+            ]
+          },
+          "docs": "Get a workflow template"
+        },
+        {
+          "info": {
+            "name": "Update a workflow template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/workflow_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Template ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a workflow template"
+        },
+        {
+          "info": {
+            "name": "Delete a workflow template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/workflow_templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Workflow Template ID"
+              }
+            ]
+          },
+          "docs": "Delete a workflow template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

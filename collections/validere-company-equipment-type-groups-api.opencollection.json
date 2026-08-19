@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities company_equipment_type_groups API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "company_equipment_type_groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List company equipment type groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/company_equipment_type_groups",
+            "params": [
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "query",
+                "description": "equipment type group name"
+              },
+              {
+                "name": "sort_by",
+                "value": "",
+                "type": "query",
+                "description": "sort by"
+              },
+              {
+                "name": "sort_direction",
+                "value": "desc",
+                "type": "query",
+                "description": "sort direction"
+              }
+            ]
+          },
+          "docs": "List company equipment type groups"
+        },
+        {
+          "info": {
+            "name": "Create an association between a company and equipment type group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/company_equipment_type_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an association between a company and equipment type group"
+        },
+        {
+          "info": {
+            "name": "Get company equipment type group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/company_equipment_type_groups/:group_name",
+            "params": [
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of an equipment type group"
+              }
+            ]
+          },
+          "docs": "Get company equipment type group"
+        },
+        {
+          "info": {
+            "name": "Delete a company equipment type group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/company_equipment_type_groups/:group_name",
+            "params": [
+              {
+                "name": "group_name",
+                "value": "",
+                "type": "path",
+                "description": "Name of an equipment type group"
+              }
+            ]
+          },
+          "docs": "Delete a company equipment type group"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

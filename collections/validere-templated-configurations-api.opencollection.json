@@ -1,0 +1,288 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities templated_configurations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "templated_configurations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a templated configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ]
+          },
+          "docs": "Get a templated configuration"
+        },
+        {
+          "info": {
+            "name": "Generate an input schema for a templated configuration, enriched with entity subtype specific custom attributes if applicable.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/input_schema",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an input schema for a templated configuration, enriched with entity subtype specific custom attributes if applicable."
+        },
+        {
+          "info": {
+            "name": "Search templated configurations [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/search",
+            "params": [
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query",
+                "description": "Tenant ID for admin users"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search templated configurations [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Search for the templated configurations available to the company of the requesting user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/search_company",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search for the templated configurations available to the company of the requesting user"
+        },
+        {
+          "info": {
+            "name": "Make a templated configuration available to a company [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/company/:company_id",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ]
+          },
+          "docs": "Make a templated configuration available to a company [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Remove a templated configuration from a company [System Admin]",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/company/:company_id",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              },
+              {
+                "name": "company_id",
+                "value": "",
+                "type": "path",
+                "description": "Company ID"
+              }
+            ]
+          },
+          "docs": "Remove a templated configuration from a company [System Admin]"
+        },
+        {
+          "info": {
+            "name": "Create a templated configuration run",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/runs",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a templated configuration run"
+        },
+        {
+          "info": {
+            "name": "Get a templated configuration run",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/runs/:run_id",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Run ID"
+              }
+            ]
+          },
+          "docs": "Get a templated configuration run"
+        },
+        {
+          "info": {
+            "name": "Update a templated configuration run",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/runs/:run_id",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              },
+              {
+                "name": "run_id",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Run ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a templated configuration run"
+        },
+        {
+          "info": {
+            "name": "Search templated configuration runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/runs/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search templated configuration runs"
+        },
+        {
+          "info": {
+            "name": "Export templated configuration runs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/templated_configurations/:templated_configuration_name/runs/export",
+            "params": [
+              {
+                "name": "templated_configuration_name",
+                "value": "",
+                "type": "path",
+                "description": "Templated Configuration Name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Export templated configuration runs"
+        },
+        {
+          "info": {
+            "name": "Get templated configuration run dependency graph from a resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/templated_configurations/runs/resources/:resource_id/dependency_graph",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "",
+                "type": "path",
+                "description": "Resource ID"
+              }
+            ]
+          },
+          "docs": "Get templated configuration run dependency graph from a resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

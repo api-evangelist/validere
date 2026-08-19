@@ -1,0 +1,1254 @@
+{
+  "item": [
+    {
+      "id": "53ba40ab-73d0-4fed-9fb8-3a7a3b212ffc",
+      "name": "devices",
+      "description": {
+        "content": "Manage Devices",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "852b4bb9-8dc3-42b6-b5e3-f83aa1dc5db5",
+          "name": "List devices",
+          "request": {
+            "name": "List devices",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "active",
+                  "description": "Device status"
+                },
+                {
+                  "disabled": false,
+                  "key": "type_id",
+                  "value": "<string>",
+                  "description": "Device type"
+                },
+                {
+                  "disabled": false,
+                  "key": "facility_id",
+                  "value": "<uuid>",
+                  "description": "Facility ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "device_name",
+                  "value": "<string>",
+                  "description": "Search for devices with a name containing this string"
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "String to search for in facility names"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0d6ee3c7-ef09-4ea6-9ab7-5b51888311c9",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "active"
+                    },
+                    {
+                      "key": "type_id",
+                      "value": "emissions_monitor"
+                    },
+                    {
+                      "key": "facility_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "device_name",
+                      "value": "My Device Name"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"created_at\": \"2001-11-27T21:47:36.782Z\",\n      \"updated_at\": \"2017-07-15T15:54:25.426Z\",\n      \"created_by\": \"e0a5fb27-117c-a6f6-2dcf-30054d3fd21f\",\n      \"updated_by\": \"159b788a-4b21-a07d-bd6a-04a388df3638\",\n      \"attributes\": {\n        \"height\": 10,\n        \"location\": [\n          43.65107,\n          -79.347015\n        ],\n        \"provider\": \"provider\"\n      },\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"facility_id\": \"2c0505cb-dabb-7ba3-2dbf-4951494f3957\",\n      \"id\": \"926b6144-5d88-2bd4-7926-8a47fdfd6df2\",\n      \"measurement_types\": [\n        \"volume\",\n        \"volume\"\n      ],\n      \"name\": \"string\",\n      \"status\": \"active\",\n      \"type_id\": \"string\"\n    },\n    {\n      \"created_at\": \"1987-05-17T22:06:31.379Z\",\n      \"updated_at\": \"1962-12-21T05:29:37.981Z\",\n      \"created_by\": \"dd9c8820-1a62-4c28-b645-ab7e360e9539\",\n      \"updated_by\": \"4a784a26-f3a7-2ec2-7306-af1f7c9a91d1\",\n      \"attributes\": {\n        \"height\": 10,\n        \"location\": [\n          43.65107,\n          -79.347015\n        ],\n        \"provider\": \"provider\"\n      },\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"facility_id\": \"ce6fe69c-cc2b-beb8-f147-009ec73bb579\",\n      \"id\": \"8460748b-b5c6-76d7-96fb-a3f58c610f50\",\n      \"measurement_types\": [\n        \"volume\",\n        \"volume\"\n      ],\n      \"name\": \"string\",\n      \"status\": \"active\",\n      \"type_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d0824c2-c727-423c-9952-b07c9ee6274d",
+          "name": "Create a Device",
+          "request": {
+            "name": "Create a Device",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0be823e8-34a8-4719-b0f4-f19a59b581dd",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"measurement_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"status\": \"active\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"facility_id\": \"1ca1117d-f2d6-47f5-ae3a-aa1025073717\",\n  \"type_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"units\": \"string\",\n  \"value\": \"string\",\n  \"created_at\": \"1949-02-10T04:03:32.426Z\",\n  \"updated_at\": \"2017-04-29T22:46:46.739Z\",\n  \"created_by\": \"21498c68-3710-8b8d-dee3-82a9cae99009\",\n  \"updated_by\": \"624f1e10-1e10-7446-6db7-eeba66ad1472\",\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"facility_id\": \"a85e34bd-590b-5788-8b31-65c05a7df068\",\n  \"id\": \"ac81094c-ead4-fac4-b536-fce8557f825b\",\n  \"measurement_types\": [\n    \"volume\",\n    \"volume\"\n  ],\n  \"status\": \"active\",\n  \"type_id\": \"string\",\n  \"measurement_series\": [\n    {\n      \"description\": \"string\",\n      \"id\": \"2490fc1a-0ebd-d506-02e1-11a555d15200\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    },\n    {\n      \"description\": \"string\",\n      \"id\": \"328d4aba-0bba-bb83-7bf7-d65d5784a1c5\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e754f05a-7f07-4398-b7e0-a0549d13c5b8",
+          "name": "List Filter",
+          "request": {
+            "name": "List Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79d227d0-a04f-4808-871f-b7da9ecb01c5",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"7b8cdc27-3fa6-4895-0140-a198d226e257\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"facility.name\": \"WellSite1\"\n          }\n        ],\n        \"custom_attributes.hint\": \"View schema for all supported fields\",\n        \"custom_attributes.operator\": \"bob\",\n        \"name\": {\n          \"$like\": \"wind\"\n        }\n      },\n      \"entity_type\": \"device\"\n    },\n    {\n      \"id\": \"c96fb6f8-d6f9-1545-efb3-d0841985e7d8\",\n      \"filter\": {\n        \"$or\": [\n          {\n            \"facility.name\": \"WellSite1\"\n          }\n        ],\n        \"custom_attributes.hint\": \"View schema for all supported fields\",\n        \"custom_attributes.operator\": \"bob\",\n        \"name\": {\n          \"$like\": \"wind\"\n        }\n      },\n      \"entity_type\": \"device\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5b293d42-8e3c-4c84-b2b1-992f2cfa5980",
+          "name": "Create Filter",
+          "request": {
+            "name": "Create Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "filters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e512153-3bbe-45b6-a07c-a6af6e5ba141",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "filters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5302b8df-963d-8a35-8893-3824461a47eb\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  },\n  \"entity_type\": \"device\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8426633f-fc18-40f3-a56a-b6c8b8729f1a",
+          "name": "Delete Filter",
+          "request": {
+            "name": "Delete Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51230b17-55a7-4547-b767-06868065d165",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7a2bbbd-ac79-41c8-be0d-7aca1b78632e",
+          "name": "Update Filter",
+          "request": {
+            "name": "Update Filter",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "filters",
+                ":filter_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "filter_id",
+                  "description": "(Required) Filter ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a70492c4-21e3-43fe-a5f6-5ac042dff28f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "filters",
+                    ":filter_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "filter_id",
+                      "description": "(Required) Filter ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5302b8df-963d-8a35-8893-3824461a47eb\",\n  \"name\": \"My first filter\",\n  \"status\": \"<string>\",\n  \"tag\": \"<string>\",\n  \"metadata\": [\n    {\n      \"key\": \"calculator_configuration.year_month\",\n      \"isSelected\": true\n    },\n    {\n      \"key\": \"flow.type\",\n      \"isSelected\": false\n    }\n  ],\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  },\n  \"entity_type\": \"device\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae3fd23d-bddf-484a-839d-05f7f7659710",
+          "name": "Search Devices",
+          "request": {
+            "name": "Search Devices",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6728a5df-6aea-4c99-86e0-1893c05af800",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"created_at\": \"1982-08-15T18:11:38.003Z\",\n      \"updated_at\": \"2012-09-17T15:15:45.338Z\",\n      \"created_by\": \"adb7b9bb-c04b-8e27-d14a-2edf9f0bc7f8\",\n      \"updated_by\": \"e769828b-fcc6-e143-f28a-8f03c47a6d3e\",\n      \"attributes\": {\n        \"height\": 10,\n        \"location\": [\n          43.65107,\n          -79.347015\n        ],\n        \"provider\": \"provider\"\n      },\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"facility_id\": \"19ca95a0-ca57-5013-7790-bc89bc138fd3\",\n      \"id\": \"a7a48860-e537-f0b1-e2cb-48b392bbe2bf\",\n      \"measurement_types\": [\n        \"volume\",\n        \"volume\"\n      ],\n      \"name\": \"string\",\n      \"status\": \"active\",\n      \"type_id\": \"string\"\n    },\n    {\n      \"created_at\": \"1951-07-06T21:39:03.976Z\",\n      \"updated_at\": \"2006-06-04T03:00:44.926Z\",\n      \"created_by\": \"6d35111d-a42e-2556-0810-97d89c568563\",\n      \"updated_by\": \"a80eb715-bb41-8b8d-a68b-e14a39f55192\",\n      \"attributes\": {\n        \"height\": 10,\n        \"location\": [\n          43.65107,\n          -79.347015\n        ],\n        \"provider\": \"provider\"\n      },\n      \"custom_attributes\": {\n        \"attribute1\": 12345,\n        \"attribute2\": \"value1\"\n      },\n      \"facility\": {\n        \"name\": \"Facility 1\"\n      },\n      \"facility_id\": \"f30370e1-8f9a-f2d6-a287-ccc4f7161045\",\n      \"id\": \"b14392f1-4d01-e438-f208-3ca18d6c5797\",\n      \"measurement_types\": [\n        \"volume\",\n        \"volume\"\n      ],\n      \"name\": \"string\",\n      \"status\": \"active\",\n      \"type_id\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e80a1a3-c65e-4460-832a-2401f3831b0e",
+          "name": "Export devices",
+          "request": {
+            "name": "Export devices",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80411219-659b-4fc2-9f38-cabb94567d3f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"facility.custom_attributes\": \"<object>\",\n    \"facility.id\": \"<string>\",\n    \"facility.name\": \"<string>\",\n    \"facility.status\": \"<string>\",\n    \"attributes\": \"<object>\",\n    \"custom_attributes\": \"<object>\",\n    \"id\": \"<string>\",\n    \"measurement_types\": \"<string>\",\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"type_id\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"event.id\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7de7840c-5710-99b3-2780-3093fc4a018b\",\n  \"name\": \"string\",\n  \"company_id\": \"45e0b389-605b-a0e7-4186-9dad5b388296\",\n  \"status\": \"exporting\",\n  \"created_at\": \"2022-09-03T12:52:22.550Z\",\n  \"updated_at\": \"2013-08-20T16:07:48.972Z\",\n  \"created_by\": \"3a7f6314-3b34-897d-e69e-157866a714be\",\n  \"updated_by\": \"1c4845ab-9c30-7bc4-12a2-0db9d283ba4f\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"Fj9Dy\",\n    \"display_name\": \"string\",\n    \"created_at\": \"1955-11-24T11:35:23.559Z\",\n    \"updated_at\": \"1986-05-18T06:02:28.801Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"Lg4ZAla1q\",\n        \"vf6n0\"\n      ],\n      \"key_1\": [\n        \"5wIU\",\n        \"aWxA7ALdHH\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"fJfJ\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0d67cd7-c23b-415f-a91e-c2fbc639a762",
+          "name": "Delete a Device",
+          "request": {
+            "name": "Delete a Device",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                ":device_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "device_id",
+                  "description": "(Required) Id of device"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db5fff0f-be63-42a5-a6ae-4dc6ccf4d342",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    ":device_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "device_id",
+                      "description": "(Required) Id of device"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "926893e6-c87d-49a3-a9e7-bc1f319319ac",
+          "name": "Get a Device by ID",
+          "request": {
+            "name": "Get a Device by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                ":device_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<string>",
+                  "description": "year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "device_id",
+                  "description": "(Required) Id of device"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7deca11-0031-487b-affc-ac5f780f2afa",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    ":device_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "period",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "device_id",
+                      "description": "(Required) Id of device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"units\": \"string\",\n  \"value\": \"string\",\n  \"created_at\": \"1989-02-01T03:30:21.157Z\",\n  \"updated_at\": \"2005-04-25T03:58:41.121Z\",\n  \"created_by\": \"4d16836c-d792-e2b0-d698-54c1006b5b4f\",\n  \"updated_by\": \"319e4b59-9cb7-4221-3bfe-ba00ae6a7c3a\",\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"facility_id\": \"49a3701b-0e16-5cb7-c886-f33769c42458\",\n  \"id\": \"df6087bf-eb4a-7268-0124-8b1b47d6e7c9\",\n  \"measurement_types\": [\n    \"volume\",\n    \"volume\"\n  ],\n  \"status\": \"active\",\n  \"type_id\": \"string\",\n  \"measurement_series\": [\n    {\n      \"description\": \"string\",\n      \"id\": \"e4a556e3-d93b-37e9-a9fc-2045f4f9a793\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    },\n    {\n      \"description\": \"string\",\n      \"id\": \"475d0871-5e7c-7087-2be1-7681dbb7bd0b\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10a5ebf5-b956-41e5-9406-e03a05f0fb34",
+          "name": "Update a Device",
+          "request": {
+            "name": "Update a Device",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                ":device_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "device_id",
+                  "description": "(Required) Id of device"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a257515-d3ba-4a5f-b4cd-984a70903404",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    ":device_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "device_id",
+                      "description": "(Required) Id of device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"measurement_types\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"name\": \"<string>\",\n  \"status\": \"active\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"units\": \"string\",\n  \"value\": \"string\",\n  \"created_at\": \"1989-02-01T03:30:21.157Z\",\n  \"updated_at\": \"2005-04-25T03:58:41.121Z\",\n  \"created_by\": \"4d16836c-d792-e2b0-d698-54c1006b5b4f\",\n  \"updated_by\": \"319e4b59-9cb7-4221-3bfe-ba00ae6a7c3a\",\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"facility_id\": \"49a3701b-0e16-5cb7-c886-f33769c42458\",\n  \"id\": \"df6087bf-eb4a-7268-0124-8b1b47d6e7c9\",\n  \"measurement_types\": [\n    \"volume\",\n    \"volume\"\n  ],\n  \"status\": \"active\",\n  \"type_id\": \"string\",\n  \"measurement_series\": [\n    {\n      \"description\": \"string\",\n      \"id\": \"e4a556e3-d93b-37e9-a9fc-2045f4f9a793\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    },\n    {\n      \"description\": \"string\",\n      \"id\": \"475d0871-5e7c-7087-2be1-7681dbb7bd0b\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "976d0caa-4172-4609-b267-c721ca2e6f27",
+          "name": "Archive a Device",
+          "request": {
+            "name": "Archive a Device",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "devices",
+                ":device_id",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "device_id",
+                  "description": "(Required) Id of device"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9f3c161-cbc6-43d0-957f-a0e018afd7ba",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "devices",
+                    ":device_id",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "device_id",
+                      "description": "(Required) Id of device"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"string\",\n  \"name\": \"string\",\n  \"units\": \"string\",\n  \"value\": \"string\",\n  \"created_at\": \"1989-02-01T03:30:21.157Z\",\n  \"updated_at\": \"2005-04-25T03:58:41.121Z\",\n  \"created_by\": \"4d16836c-d792-e2b0-d698-54c1006b5b4f\",\n  \"updated_by\": \"319e4b59-9cb7-4221-3bfe-ba00ae6a7c3a\",\n  \"attributes\": {\n    \"height\": 10,\n    \"location\": [\n      43.65107,\n      -79.347015\n    ],\n    \"provider\": \"provider\"\n  },\n  \"custom_attributes\": {\n    \"attribute1\": 12345,\n    \"attribute2\": \"value1\"\n  },\n  \"facility\": {\n    \"name\": \"Facility 1\"\n  },\n  \"facility_id\": \"49a3701b-0e16-5cb7-c886-f33769c42458\",\n  \"id\": \"df6087bf-eb4a-7268-0124-8b1b47d6e7c9\",\n  \"measurement_types\": [\n    \"volume\",\n    \"volume\"\n  ],\n  \"status\": \"active\",\n  \"type_id\": \"string\",\n  \"measurement_series\": [\n    {\n      \"description\": \"string\",\n      \"id\": \"e4a556e3-d93b-37e9-a9fc-2045f4f9a793\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    },\n    {\n      \"description\": \"string\",\n      \"id\": \"475d0871-5e7c-7087-2be1-7681dbb7bd0b\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a52d759f-9be3-44ee-b725-e546cb0bf45d",
+    "name": "CarbonHub activities devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

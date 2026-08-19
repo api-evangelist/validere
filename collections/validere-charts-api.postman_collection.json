@@ -1,0 +1,400 @@
+{
+  "item": [
+    {
+      "id": "c12edd7b-ff62-46c2-a390-eea706833a39",
+      "name": "charts",
+      "description": {
+        "content": "Charts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42228a90-695a-41b2-91b5-4eae9a7538f0",
+          "name": "Create a chart",
+          "request": {
+            "name": "Create a chart",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "charts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dashboard_id\": \"<uuid>\",\n  \"json\": \"<object>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a8af8794-b233-4de4-8874-10ba3a978670",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "charts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"dashboard_id\": \"<uuid>\",\n  \"json\": \"<object>\",\n  \"name\": \"Chart #1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1993-02-10T21:26:19.904Z\",\n  \"created_by\": \"93fd8fba-06cc-e0a0-c2aa-0f520406e21d\",\n  \"dashboard_id\": \"c4ff031e-55d8-9ce7-e4f0-c19dd03f8759\",\n  \"id\": \"4e577b12-c3e7-e807-4ed7-874961c9bbbd\",\n  \"json\": {},\n  \"name\": \"string\",\n  \"updated_at\": \"2025-10-28T03:09:29.131Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a22754af-7802-48e6-b521-ca111f031b8a",
+          "name": "Delete a chart",
+          "request": {
+            "name": "Delete a chart",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "charts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Chart ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7aaf2098-4055-40bd-8b4c-3909848e0995",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "charts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Chart ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a297b17-bf36-4ef9-aafb-765b8d16b5f2",
+          "name": "Get a chart",
+          "request": {
+            "name": "Get a chart",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "charts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Chart ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f36fcc5-2691-4f1a-9286-c111ccb7c7dd",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "charts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Chart ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1993-02-10T21:26:19.904Z\",\n  \"created_by\": \"93fd8fba-06cc-e0a0-c2aa-0f520406e21d\",\n  \"dashboard_id\": \"c4ff031e-55d8-9ce7-e4f0-c19dd03f8759\",\n  \"id\": \"4e577b12-c3e7-e807-4ed7-874961c9bbbd\",\n  \"json\": {},\n  \"name\": \"string\",\n  \"updated_at\": \"2025-10-28T03:09:29.131Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a5cce9-8441-4774-beed-46d0200ad369",
+          "name": "Update a Chart",
+          "request": {
+            "name": "Update a Chart",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "charts",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Chart ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"json\": \"<object>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "42b80f41-84a1-4344-afe7-a1cbc415571b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "charts",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Chart ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"json\": \"<object>\",\n  \"name\": \"Chart #1\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created_at\": \"1993-02-10T21:26:19.904Z\",\n  \"created_by\": \"93fd8fba-06cc-e0a0-c2aa-0f520406e21d\",\n  \"dashboard_id\": \"c4ff031e-55d8-9ce7-e4f0-c19dd03f8759\",\n  \"id\": \"4e577b12-c3e7-e807-4ed7-874961c9bbbd\",\n  \"json\": {},\n  \"name\": \"string\",\n  \"updated_at\": \"2025-10-28T03:09:29.131Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6e3fad2e-d36b-4c5a-b153-5815d26ca545",
+    "name": "CarbonHub activities charts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

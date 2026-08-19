@@ -1,0 +1,553 @@
+{
+  "item": [
+    {
+      "id": "8636d900-52db-4514-9eb9-4f45123f0909",
+      "name": "form_categories",
+      "description": {
+        "content": "Form Categories",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "91ff0ecb-a91c-4490-9a3f-73fd4e5e4568",
+          "name": "List form categories",
+          "request": {
+            "name": "List form categories",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "form_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Form Category name"
+                },
+                {
+                  "disabled": false,
+                  "key": "archived",
+                  "value": "false",
+                  "description": "Form Category archived"
+                },
+                {
+                  "disabled": false,
+                  "key": "related_entity_id",
+                  "value": "<uuid>",
+                  "description": "device id or facility id or equipment id"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_type",
+                  "value": "<string>",
+                  "description": "Measurement type of the measurements being retrieved"
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6df7a378-9cbf-41b3-9ec6-749957f0f0af",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "form_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "archived",
+                      "value": "false"
+                    },
+                    {
+                      "key": "related_entity_id",
+                      "value": "748970de-fd1f-4494-ae3f-47cc21ff205f"
+                    },
+                    {
+                      "key": "measurement_type",
+                      "value": "volume"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"archived\": true,\n      \"company_id\": \"85710ff1-6299-1f21-4bc0-7c7cd3105195\",\n      \"created_at\": \"1960-10-26T11:59:55.702Z\",\n      \"id\": \"f8810d3c-5a9c-fc53-e9db-83dc3ffd4094\",\n      \"name\": \"string\",\n      \"updated_at\": \"1959-02-11T11:01:30.623Z\"\n    },\n    {\n      \"archived\": false,\n      \"company_id\": \"3c216054-15ad-22a0-2752-877bd4d5dc5e\",\n      \"created_at\": \"1970-07-10T16:58:18.242Z\",\n      \"id\": \"a5aaa355-f8eb-61cd-5fb8-05158fbad332\",\n      \"name\": \"string\",\n      \"updated_at\": \"1955-06-25T22:18:32.812Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0bdec44-fa02-40e7-a36b-dea4ebe0284d",
+          "name": "Create a form category",
+          "request": {
+            "name": "Create a form category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "form_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archived\": false,\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfe64860-708d-49c0-a20c-9e30fb3e8442",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "form_categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archived\": false,\n  \"name\": \"Truck Tickets\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"archived\": true,\n  \"company_id\": \"4995c7c2-8573-70e6-f05e-2cc0d4f52aa0\",\n  \"created_at\": \"1979-12-30T01:43:19.491Z\",\n  \"id\": \"df0f1233-2239-3848-1c32-2eabcb5bd0d7\",\n  \"name\": \"string\",\n  \"updated_at\": \"1960-10-06T15:31:20.417Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d3601e1-d976-42d7-a760-e8b7ada6f1f8",
+          "name": "Delete a form category",
+          "request": {
+            "name": "Delete a form category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "form_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Form Category ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba2d0a63-a1de-4d2c-a61e-6ab645f93c1d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "form_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Form Category ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4002a6da-f26e-4d11-9474-53864ca790e8",
+          "name": "Get a form category",
+          "request": {
+            "name": "Get a form category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "form_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Form Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f637028-526f-451f-a7d6-066b2f781d52",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "form_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Form Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"archived\": true,\n  \"company_id\": \"4995c7c2-8573-70e6-f05e-2cc0d4f52aa0\",\n  \"created_at\": \"1979-12-30T01:43:19.491Z\",\n  \"id\": \"df0f1233-2239-3848-1c32-2eabcb5bd0d7\",\n  \"name\": \"string\",\n  \"updated_at\": \"1960-10-06T15:31:20.417Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "568da299-a419-4942-94a6-f45752ad0967",
+          "name": "Update a form category",
+          "request": {
+            "name": "Update a form category",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "form_categories",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) Form Category ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"archived\": \"<boolean>\",\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "73ab550e-ade9-44e7-928f-f6f31b221621",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "form_categories",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) Form Category ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"archived\": \"<boolean>\",\n  \"name\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"archived\": true,\n  \"company_id\": \"4995c7c2-8573-70e6-f05e-2cc0d4f52aa0\",\n  \"created_at\": \"1979-12-30T01:43:19.491Z\",\n  \"id\": \"df0f1233-2239-3848-1c32-2eabcb5bd0d7\",\n  \"name\": \"string\",\n  \"updated_at\": \"1960-10-06T15:31:20.417Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4ea527e5-4926-49d0-a7f6-31571e00a38d",
+    "name": "CarbonHub activities form_categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

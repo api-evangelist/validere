@@ -1,0 +1,101 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities default_record_value_configuration API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "default_record_value_configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Upsert a default record value configuration for an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/default_record_value_configurations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert a default record value configuration for an asset"
+        },
+        {
+          "info": {
+            "name": "Apply default record value configurations for a set of year months",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/default_record_value_configurations/apply",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Apply default record value configurations for a set of year months"
+        },
+        {
+          "info": {
+            "name": "Search default record value configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/default_record_value_configurations/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search default record value configurations"
+        },
+        {
+          "info": {
+            "name": "Get a default record value configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/default_record_value_configurations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Default Record Value Configuration ID"
+              }
+            ]
+          },
+          "docs": "Get a default record value configuration"
+        },
+        {
+          "info": {
+            "name": "Delete a default record value configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/default_record_value_configurations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Default Record Value Configuration ID"
+              }
+            ]
+          },
+          "docs": "Delete a default record value configuration"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

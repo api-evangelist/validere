@@ -1,0 +1,103 @@
+{
+  "item": [
+    {
+      "id": "3e91845c-0802-4913-88fb-6a2c6c97efd7",
+      "name": "device_types",
+      "description": {
+        "content": "Manage Device Types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c8c974df-8dcd-408e-bdf5-6eede08534c5",
+          "name": "Get Device Type List",
+          "request": {
+            "name": "Get Device Type List",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "device_types"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff662244-25e5-45a4-a049-2daa48937ef8",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "device_types"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"attributes\": [\n      {\n        \"data_type\": \"integer\",\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"data_type\": \"pick-list\",\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"attributes\": [\n      {\n        \"data_type\": \"integer\",\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\"\n      },\n      {\n        \"data_type\": \"file\",\n        \"description\": \"string\",\n        \"id\": \"string\",\n        \"name\": \"string\"\n      }\n    ],\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5e36b3c8-8f76-4e69-9f25-a592770fa3e7",
+    "name": "CarbonHub activities device_types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

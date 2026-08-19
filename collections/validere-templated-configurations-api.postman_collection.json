@@ -1,0 +1,1287 @@
+{
+  "item": [
+    {
+      "id": "03e655b5-c508-4938-92d7-9e6b01aad1c2",
+      "name": "templated_configurations",
+      "description": {
+        "content": "Templated Configurations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7560776c-191b-44f4-b7dc-9943dc6f7832",
+          "name": "Get a templated configuration",
+          "request": {
+            "name": "Get a templated configuration",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenant_id",
+                  "value": "<string>",
+                  "description": "Tenant ID for admin users"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee5bde9a-96a2-4105-bd64-8a3dab8576f0",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenant_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"WL\",\n  \"display_name\": \"string\",\n  \"primary_resource_type\": \"equipment\",\n  \"other_resource_types\": [\n    \"asset_group\",\n    \"asset_group\"\n  ],\n  \"created_at\": \"2003-06-27T09:15:52.464Z\",\n  \"updated_at\": \"1987-01-13T20:19:05.392Z\",\n  \"configuration\": {\n    \"custom_attribute_configuration\": {\n      \"equipment1\": {\n        \"entity_type\": \"equipment\",\n        \"entity_subtypes\": [\n          \"cal_revamp_compressor\",\n          \"cal_revamp_dehydrator\"\n        ]\n      }\n    }\n  },\n  \"description\": \"string\",\n  \"equipment_types\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "394a8556-6181-42b9-af29-2ec775326419",
+          "name": "Generate an input schema for a templated configuration, enriched with entity subtype specific custom attributes if applicable.",
+          "request": {
+            "name": "Generate an input schema for a templated configuration, enriched with entity subtype specific custom attributes if applicable.",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "input_schema"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_attribute_configuration\": {\n    \"key_0\": {\n      \"entity_subtype\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24bfe2d3-50b9-496f-a04e-b63661f8e263",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "input_schema"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_attribute_configuration\": {\n    \"equipment1\": {\n      \"entity_subtype\": \"compressor\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"inputs\": {\n    \"equipment_name\": {\n      \"display_name\": \"Equipment Name\",\n      \"description\": \"The name of the equipment\",\n      \"data_type\": \"string\",\n      \"is_required\": true\n    },\n    \"facility_id\": {\n      \"display_name\": \"ID of Facility\",\n      \"description\": \"The id of the facility\",\n      \"data_type\": \"string\",\n      \"is_required\": true\n    }\n  },\n  \"custom_attribute_inputs\": {\n    \"equipment1\": {\n      \"equipment_ca1\": {\n        \"company_id\": \"11cb1b81-bcc1-4663-a58d-4b6a637a98f5\",\n        \"data_type\": \"string\",\n        \"field_name\": \"equipment_ca1\",\n        \"description\": \"This is a custom attribute\",\n        \"entity_type\": \"equipment\",\n        \"entity_subtypes\": [\n          \"cal_revamp_compressor\"\n        ],\n        \"display_name\": \"My Custom Attribute\",\n        \"archived\": false,\n        \"is_required\": true\n      }\n    },\n    \"flow1\": {\n      \"flow_ca1\": {\n        \"company_id\": \"11cb1b81-bcc1-4663-a58d-4b6a637a98f5\",\n        \"data_type\": \"string\",\n        \"field_name\": \"flow_ca1\",\n        \"description\": \"This is a custom attribute\",\n        \"entity_type\": \"flow\",\n        \"display_name\": \"My Custom Attribute\",\n        \"archived\": false,\n        \"is_required\": true\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f60f3d21-c526-4098-8b12-531ddbcec099",
+          "name": "Search templated configurations [System Admin]",
+          "request": {
+            "name": "Search templated configurations [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tenant_id",
+                  "value": "<string>",
+                  "description": "Tenant ID for admin users"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5a4f4b26-6d6b-4e90-b8f0-14b631ba82c7",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tenant_id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"display_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"equipment_type_id\": \"<string>\",\n    \"primary_resource_type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b27ccb26-8d50-4041-a04b-d8280ff58096",
+          "name": "Search for the templated configurations available to the company of the requesting user",
+          "request": {
+            "name": "Search for the templated configurations available to the company of the requesting user",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                "search_company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "977c04eb-cac6-4035-82dd-2ba00431026e",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    "search_company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\",\n    \"display_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"equipment_type_id\": \"<string>\",\n    \"primary_resource_type\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33351639-0c0e-477a-bfb6-6fe9014555d5",
+          "name": "Make a templated configuration available to a company [System Admin]",
+          "request": {
+            "name": "Make a templated configuration available to a company [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "company",
+                ":company_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf5fbf72-efe3-45bd-aba0-9ff7a4665d15",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "company",
+                    ":company_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c0f828c0-144e-45f6-84be-48bcf54fbbcb",
+          "name": "Remove a templated configuration from a company [System Admin]",
+          "request": {
+            "name": "Remove a templated configuration from a company [System Admin]",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "company",
+                ":company_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fa24a5c7-12a4-42c1-a33e-009010dacb08",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "company",
+                    ":company_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cea5398f-ad4a-473f-b61e-6c3522472c3e",
+          "name": "Create a templated configuration run",
+          "request": {
+            "name": "Create a templated configuration run",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "runs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f313793c-a3a0-4781-96f1-c7d213a34d07",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "runs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  },\n  \"custom_attribute_inputs\": {\n    \"key_0\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\",\n      \"key_2\": \"<number>\",\n      \"key_3\": \"<number>\"\n    },\n    \"key_1\": {\n      \"key_0\": \"<number>\"\n    },\n    \"key_2\": {\n      \"key_0\": \"<number>\"\n    },\n    \"key_3\": {\n      \"key_0\": \"<number>\"\n    }\n  },\n  \"custom_attribute_configuration\": {\n    \"equipment1\": {\n      \"entity_subtype\": \"compressor\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"5f38e064-0c35-e908-476c-59d0c74ae5fc\",\n  \"templated_configuration_name\": \"string\",\n  \"company_id\": \"190c0f5f-c069-4239-4b88-caa6f09fbe30\",\n  \"status\": \"partial\",\n  \"result\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"created_by\": \"91f8497e-7ebe-bfa8-66aa-6f71bc8e2bd9\",\n  \"created_at\": \"2000-03-06T00:05:41.119Z\",\n  \"updated_by\": \"cc50f018-83e0-fc86-1770-7b6b2794c5c8\",\n  \"updated_at\": \"1956-04-28T07:54:21.179Z\",\n  \"resources\": [\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"83d11264-1732-736b-96fc-8200c081648b\",\n      \"status\": \"failed\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"0f3a6ac6-fce4-8b12-3550-e6ca5de5d48b\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": true,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    },\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"4bd914b8-9dc9-9a69-ea74-817790f3548f\",\n      \"status\": \"failed\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"118ee3e1-5ed7-d6c5-60a5-bbe3f0539c11\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": false,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    }\n  ],\n  \"primary_resource\": {\n    \"template_resource_id\": \"equipment1\",\n    \"templated_configuration_run_id\": \"d2bf5286-5608-11db-43da-6f4fe5e482d3\",\n    \"status\": \"submitted\",\n    \"name\": \"Equipment 1\",\n    \"type\": \"<string>\",\n    \"id\": \"d5806fde-142c-3e51-7b18-509cc084c471\",\n    \"errors\": {\n      \"message\": \"Failed to create equipment\",\n      \"detail\": \"Extra error details\"\n    },\n    \"is_primary\": false,\n    \"metadata\": {\n      \"facility_name\": \"My Facility\",\n      \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n      \"dependencies\": [\n        \"equipment1\",\n        \"flow1\"\n      ]\n    }\n  },\n  \"templated_configuration\": {\n    \"name\": \"string\",\n    \"display_name\": \"string\",\n    \"primary_resource_type\": \"<string>\"\n  },\n  \"inputs\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\"\n  },\n  \"custom_attribute_inputs\": {\n    \"key_0\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\",\n      \"key_2\": \"<number>\",\n      \"key_3\": \"<number>\"\n    },\n    \"key_1\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    },\n    \"key_2\": {\n      \"key_0\": \"<number>\"\n    },\n    \"key_3\": {\n      \"key_0\": \"<number>\"\n    }\n  },\n  \"custom_attribute_configuration\": {\n    \"equipment1\": {\n      \"entity_subtype\": \"compressor\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "143ab40b-cd07-4fb9-8d45-ccb6bfcf63d1",
+          "name": "Get a templated configuration run",
+          "request": {
+            "name": "Get a templated configuration run",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "run_id",
+                  "description": "(Required) Templated Configuration Run ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e669a974-0611-4750-b1cb-875ced6810f4",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) Templated Configuration Run ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"33814b36-b19e-fcdd-a7cd-0054d2072eba\",\n  \"templated_configuration_name\": \"string\",\n  \"company_id\": \"4c458b51-2d24-31c8-9f7b-42ab04f94c22\",\n  \"status\": \"partial\",\n  \"result\": {\n    \"key_0\": {}\n  },\n  \"created_by\": \"e048c1b1-184b-2a5a-6e42-a8129ed49d10\",\n  \"created_at\": \"1995-06-14T19:01:42.781Z\",\n  \"updated_by\": \"033ee5a9-aeba-19a3-e837-fde1f21bed5f\",\n  \"updated_at\": \"1991-10-22T19:39:05.865Z\",\n  \"resources\": [\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"b9a8b23b-1db3-6f95-ffd3-a3ed8ccb4954\",\n      \"status\": \"submitted\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"0697c5b5-492f-72aa-0370-11011c1ea120\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": false,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    },\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"32e85c24-59cf-4949-1c23-166c5fc2c345\",\n      \"status\": \"failed\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"0a11f1de-9414-5d02-c7f5-17800ccfcc63\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": true,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    }\n  ],\n  \"primary_resource\": {\n    \"template_resource_id\": \"equipment1\",\n    \"templated_configuration_run_id\": \"fc64a2cc-41c4-95b1-e549-5efb50d7e79d\",\n    \"status\": \"submitted\",\n    \"name\": \"Equipment 1\",\n    \"type\": \"<string>\",\n    \"id\": \"8d1bac82-4fff-3468-c83a-a611c5425d95\",\n    \"errors\": {\n      \"message\": \"Failed to create equipment\",\n      \"detail\": \"Extra error details\"\n    },\n    \"is_primary\": true,\n    \"metadata\": {\n      \"facility_name\": \"My Facility\",\n      \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n      \"dependencies\": [\n        \"equipment1\",\n        \"flow1\"\n      ]\n    }\n  },\n  \"templated_configuration\": {\n    \"name\": \"string\",\n    \"display_name\": \"string\",\n    \"primary_resource_type\": \"<string>\"\n  },\n  \"inputs\": {\n    \"key_0\": \"<number>\"\n  },\n  \"custom_attribute_inputs\": {\n    \"key_0\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    },\n    \"key_1\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    }\n  },\n  \"custom_attribute_configuration\": {\n    \"equipment1\": {\n      \"entity_subtype\": \"compressor\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "227468a8-daad-4a3e-866d-853d5ad5ee36",
+          "name": "Update a templated configuration run",
+          "request": {
+            "name": "Update a templated configuration run",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "runs",
+                ":run_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "run_id",
+                  "description": "(Required) Templated Configuration Run ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "<object>",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65935ac6-7d9e-41bb-800f-a4a8f109f70f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "runs",
+                    ":run_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "run_id",
+                      "description": "(Required) Templated Configuration Run ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\"\n  },\n  \"custom_attribute_inputs\": {\n    \"key_0\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\",\n      \"key_2\": \"<number>\"\n    },\n    \"key_1\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    },\n    \"key_2\": {\n      \"key_0\": \"<number>\"\n    },\n    \"key_3\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"33814b36-b19e-fcdd-a7cd-0054d2072eba\",\n  \"templated_configuration_name\": \"string\",\n  \"company_id\": \"4c458b51-2d24-31c8-9f7b-42ab04f94c22\",\n  \"status\": \"partial\",\n  \"result\": {\n    \"key_0\": {}\n  },\n  \"created_by\": \"e048c1b1-184b-2a5a-6e42-a8129ed49d10\",\n  \"created_at\": \"1995-06-14T19:01:42.781Z\",\n  \"updated_by\": \"033ee5a9-aeba-19a3-e837-fde1f21bed5f\",\n  \"updated_at\": \"1991-10-22T19:39:05.865Z\",\n  \"resources\": [\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"b9a8b23b-1db3-6f95-ffd3-a3ed8ccb4954\",\n      \"status\": \"submitted\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"0697c5b5-492f-72aa-0370-11011c1ea120\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": false,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    },\n    {\n      \"template_resource_id\": \"equipment1\",\n      \"templated_configuration_run_id\": \"32e85c24-59cf-4949-1c23-166c5fc2c345\",\n      \"status\": \"failed\",\n      \"name\": \"Equipment 1\",\n      \"type\": \"<string>\",\n      \"id\": \"0a11f1de-9414-5d02-c7f5-17800ccfcc63\",\n      \"errors\": {\n        \"message\": \"Failed to create equipment\",\n        \"detail\": \"Extra error details\"\n      },\n      \"is_primary\": true,\n      \"metadata\": {\n        \"facility_name\": \"My Facility\",\n        \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n        \"dependencies\": [\n          \"equipment1\",\n          \"flow1\"\n        ]\n      }\n    }\n  ],\n  \"primary_resource\": {\n    \"template_resource_id\": \"equipment1\",\n    \"templated_configuration_run_id\": \"fc64a2cc-41c4-95b1-e549-5efb50d7e79d\",\n    \"status\": \"submitted\",\n    \"name\": \"Equipment 1\",\n    \"type\": \"<string>\",\n    \"id\": \"8d1bac82-4fff-3468-c83a-a611c5425d95\",\n    \"errors\": {\n      \"message\": \"Failed to create equipment\",\n      \"detail\": \"Extra error details\"\n    },\n    \"is_primary\": true,\n    \"metadata\": {\n      \"facility_name\": \"My Facility\",\n      \"facility_id\": \"96d868a3-6eab-4955-8782-bb055f5deafd\",\n      \"dependencies\": [\n        \"equipment1\",\n        \"flow1\"\n      ]\n    }\n  },\n  \"templated_configuration\": {\n    \"name\": \"string\",\n    \"display_name\": \"string\",\n    \"primary_resource_type\": \"<string>\"\n  },\n  \"inputs\": {\n    \"key_0\": \"<number>\"\n  },\n  \"custom_attribute_inputs\": {\n    \"key_0\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    },\n    \"key_1\": {\n      \"key_0\": \"<number>\",\n      \"key_1\": \"<number>\"\n    }\n  },\n  \"custom_attribute_configuration\": {\n    \"equipment1\": {\n      \"entity_subtype\": \"compressor\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8f7afcf9-a13c-4968-8af3-5ed0c6eb84e7",
+          "name": "Search templated configuration runs",
+          "request": {
+            "name": "Search templated configuration runs",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                "runs",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e63877e7-dbf5-480f-a792-3ed89ab97133",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    "runs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"templated_configuration_name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"templated_configuration_name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"resources.template_resource_id\": \"<string>\",\n    \"resources.status\": \"<string>\",\n    \"resources.name\": \"<string>\",\n    \"resources.type\": \"<string>\",\n    \"resources.id\": \"<string>\",\n    \"resources.is_primary\": \"<boolean>\",\n    \"primary_resource.template_resource_id\": \"<string>\",\n    \"primary_resource.status\": \"<string>\",\n    \"primary_resource.name\": \"<string>\",\n    \"primary_resource.type\": \"<string>\",\n    \"primary_resource.id\": \"<string>\",\n    \"primary_resource.is_primary\": \"<boolean>\",\n    \"primary_resource.metadata\": \"<object>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be635eb0-5965-4ccf-979b-93e571f7d249",
+          "name": "Export templated configuration runs",
+          "request": {
+            "name": "Export templated configuration runs",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                ":templated_configuration_name",
+                "runs",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "templated_configuration_name",
+                  "description": "(Required) Templated Configuration Name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82773321-81dd-451e-abe7-f9dfc6d70c33",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    ":templated_configuration_name",
+                    "runs",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "templated_configuration_name",
+                      "description": "(Required) Templated Configuration Name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_by\": \"templated_configuration_name\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"status\": \"<string>\",\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\",\n    \"created_by\": \"<uuid>\",\n    \"updated_by\": \"<uuid>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"40a3eefc-9bac-6225-a3d4-517597107452\",\n  \"name\": \"string\",\n  \"company_id\": \"2cde519b-c6f1-0782-3944-f1b024e6d419\",\n  \"status\": \"exporting\",\n  \"created_at\": \"2010-10-05T02:17:28.880Z\",\n  \"updated_at\": \"1977-04-28T07:42:28.452Z\",\n  \"created_by\": \"24b7623d-bde9-d4a8-3f66-4d34816fd2ac\",\n  \"updated_by\": \"587c420f-8d57-5477-5cf3-58b22988e595\",\n  \"templated_report_name\": \"string\",\n  \"input\": {\n    \"key_0\": {}\n  },\n  \"s3_object_id\": \"string\",\n  \"report_version\": \"string\",\n  \"templated_report\": {\n    \"name\": \"hlhl\",\n    \"display_name\": \"stri\",\n    \"created_at\": \"1979-03-31T16:21:57.213Z\",\n    \"updated_at\": \"2008-09-27T11:57:30.230Z\",\n    \"status\": \"active\",\n    \"input_schema\": {},\n    \"is_embedded\": false,\n    \"use_data_layer_v2\": false,\n    \"description\": \"string\",\n    \"deduplication_columns\": {\n      \"key_0\": [\n        \"ZnZn\",\n        \"YKpivpA\"\n      ],\n      \"key_1\": [\n        \"1RC\",\n        \"3v3v\"\n      ]\n    },\n    \"row_styling_headers\": {\n      \"key_0\": \"6U8gRMXpD7\",\n      \"key_1\": \"Zy5i1zqW\",\n      \"key_2\": \"aFSB6\"\n    }\n  },\n  \"s3_download_link\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9d2b8a-3113-4aeb-8c9e-09e8fbf5d272",
+          "name": "Get templated configuration run dependency graph from a resource",
+          "request": {
+            "name": "Get templated configuration run dependency graph from a resource",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "templated_configurations",
+                "runs",
+                "resources",
+                ":resource_id",
+                "dependency_graph"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource_id",
+                  "description": "(Required) Resource ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d302067-02e7-48e3-82b2-cdda6ee923fa",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "templated_configurations",
+                    "runs",
+                    "resources",
+                    ":resource_id",
+                    "dependency_graph"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource_id",
+                      "description": "(Required) Resource ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"status\": \"partial\",\n  \"created_at\": \"2012-11-27T15:14:11.626Z\",\n  \"updated_by\": \"e8022774-4118-c3d3-122e-ee93b89057cf\",\n  \"updated_at\": \"1999-11-16T10:11:20.116Z\",\n  \"resource_status_counts\": {\n    \"submitted\": 8752.452155492498,\n    \"success\": 3234.4506331874136,\n    \"failed\": 8879.265394514636\n  },\n  \"primary_resource\": {\n    \"id\": \"string\",\n    \"resource_id\": \"string\",\n    \"type\": \"<string>\",\n    \"status\": \"submitted\",\n    \"name\": \"string\",\n    \"associated_resources\": {\n      \"key_0\": [\n        {\n          \"id\": \"string\",\n          \"resource_id\": \"string\",\n          \"type\": \"<string>\",\n          \"status\": \"failed\",\n          \"name\": \"string\",\n          \"associated_resources\": {}\n        },\n        {\n          \"id\": \"string\",\n          \"resource_id\": \"string\",\n          \"type\": \"<string>\",\n          \"status\": \"success\",\n          \"name\": \"string\",\n          \"associated_resources\": {}\n        }\n      ],\n      \"key_1\": [\n        {\n          \"id\": \"string\",\n          \"resource_id\": \"string\",\n          \"type\": \"<string>\",\n          \"status\": \"submitted\",\n          \"name\": \"string\",\n          \"associated_resources\": {}\n        },\n        {\n          \"id\": \"string\",\n          \"resource_id\": \"string\",\n          \"type\": \"<string>\",\n          \"status\": \"submitted\",\n          \"name\": \"string\",\n          \"associated_resources\": {}\n        }\n      ]\n    }\n  },\n  \"additional_resources\": {\n    \"key_0\": [\n      {\n        \"id\": \"string\",\n        \"resource_id\": \"string\",\n        \"type\": \"<string>\",\n        \"status\": \"failed\",\n        \"name\": \"string\",\n        \"associated_resources\": {}\n      },\n      {\n        \"id\": \"string\",\n        \"resource_id\": \"string\",\n        \"type\": \"<string>\",\n        \"status\": \"failed\",\n        \"name\": \"string\",\n        \"associated_resources\": {}\n      }\n    ],\n    \"key_1\": [\n      {\n        \"id\": \"string\",\n        \"resource_id\": \"string\",\n        \"type\": \"<string>\",\n        \"status\": \"success\",\n        \"name\": \"string\",\n        \"associated_resources\": {}\n      },\n      {\n        \"id\": \"string\",\n        \"resource_id\": \"string\",\n        \"type\": \"<string>\",\n        \"status\": \"failed\",\n        \"name\": \"string\",\n        \"associated_resources\": {}\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e346dc4a-7d36-4615-83f8-a8864ec68400",
+    "name": "CarbonHub activities templated_configurations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

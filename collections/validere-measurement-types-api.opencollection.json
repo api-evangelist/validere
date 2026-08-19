@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities measurement_types API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "measurement_types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Measurement Type List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_types",
+            "params": [
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the entity you want to list the measurement types for"
+              }
+            ]
+          },
+          "docs": "Get Measurement Type List"
+        },
+        {
+          "info": {
+            "name": "Get Measurement Type List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v2/measurement_types",
+            "params": [
+              {
+                "name": "subject_id",
+                "value": "",
+                "type": "query",
+                "description": "ID of the entity you want to list the measurement types for"
+              }
+            ]
+          },
+          "docs": "Get Measurement Type List"
+        },
+        {
+          "info": {
+            "name": "Get Measurement Quantity List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_quantities"
+          },
+          "docs": "Get Measurement Quantity List"
+        },
+        {
+          "info": {
+            "name": "Get Measurement Unit List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_units"
+          },
+          "docs": "Get Measurement Unit List"
+        },
+        {
+          "info": {
+            "name": "Get Measurement Unit List for a quantity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/measurement_units/:quantity",
+            "params": [
+              {
+                "name": "quantity",
+                "value": "",
+                "type": "path",
+                "description": "ID of the measurement quantity"
+              }
+            ]
+          },
+          "docs": "Get Measurement Unit List for a quantity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

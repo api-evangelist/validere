@@ -1,0 +1,802 @@
+{
+  "item": [
+    {
+      "id": "4a584959-c5d6-4733-b39f-68b1e5ad5729",
+      "name": "project_group",
+      "description": {
+        "content": "Project Groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c849d14a-eec7-4506-96b7-374a0dc8292c",
+          "name": "Add a project group",
+          "request": {
+            "name": "Add a project group",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "project_groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "14fbd539-bbf9-4462-8105-abc9912503fd",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "project_groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\",\n  \"created_at\": \"2013-08-05T13:13:41.521Z\",\n  \"updated_at\": \"2017-07-04T22:20:01.155Z\",\n  \"created_by\": \"a8c4593c-fe2f-d4d8-8ee4-25d6ca54a33e\",\n  \"updated_by\": \"0a89b122-27c9-8978-82a3-4d44ef8dd73a\",\n  \"company_id\": \"fd559c9d-a2b2-238e-5337-e29f4c07c672\",\n  \"id\": \"ad299a96-38e1-4ec0-93bb-35764d064a12\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "04197b79-d53a-4620-8976-8f079e7422d5",
+          "name": "Search and list project groups",
+          "request": {
+            "name": "Search and list project groups",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "project_groups",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"project_developer\": \"<string>\",\n    \"protocol\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4aae6b05-3128-4c79-baba-ba850dde126b",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "project_groups",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"Basin\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"project_developer\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"protocol\": \"<string>\",\n      \"country\": \"<string>\",\n      \"created_at\": \"1972-08-23T22:29:30.077Z\",\n      \"updated_at\": \"1959-05-07T06:14:59.488Z\",\n      \"created_by\": \"e98c7587-8ccb-80f7-ceed-b7a0718349c8\",\n      \"updated_by\": \"84ec86a8-9bd3-8cdf-0f95-84f80861a0cd\",\n      \"company_id\": \"02ea7c6d-2325-fb1a-bac3-7b7ea010155b\",\n      \"id\": \"cdc9263b-9061-9834-4158-0cccd28fb5da\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"project_developer\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"protocol\": \"<string>\",\n      \"country\": \"<string>\",\n      \"created_at\": \"1989-02-02T06:22:23.279Z\",\n      \"updated_at\": \"2006-06-02T16:06:52.009Z\",\n      \"created_by\": \"9efea8d9-75ce-fcd5-426d-070d6ee99e0b\",\n      \"updated_by\": \"3c8869bc-0eff-6f51-5c30-1fa6a9777e34\",\n      \"company_id\": \"21c399f9-d370-e660-9beb-cae5f9bf4cb6\",\n      \"id\": \"c7658fc1-ea96-c849-642f-b6225a3a2bd6\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b6af84d-9447-44d7-a50e-a682f9cd0db9",
+          "name": "Get a project_groups entry",
+          "request": {
+            "name": "Get a project_groups entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "project_groups",
+                ":project_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "project_group_id",
+                  "description": "(Required) Project Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de22004b-eeec-4897-be3c-e14bf0974c68",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "project_groups",
+                    ":project_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "project_group_id",
+                      "description": "(Required) Project Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\",\n  \"created_at\": \"2003-07-05T20:27:39.827Z\",\n  \"updated_at\": \"1967-12-28T15:59:40.181Z\",\n  \"created_by\": \"fa56bd44-16e1-166b-909d-25165b3c2b82\",\n  \"updated_by\": \"08541c59-b1a9-7491-518a-2f6c482e0b2f\",\n  \"company_id\": \"475a7941-a205-3f43-3d9d-fa30f7a269fe\",\n  \"id\": \"6253ca32-a2c5-a9e2-d3e2-c571820fe35e\",\n  \"summary\": {\n    \"project_periods\": 2834.4226434616803,\n    \"total_active_credits\": 9906.051159406155,\n    \"total_retired_credits\": 2520.2427052528697,\n    \"buffer_credits\": 4246.601868335795\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3bb9c16-6930-4074-b392-3cd92f99d8b0",
+          "name": "Update a project group entry",
+          "request": {
+            "name": "Update a project group entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "project_groups",
+                ":project_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "project_group_id",
+                  "description": "(Required) Project Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3e530485-2458-45b4-803e-d1fdd2211ea4",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "project_groups",
+                    ":project_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "project_group_id",
+                      "description": "(Required) Project Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\",\n  \"created_at\": \"2013-08-05T13:13:41.521Z\",\n  \"updated_at\": \"2017-07-04T22:20:01.155Z\",\n  \"created_by\": \"a8c4593c-fe2f-d4d8-8ee4-25d6ca54a33e\",\n  \"updated_by\": \"0a89b122-27c9-8978-82a3-4d44ef8dd73a\",\n  \"company_id\": \"fd559c9d-a2b2-238e-5337-e29f4c07c672\",\n  \"id\": \"ad299a96-38e1-4ec0-93bb-35764d064a12\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b3444b09-bb27-4c34-a391-f16c4c288591",
+          "name": "Delete a project group entry",
+          "request": {
+            "name": "Delete a project group entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "project_groups",
+                ":project_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "project_group_id",
+                  "description": "(Required) Project Group ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f651e01-b3ab-4079-aeb0-e5787768ebe1",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "project_groups",
+                    ":project_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "project_group_id",
+                      "description": "(Required) Project Group ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "93a9d004-1a19-40c9-ab9b-fb738ebf2f42",
+          "name": "Public search and list ledger entries",
+          "request": {
+            "name": "Public search and list ledger entries",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "project_groups",
+                ":company_id",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"<string>\",\n    \"status\": \"<string>\",\n    \"project_developer\": \"<string>\",\n    \"protocol\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0abc8fcc-08a9-4791-98a0-091fbf9630d7",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "project_groups",
+                    ":company_id",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"Basin\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"project_developer\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"protocol\": \"<string>\",\n      \"country\": \"<string>\",\n      \"id\": \"e57ae2c9-b2a1-3b21-e9c2-0c9e0285ad1e\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"status\": \"<string>\",\n      \"project_developer\": \"<string>\",\n      \"start_date\": \"<date>\",\n      \"end_date\": \"<date>\",\n      \"protocol\": \"<string>\",\n      \"country\": \"<string>\",\n      \"id\": \"ad09583c-3446-1d76-cb33-c3ccfc2f31bc\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7ddd11c-0681-44f2-87a1-eb396c5cd1a5",
+          "name": "Public search and list ledger entries",
+          "request": {
+            "name": "Public search and list ledger entries",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "project_groups",
+                ":company_id",
+                ":project_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "project_group_id",
+                  "description": "(Required) Project Group ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "617b840f-7725-4f4a-9e76-ebe1fad29e84",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "project_groups",
+                    ":company_id",
+                    ":project_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "project_group_id",
+                      "description": "(Required) Project Group ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"status\": \"<string>\",\n  \"project_developer\": \"<string>\",\n  \"start_date\": \"<date>\",\n  \"end_date\": \"<date>\",\n  \"protocol\": \"<string>\",\n  \"country\": \"<string>\",\n  \"id\": \"064006c0-e5d9-883f-ec7a-fa45111a089e\",\n  \"summary\": {\n    \"project_periods\": 7150.704424278982,\n    \"total_active_credits\": 3513.721926921266,\n    \"total_retired_credits\": 4556.691541930432,\n    \"buffer_credits\": 5259.76446019802\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b245d348-6687-47b5-bbe3-c4a195d7ef6f",
+          "name": "Get the summary across all projects",
+          "request": {
+            "name": "Get the summary across all projects",
+            "description": {},
+            "url": {
+              "path": [
+                "public",
+                "v1",
+                "project_groups",
+                ":company_id",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "company_id",
+                  "description": "(Required) Company ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b193ded-5d61-47bd-9008-261e3fcf777d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "v1",
+                    "project_groups",
+                    ":company_id",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "company_id",
+                      "description": "(Required) Company ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_active_credits\": 2687.8349988469354,\n  \"total_retired_credits\": 3291.0504793573505,\n  \"project_count\": 1357.581671043766,\n  \"active_projects\": 8313.142741850195\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5f81b146-3b7e-455e-bd37-3c2d7dd15fbe",
+    "name": "CarbonHub activities project_group API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,583 @@
+{
+  "item": [
+    {
+      "id": "38f8add5-2e1b-4d19-be32-495fb92495d7",
+      "name": "measurement_series",
+      "description": {
+        "content": "Manage Measurement series",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6aa6dcd9-a8b2-48a9-82f7-d9fa41426469",
+          "name": "List a Measurement series",
+          "request": {
+            "name": "List a Measurement series",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_series_ids",
+                  "value": "<string>",
+                  "description": "a comma-separated list of measurement series ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_series_description",
+                  "value": "<string>",
+                  "description": "String to search for in measurement series descriptions"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_series_device_name",
+                  "value": "<string>",
+                  "description": "String to search for in device names"
+                },
+                {
+                  "disabled": false,
+                  "key": "measurement_series_device_id",
+                  "value": "<uuid>",
+                  "description": "UUID of the device to filter on"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_id",
+                  "value": "<uuid>",
+                  "description": "ID of the entity you want to list the measurements for"
+                },
+                {
+                  "disabled": false,
+                  "key": "subject_type",
+                  "value": "<string>",
+                  "description": "Type of the entity you want to list the measurements for. Required if ID is defined."
+                },
+                {
+                  "disabled": false,
+                  "key": "event_id",
+                  "value": "<uuid>",
+                  "description": "Event ID"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81ea38fe-f195-4878-b1c1-1c377e0f1d5f",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "measurement_series_ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measurement_series_description",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measurement_series_device_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "measurement_series_device_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "subject_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "subject_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "event_id",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"description\": \"string\",\n      \"device_id\": \"a43e7648-d534-6b0e-b43c-48b323291a76\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\",\n      \"company_id\": \"8603ce43-0966-3979-eb8f-d4394f4a37fb\",\n      \"id\": \"a9573d94-e824-63cc-ed55-8a56c517d230\",\n      \"device\": {\n        \"attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"measurement_types\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility_name\": \"Facility Name\"\n      },\n      \"device_name\": \"string\",\n      \"measurement_type_name\": \"Wind Variation\"\n    },\n    {\n      \"description\": \"string\",\n      \"device_id\": \"ffb6c400-ee31-2e23-d114-52eaa4d0a43e\",\n      \"measurement_type\": \"volume\",\n      \"unit\": \"bbl\",\n      \"company_id\": \"81e55f46-efb5-a0b9-a732-a5caec0d875d\",\n      \"id\": \"42d8c1a4-0748-da73-5f4a-95e37e8fa0dd\",\n      \"device\": {\n        \"attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"custom_attributes\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"measurement_types\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"name\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"status\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"type_id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"facility_name\": \"Facility Name\"\n      },\n      \"device_name\": \"string\",\n      \"measurement_type_name\": \"Wind Variation\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad5373c8-7254-4711-8194-c9e1f959ae6d",
+          "name": "Create Measurement series",
+          "request": {
+            "name": "Create Measurement series",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_series"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"device_id\": \"<uuid>\",\n  \"measurement_type\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49a190d3-3580-4008-8305-b46939c0db2b",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_series"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"device_id\": \"<uuid>\",\n  \"measurement_type\": \"volume\",\n  \"unit\": \"bbl\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"<string>\",\n  \"device_id\": \"<uuid>\",\n  \"measurement_type\": \"volume\",\n  \"unit\": \"bbl\",\n  \"company_id\": \"9d115701-8d4e-20dd-5f4d-f6946a31cbb6\",\n  \"id\": \"9a5dba28-fed3-2fcf-6457-7e222b65c929\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e472a9b4-1ae5-424b-9f9d-325baf1c886c",
+          "name": "Get a Measurement series",
+          "request": {
+            "name": "Get a Measurement series",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_series",
+                ":measurement_series_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "measurement_series_id",
+                  "description": "(Required) ID of the measurement series"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f503de5e-9044-40ab-976c-9879d89a5fcf",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_series",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"<string>\",\n  \"device_id\": \"<uuid>\",\n  \"measurement_type\": \"volume\",\n  \"unit\": \"bbl\",\n  \"company_id\": \"94352410-135e-573c-31bd-e9f46f277cc0\",\n  \"id\": \"40cc47b7-071f-40b4-0e0e-40473e17360c\",\n  \"device\": {\n    \"created_at\": \"1955-10-02T09:12:38.120Z\",\n    \"updated_at\": \"1970-04-02T19:27:35.300Z\",\n    \"created_by\": \"fa7a8982-5a58-6738-1152-ef48b7065336\",\n    \"updated_by\": \"546b5dbd-1114-ad77-d1ab-b1bab757d670\",\n    \"attributes\": {\n      \"height\": 10,\n      \"location\": [\n        43.65107,\n        -79.347015\n      ],\n      \"provider\": \"provider\"\n    },\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"facility\": {\n      \"name\": \"Facility 1\"\n    },\n    \"facility_id\": \"3fc74157-5922-ff2f-084a-47b68b08c716\",\n    \"id\": \"f600f1a4-45d2-eb2a-43ee-3a7891a250df\",\n    \"measurement_types\": [\n      \"volume\",\n      \"volume\"\n    ],\n    \"name\": \"string\",\n    \"status\": \"active\",\n    \"type_id\": \"string\",\n    \"facility_name\": \"Facility Name\"\n  },\n  \"measurement_type_name\": \"Wind Variation\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1aad25d8-3657-4909-8da2-2592bb9d5ae5",
+          "name": "Update a Measurement series",
+          "request": {
+            "name": "Update a Measurement series",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_series",
+                ":measurement_series_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "measurement_series_id",
+                  "description": "(Required) ID of the measurement series"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"<string>\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b10f9b99-a9a1-467a-a9b4-c9949b14ede1",
+              "name": "successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_series",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"description\": \"<string>\",\n  \"subjects\": [\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    },\n    {\n      \"entity_id\": \"<uuid>\",\n      \"entity_type\": \"<string>\",\n      \"start_time\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"description\": \"<string>\",\n  \"device_id\": \"<uuid>\",\n  \"measurement_type\": \"volume\",\n  \"unit\": \"bbl\",\n  \"company_id\": \"5e9c974f-9c42-07a5-2093-5d9be4aaaca9\",\n  \"id\": \"2060db84-7240-6f74-3951-ad764cfd37b8\",\n  \"device\": {\n    \"created_at\": \"1965-03-12T05:20:24.965Z\",\n    \"updated_at\": \"1971-04-25T20:20:04.683Z\",\n    \"created_by\": \"61fce052-d64c-798c-8d4f-ce2d7a3d4bdd\",\n    \"updated_by\": \"9e2fdc50-ce32-6b1d-0de5-02b98ba00b57\",\n    \"attributes\": {\n      \"height\": 10,\n      \"location\": [\n        43.65107,\n        -79.347015\n      ],\n      \"provider\": \"provider\"\n    },\n    \"custom_attributes\": {\n      \"attribute1\": 12345,\n      \"attribute2\": \"value1\"\n    },\n    \"facility\": {\n      \"name\": \"Facility 1\"\n    },\n    \"facility_id\": \"84466df2-54d0-7b34-ea9d-c06b28f38b0c\",\n    \"id\": \"053e1633-0266-a667-aae4-f0dd0a44ec73\",\n    \"measurement_types\": [\n      \"volume\",\n      \"volume\"\n    ],\n    \"name\": \"string\",\n    \"status\": \"active\",\n    \"type_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5951fdf0-02ca-4dfb-b080-adf493d53f2c",
+          "name": "Delete a Measurement series",
+          "request": {
+            "name": "Delete a Measurement series",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "measurement_series",
+                ":measurement_series_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "measurement_series_id",
+                  "description": "(Required) ID of the measurement series"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b08f3518-3be4-4df0-9a2e-43d8b0f5ac2f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "measurement_series",
+                    ":measurement_series_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "measurement_series_id",
+                      "description": "(Required) ID of the measurement series"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a405eab1-2f02-4117-a23c-6243b0936d04",
+    "name": "CarbonHub activities measurement_series API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

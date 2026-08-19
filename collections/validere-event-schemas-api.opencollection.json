@@ -1,0 +1,109 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "CarbonHub activities event_schemas API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "event_schemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/event_schemas",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an event schema"
+        },
+        {
+          "info": {
+            "name": "Get an event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.validere.io/app/v1/event_schemas/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event Schema ID"
+              }
+            ]
+          },
+          "docs": "Get an event schema"
+        },
+        {
+          "info": {
+            "name": "Update an event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.validere.io/app/v1/event_schemas/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event Schema ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an event schema"
+        },
+        {
+          "info": {
+            "name": "Delete an event schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.validere.io/app/v1/event_schemas/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Event Schema ID"
+              }
+            ]
+          },
+          "docs": "Delete an event schema"
+        },
+        {
+          "info": {
+            "name": "Search and list event schemas",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.validere.io/app/v1/event_schemas/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and list event schemas"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

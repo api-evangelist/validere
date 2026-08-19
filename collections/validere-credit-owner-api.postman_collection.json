@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "e45cc6e6-f6db-4b00-84a1-2ef6a83ae33d",
+      "name": "credit_owner",
+      "description": {
+        "content": "Credit Owners",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc8edc41-d726-4ec8-a995-09d9c05a8375",
+          "name": "Add a credit owner",
+          "request": {
+            "name": "Add a credit owner",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "credit_owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ddf02892-b927-48dc-8ceb-986639bbbb6f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "credit_owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false,\n  \"created_at\": \"1950-07-31T12:23:04.698Z\",\n  \"updated_at\": \"1975-10-16T09:56:46.793Z\",\n  \"created_by\": \"2fbe436b-0363-2b0d-c3a6-1b607c877b29\",\n  \"updated_by\": \"3441f765-dce9-596e-b2c3-b2b275d2c4a1\",\n  \"company_id\": \"0fc1f408-a0f9-ae43-1b72-71992376f9c8\",\n  \"id\": \"742c8c65-f61e-b36e-a203-37cd43601c26\",\n  \"public_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0949d35-0f86-4202-ba22-a3930a879a57",
+          "name": "Search and list credit owners",
+          "request": {
+            "name": "Search and list credit owners",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "credit_owners",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"<string>\",\n    \"public_name\": \"<string>\",\n    \"visibility\": \"<string>\",\n    \"buffer_holder\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bd229ebc-8812-4639-b6d6-73b052ec9e34",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "credit_owners",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"public_name\",\n  \"sort_direction\": \"asc\",\n  \"filter\": {\n    \"name\": \"Validere\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"name\": \"<string>\",\n      \"visibility\": \"<string>\",\n      \"buffer_holder\": false,\n      \"created_at\": \"1954-01-19T06:46:59.903Z\",\n      \"updated_at\": \"2013-03-29T21:21:25.922Z\",\n      \"created_by\": \"8f46dfd1-1297-2c2c-fa06-3e2642647c9c\",\n      \"updated_by\": \"7295d393-2d2f-8067-abf8-9f6ef8268f5c\",\n      \"company_id\": \"123470ec-7b00-084f-8534-35bc0988aa7e\",\n      \"id\": \"874a2c6d-90c9-8409-e12f-d657027ca5ef\",\n      \"public_name\": \"string\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"visibility\": \"<string>\",\n      \"buffer_holder\": false,\n      \"created_at\": \"1981-05-03T04:51:13.311Z\",\n      \"updated_at\": \"1990-02-16T05:37:41.326Z\",\n      \"created_by\": \"15252020-b3de-a292-3da8-6580d1d154f0\",\n      \"updated_by\": \"6c8c5f11-b25a-82dd-76c1-4aeefdce216e\",\n      \"company_id\": \"747e7c95-c71d-d0a1-d50c-1a95e3759eeb\",\n      \"id\": \"7241de60-d2df-0c18-f052-5a290206deab\",\n      \"public_name\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12cbc5e9-ddf6-457f-9148-570d83073e3a",
+          "name": "Get a credit_owners entry",
+          "request": {
+            "name": "Get a credit_owners entry",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "credit_owners",
+                ":credit_owner_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "credit_owner_id",
+                  "description": "(Required) Credit Owner ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cca1eb1-4ca4-46fd-9d57-02057d1f6c9d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "credit_owners",
+                    ":credit_owner_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "credit_owner_id",
+                      "description": "(Required) Credit Owner ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false,\n  \"created_at\": \"1950-07-31T12:23:04.698Z\",\n  \"updated_at\": \"1975-10-16T09:56:46.793Z\",\n  \"created_by\": \"2fbe436b-0363-2b0d-c3a6-1b607c877b29\",\n  \"updated_by\": \"3441f765-dce9-596e-b2c3-b2b275d2c4a1\",\n  \"company_id\": \"0fc1f408-a0f9-ae43-1b72-71992376f9c8\",\n  \"id\": \"742c8c65-f61e-b36e-a203-37cd43601c26\",\n  \"public_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "92bf94c8-e9d9-410e-8a5d-9780f9ef089b",
+          "name": "Update a credit owner",
+          "request": {
+            "name": "Update a credit owner",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "credit_owners",
+                ":credit_owner_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "credit_owner_id",
+                  "description": "(Required) Credit Owner ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d9c4e30-908e-4470-bcbd-164cc4c65152",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "credit_owners",
+                    ":credit_owner_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "credit_owner_id",
+                      "description": "(Required) Credit Owner ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"<string>\",\n  \"visibility\": \"<string>\",\n  \"buffer_holder\": false,\n  \"created_at\": \"1950-07-31T12:23:04.698Z\",\n  \"updated_at\": \"1975-10-16T09:56:46.793Z\",\n  \"created_by\": \"2fbe436b-0363-2b0d-c3a6-1b607c877b29\",\n  \"updated_by\": \"3441f765-dce9-596e-b2c3-b2b275d2c4a1\",\n  \"company_id\": \"0fc1f408-a0f9-ae43-1b72-71992376f9c8\",\n  \"id\": \"742c8c65-f61e-b36e-a203-37cd43601c26\",\n  \"public_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90dc6eaf-9782-4a3c-a262-6a88edff7db7",
+          "name": "Delete a credit owner",
+          "request": {
+            "name": "Delete a credit owner",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "credit_owners",
+                ":credit_owner_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "credit_owner_id",
+                  "description": "(Required) Credit Owner ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97adc63c-7759-4f4f-b9a1-080d7103224d",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "credit_owners",
+                    ":credit_owner_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "credit_owner_id",
+                      "description": "(Required) Credit Owner ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e4ff63c7-c364-4bbf-aba9-b0f29d9ce180",
+    "name": "CarbonHub activities credit_owner API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}

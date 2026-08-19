@@ -1,0 +1,348 @@
+{
+  "item": [
+    {
+      "id": "6e611dbc-1218-4e7c-9aa4-84a1588163ff",
+      "name": "job",
+      "description": {
+        "content": "Bulk Job status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "32d9c156-0f92-4bc2-a757-a62f79df3d53",
+          "name": "Search jobs",
+          "request": {
+            "name": "Search jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "jobs",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"page\": 0,\n  \"page_size\": 10,\n  \"sort_by\": \"<string>\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"started_at\": \"<dateTime>\",\n    \"finished_at\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f71c46bb-554b-48a0-a10f-359e3e071256",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "jobs",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"page\": 0,\n  \"page_size\": 20,\n  \"sort_by\": \"type\",\n  \"sort_direction\": \"desc\",\n  \"filter\": {\n    \"id\": \"<uuid>\",\n    \"status\": \"<string>\",\n    \"type\": \"<string>\",\n    \"started_at\": \"<dateTime>\",\n    \"finished_at\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"id\": \"65a1e3c9-4118-8ab0-25cb-22949cd25691\",\n      \"company_id\": \"ba2c3c85-1545-e7a2-6966-e3f6843dbd5e\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"started_at\": \"1980-02-26T05:43:29.836Z\",\n      \"finished_at\": \"1962-10-05T12:59:58.648Z\",\n      \"duration\": 2740.651564575386,\n      \"input\": {},\n      \"output\": {},\n      \"total_items\": 77.40151496449354,\n      \"processed_items\": 7387.795255036353,\n      \"item_status_counts\": {\n        \"success\": 9011.618437279982,\n        \"failed\": 5550.975400100908,\n        \"skipped\": 4416.267127135159\n      }\n    },\n    {\n      \"id\": \"08e814ac-e587-c8bf-320b-40234881d415\",\n      \"company_id\": \"54338d87-29b6-28b3-7ee9-c8565c97e533\",\n      \"status\": \"<string>\",\n      \"type\": \"<string>\",\n      \"started_at\": \"1990-06-03T22:45:03.708Z\",\n      \"finished_at\": \"1998-04-01T02:51:37.322Z\",\n      \"duration\": 2447.4074109700914,\n      \"input\": {},\n      \"output\": {},\n      \"total_items\": 8778.722881554604,\n      \"processed_items\": 257.75835629961665,\n      \"item_status_counts\": {\n        \"success\": 1216.7434951609068,\n        \"failed\": 1154.0242198260664,\n        \"skipped\": 6055.371861121311\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c62cb177-3d10-48f3-9fda-f6300c817484",
+          "name": "Get a job",
+          "request": {
+            "name": "Get a job",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v2",
+                "jobs",
+                ":job_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) Job ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e22508d7-0b62-4c0d-9104-78ed6f6d28e6",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v2",
+                    "jobs",
+                    ":job_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Job ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"c311750d-348f-5a5b-ad35-19ef8442c38a\",\n  \"company_id\": \"0f3b2fca-4a64-14c9-915c-ead77b4a4fed\",\n  \"status\": \"<string>\",\n  \"type\": \"<string>\",\n  \"started_at\": \"2023-10-04T00:51:10.385Z\",\n  \"finished_at\": \"1996-09-01T15:55:15.060Z\",\n  \"duration\": 6072.8214296088345,\n  \"input\": {},\n  \"total_items\": 2246.9129287061996,\n  \"processed_items\": 4258.709703983233,\n  \"item_status_counts\": {\n    \"success\": 4204.27339950899,\n    \"failed\": 9673.38968412614,\n    \"skipped\": 4970.419443437463\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "833f0375-0af8-4d8d-bd51-700343c2fca4",
+          "name": "List job items",
+          "request": {
+            "name": "List job items",
+            "description": {},
+            "url": {
+              "path": [
+                "app",
+                "v1",
+                "jobs",
+                ":job_id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<number>",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<number>",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_by",
+                  "value": "<string>",
+                  "description": "sort by"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort_direction",
+                  "value": "<string>",
+                  "description": "sort direction"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "job_id",
+                  "description": "(Required) Job ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffbf1b21-3840-478b-8663-a47f812bfe2f",
+              "name": "A successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "app",
+                    "v1",
+                    "jobs",
+                    ":job_id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page_size",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "sort_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort_direction",
+                      "value": "desc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "job_id",
+                      "description": "(Required) Job ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"page_number\": 0,\n  \"page_size\": 10,\n  \"total_entries\": 58,\n  \"total_pages\": 6,\n  \"data\": [\n    {\n      \"key\": \"string\",\n      \"company_id\": \"87cfe963-8c68-ca4b-faed-10ee791c25be\",\n      \"job_id\": \"15b67d6a-c6ac-2bbd-7a80-5b0623e40c5f\",\n      \"status\": \"success\",\n      \"input\": {},\n      \"output\": {}\n    },\n    {\n      \"key\": \"string\",\n      \"company_id\": \"26b5836e-7eea-c0ef-6b62-2a8c2b8f9fe1\",\n      \"job_id\": \"2f939e95-ed78-017a-e7aa-2bdad828b779\",\n      \"status\": \"success\",\n      \"input\": {},\n      \"output\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.validere.io",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "47c2c996-b2ac-4504-b34e-f028982593ac",
+    "name": "CarbonHub activities job API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Activity Log",
+      "type": "text/plain"
+    }
+  }
+}
