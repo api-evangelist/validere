@@ -37,6 +37,17 @@ created: '2026-07-17'
 modified: '2026-07-21'
 tags:
 - Company
+- Application
+- Energy
+- Emissions
+- Methane
+- Oil and Gas
+- Environmental Data
+- Measurements
+- Carbon Intensity
+- EHS
+tags_raw:
+- Company
 - Applications
 - Energy
 - Emissions
@@ -53,6 +64,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Activities
+  tags_raw:
   - activities
   properties:
   - type: OpenAPI
@@ -67,6 +80,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Asset groups
+  tags_raw:
   - asset_groups
   properties:
   - type: OpenAPI
@@ -81,6 +96,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Assets
+  tags_raw:
   - assets
   properties:
   - type: OpenAPI
@@ -94,7 +111,8 @@ apis:
   description: Calculator Results
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - calculator_results
   properties:
   - type: OpenAPI
@@ -109,6 +127,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Charts
+  tags_raw:
   - charts
   properties:
   - type: OpenAPI
@@ -123,6 +143,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -137,6 +159,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Company
+  tags_raw:
   - company
   properties:
   - type: OpenAPI
@@ -150,7 +174,8 @@ apis:
   description: Company <> Equipment Type Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - company_equipment_type_groups
   properties:
   - type: OpenAPI
@@ -164,7 +189,8 @@ apis:
   description: Company Feature Flags
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - company_feature_flags
   properties:
   - type: OpenAPI
@@ -178,7 +204,8 @@ apis:
   description: Company Unit Configuration
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - company_unit_config
   properties:
   - type: OpenAPI
@@ -192,7 +219,8 @@ apis:
   description: Credit Owners
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - credit_owner
   properties:
   - type: OpenAPI
@@ -206,7 +234,8 @@ apis:
   description: Manage Custom Attribute Definitions
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - custom_attribute_definition
   properties:
   - type: OpenAPI
@@ -221,6 +250,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Dashboards
+  tags_raw:
   - dashboards
   properties:
   - type: OpenAPI
@@ -235,6 +266,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Data
+  tags_raw:
   - data
   properties:
   - type: OpenAPI
@@ -248,7 +281,8 @@ apis:
   description: Default Record Value Configurations
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - default_record_value_configuration
   properties:
   - type: OpenAPI
@@ -263,6 +297,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Device Types
+  tags_raw:
   - device_types
   properties:
   - type: OpenAPI
@@ -277,6 +313,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Devices
+  tags_raw:
   - devices
   properties:
   - type: OpenAPI
@@ -290,7 +328,8 @@ apis:
   description: Emission Calculator
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - emissions_calculator
   properties:
   - type: OpenAPI
@@ -305,6 +344,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Equipment
+  tags_raw:
   - equipment
   properties:
   - type: OpenAPI
@@ -318,7 +359,8 @@ apis:
   description: Manage Equipment Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - equipment_types
   properties:
   - type: OpenAPI
@@ -332,7 +374,8 @@ apis:
   description: Estimation Methods
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - estimation_methods
   properties:
   - type: OpenAPI
@@ -346,7 +389,8 @@ apis:
   description: Estimation Methods Default Records
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - estimation_methods_default_records
   properties:
   - type: OpenAPI
@@ -361,6 +405,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Event Categories
+  tags_raw:
   - event_categories
   properties:
   - type: OpenAPI
@@ -374,7 +420,8 @@ apis:
   description: Event Schemas
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - event_schemas
   properties:
   - type: OpenAPI
@@ -389,6 +436,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -403,6 +452,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Facilities
+  tags_raw:
   - facilities
   properties:
   - type: OpenAPI
@@ -417,6 +468,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Feature Flags
+  tags_raw:
   - feature_flags
   properties:
   - type: OpenAPI
@@ -431,6 +484,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Flows
+  tags_raw:
   - flows
   properties:
   - type: OpenAPI
@@ -444,7 +499,8 @@ apis:
   description: Form Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - form_categories
   properties:
   - type: OpenAPI
@@ -458,7 +514,8 @@ apis:
   description: Form Schemas
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - form_schemas
   properties:
   - type: OpenAPI
@@ -473,6 +530,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Form Submissions
+  tags_raw:
   - form_submissions
   properties:
   - type: OpenAPI
@@ -487,6 +546,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Group Categories
+  tags_raw:
   - group_categories
   properties:
   - type: OpenAPI
@@ -501,6 +562,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Job
+  tags_raw:
   - job
   properties:
   - type: OpenAPI
@@ -515,6 +578,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Ledger
+  tags_raw:
   - ledger
   properties:
   - type: OpenAPI
@@ -528,7 +593,8 @@ apis:
   description: Manage Measurement series
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - measurement_series
   properties:
   - type: OpenAPI
@@ -542,7 +608,8 @@ apis:
   description: Manage Measurement Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - measurement_types
   properties:
   - type: OpenAPI
@@ -557,6 +624,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Measurements
+  tags_raw:
   - measurements
   properties:
   - type: OpenAPI
@@ -571,6 +640,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Networks
+  tags_raw:
   - networks
   properties:
   - type: OpenAPI
@@ -585,6 +656,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Permissions
+  tags_raw:
   - permissions
   properties:
   - type: OpenAPI
@@ -598,7 +671,8 @@ apis:
   description: Project Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - project_group
   properties:
   - type: OpenAPI
@@ -613,6 +687,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Records
+  tags_raw:
   - records
   properties:
   - type: OpenAPI
@@ -627,6 +703,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Reporting Groups
+  tags_raw:
   - reporting_groups
   properties:
   - type: OpenAPI
@@ -641,6 +719,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Reports
+  tags_raw:
   - reports
   properties:
   - type: OpenAPI
@@ -655,6 +735,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Roles
+  tags_raw:
   - roles
   properties:
   - type: OpenAPI
@@ -668,7 +750,8 @@ apis:
   description: Templated Configurations
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - templated_configurations
   properties:
   - type: OpenAPI
@@ -683,6 +766,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Transaction
+  tags_raw:
   - transactions
   properties:
   - type: OpenAPI
@@ -697,6 +782,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - TypeMetadata
+  tags_raw:
   - type_metadata
   properties:
   - type: OpenAPI
@@ -725,6 +812,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - User Groups
+  tags_raw:
   - user_groups
   properties:
   - type: OpenAPI
@@ -738,7 +827,8 @@ apis:
   description: User Unit Configuration
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - user_unit_config
   properties:
   - type: OpenAPI
@@ -753,6 +843,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -766,7 +858,8 @@ apis:
   description: Workflow Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags:
+  tags: []
+  tags_raw:
   - workflow_categories
   properties:
   - type: OpenAPI
@@ -781,6 +874,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Workflow Tasks
+  tags_raw:
   - workflow_tasks
   properties:
   - type: OpenAPI
@@ -795,6 +890,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - WorkflowTemplates
+  tags_raw:
   - workflow_templates
   properties:
   - type: OpenAPI
@@ -809,6 +906,8 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
+  - Workflows
+  tags_raw:
   - workflows
   properties:
   - type: OpenAPI
