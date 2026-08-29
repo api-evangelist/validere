@@ -12,6 +12,18 @@ description: >-
   file data validated against registered JSON Schemas, with ingestion tracked
   through a Transactions API.
 url: https://raw.githubusercontent.com/api-evangelist/validere/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
@@ -922,6 +934,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/validere-capability-edges.yml
+  name: Validere Business Capability Map
 - type: Overlay
   url: overlays/validere-carbonhub-overlay.yaml
 - type: Website
