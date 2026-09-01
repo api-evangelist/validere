@@ -53,7 +53,7 @@ tags:
 - Energy
 - Emissions
 - Methane
-- Oil And Gas
+- Oil and Gas
 - Environmental Data
 - Measurements
 - Carbon Intensity
@@ -91,7 +91,8 @@ apis:
   description: Asset Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Asset groups
   tags_raw:
   - asset_groups
   properties:
@@ -170,7 +171,7 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
-  - company
+  - Company
   tags_raw:
   - company
   properties:
@@ -307,7 +308,8 @@ apis:
   description: Manage Device Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Device Types
   tags_raw:
   - device_types
   properties:
@@ -414,7 +416,8 @@ apis:
   description: Event Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Event Categories
   tags_raw:
   - event_categories
   properties:
@@ -476,7 +479,8 @@ apis:
   description: Feature Flags
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Feature Flags
   tags_raw:
   - feature_flags
   properties:
@@ -537,7 +541,8 @@ apis:
   description: Form Submissions
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Form Submissions
   tags_raw:
   - form_submissions
   properties:
@@ -552,7 +557,8 @@ apis:
   description: Manage Group Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Group Categories
   tags_raw:
   - group_categories
   properties:
@@ -630,7 +636,7 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
-  - measurements
+  - Measurements
   tags_raw:
   - measurements
   properties:
@@ -646,7 +652,7 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
-  - networks
+  - Networks
   tags_raw:
   - networks
   properties:
@@ -708,7 +714,8 @@ apis:
   description: Reporting Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Reporting groups
   tags_raw:
   - reporting_groups
   properties:
@@ -786,7 +793,8 @@ apis:
   description: Types used across the APIs
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - TypeMetadata
   tags_raw:
   - type_metadata
   properties:
@@ -815,7 +823,8 @@ apis:
   description: Manage User Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - User Groups
   tags_raw:
   - user_groups
   properties:
@@ -876,7 +885,8 @@ apis:
   description: Workflow Tasks
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - Workflow Tasks
   tags_raw:
   - workflow_tasks
   properties:
@@ -891,7 +901,8 @@ apis:
   description: Workflow Templates
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
-  tags: []
+  tags:
+  - WorkflowTemplates
   tags_raw:
   - workflow_templates
   properties:
