@@ -804,20 +804,6 @@ apis:
     url: https://docs.validere.com/guides/api/app
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
-- aid: validere:validere-typemetadata-api
-  name: Validere TypeMetadata API
-  description: The TypeMetadata API from Validere — 4 operation(s) for typemetadata.
-  humanURL: https://docs.validere.com/guides/api/app
-  baseURL: https://api.validere.io/app
-  tags:
-  - TypeMetadata
-  properties:
-  - type: OpenAPI
-    url: openapi/validere-typemetadata-api-openapi.yml
-  - type: Documentation
-    url: https://docs.validere.com/guides/api/app
-  - type: Documentation
-    url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-user-groups-api
   name: Validere user_groups API
   description: Manage User Groups
