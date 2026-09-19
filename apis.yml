@@ -496,7 +496,7 @@ apis:
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
   tags:
-  - Flows
+  - Flow
   tags_raw:
   - flows
   properties:
