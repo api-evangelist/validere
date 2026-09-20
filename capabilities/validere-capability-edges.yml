@@ -1,0 +1,65 @@
+slug: validere
+provider: Validere
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: feature_flags
+  spec_file: validere-feature-flags-api-openapi.yml
+  capability_id: BC-4210.50
+  capability_id_l1: BC-4210
+  capability_name: Feature Flag Management
+  confidence: 0.85
+  evidence: '"Search feature flags", "Get a feature flag", schemas FeatureFlag, FeatureFlagsFilter'
+  reason: The operations read the product's feature-flag state, which is runtime feature-flag control
+    decoupling deploy from release. Read-only surface, hence not 0.95.
+- tag: users
+  spec_file: validere-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: POST /app/v1/users/{id}/permissions/decision Check whether a user has been granted permissions;
+    GET /app/v1/users/{id}/roles List roles a user belongs to
+  reason: User account lifecycle plus role and permission resolution — platform identity and access administration,
+    not HR employee records (schemas are IUser/UserPermissions/RoleMembership).
+- tag: emissions_calculator
+  spec_file: validere-emissions-calculator-api-openapi.yml
+  capability_id: BC-740.20
+  capability_id_l1: BC-740
+  capability_name: Climate & Carbon Management
+  confidence: 0.8
+  evidence: GET /app/v1/libraries  get_libraries  Get all calculation libraries; GET /app/v1/calculators/{calculator_id}/versions  get_calculator_versions
+  reason: Tag exposes versioned emissions calculation libraries and calculators for a carbon/emissions
+    platform, which is carbon footprint computation under Climate & Carbon Management. Read-only surface
+    leaves some ambiguity about scope.
+- tag: user_groups
+  spec_file: validere-user-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: POST /app/v1/user_groups Create a user group; PUT /app/v1/user_groups/{user_group_id}/members/{member_id}
+    Add a user to a user group
+  reason: Operations manage security groups and their memberships, which is access-group administration
+    — Identity & Access Management, not an energy/emissions domain capability.
+- tag: estimation_methods
+  spec_file: validere-estimation-methods-api-openapi.yml
+  capability_id: BC-740.20
+  capability_id_l1: BC-740
+  capability_name: Climate & Carbon Management
+  confidence: 0.75
+  evidence: POST /app/v2/estimation_methods/run  run_estimation_methods_v2  Bulk run calculators based
+    on filtered configurations; schemas CalculatorOutput, CalculationResultError, EstimationMethodConfigurationSort
+  reason: Configures and executes emissions estimation methods/calculators against assets, producing calculated
+    results — carbon footprint quantification under Climate & Carbon Management. Some of the surface is
+    job orchestration, so slightly below top confidence.
