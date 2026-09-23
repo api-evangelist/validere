@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities permissions API
+  description: Permission
+  title: CarbonHub Permissions API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Permission
-  name: permissions
+  name: Permissions
 paths:
   /app/v1/permissions:
     get:
@@ -39,37 +39,16 @@ paths:
           description: A successful operation
       summary: List permissions
       tags:
-      - permissions
+      - Permissions
 components:
   parameters:
-    PageSize:
-      description: page size
+    PermissionName:
+      description: Permission name
       in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
+      name: name
       required: false
       schema:
         type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PermissionIsFeatureEnabled:
-      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
-      in: query
-      name: isFeatureEnabled
-      required: false
-      schema:
-        type: boolean
     SortDirection:
       description: sort direction
       example: desc
@@ -81,13 +60,34 @@ components:
         - asc
         - desc
         type: string
-    PermissionName:
-      description: Permission name
+    SortBy:
+      description: sort by
       in: query
-      name: name
+      name: sort_by
       required: false
       schema:
         type: string
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
     Pagination:
       properties:

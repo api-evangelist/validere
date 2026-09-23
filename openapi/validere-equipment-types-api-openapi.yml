@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities equipment_types API
+  description: Manage Equipment Types
+  title: CarbonHub Equipment Types API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -42,6 +42,18 @@ paths:
       tags:
       - equipment_types
 components:
+  schemas:
+    EquipmentTypeList:
+      items:
+        $ref: '#/components/schemas/EquipmentType'
+      type: array
+    EquipmentType:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
   parameters:
     EquipmentTypeId:
       description: Equipment Type Id
@@ -51,15 +63,3 @@ components:
       required: true
       schema:
         type: string
-  schemas:
-    EquipmentType:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-    EquipmentTypeList:
-      items:
-        $ref: '#/components/schemas/EquipmentType'
-      type: array

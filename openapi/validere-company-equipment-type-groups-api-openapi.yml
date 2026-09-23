@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities company_equipment_type_groups API
+  description: Company <> Equipment Type Groups
+  title: CarbonHub Company Equipment Type Groups API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -79,34 +79,7 @@ paths:
       tags:
       - company_equipment_type_groups
 components:
-  schemas:
-    CompanyEquipmentTypeGroup:
-      properties:
-        company_id:
-          format: uuid
-          type: string
-        group_name:
-          example: subpartW
-          type: string
   parameters:
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
     EquipmentTypeGroupNameQuery:
       description: equipment type group name
       in: query
@@ -122,3 +95,30 @@ components:
       schema:
         example: subpartW
         type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+  schemas:
+    CompanyEquipmentTypeGroup:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        group_name:
+          example: subpartW
+          type: string

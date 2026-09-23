@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   description: Activity Log
-  title: CarbonHub activities API
+  title: CarbonHub Activities API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Activity Log
-  name: activities
+  name: Activities
 paths:
   /app/v1/activities/search:
     post:
@@ -34,7 +34,7 @@ paths:
           description: Successfully operation
       summary: Search and list Activities
       tags:
-      - activities
+      - Activities
   /app/v1/activities/{resource_type}/search:
     post:
       operationId: search_activities_resource_type
@@ -58,9 +58,75 @@ paths:
           description: Successfully operation
       summary: Search and list Activities for a resource type
       tags:
-      - activities
+      - Activities
 components:
+  parameters:
+    ResourceType:
+      description: ResourceType
+      in: path
+      name: resource_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/ResourceType'
   schemas:
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ActivityFilter:
+      properties:
+        filter:
+          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            resource_type: equipment
+            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            action: update
+            timestamp:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          properties:
+            resource_type:
+              type: string
+            resource_id:
+              type: string
+            author_id:
+              type: string
+            action:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+          type: object
+      type: object
+    PagedActivityList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Activity'
+            type: array
+        type: object
     Activity:
       properties:
         resource_type:
@@ -88,15 +154,6 @@ components:
           format: date-time
           type: string
       type: object
-    PagedActivityList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Activity'
-            type: array
-        type: object
     ActivitySort:
       properties:
         sort_by:
@@ -116,55 +173,6 @@ components:
           - desc
           example: desc
           type: string
-    ActivityFilter:
-      properties:
-        filter:
-          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            resource_type: equipment
-            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            action: update
-            timestamp:
-              $gt: '2023-07-01T08:19:25.438Z'
-              $lt: '2023-07-30T08:19:25.438Z'
-          properties:
-            resource_type:
-              type: string
-            resource_id:
-              type: string
-            author_id:
-              type: string
-            action:
-              type: string
-            timestamp:
-              type: string
-              format: date-time
-          type: object
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    ResourceType:
-      type: string
-      enum:
-      - facility
-      - equipment
-      - device
-      - flow
-      - record_value
     Paginated:
       properties:
         page:
@@ -177,11 +185,3 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-  parameters:
-    ResourceType:
-      description: ResourceType
-      in: path
-      name: resource_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/ResourceType'

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities dashboards API
+  description: Dashboards
+  title: CarbonHub Dashboards API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Dashboards
-  name: dashboards
+  name: Dashboards
 paths:
   /app/v1/dashboards:
     get:
@@ -39,7 +39,7 @@ paths:
           description: A successful operation
       summary: List dashboards
       tags:
-      - dashboards
+      - Dashboards
     post:
       operationId: create_dashboard
       requestBody:
@@ -57,7 +57,7 @@ paths:
           description: A successful operation
       summary: Create a dashboard
       tags:
-      - dashboards
+      - Dashboards
   /app/v1/dashboards/{id}:
     delete:
       operationId: delete_dashboard
@@ -68,7 +68,7 @@ paths:
           description: A successful operation
       summary: Delete a dashboard
       tags:
-      - dashboards
+      - Dashboards
     get:
       operationId: get_dashboard
       parameters:
@@ -89,7 +89,7 @@ paths:
           description: A successful operation
       summary: Get a dashboard
       tags:
-      - dashboards
+      - Dashboards
     put:
       operationId: put_dashboard
       parameters:
@@ -109,52 +109,9 @@ paths:
           description: A successful operation
       summary: Update a dashboard
       tags:
-      - dashboards
+      - Dashboards
 components:
   parameters:
-    DashboardId:
-      description: Dashboard ID
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-        format: uuid
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    DashboardDescription:
-      description: Dashboard description
-      in: query
-      name: description
-      required: false
-      schema:
-        type: string
-    DashboardName:
-      description: Dashboard name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -166,7 +123,65 @@ components:
         - asc
         - desc
         type: string
+    DashboardDescription:
+      description: Dashboard description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    DashboardId:
+      description: Dashboard ID
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    DashboardName:
+      description: Dashboard name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     Chart:
       properties:
         created_at:
@@ -189,6 +204,15 @@ components:
           format: date-time
           type: string
       type: object
+    DashboardCreateUpdate:
+      properties:
+        description:
+          example: 'Description of Dashboard #1'
+          type: string
+        name:
+          example: 'Dashboard #1'
+          type: string
+      type: object
     Dashboard:
       properties:
         company_id:
@@ -209,29 +233,5 @@ components:
           type: string
         updated_at:
           format: date-time
-          type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    DashboardCreateUpdate:
-      properties:
-        description:
-          example: 'Description of Dashboard #1'
-          type: string
-        name:
-          example: 'Dashboard #1'
           type: string
       type: object

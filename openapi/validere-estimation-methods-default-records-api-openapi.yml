@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities estimation_methods_default_records API
+  description: Estimation Methods Default Records
+  title: CarbonHub Estimation Methods Default Records API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -192,55 +192,6 @@ paths:
       - estimation_methods_default_records
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    EstimationMethodEntityType:
-      description: Estimation Method Entity Type
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        type: string
-        enum:
-        - equipment
-        - flow
-        - asset_group
-    EstimationMethodInputName:
-      description: Input Name
-      in: path
-      name: input_name
-      required: true
-      schema:
-        type: string
-    EstimationMethodId:
-      description: Estimation Method ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
     EstimationMethodTargetAssetId:
       description: Target Asset ID
       in: path
@@ -260,7 +211,117 @@ components:
         - asc
         - desc
         type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    EstimationMethodId:
+      description: Estimation Method ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EstimationMethodEntityType:
+      description: Estimation Method Entity Type
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        type: string
+        enum:
+        - equipment
+        - flow
+        - asset_group
+    EstimationMethodInputName:
+      description: Input Name
+      in: path
+      name: input_name
+      required: true
+      schema:
+        type: string
   schemas:
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    Equipment:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    Flow:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
     AuditFields:
       properties:
         created_at:
@@ -276,28 +337,70 @@ components:
           format: uuid
           type: string
       type: object
-    FlowStatus:
+    FlowEquipmentConnections:
+      properties:
+        upstream_equipment_id:
+          type: string
+          format: uuid
+        downstream_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ReportingGroup:
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+        type: object
+    AssetType:
       type: string
       enum:
-      - active
-      - inactive
-    ProductCategories:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
-    FlowTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/flow_types`
-    Latitude:
-      description: latitude on the Earth
-      example: 51
-      maximum: 90
-      minimum: -90
-      nullable: true
-      type: number
-    EstimationMethodDefaultRecordsList:
-      type: array
-      items:
-        $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+      - equipment
+      - device
+      - facility
+      - flow
+    FlowFacilityConnections:
+      properties:
+        upstream_facility_id:
+          type: string
+          format: uuid
+        downstream_facility_id:
+          type: string
+          format: uuid
+      type: object
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    EstimationMethodDefaultRecordInput:
+      properties:
+        measurement_type:
+          type: string
+          example: wind_speed
+        asset_id:
+          type: string
+          format: uuid
+        reporting_group_id:
+          type: string
     Pagination:
       properties:
         page_number:
@@ -313,16 +416,30 @@ components:
           type: number
           example: 6
       type: object
-    EstimationMethodDefaultRecordInput:
+    FlowFlowConnections:
       properties:
-        measurement_type:
-          type: string
-          example: wind_speed
-        asset_id:
-          type: string
-          format: uuid
-        reporting_group_id:
-          type: string
+        upstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        downstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
+    PaginatedEstimationMethodDefaultRecords:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/EstimationMethodDefaultRecordsList'
+        type: object
     EstimationMethodDefaultRecord:
       properties:
         method_id:
@@ -369,43 +486,29 @@ components:
         updated_by:
           format: uuid
           type: string
-    FlowEquipmentConnections:
-      properties:
-        upstream_equipment_id:
-          type: string
-          format: uuid
-        downstream_equipment_id:
-          type: string
-          format: uuid
-      type: object
-    FlowFacilityConnections:
-      properties:
-        upstream_facility_id:
-          type: string
-          format: uuid
-        downstream_facility_id:
-          type: string
-          format: uuid
-      type: object
-    XLSXResponse:
-      format: binary
+    ProductCategories:
       type: string
-    AssetType:
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      type:
+      - number
+      - 'null'
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    FlowStatus:
       type: string
       enum:
-      - equipment
-      - device
-      - facility
-      - flow
-    ReportingGroup:
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-        type: object
+      - active
+      - inactive
     Asset:
       type: object
       properties:
@@ -414,121 +517,20 @@ components:
           format: uuid
         asset_type:
           $ref: '#/components/schemas/AssetType'
-    Longitude:
-      description: longitude on the Earth
-      example: -114
-      maximum: 180
-      minimum: -180
-      nullable: true
-      type: number
-    Flow:
-      allOf:
-      - $ref: '#/components/schemas/FlowBasic'
-      - $ref: '#/components/schemas/FlowFlowConnections'
-      - $ref: '#/components/schemas/FlowFacilityConnections'
-      - $ref: '#/components/schemas/FlowEquipmentConnections'
-      - properties:
-          id:
-            type: string
-            format: uuid
-          associated_facility_id:
-            type: string
-            format: uuid
-          associated_equipment_id:
-            type: string
-            format: uuid
-      - $ref: '#/components/schemas/AuditFields'
-        type: object
-    PaginatedEstimationMethodDefaultRecords:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/EstimationMethodDefaultRecordsList'
-        type: object
-    EquipmentTypeShallow:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-    Equipment:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        effective_date:
-          example: '2022-01-01'
-          type: string
-        id:
-          format: uuid
-          type: string
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/EquipmentTypeShallow'
-      type: object
+    EstimationMethodDefaultRecordsList:
+      type: array
+      items:
+        $ref: '#/components/schemas/EstimationMethodDefaultRecord'
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      type:
+      - number
+      - 'null'
     CustomAttributes:
       example:
         attribute1: 12345
         attribute2: value1
       type: object
-    FlowBasic:
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/FlowTypes'
-        status:
-          $ref: '#/components/schemas/FlowStatus'
-        product_category:
-          $ref: '#/components/schemas/ProductCategories'
-        product_type:
-          $ref: '#/components/schemas/ProductTypes'
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
-    ProductTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
-    ReportingGroupInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    FlowFlowConnections:
-      properties:
-        upstream_flow_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        downstream_flow_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        upstream_flows_count:
-          type: integer
-        downstream_flows_count:
-          type: integer
-      type: object
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2

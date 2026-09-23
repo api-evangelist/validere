@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities company API
+  description: Company
+  title: CarbonHub Company API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Company
-  name: company
+  name: Company
 paths:
   /app/v1/companies:
     post:
@@ -31,7 +31,7 @@ paths:
           description: A successful operation
       summary: Must be System Admin - Create a company
       tags:
-      - company
+      - Company
   /app/v1/companies/search:
     post:
       operationId: search_companies
@@ -56,7 +56,7 @@ paths:
           description: successful operation
       summary: Must be System Admin - Search companies
       tags:
-      - company
+      - Company
   /app/v1/companies/{company_id}:
     get:
       operationId: get_company
@@ -72,7 +72,7 @@ paths:
           description: A successful operation
       summary: Must be System Admin or Company member - Get a company
       tags:
-      - company
+      - Company
     put:
       operationId: update_company
       parameters:
@@ -92,7 +92,7 @@ paths:
           description: A successful operation
       summary: Must be System Admin - Update a company
       tags:
-      - company
+      - Company
     delete:
       operationId: delete_company
       parameters:
@@ -102,53 +102,37 @@ paths:
           description: successful operation
       summary: Must be System Admin - Delete a company
       tags:
-      - company
+      - Company
 components:
   schemas:
-    CompanySort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - name
-          - created_at
-          - updated_at
-          - created_by
-          - updated_by
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    IUpdateCompanyInput:
+    ICreateCompanyWithAdminInput:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
         localization:
           type: object
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
+        admin:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+            email:
+              type: string
+              format: email
+          required:
+          - name
+          - email
+      required:
+      - name
+      - localization
+      - admin
     ICompany:
       type: object
       properties:
@@ -159,8 +143,7 @@ components:
           type: string
         localization:
           type: object
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
         created_at:
           anyOf:
           - type: string
@@ -185,35 +168,29 @@ components:
       - created_by
       - updated_at
       - updated_by
-    ICreateCompanyWithAdminInput:
+    IUpdateCompanyInput:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         name:
           type: string
         localization:
           type: object
-          additionalProperties:
-            nullable: true
-        admin:
-          type: object
-          properties:
-            name:
-              type: string
-              minLength: 1
-              maxLength: 100
-            email:
-              type: string
-              format: email
-          required:
-          - name
-          - email
-      required:
-      - name
-      - localization
-      - admin
+          additionalProperties: {}
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
     Pagination:
       properties:
         page_number:
@@ -229,14 +206,6 @@ components:
           type: number
           example: 6
       type: object
-    PagedCompanyList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/ICompany'
-        type: object
     CompanyFilter:
       properties:
         filter:
@@ -250,6 +219,34 @@ components:
               name:
                 type: string
           type: object
+    PagedCompanyList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ICompany'
+        type: object
+    CompanySort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     Paginated:
       properties:
         page:

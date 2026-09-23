@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities charts API
+  description: Charts
+  title: CarbonHub Charts API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Charts
-  name: charts
+  name: Charts
 paths:
   /app/v1/charts:
     post:
@@ -31,7 +31,7 @@ paths:
           description: A successful operation
       summary: Create a chart
       tags:
-      - charts
+      - Charts
   /app/v1/charts/{id}:
     delete:
       operationId: delete_chart
@@ -42,7 +42,7 @@ paths:
           description: A successful operation
       summary: Delete a chart
       tags:
-      - charts
+      - Charts
     get:
       operationId: get_chart
       parameters:
@@ -56,7 +56,7 @@ paths:
           description: A successful operation
       summary: Get a chart
       tags:
-      - charts
+      - Charts
     put:
       operationId: put_chart
       parameters:
@@ -76,17 +76,8 @@ paths:
           description: A successful operation
       summary: Update a Chart
       tags:
-      - charts
+      - Charts
 components:
-  parameters:
-    ChartId:
-      description: Chart ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
   schemas:
     ChartCreate:
       properties:
@@ -129,3 +120,12 @@ components:
           format: date-time
           type: string
       type: object
+  parameters:
+    ChartId:
+      description: Chart ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string

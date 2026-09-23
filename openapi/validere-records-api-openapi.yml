@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities records API
+  description: Manage Records
+  title: CarbonHub Records API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Manage Records
-  name: records
+  name: Records
 paths:
   /app/v1/records:
     post:
@@ -43,7 +43,7 @@ paths:
           description: A successful operation
       summary: Create new record
       tags:
-      - records
+      - Records
     put:
       operationId: upsert_record
       requestBody:
@@ -73,7 +73,7 @@ paths:
           description: A successful operation
       summary: Create or update a record
       tags:
-      - records
+      - Records
   /app/v1/records/search:
     post:
       operationId: search_records
@@ -97,7 +97,7 @@ paths:
           description: A successful operation
       summary: Search and list records
       tags:
-      - records
+      - Records
   /app/v1/records/status:
     put:
       operationId: lock_records_by_search
@@ -118,7 +118,7 @@ paths:
           description: A successful operation
       summary: Search records and set status of their record values
       tags:
-      - records
+      - Records
   /app/v1/records/export:
     post:
       operationId: export_records
@@ -141,7 +141,7 @@ paths:
           description: A successful with the link to download report
       summary: Export records based on search input
       tags:
-      - records
+      - Records
   /app/v1/records/apply_configuration:
     post:
       operationId: apply_record_configuration
@@ -179,7 +179,7 @@ paths:
           description: A successful operation
       summary: Apply record configuration using filter parameters
       tags:
-      - records
+      - Records
   /app/v1/records/apply_default_configuration:
     post:
       operationId: apply_default_configuration
@@ -198,7 +198,7 @@ paths:
           description: A successful operation
       summary: Apply default record configuration using filter parameters
       tags:
-      - records
+      - Records
   /app/v1/records/apply_default_configuration_async:
     post:
       operationId: apply_default_configuration_async
@@ -215,9 +215,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/BulkAsyncApplyDefaultRecordConfigurationResponse'
           description: Successfully starts an asynchronous job to bulk apply default record configurations
-      summary: Start an asynchronous job to bulk apply default record configuration using filter parameters
+      summary: Start an asynchronous job to bulk apply default record configuration using…
       tags:
-      - records
+      - Records
   /app/v1/records/{record_id}:
     get:
       operationId: get_record
@@ -232,7 +232,7 @@ paths:
           description: A successful operation
       summary: Get record and values
       tags:
-      - records
+      - Records
     delete:
       operationId: delete_record
       parameters:
@@ -242,7 +242,7 @@ paths:
           description: A successful operation
       summary: Delete record and values
       tags:
-      - records
+      - Records
   /app/v1/records/{record_id}/status:
     put:
       operationId: lock_record_values_of_record
@@ -263,7 +263,7 @@ paths:
           description: A successful operation
       summary: Set status of values of a record (lock/unlock)
       tags:
-      - records
+      - Records
   /app/v1/records/{entity_type}/input_records/search:
     post:
       operationId: search_input_records
@@ -292,7 +292,7 @@ paths:
           description: A successful operation
       summary: Search and list records that are calculator inputs
       tags:
-      - records
+      - Records
   /app/v1/records/{entity_type}/input_records/export:
     post:
       operationId: export_input_records
@@ -316,7 +316,7 @@ paths:
           description: A successful with the link to download report
       summary: Export records that are calculator inputs
       tags:
-      - records
+      - Records
   /app/v1/records/{record_id}/value/{measurement_type}:
     get:
       operationId: get_record_value
@@ -332,7 +332,7 @@ paths:
           description: A successful operation
       summary: Get record value
       tags:
-      - records
+      - Records
     put:
       operationId: upsert_record_value
       parameters:
@@ -353,7 +353,7 @@ paths:
           description: A successful operation
       summary: Upsert record value
       tags:
-      - records
+      - Records
     delete:
       operationId: delete_record_value
       parameters:
@@ -364,7 +364,7 @@ paths:
           description: A successful operation
       summary: Delete record value
       tags:
-      - records
+      - Records
   /app/v1/records/{record_id}/value/{measurement_type}/status:
     put:
       operationId: lock_record_value
@@ -386,7 +386,7 @@ paths:
           description: A successful operation
       summary: Set record value status (lock/unlock)
       tags:
-      - records
+      - Records
   /app/v1/records/filters:
     get:
       operationId: get_records_filter
@@ -408,7 +408,7 @@ paths:
           description: successful operation
       summary: List Filter
       tags:
-      - records
+      - Records
     post:
       operationId: post_records_filter
       requestBody:
@@ -426,7 +426,7 @@ paths:
           description: successful operation
       summary: Create Filter
       tags:
-      - records
+      - Records
   /app/v1/records/filters/{filter_id}:
     delete:
       operationId: delete_records_filter
@@ -437,7 +437,7 @@ paths:
           description: successful operation
       summary: Delete Filter
       tags:
-      - records
+      - Records
     put:
       operationId: put_records_filter
       parameters:
@@ -457,286 +457,9 @@ paths:
           description: successful operation
       summary: Update Filter
       tags:
-      - records
+      - Records
 components:
-  parameters:
-    MeasurementType:
-      description: Measurement type of the measurements being retrieved
-      example: volume
-      in: path
-      name: measurement_type
-      required: true
-      schema:
-        type: string
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    FilterStatus:
-      description: Filter Status
-      in: query
-      name: status
-      required: false
-      schema:
-        $ref: '#/components/schemas/schemas-FilterStatus'
-    AssetType:
-      description: Asset Type
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/AssetType'
-    RecordId:
-      description: ID of the record
-      in: path
-      name: record_id
-      required: true
-      schema:
-        type: string
-        format: uuid
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    RecordAssetDetailQuery:
-      description: set to true to include asset detail when group by <asset_type>.id
-      in: query
-      name: asset_detail
-      example: true
-      required: false
-      schema:
-        type: string
-    FilterTag:
-      description: Filter Tag
-      in: query
-      name: tag
-      required: false
-      schema:
-        type: string
-    FilterCreatedBy:
-      description: Filter Creator
-      in: query
-      name: created_by
-      required: false
-      schema:
-        format: uuid
-        type: string
-    FilterName:
-      description: Filter Name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
   schemas:
-    schemas-FilterStatus:
-      type: string
-      enum:
-      - active
-      - draft
-    ApplyDefaultRecordConfigurationItemResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/BulkItemStatus'
-        upserts:
-          type: array
-          items:
-            $ref: '#/components/schemas/RecordValue'
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    PagedRecordFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/RecordFilterOutput'
-            type: array
-        type: object
-    CalculatorResultRecordValueConfiguration:
-      properties:
-        configuration_type:
-          type: string
-          enum:
-          - calculator_result
-        aggregate_function:
-          $ref: '#/components/schemas/RecordValueConfigurationFunction'
-        calculator_result_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-      type: object
-    RecordSort:
-      properties:
-        sort_by:
-          description: any field from group_by param
-          type: string
-        sort_direction:
-          default: desc
-          description: sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    MeasurementSubjectEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    EquipmentStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-      - deprecated
-    RecordCreateInput:
-      properties:
-        asset_id:
-          format: uuid
-          type: string
-          description: Either asset_id or asset_filter is required
-        asset_filter:
-          description: Either asset_id or asset_filter is required
-          allOf:
-          - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-          - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
-          - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
-          - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
-          - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
-          - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
-        reporting_group_id:
-          type: string
-        year_month:
-          type: string
-      type: object
-    FlowTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/flow_types`
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    XLSXResponse:
-      format: binary
-      type: string
-    FormSchemaStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      - draft
-    FilterTag:
-      properties:
-        tag:
-          type: string
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    RecordLockFilter:
-      properties:
-        filter:
-          $ref: '#/components/schemas/RecordFilterFields'
-      type: object
-    RecordFilterFields:
-      allOf:
-      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/RecordPrimaryFilterFields'
-      - properties:
-          measurement_type:
-            type: string
-          record_value.id:
-            description: record value ID
-            type: string
-            format: uuid
-          flow.associated_facility.custom_attributes:
-            type: object
-          flow.associated_equipment.custom_attributes:
-            type: object
-        type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
-    PagedAggregatedRecordValues:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/AggregatedRecordValuesResults'
-        type: object
-    JobStatus:
-      type: string
-      enum:
-      - started
-      - finished
-      - failed
-      - partial
-    BulkApplyDefaultRecordConfigurationResponse:
-      allOf:
-      - $ref: '#/components/schemas/BulkResponse'
-      - properties:
-          data:
-            type: object
-            additionalProperties:
-              $ref: '#/components/schemas/ApplyDefaultRecordConfigurationItemResponse'
-          skippedCount:
-            type: number
     FilterMetadata:
       properties:
         metadata:
@@ -748,159 +471,50 @@ components:
             isSelected: true
           - key: flow.type
             isSelected: false
-    RecordValueConfigurationFunction:
-      type: string
-      enum:
-      - avg
-      - sum
-    ProductCategories:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    BulkItemStatus:
-      type: string
-      enum:
-      - success
-      - failed
-      - skipped
-    EquipmentFacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        equipment.facility.custom_attributes:
-          type: object
-        equipment.facility.id:
-          type: string
-        equipment.facility.name:
-          type: string
-        equipment.facility.status:
-          type: string
-      type: object
-    RecordValueCreateInput:
-      properties:
-        value:
-          type: number
-        measurement_unit:
-          type: string
-        configuration:
-          $ref: '#/components/schemas/RecordValueConfiguration'
-        note:
-          type: string
-        attachment_ref:
-          type: string
-        attachment_filename:
-          type: string
-      type: object
-    AggregatedRecordValues:
-      type: array
-      description: Record value configurations are included when grouping by record or record value id
-      items:
-        properties:
-          measurement_type:
-            type: string
-          measurement_unit:
-            type: string
-          value:
-            example: 0.22
-            type: number
-          configuration:
-            $ref: '#/components/schemas/RecordValueConfiguration'
-        type: object
-    JobItemStatusCounts:
-      type: object
-      properties:
-        success:
-          type: number
-        failed:
-          type: number
-        skipped:
-          type: number
-    DevicePrimaryFilterFieldsWithPrefix:
-      properties:
-        device.attributes:
-          type: object
-        device.custom_attributes:
-          type: object
-        device.id:
-          type: string
-        device.measurement_types:
-          type: string
-        device.name:
-          type: string
-        device.status:
-          type: string
-        device.type_id:
-          type: string
-    CalculatorInputRecord:
-      properties:
-        estimation_method_id:
-          type: string
-          format: uuid
-        input_name:
-          type: string
-        year_month:
-          type: string
-        record_value_id:
-          type: string
-          format: uuid
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-    RecordValueWithCalculatorInputRecord:
-      allOf:
-      - $ref: '#/components/schemas/RecordValue'
-      - properties:
-          calculator_input_record:
-            $ref: '#/components/schemas/CalculatorInputRecord'
-        type: object
-    RecordValueSearchLockResponse:
+    LockRecordValuesOfRecordResponse:
       properties:
         success:
           type: boolean
           example: true
-        affected:
-          type: number
-          example: 109
+        recordValues:
+          type: array
+          items:
+            $ref: '#/components/schemas/RecordValue'
       type: object
-    RecordFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/RecordFilter'
+    EquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.custom_attributes:
+          type: object
+        equipment.id:
+          type: string
+        equipment.name:
+          type: string
+        equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
       type: object
-    ReportingGroupUpdateInput:
+    RecordLockFilter:
       properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
-    FilterName:
-      properties:
-        name:
-          type: string
-          example: My first filter
+        filter:
+          $ref: '#/components/schemas/RecordFilterFields'
+      type: object
+    XLSXResponse:
+      format: binary
+      type: string
+    RecordValueStatusType:
+      type: string
+      enum:
+      - locked
+      - unlocked
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
     AuditFields:
       properties:
         created_at:
@@ -916,80 +530,216 @@ components:
           format: uuid
           type: string
       type: object
+    ApplyDefaultRecordValueConfigurationRecordFilterInput:
+      allOf:
+      - properties:
+          filter:
+            $ref: '#/components/schemas/RecordFilterFields'
+      - $ref: '#/components/schemas/OverwriteAllValues'
     OverwriteAllValues:
       properties:
         overwrite_all_values:
           type: boolean
           default: false
-    InputRecordResults:
-      type: array
-      items:
-        $ref: '#/components/schemas/InputRecordResult'
-    FilterStatus:
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    PagedAggregatedRecordValues:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/AggregatedRecordValuesResults'
+        type: object
+    RecordValuesOfRecordLockInput:
+      properties:
+        measurement_types:
+          type: array
+          items:
+            type: string
+            example: volume
+          description: measurement_types
+        status:
+          $ref: '#/components/schemas/RecordValueStatusType'
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    BulkResponse:
       properties:
         status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    LockRecordValuesOfRecordResponse:
+          $ref: '#/components/schemas/BulkResponseStatus'
+      type: object
+    Job:
+      type: object
       properties:
-        success:
-          type: boolean
-          example: true
-        recordValues:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/JobStatus'
+        type:
+          $ref: '#/components/schemas/JobType'
+        started_at:
+          type: string
+          format: date-time
+        finished_at:
+          type: string
+          format: date-time
+        duration:
+          type: number
+        input:
+          type: object
+        output:
+          type: object
+        total_items:
+          type: number
+        processed_items:
+          type: number
+        item_status_counts:
+          $ref: '#/components/schemas/JobItemStatusCounts'
+    ApplyDefaultRecordConfigurationItemResponse:
+      properties:
+        status:
+          $ref: '#/components/schemas/BulkItemStatus'
+        upserts:
           type: array
           items:
             $ref: '#/components/schemas/RecordValue'
-      type: object
-    BulkAsyncApplyDefaultRecordConfigurationResponse:
-      allOf:
-      - $ref: '#/components/schemas/BulkResponse'
-      - properties:
-          job:
-            $ref: '#/components/schemas/Job'
     FilterInput:
       allOf:
       - $ref: '#/components/schemas/FilterName'
       - $ref: '#/components/schemas/FilterStatus'
       - $ref: '#/components/schemas/FilterTag'
       - $ref: '#/components/schemas/FilterMetadata'
-    FormSubmissionStatus:
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    schemas-FilterStatus:
       type: string
       enum:
-      - validated
-      - invalidated
-      - pending
-      - submitted
+      - active
       - draft
-      default: pending
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    RecordValueConfiguration:
+      allOf:
+      - oneOf:
+        - $ref: '#/components/schemas/ManualRecordValueConfiguration'
+        - $ref: '#/components/schemas/FormMeasurementRecordValueConfiguration'
+        - $ref: '#/components/schemas/CalculatorResultRecordValueConfiguration'
+        - $ref: '#/components/schemas/MeasurementSeriesRecordValueConfiguration'
+      - properties:
+          sources:
+            items:
+              type: object
+            type: array
+            readOnly: true
+        type: object
     JobType:
       type: string
       enum:
       - run_calculation
       - apply_default_record_configuration
       - apply_default_calculator_configuration
-    InputRecordResult:
+    RecordFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/RecordFilter'
+      type: object
+    BulkItemStatus:
+      type: string
+      enum:
+      - success
+      - failed
+      - skipped
+    RecordValueWithCalculatorInputRecord:
+      allOf:
+      - $ref: '#/components/schemas/RecordValue'
+      - properties:
+          calculator_input_record:
+            $ref: '#/components/schemas/CalculatorInputRecord'
+        type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    RecordSort:
+      properties:
+        sort_by:
+          description: any field from group_by param
+          type: string
+        sort_direction:
+          default: desc
+          description: sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    RecordValueSearchLockResponse:
+      properties:
+        success:
+          type: boolean
+          example: true
+        affected:
+          type: number
+          example: 109
+      type: object
+    ReportingGroupInput:
       type: object
       allOf:
-      - $ref: '#/components/schemas/RecordCreateInput'
-      - $ref: '#/components/schemas/AuditFields'
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
       - properties:
           id:
-            format: uuid
             type: string
-          company_id:
-            format: uuid
-            type: string
-          record_value:
-            type: array
-            items:
-              $ref: '#/components/schemas/RecordValueWithCalculatorInputRecord'
-          asset:
-            $ref: '#/components/schemas/Asset'
-          reporting_group:
-            $ref: '#/components/schemas/ReportingGroup'
-    RecordFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/RecordFilter'
+            example: subpartw
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
     ReportingGroup:
       allOf:
       - $ref: '#/components/schemas/ReportingGroupInput'
@@ -999,14 +749,32 @@ components:
             format: uuid
             type: string
         type: object
-    BulkResponseStatus:
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    FlowFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        flow.facility.custom_attributes:
+          type: object
+        flow.facility.id:
+          type: string
+        flow.facility.name:
+          type: string
+        flow.facility.status:
+          type: string
+      type: object
+    ProductCategories:
       type: string
-      enum:
-      - success
-      - failed
-    ProductTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
+      description: Use `id` value of any index in `GET /v1/product_categories`
     FormMeasurementRecordValueConfiguration:
       properties:
         configuration_type:
@@ -1024,136 +792,14 @@ components:
             format: uuid
             type: string
       type: object
-    FlowPrimaryFilterFieldsWithPrefix:
+    Asset:
+      type: object
       properties:
-        flow.id:
-          type: string
-        flow.name:
-          type: string
-        flow.status:
-          $ref: '#/components/schemas/FlowStatus'
-        flow.type:
-          $ref: '#/components/schemas/FlowTypes'
-        flow.product_type:
-          $ref: '#/components/schemas/ProductTypes'
-        flow.product_category:
-          $ref: '#/components/schemas/ProductCategories'
-        flow.custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        flow.associated_facility_id:
+        id:
           type: string
           format: uuid
-        flow.associated_equipment_id:
-          type: string
-          format: uuid
-      type: object
-    FlowFacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        flow.facility.custom_attributes:
-          type: object
-        flow.facility.id:
-          type: string
-        flow.facility.name:
-          type: string
-        flow.facility.status:
-          type: string
-      type: object
-    EquipmentPrimaryFilterFieldsWithPrefix:
-      properties:
-        equipment.custom_attributes:
-          type: object
-        equipment.id:
-          type: string
-        equipment.name:
-          type: string
-        equipment.status:
-          $ref: '#/components/schemas/EquipmentStatus'
-        equipment.type.id:
-          type: string
-        equipment.type.name:
-          type: string
-      type: object
-    FormSubmissionFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/FormSubmissionFilter'
-      type: object
-    RecordValuesOfRecordLockInput:
-      properties:
-        measurement_types:
-          type: array
-          items:
-            type: string
-            example: volume
-          description: measurement_types
-        status:
-          $ref: '#/components/schemas/RecordValueStatusType'
-      type: object
-    FlowStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    MeasurementSeriesRecordValueConfiguration:
-      properties:
-        configuration_type:
-          type: string
-          enum:
-          - measurement_series
-        aggregate_function:
-          $ref: '#/components/schemas/RecordValueConfigurationFunction'
-        measurement_series_id:
-          type: string
-          format: uuid
-        start:
-          format: date-time
-          type: string
-        end:
-          format: date-time
-          type: string
-        Interval:
-          type: string
-          example: 1day
-          enum:
-          - 1minute
-          - 15minute
-          - 1hour
-          - 1day
-      type: object
-    ApplyDefaultRecordValueConfigurationRecordFilterInput:
-      allOf:
-      - properties:
-          filter:
-            $ref: '#/components/schemas/RecordFilterFields'
-      - $ref: '#/components/schemas/OverwriteAllValues'
-    RecordValueConfiguration:
-      allOf:
-      - oneOf:
-        - $ref: '#/components/schemas/ManualRecordValueConfiguration'
-        - $ref: '#/components/schemas/FormMeasurementRecordValueConfiguration'
-        - $ref: '#/components/schemas/CalculatorResultRecordValueConfiguration'
-        - $ref: '#/components/schemas/MeasurementSeriesRecordValueConfiguration'
-      - properties:
-          sources:
-            items:
-              type: object
-            type: array
-            readOnly: true
-        type: object
-    RecordValue:
-      allOf:
-      - $ref: '#/components/schemas/RecordValueCreateInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          record_id:
-            format: uuid
-            type: string
-          measurement_type:
-            type: string
-        type: object
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
     FormSubmissionFilter:
       properties:
         filter:
@@ -1229,57 +875,21 @@ components:
               type: string
               format: date-time
           type: object
-    RecordValueStatusType:
-      type: string
-      enum:
-      - locked
-      - unlocked
-    Job:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        company_id:
-          type: string
-          format: uuid
-        status:
-          $ref: '#/components/schemas/JobStatus'
-        type:
-          $ref: '#/components/schemas/JobType'
-        started_at:
-          type: string
-          format: date-time
-        finished_at:
-          type: string
-          format: date-time
-        duration:
-          type: number
-        input:
-          type: object
-        output:
-          type: object
-        total_items:
-          type: number
-        processed_items:
-          type: number
-        item_status_counts:
-          $ref: '#/components/schemas/JobItemStatusCounts'
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
+    AggregatedRecordValuesResults:
+      type: array
+      items:
+        properties:
+          id:
+            type: string
+            format: uuid
+          reporting_group_id:
+            type: string
+          year_month:
+            example: 202212
+            type: string
+          values:
+            $ref: '#/components/schemas/AggregatedRecordValues'
+        type: object
     RecordPrimaryFilterFields:
       properties:
         id:
@@ -1302,90 +912,48 @@ components:
           type: string
           example: 202201
       type: object
-    Paginated:
+    FlowPrimaryFilterFieldsWithPrefix:
       properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    BulkResponse:
-      properties:
-        status:
-          $ref: '#/components/schemas/BulkResponseStatus'
-      type: object
-    ReportWithS3Url:
-      allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
-    RecordValueLockInput:
-      properties:
-        status:
-          $ref: '#/components/schemas/RecordValueStatusType'
-      type: object
-    AssetType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-    Asset:
-      type: object
-      properties:
-        id:
+        flow.id:
+          type: string
+        flow.name:
+          type: string
+        flow.status:
+          $ref: '#/components/schemas/FlowStatus'
+        flow.type:
+          $ref: '#/components/schemas/FlowTypes'
+        flow.product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        flow.product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        flow.custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        flow.associated_facility_id:
           type: string
           format: uuid
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-    PagedInputRecordResults:
+        flow.associated_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    EquipmentFacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.facility.custom_attributes:
+          type: object
+        equipment.facility.id:
+          type: string
+        equipment.facility.name:
+          type: string
+        equipment.facility.status:
+          type: string
+      type: object
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    FormSubmissionFilterOutput:
       allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/InputRecordResults'
-        type: object
-    AggregatedRecordValuesResults:
-      type: array
-      items:
-        properties:
-          id:
-            type: string
-            format: uuid
-          reporting_group_id:
-            type: string
-          year_month:
-            example: 202212
-            type: string
-          values:
-            $ref: '#/components/schemas/AggregatedRecordValues'
-        type: object
-    Record:
-      allOf:
-      - $ref: '#/components/schemas/RecordCreateInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          asset_type:
-            $ref: '#/components/schemas/MeasurementSubjectEntityType'
-          company_id:
-            format: uuid
-            type: string
-          values:
-            type: array
-            items:
-              $ref: '#/components/schemas/RecordValue'
-        type: object
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/FormSubmissionFilter'
+      type: object
     ReportWithTemplatedReportResponse:
       type: object
       properties:
@@ -1409,8 +977,7 @@ components:
           type: string
         input:
           type: object
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           description: User input for a templated report based on the input schema for the desired templated report.
           example:
             year_month: 202201
@@ -1424,16 +991,18 @@ components:
           anyOf:
           - type: string
             format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
+          - type:
+            - string
+            - 'null'
+          - {}
         updated_at:
           anyOf:
           - type: string
             format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
+          - type:
+            - string
+            - 'null'
+          - {}
         created_by:
           type: string
           format: uuid
@@ -1542,16 +1111,18 @@ components:
               anyOf:
               - type: string
                 format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
+              - type:
+                - string
+                - 'null'
+              - {}
             updated_at:
               anyOf:
               - type: string
                 format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
+              - type:
+                - string
+                - 'null'
+              - {}
           required:
           - name
           - display_name
@@ -1578,14 +1149,280 @@ components:
         value:
           type: number
       type: object
-    ReportingGroupInput:
-      type: object
+    InputRecordResults:
+      type: array
+      items:
+        $ref: '#/components/schemas/InputRecordResult'
+    PagedRecordFilterOutput:
       allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/RecordFilterOutput'
+            type: array
+        type: object
+    PagedInputRecordResults:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/InputRecordResults'
+        type: object
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
+    RecordValueLockInput:
+      properties:
+        status:
+          $ref: '#/components/schemas/RecordValueStatusType'
+      type: object
+    RecordValueCreateInput:
+      properties:
+        value:
+          type: number
+        measurement_unit:
+          type: string
+        configuration:
+          $ref: '#/components/schemas/RecordValueConfiguration'
+        note:
+          type: string
+        attachment_ref:
+          type: string
+        attachment_filename:
+          type: string
+      type: object
+    BulkAsyncApplyDefaultRecordConfigurationResponse:
+      allOf:
+      - $ref: '#/components/schemas/BulkResponse'
+      - properties:
+          job:
+            $ref: '#/components/schemas/Job'
+    RecordCreateInput:
+      properties:
+        asset_id:
+          format: uuid
+          type: string
+          description: Either asset_id or asset_filter is required
+        asset_filter:
+          description: Either asset_id or asset_filter is required
+          allOf:
+          - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+          - $ref: '#/components/schemas/FlowFacilityPrimaryFilterFieldsWithPrefix'
+        reporting_group_id:
+          type: string
+        year_month:
+          type: string
+      type: object
+    BulkResponseStatus:
+      type: string
+      enum:
+      - success
+      - failed
+    RecordFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/EquipmentFacilityPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/RecordPrimaryFilterFields'
+      - properties:
+          measurement_type:
+            type: string
+          record_value.id:
+            description: record value ID
+            type: string
+            format: uuid
+          flow.associated_facility.custom_attributes:
+            type: object
+          flow.associated_equipment.custom_attributes:
+            type: object
+        type: object
+    AggregatedRecordValues:
+      type: array
+      description: Record value configurations are included when grouping by record or record value id
+      items:
+        properties:
+          measurement_type:
+            type: string
+          measurement_unit:
+            type: string
+          value:
+            example: 0.22
+            type: number
+          configuration:
+            $ref: '#/components/schemas/RecordValueConfiguration'
+        type: object
+    DevicePrimaryFilterFieldsWithPrefix:
+      properties:
+        device.attributes:
+          type: object
+        device.custom_attributes:
+          type: object
+        device.id:
+          type: string
+        device.measurement_types:
+          type: string
+        device.name:
+          type: string
+        device.status:
+          type: string
+        device.type_id:
+          type: string
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    RecordFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/RecordFilter'
+    RecordValueConfigurationFunction:
+      type: string
+      enum:
+      - avg
+      - sum
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    RecordValue:
+      allOf:
+      - $ref: '#/components/schemas/RecordValueCreateInput'
+      - $ref: '#/components/schemas/AuditFields'
       - properties:
           id:
+            format: uuid
             type: string
-            example: subpartw
+          record_id:
+            format: uuid
+            type: string
+          measurement_type:
+            type: string
+        type: object
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    JobStatus:
+      type: string
+      enum:
+      - started
+      - finished
+      - failed
+      - partial
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+    BulkApplyDefaultRecordConfigurationResponse:
+      allOf:
+      - $ref: '#/components/schemas/BulkResponse'
+      - properties:
+          data:
+            type: object
+            additionalProperties:
+              $ref: '#/components/schemas/ApplyDefaultRecordConfigurationItemResponse'
+          skippedCount:
+            type: number
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FormSchemaStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      - draft
+    MeasurementSeriesRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - measurement_series
+        aggregate_function:
+          $ref: '#/components/schemas/RecordValueConfigurationFunction'
+        measurement_series_id:
+          type: string
+          format: uuid
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        Interval:
+          type: string
+          example: 1day
+          enum:
+          - 1minute
+          - 15minute
+          - 1hour
+          - 1day
+      type: object
+    CalculatorResultRecordValueConfiguration:
+      properties:
+        configuration_type:
+          type: string
+          enum:
+          - calculator_result
+        aggregate_function:
+          $ref: '#/components/schemas/RecordValueConfigurationFunction'
+        calculator_result_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
+    Record:
+      allOf:
+      - $ref: '#/components/schemas/RecordCreateInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          asset_type:
+            $ref: '#/components/schemas/MeasurementSubjectEntityType'
+          company_id:
+            format: uuid
+            type: string
+          values:
+            type: array
+            items:
+              $ref: '#/components/schemas/RecordValue'
+        type: object
     RecordFilter:
       properties:
         filter:
@@ -1597,3 +1434,169 @@ components:
             type: string
             example: year_month
       type: object
+    JobItemStatusCounts:
+      type: object
+      properties:
+        success:
+          type: number
+        failed:
+          type: number
+        skipped:
+          type: number
+    CalculatorInputRecord:
+      properties:
+        estimation_method_id:
+          type: string
+          format: uuid
+        input_name:
+          type: string
+        year_month:
+          type: string
+        record_value_id:
+          type: string
+          format: uuid
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    InputRecordResult:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/RecordCreateInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          record_value:
+            type: array
+            items:
+              $ref: '#/components/schemas/RecordValueWithCalculatorInputRecord'
+          asset:
+            $ref: '#/components/schemas/Asset'
+          reporting_group:
+            $ref: '#/components/schemas/ReportingGroup'
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+  parameters:
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    FilterStatus:
+      description: Filter Status
+      in: query
+      name: status
+      required: false
+      schema:
+        $ref: '#/components/schemas/schemas-FilterStatus'
+    AssetType:
+      description: Asset Type
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/AssetType'
+    FilterName:
+      description: Filter Name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FilterTag:
+      description: Filter Tag
+      in: query
+      name: tag
+      required: false
+      schema:
+        type: string
+    FilterCreatedBy:
+      description: Filter Creator
+      in: query
+      name: created_by
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    RecordId:
+      description: ID of the record
+      in: path
+      name: record_id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    RecordAssetDetailQuery:
+      description: set to true to include asset detail when group by <asset_type>.id
+      in: query
+      name: asset_detail
+      example: true
+      required: false
+      schema:
+        type: string
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
+      schema:
+        type: string

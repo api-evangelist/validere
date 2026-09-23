@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities job API
+  description: Bulk Job status
+  title: CarbonHub Job API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Bulk Job status
-  name: job
+  name: Job
 paths:
   /app/v1/jobs/search:
     post:
@@ -34,7 +34,7 @@ paths:
           description: A successful operation
       summary: Search jobs
       tags:
-      - job
+      - Job
   /app/v2/jobs/{job_id}:
     get:
       operationId: get_job_v2
@@ -49,7 +49,7 @@ paths:
           description: A successful operation
       summary: Get a job
       tags:
-      - job
+      - Job
   /app/v1/jobs/{job_id}/items:
     get:
       operationId: get_job_items
@@ -68,50 +68,25 @@ paths:
           description: A successful operation
       summary: List job items
       tags:
-      - job
+      - Job
 components:
-  parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    JobId:
-      description: Job ID
-      in: path
-      name: job_id
-      required: true
-      schema:
-        format: uuid
-        type: string
   schemas:
+    JobItem:
+      properties:
+        key:
+          type: string
+        company_id:
+          type: string
+          format: uuid
+        job_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/BulkItemStatus'
+        input:
+          type: object
+        output:
+          type: object
     PagedJobItems:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -121,6 +96,42 @@ components:
               $ref: '#/components/schemas/JobItem'
             type: array
         type: object
+    JobType:
+      type: string
+      enum:
+      - run_calculation
+      - apply_default_record_configuration
+      - apply_default_calculator_configuration
+    JobItemStatusCounts:
+      type: object
+      properties:
+        success:
+          type: number
+        failed:
+          type: number
+        skipped:
+          type: number
+    BulkItemStatus:
+      type: string
+      enum:
+      - success
+      - failed
+      - skipped
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     JobSort:
       properties:
         sort_by:
@@ -171,6 +182,13 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
+    JobStatus:
+      type: string
+      enum:
+      - started
+      - finished
+      - failed
+      - partial
     JobV2:
       properties:
         id:
@@ -199,34 +217,15 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    JobType:
-      type: string
-      enum:
-      - run_calculation
-      - apply_default_record_configuration
-      - apply_default_calculator_configuration
-    JobStatus:
-      type: string
-      enum:
-      - started
-      - finished
-      - failed
-      - partial
+    PagedJobs:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Job'
+            type: array
+        type: object
     JobFilter:
       properties:
         filter:
@@ -244,22 +243,6 @@ components:
             finished_at:
               type: string
               format: date-time
-    JobItem:
-      properties:
-        key:
-          type: string
-        company_id:
-          type: string
-          format: uuid
-        job_id:
-          type: string
-          format: uuid
-        status:
-          $ref: '#/components/schemas/BulkItemStatus'
-        input:
-          type: object
-        output:
-          type: object
     Paginated:
       properties:
         page:
@@ -272,27 +255,44 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    BulkItemStatus:
-      type: string
-      enum:
-      - success
-      - failed
-      - skipped
-    JobItemStatusCounts:
-      type: object
-      properties:
-        success:
-          type: number
-        failed:
-          type: number
-        skipped:
-          type: number
-    PagedJobs:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Job'
-            type: array
-        type: object
+  parameters:
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    JobId:
+      description: Job ID
+      in: path
+      name: job_id
+      required: true
+      schema:
+        format: uuid
+        type: string

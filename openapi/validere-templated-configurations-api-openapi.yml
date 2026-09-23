@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities templated_configurations API
+  description: Templated Configurations
+  title: CarbonHub Templated Configurations API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -32,7 +32,7 @@ paths:
   /app/v1/templated_configurations/{templated_configuration_name}/input_schema:
     post:
       operationId: get_templated_configuration_inputs
-      summary: Generate an input schema for a templated configuration, enriched with entity subtype specific custom attributes if applicable.
+      summary: Generate an input schema for a templated configuration, enriched with entity…
       parameters:
       - $ref: '#/components/parameters/TemplatedConfigurationName'
       requestBody:
@@ -76,7 +76,7 @@ paths:
   /app/v1/templated_configurations/search_company:
     post:
       operationId: search_company_templated_configuration
-      summary: Search for the templated configurations available to the company of the requesting user
+      summary: Search for the templated configurations available to the company of the…
       requestBody:
         content:
           application/json:
@@ -233,27 +233,85 @@ paths:
       - templated_configurations
 components:
   schemas:
+    TemplatedConfigurationRunCustomAttributeInputs:
+      properties:
+        custom_attribute_inputs:
+          type: object
+          description: Dictionary of custom attributes for template assets, keys are the template resource ID
+          example:
+            equipment1:
+              equipment_ca1: string
+            flow1:
+              flow_ca1: string
+          additionalProperties:
+            type: object
+            description: Dictionary of custom attributes for a specific template asset
+            additionalProperties:
+              anyOf:
+              - type: number
+              - type: string
+              - type: boolean
+    TemplatedConfigurationRunFilter:
+      properties:
+        filter:
+          description: A filter object for Templated Configuration Runs where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              templated_configuration_name:
+                type: string
+              status:
+                type: string
+          - $ref: '#/components/schemas/TemplatedConfigurationRunResourceFilterWithPrefix'
+          - $ref: '#/components/schemas/TemplatedConfigurationRunPrimaryResourceFilterWithPrefix'
+          - $ref: '#/components/schemas/AuditFields'
+          type: object
+    TemplatedConfigurationRunUpdate:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/TemplatedConfigurationRunInputs'
+      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeInputs'
+    TemplatedConfigurationRunsExportFilter:
+      properties:
+        filter:
+          description: A filter object for Templated Configuration Runs Export where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              status:
+                type: string
+          - $ref: '#/components/schemas/AuditFields'
+          type: object
     TemplatedConfigurationResourceStatus:
       type: string
       enum:
       - submitted
       - success
       - failed
-    AuditFields:
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    TemplatedConfigurationSort:
       properties:
-        created_at:
-          format: date-time
+        sort_by:
+          enum:
+          - name
+          - display_name
+          - primary_resource_type
+          - created_at
+          - updated_at
+          example: name
           type: string
-        updated_at:
-          format: date-time
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
           type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
     TemplatedConfigurationRunResponse:
       type: object
       allOf:
@@ -321,78 +379,6 @@ components:
           type: object
           description: Additional information about the resource, similar to custom attibutes
       type: object
-    TemplatedConfigurationSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - display_name
-          - primary_resource_type
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    TemplatedConfigurationRunCustomAttributeInputs:
-      properties:
-        custom_attribute_inputs:
-          type: object
-          description: Dictionary of custom attributes for template assets, keys are the template resource ID
-          example:
-            equipment1:
-              equipment_ca1: string
-            flow1:
-              flow_ca1: string
-          additionalProperties:
-            type: object
-            description: Dictionary of custom attributes for a specific template asset
-            additionalProperties:
-              nullable: true
-              anyOf:
-              - type: number
-              - type: string
-              - type: boolean
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    TemplatedConfigurationRunStatus:
-      type: string
-      enum:
-      - submitted
-      - partial
-      - success
-      - failed
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     PagedTemplatedConfigurationRunList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -401,14 +387,192 @@ components:
             items:
               $ref: '#/components/schemas/TemplatedConfigurationRunResponse'
         type: object
-    PagedTemplatedConfigurationList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/TemplatedConfigurationResponse'
-        type: object
+    ReportWithTemplatedReportResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          minLength: 3
+          maxLength: 128
+        company_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - exporting
+          - failed
+          - success
+        templated_report_name:
+          type: string
+        input:
+          type: object
+          additionalProperties: {}
+          description: User input for a templated report based on the input schema for the desired templated report.
+          example:
+            year_month: 202201
+            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
+            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
+        s3_object_id:
+          type: string
+        report_version:
+          type: string
+        created_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type:
+            - string
+            - 'null'
+          - {}
+        updated_at:
+          anyOf:
+          - type: string
+            format: date-time
+          - type:
+            - string
+            - 'null'
+          - {}
+        created_by:
+          type: string
+          format: uuid
+        updated_by:
+          type: string
+          format: uuid
+        templated_report:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 3
+              maxLength: 64
+              pattern: ^\w+$
+            display_name:
+              type: string
+              minLength: 3
+              maxLength: 64
+            status:
+              type: string
+              enum:
+              - active
+              - archived
+              default: active
+            input_schema:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  display_name:
+                    type: string
+                    minLength: 3
+                    maxLength: 64
+                  data_type:
+                    type: string
+                    enum:
+                    - boolean
+                    - number
+                    - integer
+                    - pick-list
+                    - multi-pick-list
+                    - string
+                    - geo_point
+                    - number-array
+                    - lookup
+                    - date
+                    - date-time
+                    - date-time-range
+                    - file
+                  description:
+                    type: string
+                    maxLength: 256
+                  is_required:
+                    type: boolean
+                  lookup_entity_type:
+                    type: string
+                    enum:
+                    - equipment
+                    - device
+                    - facility
+                    - flow
+                    - asset_group
+                    - form_schema
+                  lookup_entity_attribute:
+                    type: string
+                  pick_list_values:
+                    type: array
+                    items:
+                      type: string
+                  order:
+                    type: integer
+                required:
+                - display_name
+                - data_type
+                - description
+                - is_required
+                additionalProperties: false
+              default: {}
+            is_embedded:
+              type: boolean
+              default: false
+            use_data_layer_v2:
+              type: boolean
+              default: false
+            description:
+              type: string
+              maxLength: 256
+            deduplication_columns:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+                  minLength: 3
+                  maxLength: 64
+                  pattern: ^[A-Za-z0-9_]+$
+                maxItems: 20
+            row_styling_headers:
+              type: object
+              additionalProperties:
+                type: string
+                minLength: 3
+                maxLength: 64
+                pattern: ^[A-Za-z0-9_]+$
+            created_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type:
+                - string
+                - 'null'
+              - {}
+            updated_at:
+              anyOf:
+              - type: string
+                format: date-time
+              - type:
+                - string
+                - 'null'
+              - {}
+          required:
+          - name
+          - display_name
+          - created_at
+          - updated_at
+        s3_download_link:
+          type: string
+      required:
+      - id
+      - name
+      - company_id
+      - status
+      - created_at
+      - updated_at
+      - created_by
+      - updated_by
+      additionalProperties: false
     TemplatedConfigurationResponse:
       type: object
       properties:
@@ -531,20 +695,20 @@ components:
               entity_subtypes: []
         created_at: '2021-08-01T00:00:00Z'
         updated_at: '2021-08-01T00:00:00Z'
-    TemplatedConfigurationRunResourceFilterWithPrefix:
+    AuditFields:
       properties:
-        resources.template_resource_id:
+        created_at:
+          format: date-time
           type: string
-        resources.status:
+        updated_at:
+          format: date-time
           type: string
-        resources.name:
+        created_by:
+          format: uuid
           type: string
-        resources.type:
+        updated_by:
+          format: uuid
           type: string
-        resources.id:
-          type: string
-        resources.is_primary:
-          type: boolean
       type: object
     TemplatedConfigurationRunResource:
       properties:
@@ -590,11 +754,126 @@ components:
             dependencies:
             - equipment1
             - flow1
+    TemplatedConfigurationRunSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - templated_configuration_name
+          - status
+          - created_at
+          - created_by
+          - updated_at
+          - primary_resource.status
+          - primary_resource.type
+          - primary_resource.name
+          - primary_resource.metadata.facility_name
+          - primary_resource.metadata.sub_type
+          example: templated_configuration_name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    TemplatedConfigurationRunCustomAttributeConfiguration:
+      properties:
+        custom_attribute_configuration:
+          $ref: '#/components/schemas/CustomAttributeConfigurationInput'
+    CustomAttributeConfigurationInput:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          entity_subtype:
+            type: string
+        required:
+        - entity_subtype
+        additionalProperties: false
+      example:
+        equipment1:
+          entity_subtype: compressor
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    TemplatedConfigurationRunResourceFilterWithPrefix:
+      properties:
+        resources.template_resource_id:
+          type: string
+        resources.status:
+          type: string
+        resources.name:
+          type: string
+        resources.type:
+          type: string
+        resources.id:
+          type: string
+        resources.is_primary:
+          type: boolean
+      type: object
     TemplatedConfigurationResourceTypes:
       type: string
       enum:
       - equipment
       - flow
+    TemplatedConfigurationRunDependencyGraphResourceNode:
+      type: object
+      properties:
+        id:
+          type: string
+        resource_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/TemplatedConfigurationResourceTypes'
+        status:
+          $ref: '#/components/schemas/TemplatedConfigurationResourceStatus'
+        name:
+          type: string
+        associated_resources:
+          type: object
+    TemplatedConfigurationFilter:
+      properties:
+        filter:
+          description: A filter object for Templated Configurations where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              display_name:
+                type: string
+              name:
+                type: string
+              equipment_type_id:
+                type: string
+              primary_resource_type:
+                $ref: '#/components/schemas/TemplatedConfigurationResourceTypes'
+          type: object
     TemplatedConfigurationInputsResponseBody:
       type: object
       properties:
@@ -763,29 +1042,6 @@ components:
               display_name: My Custom Attribute
               archived: false
               is_required: true
-    TemplatedConfigurationRunCreate:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/TemplatedConfigurationRunInputs'
-      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeInputs'
-      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeConfiguration'
-    ReportWithS3Url:
-      allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
-    TemplatedConfigurationRunsExportFilter:
-      properties:
-        filter:
-          description: A filter object for Templated Configuration Runs Export where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - properties:
-              status:
-                type: string
-          - $ref: '#/components/schemas/AuditFields'
-          type: object
     GetTemplatedConfigurationInputsRequestBody:
       type: object
       properties:
@@ -806,261 +1062,14 @@ components:
       - custom_attribute_configuration
       additionalProperties: false
       description: "The keys which must be specified in custom_attribute_configuration can be found in the template definition's custom_attribute_configuration.\n      An entity subtype must be specified for each entity which can have several possible entity_subtypes."
-    CustomAttributeConfigurationInput:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          entity_subtype:
-            type: string
-        required:
-        - entity_subtype
-        additionalProperties: false
-      example:
-        equipment1:
-          entity_subtype: compressor
-    TemplatedConfigurationRunUpdate:
-      type: object
+    PagedTemplatedConfigurationList:
       allOf:
-      - $ref: '#/components/schemas/TemplatedConfigurationRunInputs'
-      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeInputs'
-    TemplatedConfigurationRunDependencyGraphResourceNode:
-      type: object
-      properties:
-        id:
-          type: string
-        resource_id:
-          type: string
-        type:
-          $ref: '#/components/schemas/TemplatedConfigurationResourceTypes'
-        status:
-          $ref: '#/components/schemas/TemplatedConfigurationResourceStatus'
-        name:
-          type: string
-        associated_resources:
-          type: object
-    TemplatedConfigurationRunSort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - templated_configuration_name
-          - status
-          - created_at
-          - created_by
-          - updated_at
-          - primary_resource.status
-          - primary_resource.type
-          - primary_resource.name
-          - primary_resource.metadata.facility_name
-          - primary_resource.metadata.sub_type
-          example: templated_configuration_name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    ReportWithTemplatedReportResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-          minLength: 3
-          maxLength: 128
-        company_id:
-          type: string
-          format: uuid
-        status:
-          type: string
-          enum:
-          - exporting
-          - failed
-          - success
-        templated_report_name:
-          type: string
-        input:
-          type: object
-          additionalProperties:
-            nullable: true
-          description: User input for a templated report based on the input schema for the desired templated report.
-          example:
-            year_month: 202201
-            reporting_group_id: bc37cb31-08ce-4b22-8f4c-7d44692a4ef2
-            asset_id: 89c100dc-0401-447f-a9f5-72ae124f3244
-        s3_object_id:
-          type: string
-        report_version:
-          type: string
-        created_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
-        updated_at:
-          anyOf:
-          - type: string
-            format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
-        created_by:
-          type: string
-          format: uuid
-        updated_by:
-          type: string
-          format: uuid
-        templated_report:
-          type: object
-          properties:
-            name:
-              type: string
-              minLength: 3
-              maxLength: 64
-              pattern: ^\w+$
-            display_name:
-              type: string
-              minLength: 3
-              maxLength: 64
-            status:
-              type: string
-              enum:
-              - active
-              - archived
-              default: active
-            input_schema:
-              type: object
-              additionalProperties:
-                type: object
-                properties:
-                  display_name:
-                    type: string
-                    minLength: 3
-                    maxLength: 64
-                  data_type:
-                    type: string
-                    enum:
-                    - boolean
-                    - number
-                    - integer
-                    - pick-list
-                    - multi-pick-list
-                    - string
-                    - geo_point
-                    - number-array
-                    - lookup
-                    - date
-                    - date-time
-                    - date-time-range
-                    - file
-                  description:
-                    type: string
-                    maxLength: 256
-                  is_required:
-                    type: boolean
-                  lookup_entity_type:
-                    type: string
-                    enum:
-                    - equipment
-                    - device
-                    - facility
-                    - flow
-                    - asset_group
-                    - form_schema
-                  lookup_entity_attribute:
-                    type: string
-                  pick_list_values:
-                    type: array
-                    items:
-                      type: string
-                  order:
-                    type: integer
-                required:
-                - display_name
-                - data_type
-                - description
-                - is_required
-                additionalProperties: false
-              default: {}
-            is_embedded:
-              type: boolean
-              default: false
-            use_data_layer_v2:
-              type: boolean
-              default: false
-            description:
-              type: string
-              maxLength: 256
-            deduplication_columns:
-              type: object
-              additionalProperties:
-                type: array
-                items:
-                  type: string
-                  minLength: 3
-                  maxLength: 64
-                  pattern: ^[A-Za-z0-9_]+$
-                maxItems: 20
-            row_styling_headers:
-              type: object
-              additionalProperties:
-                type: string
-                minLength: 3
-                maxLength: 64
-                pattern: ^[A-Za-z0-9_]+$
-            created_at:
-              anyOf:
-              - type: string
-                format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
-            updated_at:
-              anyOf:
-              - type: string
-                format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
-          required:
-          - name
-          - display_name
-          - created_at
-          - updated_at
-        s3_download_link:
-          type: string
-      required:
-      - id
-      - name
-      - company_id
-      - status
-      - created_at
-      - updated_at
-      - created_by
-      - updated_by
-      additionalProperties: false
-    TemplatedConfigurationRunFilter:
-      properties:
-        filter:
-          description: A filter object for Templated Configuration Runs where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - properties:
-              templated_configuration_name:
-                type: string
-              status:
-                type: string
-          - $ref: '#/components/schemas/TemplatedConfigurationRunResourceFilterWithPrefix'
-          - $ref: '#/components/schemas/TemplatedConfigurationRunPrimaryResourceFilterWithPrefix'
-          - $ref: '#/components/schemas/AuditFields'
-          type: object
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/TemplatedConfigurationResponse'
+        type: object
     TemplatedConfigurationRunDependencyGraphResponse:
       type: object
       allOf:
@@ -1113,26 +1122,19 @@ components:
               items:
                 $ref: '#/components/schemas/TemplatedConfigurationRunDependencyGraphResourceNode'
         type: object
-    TemplatedConfigurationFilter:
-      properties:
-        filter:
-          description: A filter object for Templated Configurations where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - $ref: '#/components/schemas/AuditFields'
-          - properties:
-              display_name:
-                type: string
-              name:
-                type: string
-              equipment_type_id:
-                type: string
-              primary_resource_type:
-                $ref: '#/components/schemas/TemplatedConfigurationResourceTypes'
-          type: object
-    TemplatedConfigurationRunCustomAttributeConfiguration:
-      properties:
-        custom_attribute_configuration:
-          $ref: '#/components/schemas/CustomAttributeConfigurationInput'
+    TemplatedConfigurationRunCreate:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/TemplatedConfigurationRunInputs'
+      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeInputs'
+      - $ref: '#/components/schemas/TemplatedConfigurationRunCustomAttributeConfiguration'
+    TemplatedConfigurationRunStatus:
+      type: string
+      enum:
+      - submitted
+      - partial
+      - success
+      - failed
     TemplatedConfigurationRunInputs:
       properties:
         inputs:
@@ -1142,34 +1144,11 @@ components:
             equipment_name: My Dehydrator
             facility_id: 96d868a3-6eab-4955-8782-bb055f5deafd
           additionalProperties:
-            nullable: true
             anyOf:
             - type: number
             - type: string
             - type: boolean
   parameters:
-    TenantId:
-      description: Tenant ID for admin users
-      example: ''
-      in: query
-      name: tenant_id
-      required: false
-      schema:
-        type: string
-    ResourceId:
-      description: Resource ID
-      in: path
-      name: resource_id
-      required: true
-      schema:
-        type: string
-    TemplatedConfigurationName:
-      description: Templated Configuration Name
-      in: path
-      name: templated_configuration_name
-      required: true
-      schema:
-        type: string
     CompanyId:
       schema:
         format: uuid
@@ -1185,4 +1164,26 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+    ResourceId:
+      description: Resource ID
+      in: path
+      name: resource_id
+      required: true
+      schema:
+        type: string
+    TemplatedConfigurationName:
+      description: Templated Configuration Name
+      in: path
+      name: templated_configuration_name
+      required: true
+      schema:
+        type: string
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
         type: string

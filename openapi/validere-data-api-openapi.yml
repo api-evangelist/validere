@@ -1,21 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities data API
-  version: 1.0.0
-servers:
-- url: https://api.validere.io
-security:
-- Staging: []
-- Integration: []
-- Local: []
+  title: Platform Source Data API
+  version: v1.1.0
 tags:
-- name: data
+- name: Data
 paths:
   /data/json:
     post:
       tags:
-      - data
+      - Data
       summary: Register Json Data
       description: 'Registers new JSON data for the specified dataset.
 
@@ -75,7 +68,7 @@ paths:
   /data/file_upload_url:
     get:
       tags:
-      - data
+      - Data
       summary: Get File Upload Url
       description: 'Generates a presigned S3 upload url to upload files to the Data Platform.
 
@@ -172,41 +165,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     JSONDataPostRequest:
       properties:
         client_id:
@@ -229,22 +187,6 @@ components:
       - dataset_id
       - data
       title: JSONDataPostRequest
-    DataResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: DataResponse
-      description: Data response envelope
     ResponseMeta:
       properties:
         type:
@@ -271,3 +213,62 @@ components:
       - type
       title: ResponseMeta
       description: Standard response envelope meta object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: DataResponse
+      description: Data response envelope
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

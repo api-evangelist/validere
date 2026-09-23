@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities reporting_groups API
+  description: Reporting Groups
+  title: CarbonHub Reporting Groups API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Reporting Groups
-  name: reporting_groups
+  name: Reporting Groups
 paths:
   /app/v1/reporting_groups:
     get:
@@ -32,7 +32,7 @@ paths:
           description: A successful operation
       summary: List Reporting Groups
       tags:
-      - reporting_groups
+      - Reporting Groups
     post:
       operationId: create_reporting_group
       requestBody:
@@ -50,7 +50,7 @@ paths:
           description: A successful operation
       summary: Create new Reporting Group
       tags:
-      - reporting_groups
+      - Reporting Groups
   /app/v1/reporting_groups/{id}:
     get:
       operationId: get_reporting_group
@@ -65,7 +65,7 @@ paths:
           description: A successful operation
       summary: Get a Reporting Group by Id
       tags:
-      - reporting_groups
+      - Reporting Groups
     put:
       operationId: update_reporting_group
       parameters:
@@ -85,7 +85,7 @@ paths:
           description: A successful operation
       summary: Update a Reporting Group by Id
       tags:
-      - reporting_groups
+      - Reporting Groups
     delete:
       operationId: delete_reporting_group
       parameters:
@@ -95,7 +95,7 @@ paths:
           description: A successful operation
       summary: Delete a Reporting Group by Id
       tags:
-      - reporting_groups
+      - Reporting Groups
   /app/v1/reporting_groups/{id}/estimation_methods/{estimation_method_id}:
     put:
       operationId: add_estimation_method_reporting_group
@@ -107,7 +107,7 @@ paths:
           description: A successful operation
       summary: Add a reporting_group/estimation_method relationship
       tags:
-      - reporting_groups
+      - Reporting Groups
     delete:
       operationId: remove_estimation_method_reporting_group
       parameters:
@@ -118,9 +118,17 @@ paths:
           description: A successful operation
       summary: Remove a reporting_group/estimation_method relationship
       tags:
-      - reporting_groups
+      - Reporting Groups
 components:
   parameters:
+    ReportingGroupId:
+      description: ID of report group
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        example: subpartw
     EstimationMethodFullId:
       description: Estimation Method ID
       example: 748970de-fd1f-4494-ae3f-47cc21ff205f
@@ -130,31 +138,10 @@ components:
       schema:
         format: uuid
         type: string
-    PageSize:
-      description: page size
+    ReportingGroupNameFilter:
+      description: String to search for in reporting group names
       in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    ReportingGroupIdFilter:
-      description: String to search for in reporting group IDs
-      in: query
-      name: id
+      name: name
       required: false
       schema:
         type: string
@@ -169,22 +156,47 @@ components:
         - asc
         - desc
         type: string
-    ReportingGroupNameFilter:
-      description: String to search for in reporting group names
+    SortBy:
+      description: sort by
       in: query
-      name: name
+      name: sort_by
       required: false
       schema:
         type: string
-    ReportingGroupId:
-      description: ID of report group
-      in: path
+    ReportingGroupIdFilter:
+      description: String to search for in reporting group IDs
+      in: query
       name: id
-      required: true
+      required: false
       schema:
         type: string
-        example: subpartw
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
     AuditFields:
       properties:
         created_at:
@@ -199,6 +211,21 @@ components:
         updated_by:
           format: uuid
           type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
     ReportingGroupInput:
       type: object
@@ -226,30 +253,3 @@ components:
               $ref: '#/components/schemas/ReportingGroup'
             type: array
         type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2

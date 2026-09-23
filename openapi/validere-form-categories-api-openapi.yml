@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities form_categories API
+  description: Form Categories
+  title: CarbonHub Form Categories API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -107,62 +107,6 @@ paths:
       - form_categories
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    FormCategoryName:
-      description: Form Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    MeasurementTypeQuery:
-      description: Measurement type of the measurements being retrieved
-      example: volume
-      in: query
-      name: measurement_type
-      required: false
-      schema:
-        type: string
-    RelatedEntityIdQuery:
-      description: device id or facility id or equipment id
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: query
-      name: related_entity_id
-      required: false
-      schema:
-        format: uuid
-        type: string
     FormCategoryId:
       description: Form Category ID
       in: path
@@ -179,7 +123,78 @@ components:
       schema:
         default: false
         type: boolean
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    MeasurementTypeQuery:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: query
+      name: measurement_type
+      required: false
+      schema:
+        type: string
+    FormCategoryName:
+      description: Form Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    RelatedEntityIdQuery:
+      description: device id or facility id or equipment id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: related_entity_id
+      required: false
+      schema:
+        format: uuid
+        type: string
   schemas:
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     FormCategory:
       properties:
         archived:
@@ -198,21 +213,6 @@ components:
         updated_at:
           format: date-time
           type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
       type: object
     FormCategoryInput:
       properties:

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities user_groups API
+  description: Manage User Groups
+  title: CarbonHub User Groups API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Manage User Groups
-  name: user_groups
+  name: User Groups
 paths:
   /app/v1/user_groups:
     post:
@@ -31,7 +31,7 @@ paths:
           description: A successful operation
       summary: Create a user group
       tags:
-      - user_groups
+      - User Groups
   /app/v1/user_groups/search:
     post:
       operationId: search_user_groups
@@ -54,7 +54,7 @@ paths:
           description: successful operation
       summary: Search user groups
       tags:
-      - user_groups
+      - User Groups
   /app/v1/user_groups/{user_group_id}:
     get:
       operationId: get_user_group
@@ -69,7 +69,7 @@ paths:
           description: A successful operation
       summary: Get a user group
       tags:
-      - user_groups
+      - User Groups
     put:
       operationId: update_user_group
       parameters:
@@ -89,7 +89,7 @@ paths:
           description: A successful operation
       summary: Update a user group
       tags:
-      - user_groups
+      - User Groups
     delete:
       operationId: delete_user_group
       parameters:
@@ -99,7 +99,7 @@ paths:
           description: successful operation
       summary: Delete a user group
       tags:
-      - user_groups
+      - User Groups
   /app/v1/user_groups/{user_group_id}/members:
     get:
       operationId: list_user_group_members
@@ -116,7 +116,7 @@ paths:
                   $ref: '#/components/schemas/UserGroupMembershipWithUser'
       summary: Show Memberships for a user group
       tags:
-      - user_groups
+      - User Groups
   /app/v1/user_groups/{user_group_id}/members/{member_id}:
     put:
       operationId: add_user_group_member
@@ -128,7 +128,7 @@ paths:
           description: A successful operation
       summary: Add a user to a user group
       tags:
-      - user_groups
+      - User Groups
     delete:
       operationId: remove_user_group_member
       parameters:
@@ -139,9 +139,20 @@ paths:
           description: A successful operation
       summary: Remove a user from a user group
       tags:
-      - user_groups
+      - User Groups
 components:
   schemas:
+    UserGroup:
+      allOf:
+      - $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          company_id:
+            type: string
+            format: uuid
     AuditFields:
       properties:
         created_at:
@@ -157,6 +168,41 @@ components:
           format: uuid
           type: string
       type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedUserGroupList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              type: array
+              $ref: '#/components/schemas/UserGroup'
+        type: object
+    CreateAndUpdateUserGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        group_category_id:
+          type: string
+          format: uuid
     UserGroupSort:
       properties:
         sort_by:
@@ -178,93 +224,6 @@ components:
           - desc
           example: desc
           type: string
-    PagedUserGroupList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            type: array
-            items:
-              type: array
-              $ref: '#/components/schemas/UserGroup'
-        type: object
-    UserGroup:
-      allOf:
-      - $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            type: string
-            format: uuid
-          company_id:
-            type: string
-            format: uuid
-    CreateAndUpdateUserGroupInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        group_category_id:
-          type: string
-          format: uuid
-    UserGroupMembershipWithUser:
-      allOf:
-      - $ref: '#/components/schemas/UserGroupMembership'
-      - properties:
-          user:
-            $ref: '#/components/schemas/UserBasic'
-    UserBasic:
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    UserGroupMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          user_group_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     UserGroupFilter:
       properties:
         filter:
@@ -288,6 +247,47 @@ components:
                   - c3e9446d-4cc0-4e7b-bb43-43fff9361957
                   - c3e9446d-4cc0-4e7b-bb43-43fff9361957
           type: object
+    UserGroupMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          user_group_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    UserBasic:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    UserGroupMembershipWithUser:
+      allOf:
+      - $ref: '#/components/schemas/UserGroupMembership'
+      - properties:
+          user:
+            $ref: '#/components/schemas/UserBasic'
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
   parameters:
     UserGroupId:
       description: User Group ID

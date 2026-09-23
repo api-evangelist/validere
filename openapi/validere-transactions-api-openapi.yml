@@ -1,21 +1,14 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities transactions API
-  version: 1.0.0
-servers:
-- url: https://api.validere.io
-security:
-- Staging: []
-- Integration: []
-- Local: []
+  title: Data Platform Source Transactions API
+  version: v1.1.0
 tags:
-- name: transactions
+- name: Transactions
 paths:
   /transactions:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: List All Transactions
       description: 'Returns a list of transactions submitted to the Data Platform
 
@@ -25,7 +18,7 @@ paths:
 
         * `submitted_after` (datetime) - Optional, otherwise defaults to 1 week before current datetime. Required in isoformat i.e. %Y-%m-%dT%H:%M:%S%Z
 
-        * `submitted_before` (datetime) -  Optional, otherwise defaults to current datetime. Required in isoformat i.e. %Y-%m-%dT%H:%M:%S%Z'
+        * `submitted_before` (datetime) - Optional, otherwise defaults to current datetime. Required in isoformat i.e. %Y-%m-%dT%H:%M:%S%Z'
       operationId: list_all_transactions_transactions_get
       security:
       - HTTPBearer: []
@@ -156,7 +149,7 @@ paths:
   /transactions/{transaction_id}:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Get Transaction By Id
       description: Fetches details/status of a transaction based on its UUID.
       operationId: get_transaction_by_id_transactions__transaction_id__get
@@ -212,7 +205,7 @@ paths:
   /transactions/{transaction_id}/download:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Download Transaction File Version
       operationId: download_transaction_file_version_transactions__transaction_id__download_get
       security:
@@ -251,7 +244,7 @@ paths:
   /transactions/{transaction_id}/sink/summary:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Get Sink Summary By Transaction By Id
       description: 'Fetches details/status of a transaction based on its UUID.
 
@@ -285,7 +278,7 @@ paths:
   /transactions/{transaction_id}/retry:
     post:
       tags:
-      - transactions
+      - Transactions
       summary: Retry Transaction By Id
       operationId: retry_transaction_by_id_transactions__transaction_id__retry_post
       security:
@@ -343,7 +336,7 @@ paths:
   /transactions/{transaction_id}/details:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Get Transaction Details By Id
       description: Fetches details/status of a transaction based on its UUID.
       operationId: get_transaction_details_by_id_transactions__transaction_id__details_get
@@ -412,7 +405,7 @@ paths:
   /v2/transactions/{transaction_id}/details:
     get:
       tags:
-      - transactions
+      - Transactions
       summary: Get Transaction Details Page V2
       description: 'Returns one page of transaction detail rows from DynamoDB using cursor-based pagination.
 
@@ -492,20 +485,38 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    TransactionDetailsV2Response:
+    ResponseMeta:
       properties:
-        meta:
-          $ref: '#/components/schemas/TransactionDetailsMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/TransactionDetailsV2Data'
-          type: array
-          title: Data
+        type:
+          type: string
+          title: Type
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
       type: object
       required:
-      - meta
-      - data
-      title: TransactionDetailsV2Response
+      - type
+      title: ResponseMeta
+      description: Standard response envelope meta object
+    TransactionDownloadVersion:
+      type: string
+      enum:
+      - submitted
+      - transformed
+      title: TransactionDownloadVersion
     Transaction:
       properties:
         transaction_id:
@@ -588,79 +599,6 @@ components:
       - file_key
       - state
       title: Transaction
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    TransactionDetailsResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/TransactionDetailsMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/TransactionDetailsData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: TransactionDetailsResponse
-    TransactionDetailsMeta:
-      properties:
-        type:
-          type: string
-          title: Type
-          default: TransactionDetails
-        transaction_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Transaction Id
-        info:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Info
-        total:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total
-      type: object
-      title: TransactionDetailsMeta
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
     TransactionState:
       type: string
       enum:
@@ -671,51 +609,6 @@ components:
       - failed
       - retried
       title: TransactionState
-    TransactionDetailsData:
-      properties:
-        success_count:
-          type: integer
-          title: Success Count
-        failure_count:
-          type: integer
-          title: Failure Count
-        summary:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Summary
-        details:
-          items:
-            $ref: '#/components/schemas/RowSummary'
-          type: array
-          title: Details
-        page_number:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Number
-        page_size:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Size
-        total_entries:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Entries
-        total_pages:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Pages
-      type: object
-      required:
-      - success_count
-      - failure_count
-      - details
-      title: TransactionDetailsData
     TransactionDetailsV2Data:
       properties:
         success_count:
@@ -762,38 +655,32 @@ components:
       - details
       - page_size
       title: TransactionDetailsV2Data
-    TransactionStage:
-      type: string
-      enum:
-      - transformation
-      - ingestion
-      title: TransactionStage
-    TransactionStep:
-      type: string
-      enum:
-      - email_validator
-      - transaction_recorder
-      - vulnerability_scanner
-      - archiver
-      - validator
-      - operator
-      - sink
-      title: TransactionStep
-    TransactionResponse:
+    ValidationError:
       properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
+        loc:
           items:
-            $ref: '#/components/schemas/Transaction'
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Data
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
-      - meta
-      - data
-      title: TransactionResponse
-      description: Transaction response envelope
+      - loc
+      - msg
+      - type
+      title: ValidationError
     EntityIngestionStatus:
       type: string
       enum:
@@ -802,12 +689,90 @@ components:
       - failed
       - unchanged
       title: EntityIngestionStatus
-    TransactionDownloadVersion:
+    TransactionStage:
       type: string
       enum:
-      - submitted
-      - transformed
-      title: TransactionDownloadVersion
+      - transformation
+      - ingestion
+      title: TransactionStage
+    TransactionDetailsMeta:
+      properties:
+        type:
+          type: string
+          title: Type
+          default: TransactionDetails
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
+      type: object
+      title: TransactionDetailsMeta
+    TransactionDetailsData:
+      properties:
+        success_count:
+          type: integer
+          title: Success Count
+        failure_count:
+          type: integer
+          title: Failure Count
+        summary:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Summary
+        details:
+          items:
+            $ref: '#/components/schemas/RowSummary'
+          type: array
+          title: Details
+        page_number:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Number
+        page_size:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Size
+        total_entries:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Entries
+        total_pages:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Pages
+      type: object
+      required:
+      - success_count
+      - failure_count
+      - details
+      title: TransactionDetailsData
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     Source:
       type: string
       enum:
@@ -865,32 +830,49 @@ components:
       - index
       - status
       title: RowSummary
-    ResponseMeta:
+    TransactionDetailsV2Response:
       properties:
-        type:
-          type: string
-          title: Type
-        transaction_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Transaction Id
-        info:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Info
-        total:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total
+        meta:
+          $ref: '#/components/schemas/TransactionDetailsMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/TransactionDetailsV2Data'
+          type: array
+          title: Data
       type: object
       required:
-      - type
-      title: ResponseMeta
-      description: Standard response envelope meta object
+      - meta
+      - data
+      title: TransactionDetailsV2Response
+    TransactionResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TransactionResponse
+      description: Transaction response envelope
+    TransactionDetailsResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/TransactionDetailsMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/TransactionDetailsData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TransactionDetailsResponse
     TransactionStatus:
       type: string
       enum:
@@ -899,3 +881,22 @@ components:
       - completed
       - completed_with_partial_success
       title: TransactionStatus
+    TransactionStep:
+      type: string
+      enum:
+      - email_validator
+      - transaction_recorder
+      - vulnerability_scanner
+      - archiver
+      - validator
+      - operator
+      - sink
+      title: TransactionStep
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities type_metadata API
+  description: Types used across the APIs
+  title: CarbonHub Type Metadata API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Types used across the APIs
-  name: type_metadata
+  name: Type Metadata
 paths:
   /app/v1/custom_attribute_data_types:
     get:
@@ -26,7 +26,7 @@ paths:
           description: successful operation
       summary: List Custom Attribute Data Types
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/custom_attribute_entities:
     get:
       description: Returns the list of entity types that support custom attributes
@@ -40,7 +40,7 @@ paths:
           description: successful operation
       summary: List Custom Attribute Entity Types
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/flow_types:
     get:
       description: Returns the list of flow types
@@ -54,7 +54,7 @@ paths:
           description: successful operation
       summary: List Flow Types
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/product_types:
     get:
       description: Returns the list of product types
@@ -68,7 +68,7 @@ paths:
           description: successful operation
       summary: List Product Types
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/product_categories:
     get:
       description: Returns the list of product categories
@@ -82,7 +82,7 @@ paths:
           description: successful operation
       summary: List Product Categories
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/event_statuses:
     get:
       description: Returns the list of event statuses
@@ -96,7 +96,7 @@ paths:
           description: successful operation
       summary: List Event Statuses
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/facility_types:
     get:
       description: Returns the list of facility types
@@ -110,7 +110,7 @@ paths:
           description: successful operation
       summary: List Facility Types
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/facility_statuses:
     get:
       description: Returns the list of facility statuses
@@ -124,7 +124,7 @@ paths:
           description: successful operation
       summary: List Facility Statuses
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/industry_segments:
     get:
       description: Returns the list of industry segments based on the US emission spreadsheet
@@ -140,7 +140,7 @@ paths:
           description: successful operation
       summary: List Industry Segment
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/workflow_template_statuses:
     get:
       description: Returns the list of workflow template statuses
@@ -154,7 +154,7 @@ paths:
           description: successful operation
       summary: List workflow template statuses
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/workflow_statuses:
     get:
       description: Returns the list of workflow statuses
@@ -168,7 +168,7 @@ paths:
           description: successful operation
       summary: List workflow statuses
       tags:
-      - type_metadata
+      - Type Metadata
   /app/v1/workflow_task_statuses:
     get:
       description: Returns the list of workflow task statuses
@@ -182,9 +182,124 @@ paths:
           description: successful operation
       summary: List workflow task statuses
       tags:
-      - type_metadata
+      - Type Metadata
+  /type_metadata/transaction_states:
+    get:
+      tags:
+      - Type Metadata
+      summary: List All Transaction States
+      description: Lists all transaction states.
+      operationId: list_all_transaction_states_type_metadata_transaction_states_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_statuses:
+    get:
+      tags:
+      - Type Metadata
+      summary: List All Transaction Statuses
+      description: Lists all transaction statuses.
+      operationId: list_all_transaction_statuses_type_metadata_transaction_statuses_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_steps:
+    get:
+      tags:
+      - Type Metadata
+      summary: List All Transaction Steps
+      description: Lists all transaction steps.
+      operationId: list_all_transaction_steps_type_metadata_transaction_steps_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
+  /type_metadata/transaction_errors:
+    get:
+      tags:
+      - Type Metadata
+      summary: List All Transaction Errors
+      description: Lists all transaction errors.
+      operationId: list_all_transaction_errors_type_metadata_transaction_errors_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TypeMetadataResponse'
+              example:
+                meta:
+                  type: TypeMetadata
+                  total: 1
+                data:
+                - id: string
+      security:
+      - HTTPBearer: []
+      - APIKeyHeader: []
 components:
   schemas:
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    CustomAttributeEntityTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeEntityType'
+      type: array
     CustomAttributeDataType:
       properties:
         id:
@@ -192,10 +307,6 @@ components:
         name:
           type: string
       type: object
-    CustomAttributeDataTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeDataType'
-      type: array
     EnumIdNamePairList:
       type: array
       items:
@@ -221,21 +332,6 @@ components:
       - facility
       - flow
       - asset_group
-    AttributeTypes:
-      type: string
-      enum:
-      - number
-      - string
-      - geo_point
-      - boolean
-      - integer
-      - pick-list
-      - multi-pick-list
-      - number-array
-      - lookup
-      - date
-      - date-time
-      - file
     CustomAttributeEntityType:
       properties:
         id:
@@ -243,7 +339,53 @@ components:
         name:
           type: string
       type: object
-    CustomAttributeEntityTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeEntityType'
-      type: array
+    TypeMetadataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TypeMetadataResponse
+      description: TypeMetadata response envelope
+    ResponseMeta:
+      properties:
+        type:
+          type: string
+          title: Type
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
+      type: object
+      required:
+      - type
+      title: ResponseMeta
+      description: Standard response envelope meta object
+  securitySchemes:
+    HTTPBearer:
+      type: http
+      scheme: bearer
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-Key

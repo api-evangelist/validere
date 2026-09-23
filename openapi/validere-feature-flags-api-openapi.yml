@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities feature_flags API
+  description: Feature Flags
+  title: CarbonHub Feature Flags API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Feature Flags
-  name: feature_flags
+  name: Feature Flags
 paths:
   /app/v1/feature_flags/search:
     post:
@@ -34,7 +34,7 @@ paths:
           description: successful operation
       summary: Search feature flags
       tags:
-      - feature_flags
+      - Feature Flags
   /app/v1/feature_flags/{name}:
     get:
       operationId: get_feature_flag
@@ -49,16 +49,8 @@ paths:
           description: A successful operation
       summary: Get a feature flag
       tags:
-      - feature_flags
+      - Feature Flags
 components:
-  parameters:
-    FeatureFlagId:
-      description: Feature Flag Name (any version)
-      in: path
-      name: name
-      required: true
-      schema:
-        type: string
   schemas:
     FeatureFlag:
       allOf:
@@ -72,6 +64,19 @@ components:
             type: boolean
           isDeprecated:
             type: boolean
+    FeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          allOf:
+          - properties:
+              name:
+                type: string
+              isEnabled:
+                type: boolean
+              isDeprecated:
+                type: boolean
+          type: object
     Pagination:
       properties:
         page_number:
@@ -109,16 +114,11 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    FeatureFlagsFilter:
-      properties:
-        filter:
-          description: A filter object for feature flags where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
-          allOf:
-          - properties:
-              name:
-                type: string
-              isEnabled:
-                type: boolean
-              isDeprecated:
-                type: boolean
-          type: object
+  parameters:
+    FeatureFlagId:
+      description: Feature Flag Name (any version)
+      in: path
+      name: name
+      required: true
+      schema:
+        type: string

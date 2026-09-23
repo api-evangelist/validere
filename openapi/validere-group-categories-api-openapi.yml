@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities group_categories API
+  description: Manage Group Categories
+  title: CarbonHub Group Categories API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Manage Group Categories
-  name: group_categories
+  name: Group Categories
 paths:
   /app/v1/group_categories:
     post:
@@ -31,7 +31,7 @@ paths:
           description: A successful operation
       summary: Create a Group Category
       tags:
-      - group_categories
+      - Group Categories
   /app/v1/group_categories/{id}:
     get:
       operationId: get_group_category
@@ -46,7 +46,7 @@ paths:
           description: A successful operation
       summary: Get a Group Category
       tags:
-      - group_categories
+      - Group Categories
     put:
       operationId: put_group_category
       parameters:
@@ -66,7 +66,7 @@ paths:
           description: A successful operation
       summary: Update a Group Category
       tags:
-      - group_categories
+      - Group Categories
     delete:
       operationId: delete_group_category
       parameters:
@@ -76,7 +76,7 @@ paths:
           description: A successful operation
       summary: Delete a Group Category
       tags:
-      - group_categories
+      - Group Categories
   /app/v1/group_categories/search:
     post:
       operationId: search_group_categories
@@ -98,9 +98,56 @@ paths:
           description: Successfully operation
       summary: Search Group Categories
       tags:
-      - group_categories
+      - Group Categories
 components:
   schemas:
+    GroupCategoryFilter:
+      properties:
+        filter:
+          description: A filter object for Group Category where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            description:
+              type: string
+            created_by:
+              type: string
+              format: uuid
+            created_at:
+              type: string
+              format: date-time
+            updated_by:
+              type: string
+              format: uuid
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+      type: object
+    GroupCategory:
+      allOf:
+      - $ref: '#/components/schemas/GroupCategoryCreate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+      type: object
+    PagedGroupCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/GroupCategory'
+            type: array
+        type: object
     AuditFields:
       properties:
         created_at:
@@ -116,33 +163,6 @@ components:
           format: uuid
           type: string
       type: object
-    GroupCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
-      type: object
-    GroupCategoryCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
-      type: object
-    PagedGroupCategoryList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/GroupCategory'
-            type: array
-        type: object
     Pagination:
       properties:
         page_number:
@@ -179,31 +199,23 @@ components:
           - desc
           example: desc
           type: string
-    GroupCategoryFilter:
+    GroupCategoryUpdate:
       properties:
-        filter:
-          description: A filter object for Group Category where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            description:
-              type: string
-            created_by:
-              type: string
-              format: uuid
-            created_at:
-              type: string
-              format: date-time
-            updated_by:
-              type: string
-              format: uuid
-            updated_at:
-              type: string
-              format: date-time
-          type: object
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    GroupCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
       type: object
     Paginated:
       properties:
@@ -217,18 +229,6 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    GroupCategory:
-      allOf:
-      - $ref: '#/components/schemas/GroupCategoryCreate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-      type: object
   parameters:
     GroupCategoryId:
       description: Group Category ID

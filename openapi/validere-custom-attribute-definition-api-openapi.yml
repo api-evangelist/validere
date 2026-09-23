@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities custom_attribute_definition API
+  description: Manage Custom Attribute Definitions
+  title: CarbonHub Custom Attribute Definition API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -98,6 +98,13 @@ components:
       required: true
       schema:
         type: string
+    CustomAttributeDefinitionArchived:
+      description: Set true to return archived attribute definitions
+      in: query
+      name: archived
+      required: false
+      schema:
+        type: boolean
     SortByCustomAttributeDefinition:
       description: sort by
       in: query
@@ -106,42 +113,13 @@ components:
       schema:
         enum:
         - field_name
-    PageSize:
-      description: page size
+    CustomAttributeDefinitionEntitySubType:
+      description: String to search for in entity subtype
       in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    CustomAttributeEntityType:
-      description: Supported attribute type for custom attribute
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-    CustomAttributeDefinitionFieldName:
-      description: String to search for in field names
-      in: query
-      name: field_name
+      name: entity_subtype
       required: false
       schema:
         type: string
-    CustomAttributeDefinitionArchived:
-      description: Set true to return archived attribute definitions
-      in: query
-      name: archived
-      required: false
-      schema:
-        type: boolean
     SortDirection:
       description: sort direction
       example: desc
@@ -153,23 +131,66 @@ components:
         - asc
         - desc
         type: string
-    CustomAttributeDefinitionEntitySubType:
-      description: String to search for in entity subtype
+    CustomAttributeEntityType:
+      description: Supported attribute type for custom attribute
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+    Page:
+      description: page number
       in: query
-      name: entity_subtype
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    CustomAttributeDefinitionFieldName:
+      description: String to search for in field names
+      in: query
+      name: field_name
       required: false
       schema:
         type: string
   schemas:
-    PagedCustomAttributeDefinitionList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/CustomAttributeDefinition'
-            type: array
-        type: object
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     CustomAttributeDefinition:
       properties:
         archived:
@@ -204,21 +225,6 @@ components:
         unit:
           type: string
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
     CustomAttributeDefinitionUpdateInput:
       properties:
         archived:
@@ -243,14 +249,15 @@ components:
             type: string
           type: array
       type: object
-    MeasurementSubjectEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
+    PagedCustomAttributeDefinitionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/CustomAttributeDefinition'
+            type: array
+        type: object
     schemas-CustomAttributeEntityType:
       type: string
       enum:
@@ -259,21 +266,14 @@ components:
       - facility
       - flow
       - asset_group
-    AttributeTypes:
+    MeasurementSubjectEntityType:
       type: string
       enum:
-      - number
-      - string
-      - geo_point
-      - boolean
-      - integer
-      - pick-list
-      - multi-pick-list
-      - number-array
-      - lookup
-      - date
-      - date-time
-      - file
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
     CustomAttributeDefinitionInput:
       properties:
         data_type:

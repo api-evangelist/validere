@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities event_schemas API
+  description: Event Schemas
+  title: CarbonHub Event Schemas API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Event Schemas
-  name: event_schemas
+  name: Event Schemas
 paths:
   /app/v1/event_schemas:
     post:
@@ -31,7 +31,7 @@ paths:
           description: A successful operation
       summary: Create an event schema
       tags:
-      - event_schemas
+      - Event Schemas
   /app/v1/event_schemas/{id}:
     put:
       operationId: update_event_schema
@@ -52,7 +52,7 @@ paths:
           description: A successful operation
       summary: Update an event schema
       tags:
-      - event_schemas
+      - Event Schemas
     delete:
       operationId: delete_event_schema
       parameters:
@@ -62,7 +62,7 @@ paths:
           description: A successful operation
       summary: Delete an event schema
       tags:
-      - event_schemas
+      - Event Schemas
     get:
       operationId: get_event_schema
       parameters:
@@ -76,7 +76,7 @@ paths:
           description: A successful operation
       summary: Get an event schema
       tags:
-      - event_schemas
+      - Event Schemas
   /app/v1/event_schemas/search:
     post:
       operationId: search_event_schemas
@@ -105,7 +105,7 @@ paths:
                   type: object
       summary: Search and list event schemas
       tags:
-      - event_schemas
+      - Event Schemas
 components:
   schemas:
     EventSchemaSort:
@@ -129,6 +129,72 @@ components:
           - desc
           example: desc
           type: string
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventSchemaCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        version:
+          type: string
+          maxLength: 20
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+        description:
+          type: string
+          maxLength: 256
+        config:
+          $ref: '#/components/schemas/EventSchemaConfig'
+        event_category_id:
+          type: string
+          format: uuid
+      type: object
+    EventSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventSchemaCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
     EventSchemaWithForms:
       allOf:
       - $ref: '#/components/schemas/EventSchema'
@@ -205,72 +271,6 @@ components:
           type: object
         has_devices:
           type: boolean
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    EventSchema:
-      allOf:
-      - $ref: '#/components/schemas/EventSchemaCreate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          created_at:
-            format: date-time
-            type: string
-          created_by:
-            format: uuid
-            type: string
-          updated_at:
-            format: date-time
-            type: string
-          updated_by:
-            format: uuid
-            type: string
-      type: object
-    EventSchemaCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        version:
-          type: string
-          maxLength: 20
-        priority:
-          type: string
-          enum:
-          - high
-          - medium
-          - low
-        status:
-          type: string
-          enum:
-          - active
-          - archived
-        description:
-          type: string
-          maxLength: 256
-        config:
-          $ref: '#/components/schemas/EventSchemaConfig'
-        event_category_id:
-          type: string
-          format: uuid
-      type: object
     EventSchemaFilter:
       properties:
         filter:

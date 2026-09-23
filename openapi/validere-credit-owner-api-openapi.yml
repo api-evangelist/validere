@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities credit_owner API
+  description: Credit Owners
+  title: CarbonHub Credit Owner API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -106,12 +106,16 @@ paths:
       tags:
       - credit_owner
 components:
+  parameters:
+    CreditOwnerId:
+      description: Credit Owner ID
+      in: path
+      name: credit_owner_id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
-    CreditOwnerVisibility:
-      type: string
-      enum:
-      - public
-      - private
     AuditFields:
       properties:
         created_at:
@@ -145,19 +149,6 @@ components:
           example: asc
           type: string
       type: object
-    CreditOwner:
-      allOf:
-      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          public_name:
-            type: string
     Pagination:
       properties:
         page_number:
@@ -190,6 +181,35 @@ components:
               type: string
           type: object
       type: object
+    CreditOwnerCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        visibility:
+          $ref: '#/components/schemas/CreditOwnerVisibility'
+        buffer_holder:
+          type: boolean
+          default: false
+      type: object
+    CreditOwnerVisibility:
+      type: string
+      enum:
+      - public
+      - private
+    CreditOwner:
+      allOf:
+      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          public_name:
+            type: string
     Paginated:
       properties:
         page:
@@ -202,23 +222,3 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    CreditOwnerCreateUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        visibility:
-          $ref: '#/components/schemas/CreditOwnerVisibility'
-        buffer_holder:
-          type: boolean
-          default: false
-      type: object
-  parameters:
-    CreditOwnerId:
-      description: Credit Owner ID
-      in: path
-      name: credit_owner_id
-      required: true
-      schema:
-        format: uuid
-        type: string

@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities company_feature_flags API
+  description: Company Feature Flags
+  title: CarbonHub Company Feature Flags API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -89,6 +89,87 @@ paths:
       tags:
       - company_feature_flags
 components:
+  schemas:
+    CompanyFeatureFlag:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+          feature_flag_name:
+            type: string
+    CompanyFeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              feature_flag_name:
+                type: string
+          type: object
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    AllCompanyFeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - properties:
+              company_id:
+                type: string
+              feature_flag_name:
+                type: string
+          type: object
+    PagedCompanyFeatureFlagsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/CompanyFeatureFlag'
+            type: array
+        type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
   parameters:
     TenantId:
       description: Tenant ID for admin users
@@ -113,84 +194,3 @@ components:
       description: Company ID
       in: path
       name: company_id
-  schemas:
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    PagedCompanyFeatureFlagsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/CompanyFeatureFlag'
-            type: array
-        type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    CompanyFeatureFlag:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-          feature_flag_name:
-            type: string
-    AllCompanyFeatureFlagsFilter:
-      properties:
-        filter:
-          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - properties:
-              company_id:
-                type: string
-              feature_flag_name:
-                type: string
-          type: object
-    CompanyFeatureFlagsFilter:
-      properties:
-        filter:
-          description: A filter object for feature flags where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - properties:
-              feature_flag_name:
-                type: string
-          type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number

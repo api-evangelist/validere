@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities measurement_types API
+  description: Manage Measurement Types
+  title: CarbonHub Measurement Types API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Manage Measurement Types
-  name: measurement_types
+  name: Measurement Types
 paths:
   /app/v1/measurement_types:
     get:
@@ -27,7 +27,7 @@ paths:
           description: successful operation
       summary: Get Measurement Type List
       tags:
-      - measurement_types
+      - Measurement Types
   /app/v2/measurement_types:
     get:
       operationId: list_measurement_types_v2
@@ -49,7 +49,7 @@ paths:
           description: successful operation
       summary: Get Measurement Type List
       tags:
-      - measurement_types
+      - Measurement Types
   /app/v1/measurement_quantities:
     get:
       operationId: list_measurement_quantities
@@ -62,7 +62,7 @@ paths:
           description: successful operation
       summary: Get Measurement Quantity List
       tags:
-      - measurement_types
+      - Measurement Types
   /app/v1/measurement_units:
     get:
       operationId: list_all_measurement_units
@@ -77,7 +77,7 @@ paths:
           description: successful operation
       summary: Get Measurement Unit List
       tags:
-      - measurement_types
+      - Measurement Types
   /app/v1/measurement_units/{quantity}:
     get:
       operationId: list_measurement_units
@@ -94,9 +94,33 @@ paths:
           description: successful operation
       summary: Get Measurement Unit List for a quantity
       tags:
-      - measurement_types
+      - Measurement Types
 components:
   schemas:
+    MeasurementTypeV2:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: string
+        default_unit:
+          type: string
+      type: object
+    MeasurementType:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/MeasurementTypeDataType'
+        id:
+          type: string
+        name:
+          type: string
+        units:
+          items:
+            type: string
+          type: array
+      type: object
     MeasurementQuantityList:
       items:
         properties:
@@ -106,6 +130,11 @@ components:
             type: string
         type: object
       type: array
+    MeasurementTypeDataType:
+      type: string
+      enum:
+      - int
+      - float
     MeasurementTypeList:
       items:
         $ref: '#/components/schemas/MeasurementType'
@@ -128,35 +157,6 @@ components:
         quantity:
           type: string
         id:
-          type: string
-      type: object
-    MeasurementTypeDataType:
-      type: string
-      enum:
-      - int
-      - float
-    MeasurementType:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/MeasurementTypeDataType'
-        id:
-          type: string
-        name:
-          type: string
-        units:
-          items:
-            type: string
-          type: array
-      type: object
-    MeasurementTypeV2:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        quantity:
-          type: string
-        default_unit:
           type: string
       type: object
   parameters:

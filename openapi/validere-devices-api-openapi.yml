@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities devices API
+  description: Manage Devices
+  title: CarbonHub Devices API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -11,7 +11,7 @@ security:
 - Local: []
 tags:
 - description: Manage Devices
-  name: devices
+  name: Devices
 paths:
   /app/v1/devices:
     get:
@@ -36,7 +36,7 @@ paths:
           description: successful operation
       summary: List devices
       tags:
-      - devices
+      - Devices
     post:
       operationId: post_device
       requestBody:
@@ -54,7 +54,7 @@ paths:
           description: successful operation
       summary: Create a Device
       tags:
-      - devices
+      - Devices
   /app/v1/devices/filters:
     get:
       operationId: get_device_filter
@@ -72,7 +72,7 @@ paths:
           description: successful operation
       summary: List Filter
       tags:
-      - devices
+      - Devices
     post:
       operationId: post_device_filter
       requestBody:
@@ -90,7 +90,7 @@ paths:
           description: successful operation
       summary: Create Filter
       tags:
-      - devices
+      - Devices
   /app/v1/devices/filters/{filter_id}:
     delete:
       operationId: delete_devices_filter
@@ -101,7 +101,7 @@ paths:
           description: successful operation
       summary: Delete Filter
       tags:
-      - devices
+      - Devices
     put:
       operationId: put_device_filter
       parameters:
@@ -121,7 +121,7 @@ paths:
           description: successful operation
       summary: Update Filter
       tags:
-      - devices
+      - Devices
   /app/v1/devices/search:
     post:
       operationId: search_device
@@ -143,7 +143,7 @@ paths:
           description: successful operation
       summary: Search Devices
       tags:
-      - devices
+      - Devices
   /app/v1/devices/export:
     post:
       operationId: export_devices
@@ -164,7 +164,7 @@ paths:
           description: successful operation
       summary: Export devices
       tags:
-      - devices
+      - Devices
   /app/v1/devices/{device_id}:
     delete:
       operationId: delete_device
@@ -175,7 +175,7 @@ paths:
           description: successful operation
       summary: Delete a Device
       tags:
-      - devices
+      - Devices
     get:
       operationId: get_device
       parameters:
@@ -190,7 +190,7 @@ paths:
           description: successful operation
       summary: Get a Device by ID
       tags:
-      - devices
+      - Devices
     put:
       operationId: put_device
       parameters:
@@ -210,7 +210,7 @@ paths:
           description: successful operation
       summary: Update a Device
       tags:
-      - devices
+      - Devices
   /app/v1/devices/{device_id}/archive:
     put:
       operationId: archive_device
@@ -225,78 +225,9 @@ paths:
           description: successful operation
       summary: Archive a Device
       tags:
-      - devices
+      - Devices
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    FacilityName:
-      description: String to search for in facility names
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    DeviceStatusQuery:
-      schema:
-        $ref: '#/components/schemas/DeviceStatus'
-      description: Device status
-      example: active
-      in: query
-      name: status
-      required: false
-    SortByEquipment:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        enum:
-        - facility_name
-        - name
-    Period:
-      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
-      in: query
-      name: period
-      required: false
-      schema:
-        type: string
-    DeviceNameQuery:
-      description: Search for devices with a name containing this string
-      example: My Device Name
-      in: query
-      name: device_name
-      required: false
-      schema:
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
     FacilityIdQuery:
       description: Facility ID
       in: query
@@ -304,23 +235,6 @@ components:
       required: false
       schema:
         format: uuid
-        type: string
-    DeviceId:
-      description: Id of device
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: device_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    DeviceTypeIdQuery:
-      description: Device type
-      example: emissions_monitor
-      in: query
-      name: type_id
-      required: false
-      schema:
         type: string
     SortDirection:
       description: sort direction
@@ -333,22 +247,124 @@ components:
         - asc
         - desc
         type: string
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    DeviceTypeIdQuery:
+      description: Device type
+      example: emissions_monitor
+      in: query
+      name: type_id
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortByEquipment:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - facility_name
+        - name
+    FacilityName:
+      description: String to search for in facility names
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    DeviceId:
+      description: Id of device
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: device_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    DeviceNameQuery:
+      description: Search for devices with a name containing this string
+      example: My Device Name
+      in: query
+      name: device_name
+      required: false
+      schema:
+        type: string
+    DeviceStatusQuery:
+      schema:
+        $ref: '#/components/schemas/DeviceStatus'
+      description: Device status
+      example: active
+      in: query
+      name: status
+      required: false
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
-    AuditFields:
+    FilterMetadata:
       properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    DeviceFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/DeviceFilter'
+      - properties:
+          entity_type:
+            example: device
+            type: string
       type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
     DeviceFilterFields:
       example:
         $or:
@@ -364,223 +380,6 @@ components:
           event.id:
             type: string
       type: object
-    DeviceStatus:
-      default: active
-      type: string
-      enum:
-      - active
-      - archived
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    FilterStatus:
-      properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    PagedDeviceFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/DeviceFilterOutput'
-            type: array
-        type: object
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    AssetAttributeStartEndDateInput:
-      type: object
-      properties:
-        start_date:
-          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: min
-            description: Year month shorthand
-        end_date:
-          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: max
-            description: Year month shorthand
-    DeviceUpdateInput:
-      allOf:
-      - properties:
-          attributes:
-            $ref: '#/components/schemas/DeviceAttribute'
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          measurement_types:
-            description: Measurement types
-            items:
-              type: string
-            type: array
-          name:
-            description: name
-            type: string
-          status:
-            $ref: '#/components/schemas/DeviceStatus'
-            description: Device status
-      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
-      type: object
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    DeviceFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/DeviceFilter'
-      - properties:
-          entity_type:
-            example: device
-            type: string
-      type: object
-    DeviceFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/DeviceFilter'
-      type: object
-    DeviceAttribute:
-      additionalProperties: true
-      description: Device Attributes
-      example:
-        height: 10
-        location:
-        - 43.65107
-        - -79.347015
-        provider: provider
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    DeviceInput:
-      allOf:
-      - $ref: '#/components/schemas/DeviceUpdateInput'
-      - properties:
-          facility_id:
-            description: ID of the facility that the device belongs to
-            example: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
-            type: string
-          type_id:
-            description: Device type
-            type: string
-      type: object
-    Device:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          attributes:
-            $ref: '#/components/schemas/DeviceAttribute'
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          facility:
-            $ref: '#/components/schemas/FacilityNameAndId'
-          facility_id:
-            description: facility_id
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          measurement_types:
-            type: array
-            items:
-              type: string
-              example: volume
-            description: measurement_types
-          name:
-            description: Device name
-            type: string
-          status:
-            $ref: '#/components/schemas/DeviceStatus'
-            description: Device status
-          type_id:
-            description: Device type
-            type: string
-        type: object
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    DeviceFilter:
-      properties:
-        filter:
-          $ref: '#/components/schemas/DeviceFilterFields'
-    ReportWithS3Url:
-      allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
     DeviceSort:
       properties:
         sort_by:
@@ -597,82 +396,21 @@ components:
           - desc
           example: desc
           type: string
-    FilterTag:
-      properties:
-        tag:
-          type: string
-    DeviceWithFacility:
+    FilterOutput:
       allOf:
-      - $ref: '#/components/schemas/Device'
-      - properties:
-          facility:
-            $ref: '#/components/schemas/FacilityNameAndId'
-          measurement_series:
-            items:
-              $ref: '#/components/schemas/DeviceMeasurementSeries'
-            type: array
-      type: object
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        units:
-          type: string
-        value:
-          anyOf:
-          - type: string
-          - type: number
-          - type: boolean
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    PagedDeviceList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Device'
-            type: array
-        type: object
-    FacilityNameAndId:
-      example:
-        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
-        name: Facility 1
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-      type: object
-    DeviceMeasurementSeries:
-      properties:
-        description:
-          type: string
-        id:
-          format: uuid
-          type: string
-        measurement_type:
-          type: string
-          example: volume
-        unit:
-          type: string
-          example: bbl
-      type: object
-    DeviceFilterUpdateInput:
-      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
       - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/DeviceFilter'
-    CustomAttributes:
+      type: object
+    DeviceAttribute:
+      additionalProperties: true
+      description: Device Attributes
       example:
-        attribute1: 12345
-        attribute2: value1
+        height: 10
+        location:
+        - 43.65107
+        - -79.347015
+        provider: provider
       type: object
     ReportWithTemplatedReportResponse:
       type: object
@@ -697,8 +435,7 @@ components:
           type: string
         input:
           type: object
-          additionalProperties:
-            nullable: true
+          additionalProperties: {}
           description: User input for a templated report based on the input schema for the desired templated report.
           example:
             year_month: 202201
@@ -712,16 +449,18 @@ components:
           anyOf:
           - type: string
             format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
+          - type:
+            - string
+            - 'null'
+          - {}
         updated_at:
           anyOf:
           - type: string
             format: date-time
-          - type: string
-            nullable: true
-          - nullable: true
+          - type:
+            - string
+            - 'null'
+          - {}
         created_by:
           type: string
           format: uuid
@@ -830,16 +569,18 @@ components:
               anyOf:
               - type: string
                 format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
+              - type:
+                - string
+                - 'null'
+              - {}
             updated_at:
               anyOf:
               - type: string
                 format: date-time
-              - type: string
-                nullable: true
-              - nullable: true
+              - type:
+                - string
+                - 'null'
+              - {}
           required:
           - name
           - display_name
@@ -857,6 +598,72 @@ components:
       - created_by
       - updated_by
       additionalProperties: false
+    DeviceMeasurementSeries:
+      properties:
+        description:
+          type: string
+        id:
+          format: uuid
+          type: string
+        measurement_type:
+          type: string
+          example: volume
+        unit:
+          type: string
+          example: bbl
+      type: object
+    DeviceFilter:
+      properties:
+        filter:
+          $ref: '#/components/schemas/DeviceFilterFields'
+    Device:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          attributes:
+            $ref: '#/components/schemas/DeviceAttribute'
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          facility:
+            $ref: '#/components/schemas/FacilityNameAndId'
+          facility_id:
+            description: facility_id
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          measurement_types:
+            type: array
+            items:
+              type: string
+              example: volume
+            description: measurement_types
+          name:
+            description: Device name
+            type: string
+          status:
+            $ref: '#/components/schemas/DeviceStatus'
+            description: Device status
+          type_id:
+            description: Device type
+            type: string
+        type: object
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
     DevicePrimaryFilterFields:
       properties:
         attributes:
@@ -879,8 +686,204 @@ components:
         updated_at:
           type: string
           format: date-time
+    FacilityNameAndId:
+      example:
+        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
+        name: Facility 1
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    PagedDeviceFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/DeviceFilterOutput'
+            type: array
+        type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    DeviceInput:
+      allOf:
+      - $ref: '#/components/schemas/DeviceUpdateInput'
+      - properties:
+          facility_id:
+            description: ID of the facility that the device belongs to
+            example: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
+            type: string
+          type_id:
+            description: Device type
+            type: string
+      type: object
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    AssetAttributeStartEndDateInput:
+      type: object
+      properties:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
     FilterName:
       properties:
         name:
           type: string
           example: My first filter
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    DeviceWithFacility:
+      allOf:
+      - $ref: '#/components/schemas/Device'
+      - properties:
+          facility:
+            $ref: '#/components/schemas/FacilityNameAndId'
+          measurement_series:
+            items:
+              $ref: '#/components/schemas/DeviceMeasurementSeries'
+            type: array
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        units:
+          type: string
+        value:
+          anyOf:
+          - type: string
+          - type: number
+          - type: boolean
+    DeviceStatus:
+      default: active
+      type: string
+      enum:
+      - active
+      - archived
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    DeviceFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/DeviceFilter'
+      type: object
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    DeviceFilterUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/DeviceFilter'
+    DeviceUpdateInput:
+      allOf:
+      - properties:
+          attributes:
+            $ref: '#/components/schemas/DeviceAttribute'
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          measurement_types:
+            description: Measurement types
+            items:
+              type: string
+            type: array
+          name:
+            description: name
+            type: string
+          status:
+            $ref: '#/components/schemas/DeviceStatus'
+            description: Device status
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+      type: object
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    PagedDeviceList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Device'
+            type: array
+        type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object

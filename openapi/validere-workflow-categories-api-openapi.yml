@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  description: Activity Log
-  title: CarbonHub activities workflow_categories API
+  description: Workflow Categories
+  title: CarbonHub Workflow Categories API
   version: 1.0.0
 servers:
 - url: https://api.validere.io
@@ -105,13 +105,32 @@ paths:
       - workflow_categories
 components:
   parameters:
-    PageSize:
-      description: page size
+    WorkflowCategoryId:
+      description: Workflow Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
       in: query
-      name: page_size
+      name: sort_direction
       required: false
       schema:
-        type: number
+        enum:
+        - asc
+        - desc
+        type: string
+    WorkflowCategoryDescription:
+      description: Workflow Category description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
     SortBy:
       description: sort by
       in: query
@@ -126,21 +145,13 @@ components:
       required: false
       schema:
         type: number
-    WorkflowCategoryId:
-      description: Workflow Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    WorkflowCategoryDescription:
-      description: Workflow Category description
+    PageSize:
+      description: page size
       in: query
-      name: description
+      name: page_size
       required: false
       schema:
-        type: string
+        type: number
     WorkflowCategoryName:
       description: Workflow Category name
       in: query
@@ -148,18 +159,29 @@ components:
       required: false
       schema:
         type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
   schemas:
+    IUpdateWorkflowCategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     IWorkflowCategory:
       type: object
       properties:
@@ -208,25 +230,3 @@ components:
       required:
       - name
       - description
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    IUpdateWorkflowCategoryInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
