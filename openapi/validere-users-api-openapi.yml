@@ -186,17 +186,102 @@ paths:
       - Users
 components:
   schemas:
-    UserPermissions:
-      type: array
-      items:
-        $ref: '#/components/schemas/PermissionInput'
-    PermissionDecision:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
       type: object
-      additionalProperties:
-        type: boolean
-      example:
-        facilities:read: true
-        equipment:read: true
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PermissionDecisionRequest:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - facilities:read
+          - facilities:write
+          - facilities:delete
+          - equipment:read
+          - equipment:write
+          - equipment:delete
+    UserFilter:
+      properties:
+        filter:
+          description: A filter object for Users where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              quicksight:
+                type: boolean
+              timezone:
+                type: string
+                example: America/Los_Angeles
+              status:
+                $ref: '#/components/schemas/UserStatus'
+              email:
+                type: string
+                format: email
+          type: object
+    UserStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    UserSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - quicksight
+          - timezone
+          - status
+          - email
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     UserWithCompanies:
       type: object
       properties:
@@ -270,69 +355,6 @@ components:
       - updated_at
       - updated_by
       - companies
-    PagedUserList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/IUser'
-              - properties:
-                  user_groups:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  user_groups_count:
-                    type: number
-                  roles:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  roles_count:
-                    type: number
-                type: object
-        type: object
-    PermissionDecisionRequest:
-      type: object
-      properties:
-        permissions:
-          type: array
-          items:
-            type: string
-          example:
-          - facilities:read
-          - facilities:write
-          - facilities:delete
-          - equipment:read
-          - equipment:write
-          - equipment:delete
-    RoleMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          role_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
     IUser:
       type: object
       properties:
@@ -392,12 +414,6 @@ components:
       - created_by
       - updated_at
       - updated_by
-    RoleMembershipWithRole:
-      allOf:
-      - $ref: '#/components/schemas/RoleMembership'
-      - properties:
-          role:
-            $ref: '#/components/schemas/GroupBasic'
     Paginated:
       properties:
         page:
@@ -410,6 +426,61 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    GroupBasic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    PagedUserList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/IUser'
+              - properties:
+                  user_groups:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  user_groups_count:
+                    type: number
+                  roles:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  roles_count:
+                    type: number
+                type: object
+        type: object
+    RoleMembershipWithRole:
+      allOf:
+      - $ref: '#/components/schemas/RoleMembership'
+      - properties:
+          role:
+            $ref: '#/components/schemas/GroupBasic'
+    PermissionDecision:
+      type: object
+      additionalProperties:
+        type: boolean
+      example:
+        facilities:read: true
+        equipment:read: true
     PermissionInput:
       properties:
         name:
@@ -426,105 +497,6 @@ components:
                 $like: Facility 1
           type: object
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    UserFilter:
-      properties:
-        filter:
-          description: A filter object for Users where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - $ref: '#/components/schemas/AuditFields'
-          - properties:
-              id:
-                type: string
-                format: uuid
-              name:
-                type: string
-              quicksight:
-                type: boolean
-              timezone:
-                type: string
-                example: America/Los_Angeles
-              status:
-                $ref: '#/components/schemas/UserStatus'
-              email:
-                type: string
-                format: email
-          type: object
-    GroupBasic:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-    IUpdateUserInput:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        phone:
-          type:
-          - string
-          - 'null'
-        quicksight:
-          type: boolean
-          default: false
-        status:
-          type: string
-          enum:
-          - active
-          - disabled
-          default: active
-        timezone:
-          type: string
-          default: US/Central
-          example: America/Los_Angeles
-    UserStatus:
-      type: string
-      enum:
-      - active
-      - disabled
-    UserSort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - name
-          - quicksight
-          - timezone
-          - status
-          - email
-          - created_at
-          - updated_at
-          - created_by
-          - updated_by
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
     ICreateUserInput:
       type: object
       properties:
@@ -559,6 +531,34 @@ components:
       required:
       - name
       - email
+    IUpdateUserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        phone:
+          type:
+          - string
+          - 'null'
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+    UserPermissions:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
   parameters:
     UserId:
       description: User ID

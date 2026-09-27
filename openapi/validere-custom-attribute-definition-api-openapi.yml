@@ -90,6 +90,27 @@ paths:
       - custom_attribute_definition
 components:
   parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    CustomAttributeDefinitionArchived:
+      description: Set true to return archived attribute definitions
+      in: query
+      name: archived
+      required: false
+      schema:
+        type: boolean
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
     CustomAttributeFieldName:
       description: field name identifier for custom attribute
       example: attribute_1
@@ -98,25 +119,18 @@ components:
       required: true
       schema:
         type: string
-    CustomAttributeDefinitionArchived:
-      description: Set true to return archived attribute definitions
-      in: query
-      name: archived
-      required: false
+    CustomAttributeEntityType:
+      description: Supported attribute type for custom attribute
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
       schema:
-        type: boolean
-    SortByCustomAttributeDefinition:
-      description: sort by
+        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+    CustomAttributeDefinitionFieldName:
+      description: String to search for in field names
       in: query
-      name: sort_by
-      required: false
-      schema:
-        enum:
-        - field_name
-    CustomAttributeDefinitionEntitySubType:
-      description: String to search for in entity subtype
-      in: query
-      name: entity_subtype
+      name: field_name
       required: false
       schema:
         type: string
@@ -131,51 +145,31 @@ components:
         - asc
         - desc
         type: string
-    CustomAttributeEntityType:
-      description: Supported attribute type for custom attribute
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-    Page:
-      description: page number
+    CustomAttributeDefinitionEntitySubType:
+      description: String to search for in entity subtype
       in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    CustomAttributeDefinitionFieldName:
-      description: String to search for in field names
-      in: query
-      name: field_name
+      name: entity_subtype
       required: false
       schema:
         type: string
+    SortByCustomAttributeDefinition:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - field_name
   schemas:
-    AttributeTypes:
-      type: string
-      enum:
-      - number
-      - string
-      - geo_point
-      - boolean
-      - integer
-      - pick-list
-      - multi-pick-list
-      - number-array
-      - lookup
-      - date
-      - date-time
-      - file
+    PagedCustomAttributeDefinitionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/CustomAttributeDefinition'
+            type: array
+        type: object
     Pagination:
       properties:
         page_number:
@@ -225,48 +219,7 @@ components:
         unit:
           type: string
       type: object
-    CustomAttributeDefinitionUpdateInput:
-      properties:
-        archived:
-          type: boolean
-        description:
-          type: string
-        display_name:
-          type: string
-        is_required:
-          type: boolean
-        pick_list_values:
-          items:
-            type: string
-          type: array
-        unit:
-          type: string
-        entity_subtype:
-          type: string
-          deprecated: true
-        entity_subtypes:
-          items:
-            type: string
-          type: array
-      type: object
-    PagedCustomAttributeDefinitionList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/CustomAttributeDefinition'
-            type: array
-        type: object
     schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    MeasurementSubjectEntityType:
       type: string
       enum:
       - equipment
@@ -306,3 +259,50 @@ components:
       - display_name
       - field_name
       type: object
+    CustomAttributeDefinitionUpdateInput:
+      properties:
+        archived:
+          type: boolean
+        description:
+          type: string
+        display_name:
+          type: string
+        is_required:
+          type: boolean
+        pick_list_values:
+          items:
+            type: string
+          type: array
+        unit:
+          type: string
+        entity_subtype:
+          type: string
+          deprecated: true
+        entity_subtypes:
+          items:
+            type: string
+          type: array
+      type: object
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group

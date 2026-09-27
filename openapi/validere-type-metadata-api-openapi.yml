@@ -277,10 +277,21 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    CustomAttributeDataTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeDataType'
-      type: array
+    CodeNamePair:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
     AttributeTypes:
       type: string
       enum:
@@ -307,6 +318,13 @@ components:
         name:
           type: string
       type: object
+    CustomAttributeEntityType:
+      properties:
+        id:
+          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+        name:
+          type: string
+      type: object
     EnumIdNamePairList:
       type: array
       items:
@@ -317,28 +335,10 @@ components:
           name:
             type: string
             description: display name
-    CodeNamePair:
-      type: object
-      properties:
-        code:
-          type: string
-        name:
-          type: string
-    schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    CustomAttributeEntityType:
-      properties:
-        id:
-          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-        name:
-          type: string
-      type: object
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
     TypeMetadataResponse:
       properties:
         meta:

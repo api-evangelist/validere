@@ -97,44 +97,6 @@ paths:
       - Measurement Types
 components:
   schemas:
-    MeasurementTypeV2:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        quantity:
-          type: string
-        default_unit:
-          type: string
-      type: object
-    MeasurementType:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/MeasurementTypeDataType'
-        id:
-          type: string
-        name:
-          type: string
-        units:
-          items:
-            type: string
-          type: array
-      type: object
-    MeasurementQuantityList:
-      items:
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-        type: object
-      type: array
-    MeasurementTypeDataType:
-      type: string
-      enum:
-      - int
-      - float
     MeasurementTypeList:
       items:
         $ref: '#/components/schemas/MeasurementType'
@@ -158,6 +120,44 @@ components:
           type: string
         id:
           type: string
+      type: object
+    MeasurementTypeV2:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: string
+        default_unit:
+          type: string
+      type: object
+    MeasurementTypeDataType:
+      type: string
+      enum:
+      - int
+      - float
+    MeasurementQuantityList:
+      items:
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+        type: object
+      type: array
+    MeasurementType:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/MeasurementTypeDataType'
+        id:
+          type: string
+        name:
+          type: string
+        units:
+          items:
+            type: string
+          type: array
       type: object
   parameters:
     MeasurementQuantityId:

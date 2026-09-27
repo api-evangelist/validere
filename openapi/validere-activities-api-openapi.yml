@@ -60,23 +60,7 @@ paths:
       tags:
       - Activities
 components:
-  parameters:
-    ResourceType:
-      description: ResourceType
-      in: path
-      name: resource_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/ResourceType'
   schemas:
-    ResourceType:
-      type: string
-      enum:
-      - facility
-      - equipment
-      - device
-      - flow
-      - record_value
     Pagination:
       properties:
         page_number:
@@ -92,41 +76,6 @@ components:
           type: number
           example: 6
       type: object
-    ActivityFilter:
-      properties:
-        filter:
-          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            resource_type: equipment
-            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            action: update
-            timestamp:
-              $gt: '2023-07-01T08:19:25.438Z'
-              $lt: '2023-07-30T08:19:25.438Z'
-          properties:
-            resource_type:
-              type: string
-            resource_id:
-              type: string
-            author_id:
-              type: string
-            action:
-              type: string
-            timestamp:
-              type: string
-              format: date-time
-          type: object
-      type: object
-    PagedActivityList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Activity'
-            type: array
-        type: object
     Activity:
       properties:
         resource_type:
@@ -173,6 +122,41 @@ components:
           - desc
           example: desc
           type: string
+    PagedActivityList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Activity'
+            type: array
+        type: object
+    ActivityFilter:
+      properties:
+        filter:
+          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            resource_type: equipment
+            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            action: update
+            timestamp:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          properties:
+            resource_type:
+              type: string
+            resource_id:
+              type: string
+            author_id:
+              type: string
+            action:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+          type: object
+      type: object
     Paginated:
       properties:
         page:
@@ -185,3 +169,19 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
+  parameters:
+    ResourceType:
+      description: ResourceType
+      in: path
+      name: resource_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/ResourceType'

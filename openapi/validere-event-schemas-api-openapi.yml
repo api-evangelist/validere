@@ -108,27 +108,33 @@ paths:
       - Event Schemas
 components:
   schemas:
-    EventSchemaSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - description
-          - status
-          - version
-          - priority
-          - event_category.id
-          - event_category.name
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
+    EventSchemaWithForms:
+      allOf:
+      - $ref: '#/components/schemas/EventSchema'
+      - properties:
+          form_schemas:
+            type: array
+            items:
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                description:
+                  type: string
+                form_category:
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                  type: object
+                required:
+                  type: boolean
+              type: object
+      type: object
     Pagination:
       properties:
         page_number:
@@ -171,56 +177,6 @@ components:
         event_category_id:
           type: string
           format: uuid
-      type: object
-    EventSchema:
-      allOf:
-      - $ref: '#/components/schemas/EventSchemaCreate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          created_at:
-            format: date-time
-            type: string
-          created_by:
-            format: uuid
-            type: string
-          updated_at:
-            format: date-time
-            type: string
-          updated_by:
-            format: uuid
-            type: string
-      type: object
-    EventSchemaWithForms:
-      allOf:
-      - $ref: '#/components/schemas/EventSchema'
-      - properties:
-          form_schemas:
-            type: array
-            items:
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-                description:
-                  type: string
-                form_category:
-                  properties:
-                    id:
-                      type: string
-                      format: uuid
-                    name:
-                      type: string
-                  type: object
-                required:
-                  type: boolean
-              type: object
       type: object
     EventSchemaConfig:
       properties:
@@ -271,6 +227,27 @@ components:
           type: object
         has_devices:
           type: boolean
+    EventSchemaSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - version
+          - priority
+          - event_category.id
+          - event_category.name
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     EventSchemaFilter:
       properties:
         filter:
@@ -304,6 +281,29 @@ components:
               type: string
               format: date-time
           type: object
+    EventSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventSchemaCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
     Paginated:
       properties:
         page:

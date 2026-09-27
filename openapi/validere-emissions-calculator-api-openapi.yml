@@ -97,13 +97,6 @@ paths:
       - emissions_calculator
 components:
   parameters:
-    CalculatorVersionId:
-      description: Calculator Version ID
-      in: path
-      name: version_id
-      required: true
-      schema:
-        type: string
     CalculatorId:
       description: Calculator ID
       in: path
@@ -115,6 +108,13 @@ components:
       description: Library ID
       in: path
       name: library_id
+      required: true
+      schema:
+        type: string
+    CalculatorVersionId:
+      description: Calculator Version ID
+      in: path
+      name: version_id
       required: true
       schema:
         type: string

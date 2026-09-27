@@ -105,6 +105,13 @@ paths:
       - Event Categories
 components:
   parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
     EventCategoryArchived:
       description: Event Category archived
       in: query
@@ -113,6 +120,13 @@ components:
       schema:
         default: false
         type: boolean
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
     EventCategoryId:
       description: Event Category ID
       in: path
@@ -120,6 +134,13 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+    EventCategoryName:
+      description: Event Category name
+      in: query
+      name: name
+      required: false
+      schema:
         type: string
     SortDirection:
       description: sort direction
@@ -139,59 +160,7 @@ components:
       required: false
       schema:
         type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    EventCategoryName:
-      description: Event Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
   schemas:
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    EventCategoryCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        archived:
-          type: boolean
-      type: object
-    EventCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        archived:
-          type: boolean
-      type: object
     EventCategory:
       allOf:
       - $ref: '#/components/schemas/EventCategoryCreate'
@@ -208,4 +177,35 @@ components:
           updated_at:
             format: date-time
             type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
+    EventCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
       type: object

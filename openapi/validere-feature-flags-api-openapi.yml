@@ -52,31 +52,6 @@ paths:
       - Feature Flags
 components:
   schemas:
-    FeatureFlag:
-      allOf:
-      - type: object
-        properties:
-          name:
-            type: string
-          version:
-            type: string
-          isEnabled:
-            type: boolean
-          isDeprecated:
-            type: boolean
-    FeatureFlagsFilter:
-      properties:
-        filter:
-          description: A filter object for feature flags where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
-          allOf:
-          - properties:
-              name:
-                type: string
-              isEnabled:
-                type: boolean
-              isDeprecated:
-                type: boolean
-          type: object
     Pagination:
       properties:
         page_number:
@@ -92,6 +67,19 @@ components:
           type: number
           example: 6
       type: object
+    FeatureFlagsFilter:
+      properties:
+        filter:
+          description: A filter object for feature flags where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          allOf:
+          - properties:
+              name:
+                type: string
+              isEnabled:
+                type: boolean
+              isDeprecated:
+                type: boolean
+          type: object
     PagedFeatureFlagsList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -114,6 +102,18 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    FeatureFlag:
+      allOf:
+      - type: object
+        properties:
+          name:
+            type: string
+          version:
+            type: string
+          isEnabled:
+            type: boolean
+          isDeprecated:
+            type: boolean
   parameters:
     FeatureFlagId:
       description: Feature Flag Name (any version)

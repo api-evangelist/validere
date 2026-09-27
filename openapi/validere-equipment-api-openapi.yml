@@ -198,109 +198,61 @@ paths:
       - Equipment
 components:
   schemas:
-    FilterMetadata:
+    FilterName:
       properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    FilterStatus:
-      properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    ReportWithS3Url:
-      allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
-    EquipmentFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/EquipmentFilter'
-      - properties:
-          entity_type:
-            example: equipment
-            type: string
-      type: object
-    Equipment:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        effective_date:
-          example: '2022-01-01'
+        name:
           type: string
+          example: My first filter
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    FilterId:
+      properties:
         id:
           format: uuid
           type: string
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/EquipmentTypeShallow'
-      type: object
-    EquipmentInput:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        effective_date:
-          example: '2022-01-01'
-          type: string
-        facility_id:
-          description: ID of the facility that the equipment belongs to
-          type: string
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/EquipmentStatus'
-        type_id:
-          $ref: '#/components/schemas/EquipmentTypeId'
-      type: object
-    XLSXResponse:
-      format: binary
-      type: string
-    FilterOutput:
+    EquipmentFilterUpdateInput:
       allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
       - $ref: '#/components/schemas/FilterInput'
-      type: object
-    EquipmentUpdateInput:
+      - $ref: '#/components/schemas/EquipmentFilter'
+    FilterInput:
       allOf:
-      - properties:
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          latitude:
-            $ref: '#/components/schemas/Latitude'
-          longitude:
-            $ref: '#/components/schemas/Longitude'
-          name:
-            type: string
-          type_id:
-            $ref: '#/components/schemas/EquipmentTypeId'
-            description: Equipment Type ID
-            example: ng_pneumatic_devices
-          status:
-            $ref: '#/components/schemas/EquipmentStatus'
-          facility_id:
-            description: ID of the facility that the equipment belongs to
-            type: string
-            format: uuid
-        type: object
-      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
     ReportWithTemplatedReportResponse:
       type: object
       properties:
@@ -487,36 +439,6 @@ components:
       - created_by
       - updated_by
       additionalProperties: false
-    PagedEquipmentFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/EquipmentFilterOutput'
-            type: array
-        type: object
-    EquipmentStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-      - deprecated
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
     PagedEquipmentList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -526,32 +448,10 @@ components:
               $ref: '#/components/schemas/EquipmentWithFacility'
             type: array
         type: object
-    FacilityNameAndId:
-      example:
-        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
-        name: Facility 1
+    FilterStatus:
       properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-      type: object
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    EquipmentFilterFields:
-      allOf:
-      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
-      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-      - properties:
-          event.id:
-            type: string
-        type: object
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
     Paginated:
       properties:
         page:
@@ -564,6 +464,67 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    EquipmentFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/EquipmentFilter'
+      type: object
+    EquipmentFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - properties:
+          event.id:
+            type: string
+        type: object
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      type:
+      - number
+      - 'null'
+    XLSXResponse:
+      format: binary
+      type: string
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    EquipmentTypeId:
+      type: string
+      enum:
+      - acid_gas_removal
+      - desiccant_dehydrator
+      - ng_pneumatic_devices
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    EquipmentFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/EquipmentFilter'
+      - properties:
+          entity_type:
+            example: equipment
+            type: string
+      type: object
     EquipmentSort:
       properties:
         sort_by:
@@ -579,15 +540,183 @@ components:
           - desc
           example: desc
           type: string
-    FilterTag:
+    EquipmentUpdateInput:
+      allOf:
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          type_id:
+            $ref: '#/components/schemas/EquipmentTypeId'
+            description: Equipment Type ID
+            example: ng_pneumatic_devices
+          status:
+            $ref: '#/components/schemas/EquipmentStatus'
+          facility_id:
+            description: ID of the facility that the equipment belongs to
+            type: string
+            format: uuid
+        type: object
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+    EquipmentPrimaryFilterFields:
       properties:
-        tag:
+        id:
           type: string
-    TemplatedReportStatus:
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        type.id:
+          type: string
+        type.name:
+          type: string
+        custom_attributes:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    FacilityNameAndId:
+      example:
+        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
+        name: Facility 1
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    Equipment:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    EquipmentWithFacility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          effective_date:
+            example: '2022-01-01'
+            type: string
+          facility:
+            $ref: '#/components/schemas/FacilityNameAndId'
+          id:
+            type: string
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/EquipmentStatus'
+          type:
+            $ref: '#/components/schemas/EquipmentTypeShallow'
+        type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    EquipmentFilter:
+      properties:
+        filter:
+          description: A filter object for equipment where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            $or:
+            - facility.name: WellSite1
+            custom_attributes.hint: View schema for all supported fields
+            custom_attributes.operator:
+              $in:
+              - Bob
+              - Alice
+              - Eve
+            name:
+              $like: Compressor
+          $ref: '#/components/schemas/EquipmentFilterFields'
+    EquipmentInput:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        facility_id:
+          description: ID of the facility that the equipment belongs to
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        type_id:
+          $ref: '#/components/schemas/EquipmentTypeId'
+      type: object
+    EquipmentStatus:
       type: string
       enum:
       - active
-      - archived
+      - inactive
+      - deprecated
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
     AssetAttributeStartEndDateInput:
       type: object
       properties:
@@ -615,139 +744,6 @@ components:
             - max
             example: max
             description: Year month shorthand
-    EquipmentFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/EquipmentFilter'
-      type: object
-    EquipmentWithFacility:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          effective_date:
-            example: '2022-01-01'
-            type: string
-          facility:
-            $ref: '#/components/schemas/FacilityNameAndId'
-          id:
-            type: string
-          latitude:
-            $ref: '#/components/schemas/Latitude'
-          longitude:
-            $ref: '#/components/schemas/Longitude'
-          name:
-            type: string
-          status:
-            $ref: '#/components/schemas/EquipmentStatus'
-          type:
-            $ref: '#/components/schemas/EquipmentTypeShallow'
-        type: object
-    FilterName:
-      properties:
-        name:
-          type: string
-          example: My first filter
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    EquipmentTypeId:
-      type: string
-      enum:
-      - acid_gas_removal
-      - desiccant_dehydrator
-      - ng_pneumatic_devices
-    EquipmentPrimaryFilterFields:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/EquipmentStatus'
-        type.id:
-          type: string
-        type.name:
-          type: string
-        custom_attributes:
-          type: object
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    Longitude:
-      description: longitude on the Earth
-      example: -114
-      maximum: 180
-      minimum: -180
-      type:
-      - number
-      - 'null'
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    EquipmentFilter:
-      properties:
-        filter:
-          description: A filter object for equipment where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            $or:
-            - facility.name: WellSite1
-            custom_attributes.hint: View schema for all supported fields
-            custom_attributes.operator:
-              $in:
-              - Bob
-              - Alice
-              - Eve
-            name:
-              $like: Compressor
-          $ref: '#/components/schemas/EquipmentFilterFields'
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    EquipmentTypeShallow:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-    EquipmentFilterUpdateInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/EquipmentFilter'
     Latitude:
       description: latitude on the Earth
       example: 51
@@ -756,36 +752,24 @@ components:
       type:
       - number
       - 'null'
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
+    PagedEquipmentFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/EquipmentFilterOutput'
+            type: array
+        type: object
   parameters:
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
       schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    Period:
-      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
-      in: query
-      name: period
-      required: false
-      schema:
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
+        format: uuid
         type: string
     Page:
       description: page number
@@ -803,6 +787,13 @@ components:
       schema:
         format: uuid
         type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
     PageSize:
       description: page size
       in: query
@@ -810,12 +801,21 @@ components:
       required: false
       schema:
         type: number
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
       schema:
-        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
         type: string

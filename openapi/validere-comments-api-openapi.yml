@@ -105,6 +105,172 @@ paths:
       - Comments
 components:
   schemas:
+    IUpdateCommentInput:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 5120
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+            required:
+            - file_id
+            - file_name
+          maxItems: 10
+    CommentAdditionalIdentifier:
+      type: string
+      format: uuid
+    CommentEntityType:
+      type: string
+      enum:
+      - workflow
+      - asset
+      - report
+    ICommentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        text:
+          type: string
+          maxLength: 5120
+        title_context:
+          type: string
+          maxLength: 64
+        is_deleted:
+          type: boolean
+          default: false
+        created_by:
+          anyOf:
+          - type: string
+            format: uuid
+          - {}
+          - {}
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        commented_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              comment_id:
+                type: string
+                format: uuid
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+              created_at:
+                anyOf:
+                - type: string
+                - type: string
+                  format: date-time
+            required:
+            - comment_id
+            - file_id
+            - file_name
+            - created_at
+        user:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+              default: 77f8dca6-6d8b-408e-b08b-4bc39d0df549
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+          required:
+          - name
+        entity_id:
+          type: string
+          format: uuid
+        entity_type:
+          type: string
+          enum:
+          - workflow
+          - asset
+          - report
+        additional_identifier:
+          type: string
+          description: Used to group comments by an additional context
+      required:
+      - id
+      - company_id
+      - text
+      - created_by
+      - created_at
+      - updated_at
+      - commented_at
+      - files
+      - user
+      - entity_id
+      - entity_type
+    ICreateCommentInput:
+      type: object
+      properties:
+        text:
+          type: string
+          maxLength: 5120
+        title_context:
+          type: string
+          maxLength: 64
+        commented_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        files:
+          type: array
+          items:
+            type: object
+            properties:
+              file_id:
+                type: string
+              file_name:
+                type: string
+                maxLength: 128
+            required:
+            - file_id
+            - file_name
+          maxItems: 10
+      required:
+      - text
+      - files
+    CommentCreatedBefore:
+      type: string
+    CommentEntityIds:
+      type: array
+      items:
+        type: string
+        format: uuid
     ICommentCountResponse:
       type: array
       items:
@@ -127,12 +293,6 @@ components:
         - entity_id
         - entity_type
         - count
-    CommentEntityType:
-      type: string
-      enum:
-      - workflow
-      - asset
-      - report
     CommentId:
       type: string
       format: uuid
@@ -237,128 +397,6 @@ components:
         - user
         - entity_id
         - entity_type
-    IUpdateCommentInput:
-      type: object
-      properties:
-        text:
-          type: string
-          maxLength: 5120
-        files:
-          type: array
-          items:
-            type: object
-            properties:
-              file_id:
-                type: string
-              file_name:
-                type: string
-                maxLength: 128
-            required:
-            - file_id
-            - file_name
-          maxItems: 10
-    ICommentResponse:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        company_id:
-          type: string
-          format: uuid
-        text:
-          type: string
-          maxLength: 5120
-        title_context:
-          type: string
-          maxLength: 64
-        is_deleted:
-          type: boolean
-          default: false
-        created_by:
-          anyOf:
-          - type: string
-            format: uuid
-          - {}
-          - {}
-        created_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        updated_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        commented_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        files:
-          type: array
-          items:
-            type: object
-            properties:
-              comment_id:
-                type: string
-                format: uuid
-              file_id:
-                type: string
-              file_name:
-                type: string
-                maxLength: 128
-              created_at:
-                anyOf:
-                - type: string
-                - type: string
-                  format: date-time
-            required:
-            - comment_id
-            - file_id
-            - file_name
-            - created_at
-        user:
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-              default: 77f8dca6-6d8b-408e-b08b-4bc39d0df549
-            name:
-              type: string
-              minLength: 1
-              maxLength: 100
-          required:
-          - name
-        entity_id:
-          type: string
-          format: uuid
-        entity_type:
-          type: string
-          enum:
-          - workflow
-          - asset
-          - report
-        additional_identifier:
-          type: string
-          description: Used to group comments by an additional context
-      required:
-      - id
-      - company_id
-      - text
-      - created_by
-      - created_at
-      - updated_at
-      - commented_at
-      - files
-      - user
-      - entity_id
-      - entity_type
-    CommentEntityId:
-      type: string
-      format: uuid
     IComment:
       type: object
       properties:
@@ -406,62 +444,10 @@ components:
       - created_at
       - updated_at
       - commented_at
-    ICreateCommentInput:
-      type: object
-      properties:
-        text:
-          type: string
-          maxLength: 5120
-        title_context:
-          type: string
-          maxLength: 64
-        commented_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        files:
-          type: array
-          items:
-            type: object
-            properties:
-              file_id:
-                type: string
-              file_name:
-                type: string
-                maxLength: 128
-            required:
-            - file_id
-            - file_name
-          maxItems: 10
-      required:
-      - text
-      - files
-    CommentAdditionalIdentifier:
+    CommentEntityId:
       type: string
       format: uuid
-    CommentCreatedBefore:
-      type: string
-    CommentEntityIds:
-      type: array
-      items:
-        type: string
-        format: uuid
   parameters:
-    CommentAdditionalIdentifier:
-      schema:
-        $ref: '#/components/schemas/CommentAdditionalIdentifier'
-      required: false
-      description: Additional Identifier
-      in: query
-      name: additional_identifier
-    CommentCreatedBefore:
-      schema:
-        $ref: '#/components/schemas/CommentCreatedBefore'
-      required: false
-      description: Comment Created Before filter
-      in: query
-      name: created_before
     CommentId:
       schema:
         $ref: '#/components/schemas/CommentId'
@@ -483,6 +469,13 @@ components:
       description: Entity Type
       in: path
       name: entity_type
+    CommentAdditionalIdentifier:
+      schema:
+        $ref: '#/components/schemas/CommentAdditionalIdentifier'
+      required: false
+      description: Additional Identifier
+      in: query
+      name: additional_identifier
     CommentEntityId:
       schema:
         $ref: '#/components/schemas/CommentEntityId'
@@ -490,3 +483,10 @@ components:
       description: Entity ID
       in: path
       name: entity_id
+    CommentCreatedBefore:
+      schema:
+        $ref: '#/components/schemas/CommentCreatedBefore'
+      required: false
+      description: Comment Created Before filter
+      in: query
+      name: created_before

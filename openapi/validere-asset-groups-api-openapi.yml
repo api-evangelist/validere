@@ -182,37 +182,56 @@ paths:
       - Asset groups
 components:
   schemas:
-    AssetGroupAssetsUpdate:
+    Pagination:
       properties:
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
-    AssetGroupCreateV2:
+    PagedAssetGroupWithAssetsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/AssetGroupWithAssets'
+            type: array
+        type: object
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+    AssetGroupSort:
       properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/AssetGroupStatus'
-        asset_group_type_id:
-          type: string
+        sort_by:
           enum:
-          - network
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        reporting_group_id:
-          description: Reporting group ID when `asset_group_type_id="network"`
+          - name
+          - status
+          - asset_group_type_id
+          - created_at
+          - updated_at
+          example: name
           type: string
-          format: uuid
-      type: object
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     AssetGroupFilter:
       properties:
         filter:
@@ -243,6 +262,18 @@ components:
               type: object
           type: object
       type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     AssetGroup:
       properties:
         name:
@@ -284,18 +315,36 @@ components:
         custom_attributes:
           $ref: '#/components/schemas/CustomAttributes'
       type: object
-    AssetGroupUpdate:
-      allOf:
-      - properties:
-          name:
-            type: string
-            maxLength: 100
-          status:
-            $ref: '#/components/schemas/AssetGroupStatus'
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+    Asset:
       type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+    AssetGroupWithAssets:
+      allOf:
+      - $ref: '#/components/schemas/AssetGroup'
+      - properties:
+          assets:
+            type: array
+            items:
+              $ref: '#/components/schemas/Asset'
+          network_inlet_ids:
+            type: array
+            items:
+              type: string
+              format: uuid
+      type: object
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
     CalculatorInputs:
       type: object
       additionalProperties:
@@ -330,56 +379,121 @@ components:
           measurement_type: measurement_type
           measurement_quantity: volume
         rvp: null
-    ReportingGroupInput:
+    AssetGroupAsset:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    AssetGroupWithAssets:
-      allOf:
-      - $ref: '#/components/schemas/AssetGroup'
-      - properties:
-          assets:
-            type: array
-            items:
-              $ref: '#/components/schemas/Asset'
-          network_inlet_ids:
-            type: array
-            items:
-              type: string
-              format: uuid
-      type: object
-    PagedAssetGroupWithAssetsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/AssetGroupWithAssets'
-            type: array
-        type: object
-    AssetType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-    Paginated:
       properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
+        asset_id:
+          format: uuid
+          type: string
+        asset_group_id:
+          format: uuid
+          type: string
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
           type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+          description: default to 1
+          example: 2
+    AssetGroupUpdate:
+      allOf:
+      - properties:
+          name:
+            type: string
+            maxLength: 100
+          status:
+            $ref: '#/components/schemas/AssetGroupStatus'
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+      type: object
+    AssetGroupCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    AssetGroupAssetsUpdate:
+      properties:
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    AssetGroupCreateV2:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        reporting_group_id:
+          description: Reporting group ID when `asset_group_type_id="network"`
+          type: string
+          format: uuid
+      type: object
+    AssetAttributeStartEndDateInput:
+      type: object
+      properties:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
     EstimationMethodResponse:
       type: object
       properties:
@@ -535,125 +649,11 @@ components:
       - updated_at
       - created_by
       - updated_by
-    AssetGroupSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - asset_group_type_id
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    AssetAttributeStartEndDateInput:
-      type: object
-      properties:
-        start_date:
-          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: min
-            description: Year month shorthand
-        end_date:
-          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: max
-            description: Year month shorthand
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    AssetGroupCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/AssetGroupStatus'
-        asset_group_type_id:
-          type: string
-          enum:
-          - network
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
     AssetGroupStatus:
       type: string
       enum:
       - active
       - inactive
-    AssetGroupAsset:
-      type: object
-      properties:
-        asset_id:
-          format: uuid
-          type: string
-        asset_group_id:
-          format: uuid
-          type: string
-    Asset:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
   parameters:
     Period:
       description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from

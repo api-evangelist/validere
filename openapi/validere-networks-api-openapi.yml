@@ -124,24 +124,53 @@ paths:
       - Networks
 components:
   schemas:
-    FlowBasic:
+    NetworkInput:
       properties:
-        name:
+        input:
+          type: object
+          description: flow_id map
+          example:
+            3fa85f64-5717-4562-b3fc-2c963f66afa6:
+              adjustable: true
+          additionalProperties:
+            type: object
+            properties:
+              adjustable:
+                type: boolean
+        reporting_group_id:
           type: string
-        type:
-          $ref: '#/components/schemas/FlowTypes'
-        status:
-          $ref: '#/components/schemas/FlowStatus'
-        product_category:
-          $ref: '#/components/schemas/ProductCategories'
-        product_type:
-          $ref: '#/components/schemas/ProductTypes'
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
-    FlowTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/flow_types`
+    NetworkRunPromote:
+      properties:
+        promote_to_record:
+          type: boolean
+          default: false
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     NetworkFlowList:
       items:
         $ref: '#/components/schemas/NetworkFlow'
@@ -186,6 +215,86 @@ components:
         custom_attributes:
           $ref: '#/components/schemas/CustomAttributes'
       type: object
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    PagedNetworkList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/NetworkFlowList'
+          reporting_group_id:
+            type: string
+        type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    FlowSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - product_category
+          - product_type
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     NetworkFlow:
       allOf:
       - properties:
@@ -216,49 +325,9 @@ components:
             type: string
             format: uuid
       - $ref: '#/components/schemas/FlowBasic'
-    ProductTypes:
+    ProductCategories:
       type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
-    ReportingGroupInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    FlowSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - product_category
-          - product_type
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+      description: Use `id` value of any index in `GET /v1/product_categories`
     EstimationMethodResponse:
       type: object
       properties:
@@ -414,99 +483,12 @@ components:
       - updated_at
       - created_by
       - updated_by
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    NetworkRunPromote:
-      properties:
-        promote_to_record:
-          type: boolean
-          default: false
-    ProductCategories:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
-    NetworkInput:
-      properties:
-        input:
-          type: object
-          description: flow_id map
-          example:
-            3fa85f64-5717-4562-b3fc-2c963f66afa6:
-              adjustable: true
-          additionalProperties:
-            type: object
-            properties:
-              adjustable:
-                type: boolean
-        reporting_group_id:
-          type: string
-    PagedNetworkList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/NetworkFlowList'
-          reporting_group_id:
-            type: string
-        type: object
     AssetGroupStatus:
       type: string
       enum:
       - active
       - inactive
-    FlowStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
   parameters:
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
     Page:
       description: page number
       in: query
@@ -514,6 +496,13 @@ components:
       required: false
       schema:
         type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
     PageSize:
       description: page size
       in: query
@@ -536,4 +525,15 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
         type: string

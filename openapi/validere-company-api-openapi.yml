@@ -105,6 +105,36 @@ paths:
       - Company
 components:
   schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     ICreateCompanyWithAdminInput:
       type: object
       properties:
@@ -168,57 +198,6 @@ components:
       - created_by
       - updated_at
       - updated_by
-    IUpdateCompanyInput:
-      type: object
-      properties:
-        name:
-          type: string
-        localization:
-          type: object
-          additionalProperties: {}
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    CompanyFilter:
-      properties:
-        filter:
-          description: A filter object for Companies where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          allOf:
-          - $ref: '#/components/schemas/AuditFields'
-          - properties:
-              id:
-                type: string
-                format: uuid
-              name:
-                type: string
-          type: object
     PagedCompanyList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -259,15 +238,28 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    IUpdateCompanyInput:
+      type: object
+      properties:
+        name:
+          type: string
+        localization:
+          type: object
+          additionalProperties: {}
+    CompanyFilter:
+      properties:
+        filter:
+          description: A filter object for Companies where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          allOf:
+          - $ref: '#/components/schemas/AuditFields'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+          type: object
   parameters:
-    TenantId:
-      description: Tenant ID for admin users
-      example: ''
-      in: query
-      name: tenant_id
-      required: false
-      schema:
-        type: string
     CompanyId:
       schema:
         format: uuid
@@ -276,3 +268,11 @@ components:
       description: Company ID
       in: path
       name: company_id
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string

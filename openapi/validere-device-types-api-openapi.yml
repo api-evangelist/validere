@@ -28,21 +28,6 @@ paths:
       - Device Types
 components:
   schemas:
-    DeviceTypeList:
-      items:
-        $ref: '#/components/schemas/DeviceType'
-      type: array
-    DeviceTypeAttribute:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/AttributeTypes'
-        description:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-      type: object
     DeviceType:
       properties:
         attributes:
@@ -69,3 +54,18 @@ components:
       - date
       - date-time
       - file
+    DeviceTypeAttribute:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DeviceTypeList:
+      items:
+        $ref: '#/components/schemas/DeviceType'
+      type: array

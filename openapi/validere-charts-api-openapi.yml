@@ -79,25 +79,6 @@ paths:
       - Charts
 components:
   schemas:
-    ChartCreate:
-      properties:
-        dashboard_id:
-          type: string
-          format: uuid
-        json:
-          type: object
-        name:
-          example: 'Chart #1'
-          type: string
-      type: object
-    ChartUpdate:
-      properties:
-        json:
-          type: object
-        name:
-          example: 'Chart #1'
-          type: string
-      type: object
     Chart:
       properties:
         created_at:
@@ -118,6 +99,25 @@ components:
           type: string
         updated_at:
           format: date-time
+          type: string
+      type: object
+    ChartUpdate:
+      properties:
+        json:
+          type: object
+        name:
+          example: 'Chart #1'
+          type: string
+      type: object
+    ChartCreate:
+      properties:
+        dashboard_id:
+          type: string
+          format: uuid
+        json:
+          type: object
+        name:
+          example: 'Chart #1'
           type: string
       type: object
   parameters:

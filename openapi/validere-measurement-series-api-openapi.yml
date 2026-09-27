@@ -123,102 +123,37 @@ paths:
       tags:
       - measurement_series
 components:
-  parameters:
-    MeasurementSeriesDeviceId:
-      description: UUID of the device to filter on
-      in: query
-      name: measurement_series_device_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortByMeasurementSeries:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        enum:
-        - device_name
-        - description
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    EventIdQuery:
-      description: Event ID
-      in: query
-      name: event_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesDescription:
-      description: String to search for in measurement series descriptions
-      in: query
-      name: measurement_series_description
-      required: false
-      schema:
-        type: string
-    MeasurementSeriesId:
-      description: ID of the measurement series
-      in: path
-      name: measurement_series_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesSubjectType:
-      description: Type of the entity you want to list the measurements for. Required if ID is defined.
-      in: query
-      name: subject_type
-      required: false
-      schema:
-        $ref: '#/components/schemas/MeasurementSubjectEntityType'
-    MeasurementSeriesDeviceName:
-      description: String to search for in device names
-      in: query
-      name: measurement_series_device_name
-      required: false
-      schema:
-        type: string
-    MeasurementSeriesSubjectId:
-      description: ID of the entity you want to list the measurements for
-      in: query
-      name: subject_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesIds:
-      description: a comma-separated list of measurement series ids
-      in: query
-      name: measurement_series_ids
-      required: false
-      schema:
-        type: string
   schemas:
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     MeasurementSubjectEntityType:
       type: string
       enum:
@@ -227,6 +162,31 @@ components:
       - facility
       - flow
       - asset_group
+    MeasurementSeriesSubjectInput:
+      properties:
+        subjects:
+          items:
+            properties:
+              entity_id:
+                format: uuid
+                type: string
+              entity_type:
+                $ref: '#/components/schemas/MeasurementSubjectEntityType'
+              start_time:
+                format: date-time
+          type: array
+      type: object
+    MeasurementSeries:
+      allOf:
+      - $ref: '#/components/schemas/MeasurementSeriesCreateInput'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+      type: object
     DeviceAttribute:
       additionalProperties: true
       description: Device Attributes
@@ -237,6 +197,50 @@ components:
         - -79.347015
         provider: provider
       type: object
+    MeasurementSeriesDevice:
+      allOf:
+      - $ref: '#/components/schemas/Device'
+      - properties:
+          facility_name:
+            example: Facility Name
+            type: string
+    DeviceStatus:
+      default: active
+      type: string
+      enum:
+      - active
+      - archived
+    FacilityNameAndId:
+      example:
+        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
+        name: Facility 1
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+      type: object
+    PagedMeasurementSeries:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/MeasurementSeries'
+              - properties:
+                  device:
+                    $ref: '#/components/schemas/MeasurementSeriesDevice'
+                  device_name:
+                    type: string
+                  measurement_type_name:
+                    example: Wind Variation
+                    type: string
+            type: array
+        type: object
     Device:
       allOf:
       - $ref: '#/components/schemas/AuditFields'
@@ -270,87 +274,11 @@ components:
             description: Device type
             type: string
         type: object
-    MeasurementSeriesDevice:
-      allOf:
-      - $ref: '#/components/schemas/Device'
-      - properties:
-          facility_name:
-            example: Facility Name
-            type: string
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    FacilityNameAndId:
+    CustomAttributes:
       example:
-        id: 1ca1117d-f2d6-47f5-ae3a-aa1025073717
-        name: Facility 1
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
+        attribute1: 12345
+        attribute2: value1
       type: object
-    MeasurementSeries:
-      allOf:
-      - $ref: '#/components/schemas/MeasurementSeriesCreateInput'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-      type: object
-    MeasurementSeriesSubjectInput:
-      properties:
-        subjects:
-          items:
-            properties:
-              entity_id:
-                format: uuid
-                type: string
-              entity_type:
-                $ref: '#/components/schemas/MeasurementSubjectEntityType'
-              start_time:
-                format: date-time
-          type: array
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    DeviceStatus:
-      default: active
-      type: string
-      enum:
-      - active
-      - archived
     MeasurementSeriesCreateInput:
       properties:
         description:
@@ -365,26 +293,98 @@ components:
           type: string
           example: bbl
       type: object
-    PagedMeasurementSeries:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/MeasurementSeries'
-              - properties:
-                  device:
-                    $ref: '#/components/schemas/MeasurementSeriesDevice'
-                  device_name:
-                    type: string
-                  measurement_type_name:
-                    example: Wind Variation
-                    type: string
-            type: array
-        type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
+  parameters:
+    MeasurementSeriesSubjectType:
+      description: Type of the entity you want to list the measurements for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    MeasurementSeriesDeviceName:
+      description: String to search for in device names
+      in: query
+      name: measurement_series_device_name
+      required: false
+      schema:
+        type: string
+    MeasurementSeriesDescription:
+      description: String to search for in measurement series descriptions
+      in: query
+      name: measurement_series_description
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    MeasurementSeriesIds:
+      description: a comma-separated list of measurement series ids
+      in: query
+      name: measurement_series_ids
+      required: false
+      schema:
+        type: string
+    EventIdQuery:
+      description: Event ID
+      in: query
+      name: event_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesSubjectId:
+      description: ID of the entity you want to list the measurements for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    SortByMeasurementSeries:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - device_name
+        - description
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesDeviceId:
+      description: UUID of the device to filter on
+      in: query
+      name: measurement_series_device_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string

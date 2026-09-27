@@ -195,72 +195,66 @@ paths:
       - Facilities
 components:
   schemas:
-    FacilityFilterFields:
-      description: A filter object for facility where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-      example:
-        custom_attributes.hint: View schema for all supported fields
-        custom_attributes.operator: bob
-        name:
-          $like: wind
+    FilterName:
       properties:
-        custom_attributes:
-          type: object
-        id:
-          type: string
         name:
           type: string
-        status:
-          type: string
-        event.id:
-          type: string
+          example: My first filter
+    AuditFields:
+      properties:
         created_at:
-          type: string
           format: date-time
+          type: string
         updated_at:
-          type: string
           format: date-time
-      type: object
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    FilterStatus:
-      properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    Equipment:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        effective_date:
-          example: '2022-01-01'
           type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/FacilityStatus'
+          type:
+            $ref: '#/components/schemas/FacilityType'
+          id:
+            format: uuid
+            type: string
+        type: object
+    FilterId:
+      properties:
         id:
           format: uuid
           type: string
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/EquipmentTypeShallow'
-      type: object
-    ReportWithS3Url:
-      allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
     PagedFacilityList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -268,35 +262,17 @@ components:
           data:
             $ref: '#/components/schemas/FacilityList'
         type: object
-    FacilityUpdateInput:
+    FilterInput:
       allOf:
-      - $ref: '#/components/schemas/FacilityInput'
-      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
-      type: object
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    FacilityInput:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/FacilityStatus'
-        type:
-          $ref: '#/components/schemas/FacilityType'
-      type: object
-    FacilityType:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    TemplatedReportStatus:
       type: string
-      description: Use `id` value of any index in `GET /v1/facility_types`
+      enum:
+      - active
+      - archived
     ReportWithTemplatedReportResponse:
       type: object
       properties:
@@ -483,47 +459,47 @@ components:
       - created_by
       - updated_by
       additionalProperties: false
-    FacilityFilter:
+    FacilityFilterFields:
+      description: A filter object for facility where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+      example:
+        custom_attributes.hint: View schema for all supported fields
+        custom_attributes.operator: bob
+        name:
+          $like: wind
       properties:
-        filter:
-          $ref: '#/components/schemas/FacilityFilterFields'
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    PagedFacilityFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/FacilityFilterOutput'
-            type: array
-        type: object
-    FacilityFilterUpdateInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/FacilityFilter'
-    FacilityList:
-      items:
-        $ref: '#/components/schemas/Facility'
-      type: array
-    CompanyId:
-      properties:
+        custom_attributes:
+          type: object
         id:
-          format: uuid
           type: string
+        name:
+          type: string
+        status:
+          type: string
+        event.id:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     FacilitySort:
       properties:
         sort_by:
@@ -539,50 +515,144 @@ components:
           - desc
           example: desc
           type: string
-    Paginated:
+    FacilityFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/FacilityFilter'
+      - properties:
+          entity_type:
+            example: facility
+            type: string
+      type: object
+    FacilityUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FacilityInput'
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+      type: object
+    FacilityInput:
       properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/FacilityStatus'
+        type:
+          $ref: '#/components/schemas/FacilityType'
+      type: object
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      type:
+      - number
+      - 'null'
+    PagedFacilityFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/FacilityFilterOutput'
+            type: array
+        type: object
+    FacilityWithEquipment:
+      allOf:
+      - $ref: '#/components/schemas/Facility'
+      - properties:
+          equipment:
+            items:
+              $ref: '#/components/schemas/Equipment'
+            type: array
+        type: object
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
     FilterTag:
       properties:
         tag:
           type: string
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    Facility:
+    FacilityFilterInput:
       allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          latitude:
-            $ref: '#/components/schemas/Latitude'
-          longitude:
-            $ref: '#/components/schemas/Longitude'
-          name:
-            type: string
-          status:
-            $ref: '#/components/schemas/FacilityStatus'
-          type:
-            $ref: '#/components/schemas/FacilityType'
-          id:
-            format: uuid
-            type: string
-        type: object
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FacilityFilter'
+      type: object
+    FacilityType:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_types`
     FacilityStatus:
       type: string
       description: Use `id` value of any index in `GET /v1/facility_statuses`
+    Equipment:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    FacilityFilterUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FacilityFilter'
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    FacilityFilter:
+      properties:
+        filter:
+          $ref: '#/components/schemas/FacilityFilterFields'
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
     AssetAttributeStartEndDateInput:
       type: object
       properties:
@@ -610,66 +680,6 @@ components:
             - max
             example: max
             description: Year month shorthand
-    FilterName:
-      properties:
-        name:
-          type: string
-          example: My first filter
-    FacilityWithEquipment:
-      allOf:
-      - $ref: '#/components/schemas/Facility'
-      - properties:
-          equipment:
-            items:
-              $ref: '#/components/schemas/Equipment'
-            type: array
-        type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    Longitude:
-      description: longitude on the Earth
-      example: -114
-      maximum: 180
-      minimum: -180
-      type:
-      - number
-      - 'null'
-    FacilityFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/FacilityFilter'
-      type: object
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    EquipmentTypeShallow:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
     Latitude:
       description: latitude on the Earth
       example: 51
@@ -678,57 +688,24 @@ components:
       type:
       - number
       - 'null'
-    FacilityFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/FacilityFilter'
-      - properties:
-          entity_type:
-            example: facility
-            type: string
-      type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
+    FacilityList:
+      items:
+        $ref: '#/components/schemas/Facility'
+      type: array
   parameters:
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
       schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    Period:
-      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
-      in: query
-      name: period
-      required: false
-      schema:
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
+        format: uuid
         type: string
     Page:
       description: page number
       in: query
       name: page
-      required: false
-      schema:
-        type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
       required: false
       schema:
         type: number
@@ -741,12 +718,35 @@ components:
       schema:
         format: uuid
         type: string
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
       schema:
-        format: uuid
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
         type: string

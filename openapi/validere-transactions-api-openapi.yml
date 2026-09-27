@@ -485,6 +485,165 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    Source:
+      type: string
+      enum:
+      - api
+      - sftp
+      - email
+      - iot
+      - kafka
+      - upload
+      - unknown
+      - connectors
+      - petrinex
+      title: Source
+    TransactionDetailsV2Response:
+      properties:
+        meta:
+          $ref: '#/components/schemas/TransactionDetailsMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/TransactionDetailsV2Data'
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TransactionDetailsV2Response
+    TransactionDetailsV2Data:
+      properties:
+        success_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Success Count
+        failure_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Failure Count
+        summary:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Summary
+        details:
+          items:
+            $ref: '#/components/schemas/RowSummary'
+          type: array
+          title: Details
+        page_size:
+          type: integer
+          title: Page Size
+        continuation_token:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Continuation Token
+        total_entries:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Entries
+        total_pages:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Pages
+      type: object
+      required:
+      - details
+      - page_size
+      title: TransactionDetailsV2Data
+    RowSummary:
+      properties:
+        index:
+          type: string
+          title: Index
+        status:
+          type: string
+          title: Status
+        data:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Data
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error
+        error_msg:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Error Msg
+        entity_type:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Entity Type
+        error_count:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Error Count
+        error_details:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          title: Error Details
+      type: object
+      required:
+      - index
+      - status
+      title: RowSummary
+    TransactionStatus:
+      type: string
+      enum:
+      - pending
+      - failed
+      - completed
+      - completed_with_partial_success
+      title: TransactionStatus
+    TransactionStep:
+      type: string
+      enum:
+      - email_validator
+      - transaction_recorder
+      - vulnerability_scanner
+      - archiver
+      - validator
+      - operator
+      - sink
+      title: TransactionStep
+    TransactionDetailsResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/TransactionDetailsMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/TransactionDetailsData'
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TransactionDetailsResponse
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ResponseMeta:
       properties:
         type:
@@ -511,12 +670,122 @@ components:
       - type
       title: ResponseMeta
       description: Standard response envelope meta object
+    TransactionDetailsData:
+      properties:
+        success_count:
+          type: integer
+          title: Success Count
+        failure_count:
+          type: integer
+          title: Failure Count
+        summary:
+          anyOf:
+          - additionalProperties: true
+            type: object
+          - type: 'null'
+          title: Summary
+        details:
+          items:
+            $ref: '#/components/schemas/RowSummary'
+          type: array
+          title: Details
+        page_number:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Number
+        page_size:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Page Size
+        total_entries:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Entries
+        total_pages:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total Pages
+      type: object
+      required:
+      - success_count
+      - failure_count
+      - details
+      title: TransactionDetailsData
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
+      type: object
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
     TransactionDownloadVersion:
       type: string
       enum:
       - submitted
       - transformed
       title: TransactionDownloadVersion
+    TransactionResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            $ref: '#/components/schemas/Transaction'
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TransactionResponse
+      description: Transaction response envelope
+    TransactionDetailsMeta:
+      properties:
+        type:
+          type: string
+          title: Type
+          default: TransactionDetails
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
+      type: object
+      title: TransactionDetailsMeta
     Transaction:
       properties:
         transaction_id:
@@ -599,6 +868,20 @@ components:
       - file_key
       - state
       title: Transaction
+    TransactionStage:
+      type: string
+      enum:
+      - transformation
+      - ingestion
+      title: TransactionStage
+    EntityIngestionStatus:
+      type: string
+      enum:
+      - created
+      - updated
+      - failed
+      - unchanged
+      title: EntityIngestionStatus
     TransactionState:
       type: string
       enum:
@@ -609,289 +892,6 @@ components:
       - failed
       - retried
       title: TransactionState
-    TransactionDetailsV2Data:
-      properties:
-        success_count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Success Count
-        failure_count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Failure Count
-        summary:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Summary
-        details:
-          items:
-            $ref: '#/components/schemas/RowSummary'
-          type: array
-          title: Details
-        page_size:
-          type: integer
-          title: Page Size
-        continuation_token:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Continuation Token
-        total_entries:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Entries
-        total_pages:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Pages
-      type: object
-      required:
-      - details
-      - page_size
-      title: TransactionDetailsV2Data
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
-      type: object
-      required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
-    EntityIngestionStatus:
-      type: string
-      enum:
-      - created
-      - updated
-      - failed
-      - unchanged
-      title: EntityIngestionStatus
-    TransactionStage:
-      type: string
-      enum:
-      - transformation
-      - ingestion
-      title: TransactionStage
-    TransactionDetailsMeta:
-      properties:
-        type:
-          type: string
-          title: Type
-          default: TransactionDetails
-        transaction_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Transaction Id
-        info:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Info
-        total:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total
-      type: object
-      title: TransactionDetailsMeta
-    TransactionDetailsData:
-      properties:
-        success_count:
-          type: integer
-          title: Success Count
-        failure_count:
-          type: integer
-          title: Failure Count
-        summary:
-          anyOf:
-          - additionalProperties: true
-            type: object
-          - type: 'null'
-          title: Summary
-        details:
-          items:
-            $ref: '#/components/schemas/RowSummary'
-          type: array
-          title: Details
-        page_number:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Number
-        page_size:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Page Size
-        total_entries:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Entries
-        total_pages:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total Pages
-      type: object
-      required:
-      - success_count
-      - failure_count
-      - details
-      title: TransactionDetailsData
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    Source:
-      type: string
-      enum:
-      - api
-      - sftp
-      - email
-      - iot
-      - kafka
-      - upload
-      - unknown
-      - connectors
-      - petrinex
-      title: Source
-    RowSummary:
-      properties:
-        index:
-          type: string
-          title: Index
-        status:
-          type: string
-          title: Status
-        data:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Data
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error
-        error_msg:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Error Msg
-        entity_type:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Entity Type
-        error_count:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Error Count
-        error_details:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          title: Error Details
-      type: object
-      required:
-      - index
-      - status
-      title: RowSummary
-    TransactionDetailsV2Response:
-      properties:
-        meta:
-          $ref: '#/components/schemas/TransactionDetailsMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/TransactionDetailsV2Data'
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: TransactionDetailsV2Response
-    TransactionResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/Transaction'
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: TransactionResponse
-      description: Transaction response envelope
-    TransactionDetailsResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/TransactionDetailsMeta'
-        data:
-          items:
-            $ref: '#/components/schemas/TransactionDetailsData'
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: TransactionDetailsResponse
-    TransactionStatus:
-      type: string
-      enum:
-      - pending
-      - failed
-      - completed
-      - completed_with_partial_success
-      title: TransactionStatus
-    TransactionStep:
-      type: string
-      enum:
-      - email_validator
-      - transaction_recorder
-      - vulnerability_scanner
-      - archiver
-      - validator
-      - operator
-      - sink
-      title: TransactionStep
   securitySchemes:
     HTTPBearer:
       type: http

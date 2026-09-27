@@ -42,6 +42,20 @@ paths:
       - Permissions
 components:
   parameters:
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
     PermissionName:
       description: Permission name
       in: query
@@ -49,6 +63,13 @@ components:
       required: false
       schema:
         type: string
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
     SortDirection:
       description: sort direction
       example: desc
@@ -67,27 +88,6 @@ components:
       required: false
       schema:
         type: string
-    PermissionIsFeatureEnabled:
-      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
-      in: query
-      name: isFeatureEnabled
-      required: false
-      schema:
-        type: boolean
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
   schemas:
     Pagination:
       properties:

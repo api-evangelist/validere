@@ -71,7 +71,7 @@ tags_raw:
 - EHS
 apis:
 - aid: validere:validere-activities-api
-  name: Validere activities API
+  name: Validere Activities API
   description: Activity Log
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -87,7 +87,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-asset-groups-api
-  name: Validere asset_groups API
+  name: Validere Asset Groups API
   description: Asset Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -103,7 +103,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-assets-api
-  name: Validere assets API
+  name: Validere Assets API
   description: Assets
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -119,7 +119,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-calculator-results-api
-  name: Validere calculator_results API
+  name: Validere Calculator Results API
   description: Calculator Results
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -134,7 +134,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-charts-api
-  name: Validere charts API
+  name: Validere Charts API
   description: Charts
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -150,7 +150,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-comments-api
-  name: Validere comments API
+  name: Validere Comments API
   description: Comments
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -166,7 +166,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-company-api
-  name: Validere company API
+  name: Validere Company API
   description: Company
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -182,7 +182,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-company-equipment-type-groups-api
-  name: Validere company_equipment_type_groups API
+  name: Validere Company Equipment Type Groups API
   description: Company <> Equipment Type Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -197,7 +197,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-company-feature-flags-api
-  name: Validere company_feature_flags API
+  name: Validere Company Feature Flags API
   description: Company Feature Flags
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -212,7 +212,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-company-unit-config-api
-  name: Validere company_unit_config API
+  name: Validere Company Unit Config API
   description: Company Unit Configuration
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -227,7 +227,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-credit-owner-api
-  name: Validere credit_owner API
+  name: Validere Credit Owner API
   description: Credit Owners
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -242,7 +242,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-custom-attribute-definition-api
-  name: Validere custom_attribute_definition API
+  name: Validere Custom Attribute Definition API
   description: Manage Custom Attribute Definitions
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -257,7 +257,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-dashboards-api
-  name: Validere dashboards API
+  name: Validere Dashboards API
   description: Dashboards
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -273,7 +273,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-data-api
-  name: Validere data API
+  name: Validere Data API
   description: The data API from Validere — 2 operation(s) for data.
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -289,7 +289,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-default-record-value-configuration-api
-  name: Validere default_record_value_configuration API
+  name: Validere Default Record Value Configuration API
   description: Default Record Value Configurations
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -304,7 +304,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-device-types-api
-  name: Validere device_types API
+  name: Validere Device Types API
   description: Manage Device Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -320,7 +320,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-devices-api
-  name: Validere devices API
+  name: Validere Devices API
   description: Manage Devices
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -336,7 +336,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-emissions-calculator-api
-  name: Validere emissions_calculator API
+  name: Validere Emissions Calculator API
   description: Emission Calculator
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -351,7 +351,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-equipment-api
-  name: Validere equipment API
+  name: Validere Equipment API
   description: Manage Equipment
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -367,7 +367,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-equipment-types-api
-  name: Validere equipment_types API
+  name: Validere Equipment Types API
   description: Manage Equipment Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -382,7 +382,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-estimation-methods-api
-  name: Validere estimation_methods API
+  name: Validere Estimation Methods API
   description: Estimation Methods
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -397,7 +397,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-estimation-methods-default-records-api
-  name: Validere estimation_methods_default_records API
+  name: Validere Estimation Methods Default Records API
   description: Estimation Methods Default Records
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -412,7 +412,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-event-categories-api
-  name: Validere event_categories API
+  name: Validere Event Categories API
   description: Event Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -428,7 +428,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-event-schemas-api
-  name: Validere event_schemas API
+  name: Validere Event Schemas API
   description: Event Schemas
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -443,7 +443,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-events-api
-  name: Validere events API
+  name: Validere Events API
   description: Emission Events
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -459,7 +459,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-facilities-api
-  name: Validere facilities API
+  name: Validere Facilities API
   description: Manage Facilities
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -475,7 +475,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-feature-flags-api
-  name: Validere feature_flags API
+  name: Validere Feature Flags API
   description: Feature Flags
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -491,7 +491,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-flows-api
-  name: Validere flows API
+  name: Validere Flows API
   description: Manage Flows
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -507,7 +507,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-form-categories-api
-  name: Validere form_categories API
+  name: Validere Form Categories API
   description: Form Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -522,7 +522,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-form-schemas-api
-  name: Validere form_schemas API
+  name: Validere Form Schemas API
   description: Form Schemas
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -537,7 +537,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-form-submissions-api
-  name: Validere form_submissions API
+  name: Validere Form Submissions API
   description: Form Submissions
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -553,7 +553,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-group-categories-api
-  name: Validere group_categories API
+  name: Validere Group Categories API
   description: Manage Group Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -569,7 +569,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-job-api
-  name: Validere job API
+  name: Validere Job API
   description: Bulk Job status
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -585,7 +585,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-ledger-api
-  name: Validere ledger API
+  name: Validere Ledger API
   description: Ledger
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -601,7 +601,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-measurement-series-api
-  name: Validere measurement_series API
+  name: Validere Measurement Series API
   description: Manage Measurement series
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -616,7 +616,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-measurement-types-api
-  name: Validere measurement_types API
+  name: Validere Measurement Types API
   description: Manage Measurement Types
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -631,7 +631,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-measurements-api
-  name: Validere measurements API
+  name: Validere Measurements API
   description: Manage Measurements
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -647,7 +647,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-networks-api
-  name: Validere networks API
+  name: Validere Networks API
   description: Manage Networks
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -663,7 +663,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-permissions-api
-  name: Validere permissions API
+  name: Validere Permissions API
   description: Permission
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -679,7 +679,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-project-group-api
-  name: Validere project_group API
+  name: Validere Project Group API
   description: Project Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -694,7 +694,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-records-api
-  name: Validere records API
+  name: Validere Records API
   description: Manage Records
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -710,7 +710,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-reporting-groups-api
-  name: Validere reporting_groups API
+  name: Validere Reporting Groups API
   description: Reporting Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -726,7 +726,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-reports-api
-  name: Validere reports API
+  name: Validere Reports API
   description: Reports
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -742,7 +742,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-roles-api
-  name: Validere roles API
+  name: Validere Roles API
   description: Roles
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -758,7 +758,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-templated-configurations-api
-  name: Validere templated_configurations API
+  name: Validere Templated Configurations API
   description: Templated Configurations
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -773,7 +773,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-transactions-api
-  name: Validere transactions API
+  name: Validere Transactions API
   description: The transactions API from Validere — 7 operation(s) for transactions.
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -789,7 +789,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-type-metadata-api
-  name: Validere type_metadata API
+  name: Validere Type Metadata API
   description: Types used across the APIs
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -805,7 +805,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-user-groups-api
-  name: Validere user_groups API
+  name: Validere User Groups API
   description: Manage User Groups
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -821,7 +821,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-user-unit-config-api
-  name: Validere user_unit_config API
+  name: Validere User Unit Config API
   description: User Unit Configuration
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -836,7 +836,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-users-api
-  name: Validere users API
+  name: Validere Users API
   description: User
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -852,7 +852,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-workflow-categories-api
-  name: Validere workflow_categories API
+  name: Validere Workflow Categories API
   description: Workflow Categories
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -867,7 +867,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-workflow-tasks-api
-  name: Validere workflow_tasks API
+  name: Validere Workflow Tasks API
   description: Workflow Tasks
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -883,7 +883,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-workflow-templates-api
-  name: Validere workflow_templates API
+  name: Validere Workflow Templates API
   description: Workflow Templates
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app
@@ -899,7 +899,7 @@ apis:
   - type: Documentation
     url: https://docs.validere.com/guides/api/data
 - aid: validere:validere-workflows-api
-  name: Validere workflows API
+  name: Validere Workflows API
   description: Workflow
   humanURL: https://docs.validere.com/guides/api/app
   baseURL: https://api.validere.io/app

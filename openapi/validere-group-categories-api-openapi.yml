@@ -100,54 +100,16 @@ paths:
       tags:
       - Group Categories
 components:
+  parameters:
+    GroupCategoryId:
+      description: Group Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
-    GroupCategoryFilter:
-      properties:
-        filter:
-          description: A filter object for Group Category where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          properties:
-            id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            description:
-              type: string
-            created_by:
-              type: string
-              format: uuid
-            created_at:
-              type: string
-              format: date-time
-            updated_by:
-              type: string
-              format: uuid
-            updated_at:
-              type: string
-              format: date-time
-          type: object
-      type: object
-    GroupCategory:
-      allOf:
-      - $ref: '#/components/schemas/GroupCategoryCreate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-      type: object
-    PagedGroupCategoryList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/GroupCategory'
-            type: array
-        type: object
     AuditFields:
       properties:
         created_at:
@@ -178,6 +140,41 @@ components:
           type: number
           example: 6
       type: object
+    GroupCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    GroupCategoryFilter:
+      properties:
+        filter:
+          description: A filter object for Group Category where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            description:
+              type: string
+            created_by:
+              type: string
+              format: uuid
+            created_at:
+              type: string
+              format: date-time
+            updated_by:
+              type: string
+              format: uuid
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+      type: object
     GroupCategorySort:
       properties:
         sort_by:
@@ -199,14 +196,17 @@ components:
           - desc
           example: desc
           type: string
-    GroupCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
+    GroupCategory:
+      allOf:
+      - $ref: '#/components/schemas/GroupCategoryCreate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
       type: object
     GroupCategoryCreate:
       properties:
@@ -217,6 +217,15 @@ components:
           type: string
           maxLength: 256
       type: object
+    PagedGroupCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/GroupCategory'
+            type: array
+        type: object
     Paginated:
       properties:
         page:
@@ -229,12 +238,3 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-  parameters:
-    GroupCategoryId:
-      description: Group Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string

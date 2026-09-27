@@ -165,6 +165,31 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    DataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: DataResponse
+      description: Data response envelope
     JSONDataPostRequest:
       properties:
         client_id:
@@ -187,32 +212,6 @@ components:
       - dataset_id
       - data
       title: JSONDataPostRequest
-    ResponseMeta:
-      properties:
-        type:
-          type: string
-          title: Type
-        transaction_id:
-          anyOf:
-          - type: string
-            format: uuid
-          - type: 'null'
-          title: Transaction Id
-        info:
-          anyOf:
-          - type: string
-          - type: 'null'
-          title: Info
-        total:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          title: Total
-      type: object
-      required:
-      - type
-      title: ResponseMeta
-      description: Standard response envelope meta object
     ValidationError:
       properties:
         loc:
@@ -239,31 +238,32 @@ components:
       - msg
       - type
       title: ValidationError
-    HTTPValidationError:
+    ResponseMeta:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    DataResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Data
+        type:
+          type: string
+          title: Type
+        transaction_id:
+          anyOf:
+          - type: string
+            format: uuid
+          - type: 'null'
+          title: Transaction Id
+        info:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Info
+        total:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          title: Total
       type: object
       required:
-      - meta
-      - data
-      title: DataResponse
-      description: Data response envelope
+      - type
+      title: ResponseMeta
+      description: Standard response envelope meta object
   securitySchemes:
     HTTPBearer:
       type: http

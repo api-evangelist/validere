@@ -185,37 +185,6 @@ paths:
       - project_group
 components:
   schemas:
-    ProjectGroupPublic:
-      allOf:
-      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-    ProjectGroupStatus:
-      type: string
-      enum:
-      - active
-      - closed
-    ProjectGroupPublicFilter:
-      properties:
-        filter:
-          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            name: Basin
-          properties:
-            name:
-              type: string
-            status:
-              $ref: '#/components/schemas/ProjectGroupStatus'
-            project_developer:
-              type: string
-            protocol:
-              type: string
-            country:
-              type: string
-          type: object
-      type: object
     AuditFields:
       properties:
         created_at:
@@ -229,6 +198,76 @@ components:
           type: string
         updated_by:
           format: uuid
+          type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    ProjectGroupCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/ProjectGroupStatus'
+        project_developer:
+          type: string
+          maxLength: 256
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        protocol:
+          type: string
+          maxLength: 256
+        country:
+          type: string
+          maxLength: 256
+      type: object
+    ProjectGroupPublicSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
           type: string
       type: object
     ProjectGroupFilter:
@@ -250,21 +289,33 @@ components:
               type: string
           type: object
       type: object
-    Pagination:
+    ProjectGroupSort:
       properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
       type: object
+    ProjectGroupPublic:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - properties:
+          id:
+            format: uuid
+            type: string
     ProjectGroupSummary:
       properties:
         summary:
@@ -290,90 +341,31 @@ components:
           id:
             format: uuid
             type: string
-    ProjectGroupCreateUpdate:
+    ProjectGroupPublicFilter:
       properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/ProjectGroupStatus'
-        project_developer:
-          type: string
-          maxLength: 256
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        protocol:
-          type: string
-          maxLength: 256
-        country:
-          type: string
-          maxLength: 256
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
       type: object
-    ProjectGroupSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - project_developer
-          - protocol
-          - country
-          example: start_date
-          type: string
-        sort_direction:
-          default: asc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-      type: object
-    ProjectGroupPublicSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - project_developer
-          - protocol
-          - country
-          example: start_date
-          type: string
-        sort_direction:
-          default: asc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+    ProjectGroupStatus:
+      type: string
+      enum:
+      - active
+      - closed
   parameters:
-    ProjectGroupId:
-      description: Project Group ID
-      in: path
-      name: project_group_id
-      required: true
-      schema:
-        format: uuid
-        type: string
     CompanyId:
       schema:
         format: uuid
@@ -382,3 +374,11 @@ components:
       description: Company ID
       in: path
       name: company_id
+    ProjectGroupId:
+      description: Project Group ID
+      in: path
+      name: project_group_id
+      required: true
+      schema:
+        format: uuid
+        type: string

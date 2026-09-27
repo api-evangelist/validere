@@ -121,14 +121,13 @@ paths:
       - Reporting Groups
 components:
   parameters:
-    ReportingGroupId:
-      description: ID of report group
-      in: path
-      name: id
-      required: true
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
       schema:
-        type: string
-        example: subpartw
+        type: number
     EstimationMethodFullId:
       description: Estimation Method ID
       example: 748970de-fd1f-4494-ae3f-47cc21ff205f
@@ -138,10 +137,32 @@ components:
       schema:
         format: uuid
         type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
     ReportingGroupNameFilter:
       description: String to search for in reporting group names
       in: query
       name: name
+      required: false
+      schema:
+        type: string
+    ReportingGroupId:
+      description: ID of report group
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        example: subpartw
+    ReportingGroupIdFilter:
+      description: String to search for in reporting group IDs
+      in: query
+      name: id
       required: false
       schema:
         type: string
@@ -163,40 +184,7 @@ components:
       required: false
       schema:
         type: string
-    ReportingGroupIdFilter:
-      description: String to search for in reporting group IDs
-      in: query
-      name: id
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
   schemas:
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
     AuditFields:
       properties:
         created_at:
@@ -227,23 +215,6 @@ components:
           type: number
           example: 6
       type: object
-    ReportingGroupInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    ReportingGroup:
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-        type: object
     PagedReportingGroupOutput:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -253,3 +224,32 @@ components:
               $ref: '#/components/schemas/ReportingGroup'
             type: array
         type: object
+    ReportingGroup:
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+        type: object
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2

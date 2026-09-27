@@ -210,35 +210,6 @@ paths:
       - Roles
 components:
   schemas:
-    RoleStatus:
-      type: string
-      enum:
-      - active
-      - disabled
-    Role:
-      allOf:
-      - $ref: '#/components/schemas/CreateRoleInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            type: string
-            format: uuid
-          company_id:
-            type: string
-            format: uuid
-    RoleMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          role_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
     AuditFields:
       properties:
         created_at:
@@ -254,6 +225,69 @@ components:
           format: uuid
           type: string
       type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    UserStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    PagedRoleList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            type: array
+            items:
+              type: array
+              $ref: '#/components/schemas/Role'
+        type: object
+    CreateRoleInput:
+      allOf:
+      - $ref: '#/components/schemas/UpdateRoleInput'
+    RoleStatus:
+      type: string
+      enum:
+      - active
+      - disabled
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
     PermissionsOutput:
       type: array
       items:
@@ -267,22 +301,6 @@ components:
             role_id:
               type: string
               format: uuid
-    PermissionsInput:
-      type: array
-      items:
-        $ref: '#/components/schemas/PermissionInput'
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     RoleFilter:
       properties:
         filter:
@@ -301,15 +319,6 @@ components:
                 type: string
                 format: uuid
           type: object
-    UpdateRoleInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        status:
-          $ref: '#/components/schemas/RoleStatus'
     PermissionInput:
       properties:
         name:
@@ -326,34 +335,34 @@ components:
                 $like: Facility 1
           type: object
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    UpdateRoleInput:
       type: object
-    PagedRoleList:
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          $ref: '#/components/schemas/RoleStatus'
+    RoleMembershipWithUser:
       allOf:
-      - $ref: '#/components/schemas/Pagination'
+      - $ref: '#/components/schemas/RoleMembership'
       - properties:
-          data:
-            type: array
-            items:
-              type: array
-              $ref: '#/components/schemas/Role'
-        type: object
-    CreateRoleInput:
-      allOf:
-      - $ref: '#/components/schemas/UpdateRoleInput'
+          user:
+            $ref: '#/components/schemas/UserBasic'
+    SinglePermissionInput:
+      properties:
+        active:
+          type: boolean
+        filter:
+          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          example:
+            $or:
+            - custom_attributes.region: US
+            - name:
+                $like: Facility 1
+          type: object
+      type: object
     UserBasic:
       properties:
         id:
@@ -364,6 +373,21 @@ components:
         email:
           type: string
           format: email
+    Role:
+      allOf:
+      - $ref: '#/components/schemas/CreateRoleInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          company_id:
+            type: string
+            format: uuid
+    PermissionsInput:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
     RoleSort:
       properties:
         sort_by:
@@ -385,38 +409,7 @@ components:
           - desc
           example: desc
           type: string
-    SinglePermissionInput:
-      properties:
-        active:
-          type: boolean
-        filter:
-          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
-          example:
-            $or:
-            - custom_attributes.region: US
-            - name:
-                $like: Facility 1
-          type: object
-      type: object
-    UserStatus:
-      type: string
-      enum:
-      - active
-      - disabled
-    RoleMembershipWithUser:
-      allOf:
-      - $ref: '#/components/schemas/RoleMembership'
-      - properties:
-          user:
-            $ref: '#/components/schemas/UserBasic'
   parameters:
-    PermissionNamePath:
-      description: Permission name
-      in: path
-      name: permission_name
-      required: true
-      schema:
-        type: string
     RoleId:
       description: Role ID
       in: path
@@ -432,4 +425,11 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+    PermissionNamePath:
+      description: Permission name
+      in: path
+      name: permission_name
+      required: true
+      schema:
         type: string
