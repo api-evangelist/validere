@@ -112,42 +112,6 @@ paths:
       - Dashboards
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    DashboardId:
-      description: Dashboard ID
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-        format: uuid
-    DashboardDescription:
-      description: Dashboard description
-      in: query
-      name: description
-      required: false
-      schema:
-        type: string
-    DashboardName:
-      description: Dashboard name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -166,44 +130,43 @@ components:
       required: false
       schema:
         type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    DashboardId:
+      description: Dashboard ID
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    DashboardName:
+      description: Dashboard name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    DashboardDescription:
+      description: Dashboard description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    Chart:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        dashboard_id:
-          format: uuid
-          type: string
-        id:
-          format: uuid
-          type: string
-        json:
-          type: object
-        name:
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-      type: object
     Dashboard:
       properties:
         company_id:
@@ -226,6 +189,21 @@ components:
           format: date-time
           type: string
       type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     DashboardCreateUpdate:
       properties:
         description:
@@ -233,5 +211,27 @@ components:
           type: string
         name:
           example: 'Dashboard #1'
+          type: string
+      type: object
+    Chart:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        dashboard_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        json:
+          type: object
+        name:
+          type: string
+        updated_at:
+          format: date-time
           type: string
       type: object

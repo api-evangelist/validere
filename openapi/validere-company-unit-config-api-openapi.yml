@@ -149,27 +149,57 @@ paths:
       tags:
       - company_unit_config
 components:
+  parameters:
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: filter_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
   schemas:
-    FilterName:
-      properties:
-        name:
-          type: string
-          example: My first filter
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
     AuditFields:
       properties:
         created_at:
@@ -185,6 +215,19 @@ components:
           format: uuid
           type: string
       type: object
+    PagedUnitConfigFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/UnitConfigFilterOutput'
+            type: array
+        type: object
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
     PagedCompanyUnitConfig:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -194,11 +237,16 @@ components:
               $ref: '#/components/schemas/CompanyUnitConfig'
             type: array
         type: object
-    FilterId:
+    CompanyId:
       properties:
         id:
           format: uuid
           type: string
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
     UnitConfigUpdate:
       type: object
       properties:
@@ -208,21 +256,21 @@ components:
         precision:
           type: integer
           example: 3
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    FilterStatus:
+    FilterMetadata:
       properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterTag:
+      properties:
+        tag:
+          type: string
     Paginated:
       properties:
         page:
@@ -235,24 +283,6 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    UnitConfigFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/UnitConfigFilter'
-      - properties:
-          entity_type:
-            example: company_unit_config
-            type: string
-      type: object
-    UnitConfigFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/UnitConfigFilter'
-      type: object
-    FilterTag:
-      properties:
-        tag:
-          type: string
     UnitConfigFilter:
       properties:
         filter:
@@ -264,26 +294,73 @@ components:
             measurement_unit:
               type: string
               example: l
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    PagedUnitConfigFilterOutput:
+    UnitConfigFilterInput:
       allOf:
-      - $ref: '#/components/schemas/Pagination'
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+      type: object
+    CompanyUnitConfig:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - $ref: '#/components/schemas/UnitConfigUpdate'
+      properties:
+        measurement_type:
+          type: string
+          example: mass
+        company_id:
+          type: string
+          format: uuid
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    UnitConfigFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
       - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/UnitConfigFilterOutput'
-            type: array
-        type: object
+          entity_type:
+            example: company_unit_config
+            type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    UnitConfigFilterUpdateInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
     UnitConfigSort:
       properties:
         sort_by:
@@ -302,80 +379,3 @@ components:
           - desc
           example: desc
           type: string
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    UnitConfigFilterUpdateInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/UnitConfigFilter'
-    CompanyUnitConfig:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - $ref: '#/components/schemas/UnitConfigUpdate'
-      properties:
-        measurement_type:
-          type: string
-          example: mass
-        company_id:
-          type: string
-          format: uuid
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-  parameters:
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    MeasurementType:
-      description: Measurement type of the measurements being retrieved
-      example: volume
-      in: path
-      name: measurement_type
-      required: true
-      schema:
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string

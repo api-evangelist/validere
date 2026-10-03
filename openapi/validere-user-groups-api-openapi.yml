@@ -142,6 +142,22 @@ paths:
       - User Groups
 components:
   schemas:
+    CreateAndUpdateUserGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        group_category_id:
+          type: string
+          format: uuid
+    UserGroupMembershipWithUser:
+      allOf:
+      - $ref: '#/components/schemas/UserGroupMembership'
+      - properties:
+          user:
+            $ref: '#/components/schemas/UserBasic'
     AuditFields:
       properties:
         created_at:
@@ -157,54 +173,6 @@ components:
           format: uuid
           type: string
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    UserGroupMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          user_group_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
-    PagedUserGroupList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            type: array
-            items:
-              type: array
-              $ref: '#/components/schemas/UserGroup'
-        type: object
-    UserBasic:
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-        email:
-          type: string
-          format: email
     UserGroup:
       allOf:
       - $ref: '#/components/schemas/CreateAndUpdateUserGroupInput'
@@ -237,34 +205,16 @@ components:
           - desc
           example: desc
           type: string
-    CreateAndUpdateUserGroupInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        group_category_id:
-          type: string
-          format: uuid
-    UserGroupMembershipWithUser:
+    PagedUserGroupList:
       allOf:
-      - $ref: '#/components/schemas/UserGroupMembership'
+      - $ref: '#/components/schemas/Pagination'
       - properties:
-          user:
-            $ref: '#/components/schemas/UserBasic'
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+          data:
+            type: array
+            items:
+              type: array
+              $ref: '#/components/schemas/UserGroup'
+        type: object
     UserGroupFilter:
       properties:
         filter:
@@ -288,19 +238,69 @@ components:
                   - c3e9446d-4cc0-4e7b-bb43-43fff9361957
                   - c3e9446d-4cc0-4e7b-bb43-43fff9361957
           type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    UserGroupMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          user_group_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    UserBasic:
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
   parameters:
-    UserGroupId:
-      description: User Group ID
-      in: path
-      name: user_group_id
-      required: true
-      schema:
-        format: uuid
-        type: string
     MemberId:
       description: Member ID
       in: path
       name: member_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    UserGroupId:
+      description: User Group ID
+      in: path
+      name: user_group_id
       required: true
       schema:
         format: uuid

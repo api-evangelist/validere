@@ -222,6 +222,39 @@ paths:
       - Flows
 components:
   schemas:
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    FlowUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - properties:
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - allOf:
+        - $ref: '#/components/schemas/FlowFacilityConnections'
+        - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
+    FlowFilterUpdateInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FlowFilter'
     AuditFields:
       properties:
         created_at:
@@ -237,71 +270,67 @@ components:
           format: uuid
           type: string
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    AssetAttributeStartEndDateInput:
       type: object
-    FilterName:
       properties:
-        name:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      type:
+      - number
+      - 'null'
+    FlowFacilityConnections:
+      properties:
+        upstream_facility_id:
           type: string
-          example: My first filter
-    Facility:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          latitude:
-            $ref: '#/components/schemas/Latitude'
-          longitude:
-            $ref: '#/components/schemas/Longitude'
-          name:
-            type: string
-          status:
-            $ref: '#/components/schemas/FacilityStatus'
-          type:
-            $ref: '#/components/schemas/FacilityType'
-          id:
-            format: uuid
-            type: string
-        type: object
-    FilterId:
-      properties:
-        id:
           format: uuid
+        downstream_facility_id:
           type: string
-    FlowWithConnections:
-      allOf:
-      - $ref: '#/components/schemas/Flow'
-      - $ref: '#/components/schemas/FlowFlowConnectionDetails'
-      - oneOf:
-        - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
-        - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
-        - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
-        - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
+          format: uuid
+      type: object
+    FlowFlowConnections:
+      properties:
+        upstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        downstream_flow_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
     ReportWithTemplatedReportResponse:
       type: object
       properties:
@@ -488,13 +517,205 @@ components:
       - created_by
       - updated_by
       additionalProperties: false
-    ProductCategories:
+    EquipmentStatus:
       type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
+      enum:
+      - active
+      - inactive
+      - deprecated
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    EquipmentTypeShallow:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    EquipmentPrimaryFilterFields:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        type.id:
+          type: string
+        type.name:
+          type: string
+        custom_attributes:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    PagedFlowsListV2:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FlowV2'
+              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+            type: array
+        type: object
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
+    FlowV2:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnectionsV2'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    PagedFlowFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/FlowFilterOutput'
+            type: array
+        type: object
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    FlowAssociatedEquipmentDetails:
+      properties:
+        associated_equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FacilityType:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_types`
+    PagedFlowsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/Flow'
+              - $ref: '#/components/schemas/FlowFlowConnectionDetails'
+              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+            type: array
+        type: object
+    FlowFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/FlowFilter'
+      type: object
+    Flow:
+      allOf:
+      - $ref: '#/components/schemas/FlowBasic'
+      - $ref: '#/components/schemas/FlowFlowConnections'
+      - $ref: '#/components/schemas/FlowFacilityConnections'
+      - $ref: '#/components/schemas/FlowEquipmentConnections'
+      - properties:
+          id:
+            type: string
+            format: uuid
+          associated_facility_id:
+            type: string
+            format: uuid
+          associated_equipment_id:
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/AuditFields'
+        type: object
+    FlowFilter:
+      properties:
+        filter:
+          $ref: '#/components/schemas/FlowFilterFields'
+      type: object
+    FacilityStatus:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_statuses`
     FlowAssociatedFacilityDetails:
       properties:
         associated_facility:
           $ref: '#/components/schemas/Facility'
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    FlowFlowConnectionsV2:
+      properties:
+        upstream_flows_count:
+          type: integer
+        downstream_flows_count:
+          type: integer
+      type: object
     FacilityFilterFields:
       description: A filter object for facility where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
       example:
@@ -520,57 +741,187 @@ components:
           type: string
           format: date-time
       type: object
-    FilterStatus:
+    FilterId:
       properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    Paginated:
+        id:
+          format: uuid
+          type: string
+    FlowEquipmentConnectionDetails:
       properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    FlowAssociatedEquipmentDetails:
-      properties:
-        associated_equipment:
+        upstream_equipment:
+          $ref: '#/components/schemas/EquipmentBasic'
+        downstream_equipment:
           $ref: '#/components/schemas/EquipmentBasic'
       type: object
-    Flow:
+    FlowFilterInput:
       allOf:
-      - $ref: '#/components/schemas/FlowBasic'
-      - $ref: '#/components/schemas/FlowFlowConnections'
-      - $ref: '#/components/schemas/FlowFacilityConnections'
-      - $ref: '#/components/schemas/FlowEquipmentConnections'
-      - properties:
-          id:
-            type: string
-            format: uuid
-          associated_facility_id:
-            type: string
-            format: uuid
-          associated_equipment_id:
-            type: string
-            format: uuid
-      - $ref: '#/components/schemas/AuditFields'
-        type: object
-    PagedFlowFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/FlowFilterOutput'
-            type: array
-        type: object
-    FlowTypes:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/FlowFilter'
+    TemplatedReportStatus:
       type: string
-      description: Use `id` value of any index in `GET /v1/flow_types`
+      enum:
+      - active
+      - archived
+    Longitude:
+      description: longitude on the Earth
+      example: -114
+      maximum: 180
+      minimum: -180
+      type:
+      - number
+      - 'null'
+    FlowEquipmentConnections:
+      properties:
+        upstream_equipment_id:
+          type: string
+          format: uuid
+        downstream_equipment_id:
+          type: string
+          format: uuid
+      type: object
+    EquipmentFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - properties:
+          event.id:
+            type: string
+        type: object
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    ReportWithS3Url:
+      allOf:
+      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
+      - properties:
+          s3_download_link:
+            type: string
+        type: object
+    EquipmentBasic:
+      properties:
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+        effective_date:
+          example: '2022-01-01'
+          type: string
+        id:
+          format: uuid
+          type: string
+        latitude:
+          $ref: '#/components/schemas/Latitude'
+        longitude:
+          $ref: '#/components/schemas/Longitude'
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/EquipmentTypeShallow'
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    FlowFlowConnectionDetails:
+      properties:
+        upstream_flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flow'
+        downstream_flows:
+          type: array
+          items:
+            $ref: '#/components/schemas/Flow'
+      type: object
+    FlowCreateInput:
+      allOf:
+      - $ref: '#/components/schemas/FlowUpdateInput'
+      - properties:
+          associated_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          upstream_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          downstream_facility_filter:
+            $ref: '#/components/schemas/FacilityFilterFields'
+          associated_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+          upstream_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+          downstream_equipment_filter:
+            $ref: '#/components/schemas/EquipmentFilterFields'
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/FacilityStatus'
+          type:
+            $ref: '#/components/schemas/FacilityType'
+          id:
+            format: uuid
+            type: string
+        type: object
+    FlowFacilityConnectionDetails:
+      properties:
+        upstream_facility:
+          $ref: '#/components/schemas/Facility'
+        downstream_facility:
+          $ref: '#/components/schemas/Facility'
+      type: object
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    FlowSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - product_category
+          - product_type
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
     FlowFilterFields:
       example:
         $or:
@@ -627,375 +978,31 @@ components:
           type: string
           format: uuid
       type: object
-    EquipmentFilterFields:
-      allOf:
-      - $ref: '#/components/schemas/EquipmentPrimaryFilterFields'
-      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-      - properties:
-          event.id:
-            type: string
-        type: object
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    FlowFlowConnectionDetails:
-      properties:
-        upstream_flows:
-          type: array
-          items:
-            $ref: '#/components/schemas/Flow'
-        downstream_flows:
-          type: array
-          items:
-            $ref: '#/components/schemas/Flow'
-      type: object
-    FlowFilterUpdateInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/FlowFilter'
-    Longitude:
-      description: longitude on the Earth
-      example: -114
-      maximum: 180
-      minimum: -180
-      type:
-      - number
-      - 'null'
-    XLSXResponse:
-      format: binary
-      type: string
-    ProductTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
-    EquipmentTypeShallow:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object
-    FlowFilter:
-      properties:
-        filter:
-          $ref: '#/components/schemas/FlowFilterFields'
-      type: object
-    FlowFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/FlowFilter'
-    FlowStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    FlowCreateInput:
-      allOf:
-      - $ref: '#/components/schemas/FlowUpdateInput'
-      - properties:
-          associated_facility_filter:
-            $ref: '#/components/schemas/FacilityFilterFields'
-          upstream_facility_filter:
-            $ref: '#/components/schemas/FacilityFilterFields'
-          downstream_facility_filter:
-            $ref: '#/components/schemas/FacilityFilterFields'
-          associated_equipment_filter:
-            $ref: '#/components/schemas/EquipmentFilterFields'
-          upstream_equipment_filter:
-            $ref: '#/components/schemas/EquipmentFilterFields'
-          downstream_equipment_filter:
-            $ref: '#/components/schemas/EquipmentFilterFields'
-    FilterTag:
-      properties:
-        tag:
-          type: string
-    FlowEquipmentConnections:
-      properties:
-        upstream_equipment_id:
-          type: string
-          format: uuid
-        downstream_equipment_id:
-          type: string
-          format: uuid
-      type: object
-    FlowBasic:
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/FlowTypes'
-        status:
-          $ref: '#/components/schemas/FlowStatus'
-        product_category:
-          $ref: '#/components/schemas/ProductCategories'
-        product_type:
-          $ref: '#/components/schemas/ProductTypes'
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
-    FlowV2:
-      allOf:
-      - $ref: '#/components/schemas/FlowBasic'
-      - $ref: '#/components/schemas/FlowFlowConnectionsV2'
-      - $ref: '#/components/schemas/FlowFacilityConnections'
-      - $ref: '#/components/schemas/FlowEquipmentConnections'
-      - properties:
-          id:
-            type: string
-            format: uuid
-          associated_facility_id:
-            type: string
-            format: uuid
-          associated_equipment_id:
-            type: string
-            format: uuid
-      - $ref: '#/components/schemas/AuditFields'
-        type: object
-    FacilityType:
-      type: string
-      description: Use `id` value of any index in `GET /v1/facility_types`
-    FacilityStatus:
-      type: string
-      description: Use `id` value of any index in `GET /v1/facility_statuses`
-    FlowFacilityConnections:
-      properties:
-        upstream_facility_id:
-          type: string
-          format: uuid
-        downstream_facility_id:
-          type: string
-          format: uuid
-      type: object
-    EquipmentPrimaryFilterFields:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        status:
-          $ref: '#/components/schemas/EquipmentStatus'
-        type.id:
-          type: string
-        type.name:
-          type: string
-        custom_attributes:
-          type: object
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    PagedFlowsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/Flow'
-              - $ref: '#/components/schemas/FlowFlowConnectionDetails'
-              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
-              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
-              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
-              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
-            type: array
-        type: object
-    PagedFlowsListV2:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/FlowV2'
-              - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
-              - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
-              - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
-              - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
-            type: array
-        type: object
-    FlowFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/FlowFilter'
-      type: object
     CustomAttributes:
       example:
         attribute1: 12345
         attribute2: value1
       type: object
-    ReportWithS3Url:
+    FlowWithConnections:
       allOf:
-      - $ref: '#/components/schemas/ReportWithTemplatedReportResponse'
-      - properties:
-          s3_download_link:
-            type: string
-        type: object
-    FlowFlowConnections:
-      properties:
-        upstream_flow_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        downstream_flow_ids:
-          type: array
-          items:
-            type: string
-            format: uuid
-        upstream_flows_count:
-          type: integer
-        downstream_flows_count:
-          type: integer
-      type: object
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    FlowUpdateInput:
-      allOf:
-      - $ref: '#/components/schemas/FlowBasic'
-      - properties:
-          associated_facility_id:
-            type: string
-            format: uuid
-          associated_equipment_id:
-            type: string
-            format: uuid
-      - $ref: '#/components/schemas/FlowFlowConnections'
-      - allOf:
-        - $ref: '#/components/schemas/FlowFacilityConnections'
-        - $ref: '#/components/schemas/FlowEquipmentConnections'
-      - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
-    FlowSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - product_category
-          - product_type
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    EquipmentStatus:
+      - $ref: '#/components/schemas/Flow'
+      - $ref: '#/components/schemas/FlowFlowConnectionDetails'
+      - oneOf:
+        - $ref: '#/components/schemas/FlowEquipmentConnectionDetails'
+        - $ref: '#/components/schemas/FlowFacilityConnectionDetails'
+        - $ref: '#/components/schemas/FlowAssociatedEquipmentDetails'
+        - $ref: '#/components/schemas/FlowAssociatedFacilityDetails'
+    XLSXResponse:
+      format: binary
       type: string
-      enum:
-      - active
-      - inactive
-      - deprecated
-    FlowFacilityConnectionDetails:
-      properties:
-        upstream_facility:
-          $ref: '#/components/schemas/Facility'
-        downstream_facility:
-          $ref: '#/components/schemas/Facility'
-      type: object
-    FlowFlowConnectionsV2:
-      properties:
-        upstream_flows_count:
-          type: integer
-        downstream_flows_count:
-          type: integer
-      type: object
-    FlowEquipmentConnectionDetails:
-      properties:
-        upstream_equipment:
-          $ref: '#/components/schemas/EquipmentBasic'
-        downstream_equipment:
-          $ref: '#/components/schemas/EquipmentBasic'
-      type: object
-    EquipmentBasic:
-      properties:
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        effective_date:
-          example: '2022-01-01'
-          type: string
-        id:
-          format: uuid
-          type: string
-        latitude:
-          $ref: '#/components/schemas/Latitude'
-        longitude:
-          $ref: '#/components/schemas/Longitude'
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/EquipmentTypeShallow'
-      type: object
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    AssetAttributeStartEndDateInput:
-      type: object
-      properties:
-        start_date:
-          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: min
-            description: Year month shorthand
-        end_date:
-          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: max
-            description: Year month shorthand
-    Latitude:
-      description: latitude on the Earth
-      example: 51
-      maximum: 90
-      minimum: -90
-      type:
-      - number
-      - 'null'
   parameters:
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
     FilterId:
       description: Filter ID
       example: 748970de-fd1f-4494-ae3f-47cc21ff205f
@@ -1004,34 +1011,6 @@ components:
       required: true
       schema:
         format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    Period:
-      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
-      in: query
-      name: period
-      required: false
-      schema:
         type: string
     SortDirection:
       description: sort direction
@@ -1051,4 +1030,25 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
         type: string

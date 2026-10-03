@@ -61,21 +61,80 @@ paths:
       - Activities
 components:
   schemas:
-    Pagination:
+    PagedActivityList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Activity'
+            type: array
+        type: object
+    Paginated:
       properties:
-        page_number:
-          type: number
+        page:
+          default: 0
+          description: Which page to return
           example: 0
+          type: number
         page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
           type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    ActivityFilter:
+      properties:
+        filter:
+          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            resource_type: equipment
+            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            action: update
+            timestamp:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          properties:
+            resource_type:
+              type: string
+            resource_id:
+              type: string
+            author_id:
+              type: string
+            action:
+              type: string
+            timestamp:
+              type: string
+              format: date-time
+          type: object
       type: object
+    ActivitySort:
+      properties:
+        sort_by:
+          enum:
+          - resource_type
+          - resource_id
+          - author_id
+          - action
+          - timestamp
+          example: timestamp
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
     Activity:
       properties:
         resource_type:
@@ -103,80 +162,21 @@ components:
           format: date-time
           type: string
       type: object
-    ActivitySort:
+    Pagination:
       properties:
-        sort_by:
-          enum:
-          - resource_type
-          - resource_id
-          - author_id
-          - action
-          - timestamp
-          example: timestamp
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    PagedActivityList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Activity'
-            type: array
-        type: object
-    ActivityFilter:
-      properties:
-        filter:
-          description: A filter object for Activity where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            resource_type: equipment
-            resource_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            author_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            action: update
-            timestamp:
-              $gt: '2023-07-01T08:19:25.438Z'
-              $lt: '2023-07-30T08:19:25.438Z'
-          properties:
-            resource_type:
-              type: string
-            resource_id:
-              type: string
-            author_id:
-              type: string
-            action:
-              type: string
-            timestamp:
-              type: string
-              format: date-time
-          type: object
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
+        page_number:
+          type: number
           example: 0
-          type: number
         page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
           type: number
-    ResourceType:
-      type: string
-      enum:
-      - facility
-      - equipment
-      - device
-      - flow
-      - record_value
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
   parameters:
     ResourceType:
       description: ResourceType

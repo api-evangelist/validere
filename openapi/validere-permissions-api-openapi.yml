@@ -42,13 +42,17 @@ paths:
       - Permissions
 components:
   parameters:
-    PageSize:
-      description: page size
+    SortDirection:
+      description: sort direction
+      example: desc
       in: query
-      name: page_size
+      name: sort_direction
       required: false
       schema:
-        type: number
+        enum:
+        - asc
+        - desc
+        type: string
     Page:
       description: page number
       in: query
@@ -63,24 +67,13 @@ components:
       required: false
       schema:
         type: string
-    PermissionIsFeatureEnabled:
-      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+    PageSize:
+      description: page size
       in: query
-      name: isFeatureEnabled
+      name: page_size
       required: false
       schema:
-        type: boolean
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
+        type: number
     SortBy:
       description: sort by
       in: query
@@ -88,7 +81,20 @@ components:
       required: false
       schema:
         type: string
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
   schemas:
+    Permission:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+      type: object
     Pagination:
       properties:
         page_number:
@@ -103,10 +109,4 @@ components:
         total_pages:
           type: number
           example: 6
-      type: object
-    Permission:
-      properties:
-        name:
-          type: string
-          example: facilities:read
       type: object

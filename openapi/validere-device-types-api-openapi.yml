@@ -28,12 +28,12 @@ paths:
       - Device Types
 components:
   schemas:
-    DeviceType:
+    DeviceTypeAttribute:
       properties:
-        attributes:
-          items:
-            $ref: '#/components/schemas/DeviceTypeAttribute'
-          type: array
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
         id:
           type: string
         name:
@@ -54,18 +54,18 @@ components:
       - date
       - date-time
       - file
-    DeviceTypeAttribute:
+    DeviceTypeList:
+      items:
+        $ref: '#/components/schemas/DeviceType'
+      type: array
+    DeviceType:
       properties:
-        data_type:
-          $ref: '#/components/schemas/AttributeTypes'
-        description:
-          type: string
+        attributes:
+          items:
+            $ref: '#/components/schemas/DeviceTypeAttribute'
+          type: array
         id:
           type: string
         name:
           type: string
       type: object
-    DeviceTypeList:
-      items:
-        $ref: '#/components/schemas/DeviceType'
-      type: array

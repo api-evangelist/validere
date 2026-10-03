@@ -100,13 +100,6 @@ components:
         - asc
         - desc
         type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
     EquipmentTypeGroupNameQuery:
       description: equipment type group name
       in: query
@@ -121,4 +114,11 @@ components:
       required: true
       schema:
         example: subpartW
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
         type: string

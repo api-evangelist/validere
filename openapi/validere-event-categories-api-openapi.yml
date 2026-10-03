@@ -105,43 +105,6 @@ paths:
       - Event Categories
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    EventCategoryArchived:
-      description: Event Category archived
-      in: query
-      name: archived
-      required: false
-      schema:
-        default: false
-        type: boolean
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    EventCategoryId:
-      description: Event Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    EventCategoryName:
-      description: Event Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -159,6 +122,43 @@ components:
       name: sort_by
       required: false
       schema:
+        type: string
+    EventCategoryName:
+      description: Event Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    EventCategoryArchived:
+      description: Event Category archived
+      in: query
+      name: archived
+      required: false
+      schema:
+        default: false
+        type: boolean
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    EventCategoryId:
+      description: Event Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
         type: string
   schemas:
     EventCategory:
@@ -178,6 +178,22 @@ components:
             format: date-time
             type: string
       type: object
+    EventCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
+    EventCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
     Pagination:
       properties:
         page_number:
@@ -192,20 +208,4 @@ components:
         total_pages:
           type: number
           example: 6
-      type: object
-    EventCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        archived:
-          type: boolean
-      type: object
-    EventCategoryCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        archived:
-          type: boolean
       type: object

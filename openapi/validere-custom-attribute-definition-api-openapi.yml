@@ -89,78 +89,31 @@ paths:
       tags:
       - custom_attribute_definition
 components:
-  parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    CustomAttributeDefinitionArchived:
-      description: Set true to return archived attribute definitions
-      in: query
-      name: archived
-      required: false
-      schema:
-        type: boolean
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    CustomAttributeFieldName:
-      description: field name identifier for custom attribute
-      example: attribute_1
-      in: path
-      name: field_name
-      required: true
-      schema:
-        type: string
-    CustomAttributeEntityType:
-      description: Supported attribute type for custom attribute
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-    CustomAttributeDefinitionFieldName:
-      description: String to search for in field names
-      in: query
-      name: field_name
-      required: false
-      schema:
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    CustomAttributeDefinitionEntitySubType:
-      description: String to search for in entity subtype
-      in: query
-      name: entity_subtype
-      required: false
-      schema:
-        type: string
-    SortByCustomAttributeDefinition:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        enum:
-        - field_name
   schemas:
+    CustomAttributeDefinitionUpdateInput:
+      properties:
+        archived:
+          type: boolean
+        description:
+          type: string
+        display_name:
+          type: string
+        is_required:
+          type: boolean
+        pick_list_values:
+          items:
+            type: string
+          type: array
+        unit:
+          type: string
+        entity_subtype:
+          type: string
+          deprecated: true
+        entity_subtypes:
+          items:
+            type: string
+          type: array
+      type: object
     PagedCustomAttributeDefinitionList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -170,6 +123,53 @@ components:
               $ref: '#/components/schemas/CustomAttributeDefinition'
             type: array
         type: object
+    CustomAttributeDefinitionInput:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
+        display_name:
+          type: string
+        field_name:
+          type: string
+        is_required:
+          type: boolean
+        lookup_entity_type:
+          $ref: '#/components/schemas/MeasurementSubjectEntityType'
+        entity_subtype:
+          type: string
+          deprecated: true
+        entity_subtypes:
+          items:
+            type: string
+          type: array
+        pick_list_values:
+          items:
+            type: string
+          type: array
+        unit:
+          type: string
+      required:
+      - data_type
+      - display_name
+      - field_name
+      type: object
+    AttributeTypes:
+      type: string
+      enum:
+      - number
+      - string
+      - geo_point
+      - boolean
+      - integer
+      - pick-list
+      - multi-pick-list
+      - number-array
+      - lookup
+      - date
+      - date-time
+      - file
     Pagination:
       properties:
         page_number:
@@ -185,6 +185,22 @@ components:
           type: number
           example: 6
       type: object
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
     CustomAttributeDefinition:
       properties:
         archived:
@@ -219,90 +235,74 @@ components:
         unit:
           type: string
       type: object
-    schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    CustomAttributeDefinitionInput:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/AttributeTypes'
-        description:
-          type: string
-        display_name:
-          type: string
-        field_name:
-          type: string
-        is_required:
-          type: boolean
-        lookup_entity_type:
-          $ref: '#/components/schemas/MeasurementSubjectEntityType'
-        entity_subtype:
-          type: string
-          deprecated: true
-        entity_subtypes:
-          items:
-            type: string
-          type: array
-        pick_list_values:
-          items:
-            type: string
-          type: array
-        unit:
-          type: string
-      required:
-      - data_type
-      - display_name
-      - field_name
-      type: object
-    CustomAttributeDefinitionUpdateInput:
-      properties:
-        archived:
-          type: boolean
-        description:
-          type: string
-        display_name:
-          type: string
-        is_required:
-          type: boolean
-        pick_list_values:
-          items:
-            type: string
-          type: array
-        unit:
-          type: string
-        entity_subtype:
-          type: string
-          deprecated: true
-        entity_subtypes:
-          items:
-            type: string
-          type: array
-      type: object
-    AttributeTypes:
-      type: string
-      enum:
-      - number
-      - string
-      - geo_point
-      - boolean
-      - integer
-      - pick-list
-      - multi-pick-list
-      - number-array
-      - lookup
-      - date
-      - date-time
-      - file
-    MeasurementSubjectEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
+  parameters:
+    CustomAttributeDefinitionArchived:
+      description: Set true to return archived attribute definitions
+      in: query
+      name: archived
+      required: false
+      schema:
+        type: boolean
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    CustomAttributeDefinitionEntitySubType:
+      description: String to search for in entity subtype
+      in: query
+      name: entity_subtype
+      required: false
+      schema:
+        type: string
+    CustomAttributeDefinitionFieldName:
+      description: String to search for in field names
+      in: query
+      name: field_name
+      required: false
+      schema:
+        type: string
+    CustomAttributeFieldName:
+      description: field name identifier for custom attribute
+      example: attribute_1
+      in: path
+      name: field_name
+      required: true
+      schema:
+        type: string
+    SortByCustomAttributeDefinition:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - field_name
+    CustomAttributeEntityType:
+      description: Supported attribute type for custom attribute
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number

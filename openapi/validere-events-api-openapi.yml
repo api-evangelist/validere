@@ -368,11 +368,59 @@ paths:
       - Events
 components:
   schemas:
-    FilterName:
+    EventCreate:
       properties:
         name:
           type: string
-          example: My first filter
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+        status:
+          $ref: '#/components/schemas/EventStatus'
+        classification:
+          $ref: '#/components/schemas/EventClassification'
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+        event_schema_id:
+          format: uuid
+          type: string
+        associated_facility_id:
+          format: uuid
+          type: string
+        completed_at:
+          format: date-time
+          type: string
+        due_date:
+          format: date-time
+          type: string
+      type: object
+    EventSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - classification
+          - start
+          - end
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     AuditFields:
       properties:
         created_at:
@@ -388,41 +436,146 @@ components:
           format: uuid
           type: string
       type: object
-    Pagination:
+    Latitude:
+      description: latitude on the Earth
+      example: 51
+      maximum: 90
+      minimum: -90
+      type:
+      - number
+      - 'null'
+    FilterStatus:
       properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    Facility:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
+    EventSchema:
       allOf:
-      - $ref: '#/components/schemas/AuditFields'
+      - $ref: '#/components/schemas/EventSchemaCreate'
       - properties:
-          custom_attributes:
-            $ref: '#/components/schemas/CustomAttributes'
-          latitude:
-            $ref: '#/components/schemas/Latitude'
-          longitude:
-            $ref: '#/components/schemas/Longitude'
-          name:
-            type: string
-          status:
-            $ref: '#/components/schemas/FacilityStatus'
-          type:
-            $ref: '#/components/schemas/FacilityType'
           id:
             format: uuid
             type: string
-        type: object
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
+    EventFilter:
+      properties:
+        filter:
+          description: A filter object for events where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            classification: A
+            status: active
+            name:
+              $like: leak
+          allOf:
+          - $ref: '#/components/schemas/AssociatedFacilityPrimaryFilterFieldsWithPrefix'
+          - properties:
+              id:
+                type: string
+              name:
+                type: string
+              description:
+                type: string
+              status:
+                type: string
+              start_window:
+                type: string
+              end_window:
+                type: string
+              classification:
+                type: string
+              start:
+                type: string
+              end:
+                type: string
+              event_schema_id:
+                type: string
+              event_category_id:
+                type: string
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+          type: object
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    EventWithAssociatedFacility:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - properties:
+          associated_facility:
+            $ref: '#/components/schemas/Facility'
+    EventAlert:
+      properties:
+        event_id:
+          format: uuid
+          type: string
+        alert_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FacilityType:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_types`
     EventSchemaConfig:
       properties:
         has_due_date:
@@ -472,137 +625,44 @@ components:
           type: object
         has_devices:
           type: boolean
+    FacilityStatus:
+      type: string
+      description: Use `id` value of any index in `GET /v1/facility_statuses`
+    EventWithSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventWithDuration'
+      - properties:
+          event_schema:
+            $ref: '#/components/schemas/EventSchema'
+    Event:
+      allOf:
+      - $ref: '#/components/schemas/EventCreate'
+      - properties:
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
     FilterId:
       properties:
         id:
           format: uuid
           type: string
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
     TemplatedReportStatus:
       type: string
       enum:
       - active
       - archived
-    EventFilter:
-      properties:
-        filter:
-          description: A filter object for events where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            classification: A
-            status: active
-            name:
-              $like: leak
-          allOf:
-          - $ref: '#/components/schemas/AssociatedFacilityPrimaryFilterFieldsWithPrefix'
-          - properties:
-              id:
-                type: string
-              name:
-                type: string
-              description:
-                type: string
-              status:
-                type: string
-              start_window:
-                type: string
-              end_window:
-                type: string
-              classification:
-                type: string
-              start:
-                type: string
-              end:
-                type: string
-              event_schema_id:
-                type: string
-              event_category_id:
-                type: string
-              created_at:
-                type: string
-                format: date-time
-              updated_at:
-                type: string
-                format: date-time
-          type: object
-    FilterStatus:
-      properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    EventFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
-      - $ref: '#/components/schemas/EventFilter'
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    EventAlert:
-      properties:
-        event_id:
-          format: uuid
-          type: string
-        alert_id:
-          format: uuid
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-      type: object
-    EventFilterUpdateInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/EventFilter'
-    EventCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
-        status:
-          $ref: '#/components/schemas/EventStatus'
-        classification:
-          $ref: '#/components/schemas/EventClassification'
-        start:
-          format: date-time
-          type: string
-        end:
-          format: date-time
-          type: string
-        event_schema_id:
-          format: uuid
-          type: string
-        associated_facility_id:
-          format: uuid
-          type: string
-        completed_at:
-          format: date-time
-          type: string
-        due_date:
-          format: date-time
-          type: string
-      type: object
     Longitude:
       description: longitude on the Earth
       example: -114
@@ -611,16 +671,44 @@ components:
       type:
       - number
       - 'null'
-    EventWithSchema:
+    EventWithDuration:
       allOf:
-      - $ref: '#/components/schemas/EventWithDuration'
+      - $ref: '#/components/schemas/EventWithAssociatedFacility'
       - properties:
-          event_schema:
-            $ref: '#/components/schemas/EventSchema'
-    FilterTag:
+          duration:
+            type: string
+            example: 10 days 12 hours
+    AssociatedFacilityPrimaryFilterFieldsWithPrefix:
       properties:
-        tag:
+        associated_facility.custom_attributes:
+          type: object
+        associated_facility.id:
           type: string
+        associated_facility.name:
+          type: string
+        associated_facility.status:
+          type: string
+      type: object
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
+      type: object
+    PagedEventFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/EventFilterOutput'
+            type: array
+        type: object
+    EventFilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/EventFilter'
+      type: object
     EventSchemaCreate:
       properties:
         name:
@@ -649,53 +737,66 @@ components:
           type: string
           format: uuid
       type: object
-    FacilityType:
-      type: string
-      description: Use `id` value of any index in `GET /v1/facility_types`
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/EventFilter'
+      type: object
+    Facility:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          custom_attributes:
+            $ref: '#/components/schemas/CustomAttributes'
+          latitude:
+            $ref: '#/components/schemas/Latitude'
+          longitude:
+            $ref: '#/components/schemas/Longitude'
+          name:
+            type: string
+          status:
+            $ref: '#/components/schemas/FacilityStatus'
+          type:
+            $ref: '#/components/schemas/FacilityType'
+          id:
+            format: uuid
+            type: string
+        type: object
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
     EventClassification:
       type: string
       enum:
       - planned
       - unplanned
-    FacilityStatus:
-      type: string
-      description: Use `id` value of any index in `GET /v1/facility_statuses`
-    EventWithAssociatedFacility:
+    EventFilterUpdateInput:
       allOf:
-      - $ref: '#/components/schemas/Event'
-      - properties:
-          associated_facility:
-            $ref: '#/components/schemas/Facility'
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    Event:
-      allOf:
-      - $ref: '#/components/schemas/EventCreate'
-      - properties:
-          created_at:
-            format: date-time
-            type: string
-          created_by:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          updated_at:
-            format: date-time
-            type: string
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/EventFilter'
     EventStatus:
       type: string
       enum:
@@ -703,200 +804,12 @@ components:
       - resolved
       - overdue
       - dismissed
-    AssociatedFacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        associated_facility.custom_attributes:
-          type: object
-        associated_facility.id:
-          type: string
-        associated_facility.name:
-          type: string
-        associated_facility.status:
-          type: string
-      type: object
-    PagedEventFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/EventFilterOutput'
-            type: array
-        type: object
-    EventWithDuration:
-      allOf:
-      - $ref: '#/components/schemas/EventWithAssociatedFacility'
-      - properties:
-          duration:
-            type: string
-            example: 10 days 12 hours
-    EventFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/EventFilter'
-      type: object
-    EventSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - description
-          - status
-          - classification
-          - start
-          - end
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    EventSchema:
-      allOf:
-      - $ref: '#/components/schemas/EventSchemaCreate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          created_at:
-            format: date-time
-            type: string
-          created_by:
-            format: uuid
-            type: string
-          updated_at:
-            format: date-time
-            type: string
-          updated_by:
-            format: uuid
-            type: string
-      type: object
-    Latitude:
-      description: latitude on the Earth
-      example: 51
-      maximum: 90
-      minimum: -90
-      type:
-      - number
-      - 'null'
   parameters:
     FilterId:
       description: Filter ID
       example: 748970de-fd1f-4494-ae3f-47cc21ff205f
       in: path
       name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    EventEndWindow:
-      description: Returns all events that were ongoing during the start/end (in UTC)
-      in: query
-      name: end_window
-      required: false
-      schema:
-        format: date-time
-        type: string
-    FacilityId:
-      description: Id of facility
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: facility_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    EquipmentId:
-      description: Id of equipment
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: equipment_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    EventSchemaQuery:
-      description: set to true to include event schema
-      in: query
-      name: event_schema
-      example: true
-      required: false
-      schema:
-        type: string
-    EventStartWindow:
-      description: Returns all events that were ongoing during the start/end (in UTC)
-      in: query
-      name: start_window
-      required: false
-      schema:
-        format: date-time
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    FormSubmissionIdFull:
-      description: Form Submission ID
-      in: path
-      name: form_submission_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    EventId:
-      description: Event ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesId:
-      description: ID of the measurement series
-      in: path
-      name: measurement_series_id
       required: true
       schema:
         format: uuid
@@ -915,6 +828,58 @@ components:
       required: false
       schema:
         type: string
+    EquipmentId:
+      description: Id of equipment
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: equipment_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    EventSchemaQuery:
+      description: set to true to include event schema
+      in: query
+      name: event_schema
+      example: true
+      required: false
+      schema:
+        type: string
+    EventStartWindow:
+      description: Returns all events that were ongoing during the start/end (in UTC)
+      in: query
+      name: start_window
+      required: false
+      schema:
+        format: date-time
+        type: string
+    EventEndWindow:
+      description: Returns all events that were ongoing during the start/end (in UTC)
+      in: query
+      name: end_window
+      required: false
+      schema:
+        format: date-time
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EventId:
+      description: Event ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
     EventClassification:
       description: Event classification
       in: query
@@ -928,6 +893,44 @@ components:
       name: description
       required: false
       schema:
+        type: string
+    EventStatus:
+      description: Event status
+      in: query
+      name: status
+      required: false
+      schema:
+        $ref: '#/components/schemas/EventStatus'
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    FacilityId:
+      description: Id of facility
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: facility_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    FormSubmissionIdFull:
+      description: Form Submission ID
+      in: path
+      name: form_submission_id
+      required: true
+      schema:
+        format: uuid
         type: string
     AssetId:
       description: Asset ID
@@ -945,21 +948,18 @@ components:
       schema:
         format: uuid
         type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
       schema:
-        enum:
-        - asc
-        - desc
+        format: uuid
         type: string
-    EventStatus:
-      description: Event status
+    SortBy:
+      description: sort by
       in: query
-      name: status
+      name: sort_by
       required: false
       schema:
-        $ref: '#/components/schemas/EventStatus'
+        type: string

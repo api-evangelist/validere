@@ -201,35 +201,64 @@ components:
           format: uuid
           type: string
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    PermissionDecisionRequest:
+    IUpdateUserInput:
       type: object
       properties:
-        permissions:
-          type: array
-          items:
-            type: string
-          example:
-          - facilities:read
-          - facilities:write
-          - facilities:delete
-          - equipment:read
-          - equipment:write
-          - equipment:delete
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        phone:
+          type:
+          - string
+          - 'null'
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+    ICreateUserInput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          default: 0007bb10-5367-4d41-ad10-b05468b52529
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        phone:
+          type:
+          - string
+          - 'null'
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+      required:
+      - name
+      - email
     UserFilter:
       properties:
         filter:
@@ -253,6 +282,60 @@ components:
                 type: string
                 format: email
           type: object
+    GroupBasic:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    PagedUserList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/IUser'
+              - properties:
+                  user_groups:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  user_groups_count:
+                    type: number
+                  roles:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  roles_count:
+                    type: number
+                type: object
+        type: object
     UserStatus:
       type: string
       enum:
@@ -282,6 +365,33 @@ components:
           - desc
           example: desc
           type: string
+    PermissionDecisionRequest:
+      type: object
+      properties:
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - facilities:read
+          - facilities:write
+          - facilities:delete
+          - equipment:read
+          - equipment:write
+          - equipment:delete
+    RoleMembershipWithRole:
+      allOf:
+      - $ref: '#/components/schemas/RoleMembership'
+      - properties:
+          role:
+            $ref: '#/components/schemas/GroupBasic'
+    PermissionDecision:
+      type: object
+      additionalProperties:
+        type: boolean
+      example:
+        facilities:read: true
+        equipment:read: true
     UserWithCompanies:
       type: object
       properties:
@@ -355,6 +465,41 @@ components:
       - updated_at
       - updated_by
       - companies
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    UserPermissions:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
+    PermissionInput:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+        active:
+          type: boolean
+        filter:
+          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
+          example:
+            $or:
+            - custom_attributes.region: US
+            - name:
+                $like: Facility 1
+          type: object
+      type: object
     IUser:
       type: object
       properties:
@@ -414,151 +559,6 @@ components:
       - created_by
       - updated_at
       - updated_by
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    RoleMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          role_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
-    GroupBasic:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        name:
-          type: string
-    PagedUserList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/IUser'
-              - properties:
-                  user_groups:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  user_groups_count:
-                    type: number
-                  roles:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  roles_count:
-                    type: number
-                type: object
-        type: object
-    RoleMembershipWithRole:
-      allOf:
-      - $ref: '#/components/schemas/RoleMembership'
-      - properties:
-          role:
-            $ref: '#/components/schemas/GroupBasic'
-    PermissionDecision:
-      type: object
-      additionalProperties:
-        type: boolean
-      example:
-        facilities:read: true
-        equipment:read: true
-    PermissionInput:
-      properties:
-        name:
-          type: string
-          example: facilities:read
-        active:
-          type: boolean
-        filter:
-          description: A filter object for Permission where it can filter based on any of these following fields. Name can be substring matched. All other values are exact matched.
-          example:
-            $or:
-            - custom_attributes.region: US
-            - name:
-                $like: Facility 1
-          type: object
-      type: object
-    ICreateUserInput:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          default: 0007bb10-5367-4d41-ad10-b05468b52529
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        email:
-          type: string
-          format: email
-        phone:
-          type:
-          - string
-          - 'null'
-        quicksight:
-          type: boolean
-          default: false
-        status:
-          type: string
-          enum:
-          - active
-          - disabled
-          default: active
-        timezone:
-          type: string
-          default: US/Central
-          example: America/Los_Angeles
-      required:
-      - name
-      - email
-    IUpdateUserInput:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        phone:
-          type:
-          - string
-          - 'null'
-        quicksight:
-          type: boolean
-          default: false
-        status:
-          type: string
-          enum:
-          - active
-          - disabled
-          default: active
-        timezone:
-          type: string
-          default: US/Central
-          example: America/Los_Angeles
-    UserPermissions:
-      type: array
-      items:
-        $ref: '#/components/schemas/PermissionInput'
   parameters:
     UserId:
       description: User ID

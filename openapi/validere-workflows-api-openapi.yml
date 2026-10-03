@@ -121,34 +121,59 @@ paths:
       tags:
       - Workflows
 components:
+  parameters:
+    WorkflowId:
+      description: Workflow ID
+      in: path
+      name: workflow_id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
-    Pagination:
+    FacilityPrimaryFilterFieldsWithPrefix:
       properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    IUpdateWorkflowInput:
-      type: object
-      properties:
-        status:
+        facility.custom_attributes:
+          type: object
+        facility.id:
           type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    FormSchemaStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      - draft
+    PagedWorkflowList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/IWorkflow'
+            type: array
+        type: object
+    FormSubmissionSort:
+      properties:
+        sort_by:
           enum:
-          - complete
-          - in_progress
-          - overdue
-          - dismissed
-          - missed
-          - error
+          - created_at
+          - status
+          - answer
+          default: created_at
+          type: string
+        sort_direction:
+          default: asc
+          description: sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
     WorkflowStatus:
       type: string
       enum:
@@ -163,6 +188,66 @@ components:
       - active
       - draft
       - archive
+    WorkflowFilter:
+      properties:
+        filter:
+          description: A filter object for Workflow where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            category_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            status: active
+            created_by: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            created_at:
+              $gt: '2023-07-01T08:19:25.438Z'
+              $lt: '2023-07-30T08:19:25.438Z'
+          allOf:
+          - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+          - properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+              description:
+                type: string
+              workflow_template_id:
+                type: string
+                format: uuid
+              status:
+                $ref: '#/components/schemas/WorkflowStatus'
+              created_by:
+                type: string
+                format: uuid
+              created_at:
+                type: string
+                format: date-time
+              updated_at:
+                type: string
+                format: date-time
+              due_date:
+                type: string
+                format: date-time
+              workflow_category.id:
+                type: string
+                format: uuid
+              workflow_category.name:
+                type: string
+              workflow_template.name:
+                type: string
+              workflow_template.status:
+                $ref: '#/components/schemas/WorkflowTemplateStatus'
+              workflow_template.description:
+                type: string
+            type: object
+      type: object
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
     FormSubmissionWithoutAnswers:
       properties:
         company_id:
@@ -194,91 +279,6 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    PagedWorkflowFormSubmissionList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/FormSubmissionWithFormSchemaName'
-              - properties:
-                  associated_tasks:
-                    items:
-                      properties:
-                        workflow_task_name:
-                          type: string
-                        workflow_task_id:
-                          type: string
-                          format: uuid
-                        form_submission_id:
-                          type: string
-                          format: uuid
-                      type: object
-                    type: array
-                  associated_actions:
-                    items:
-                      properties:
-                        workflow_action_name:
-                          type: string
-                        workflow_action_id:
-                          type: string
-                          format: uuid
-                        form_submission_id:
-                          type: string
-                          format: uuid
-                      type: object
-                    type: array
-                  is_workflow_trigger:
-                    type: boolean
-                type: object
-            type: array
-        type: object
-    WorkflowSort:
-      properties:
-        sort_by:
-          enum:
-          - status
-          - created_at
-          example: created_at
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    PagedWorkflowList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/IWorkflow'
-            type: array
-        type: object
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    FormSubmissionStatus:
-      type: string
-      enum:
-      - validated
-      - invalidated
-      - pending
-      - submitted
-      - draft
-      default: pending
     FormSubmissionFilter:
       properties:
         filter:
@@ -354,98 +354,18 @@ components:
               type: string
               format: date-time
           type: object
-    FormSubmissionWithFormSchemaName:
-      allOf:
-      - $ref: '#/components/schemas/FormSubmissionWithoutAnswers'
-      - properties:
-          form_schema:
-            properties:
-              id:
-                format: uuid
-                type: string
-              name:
-                type: string
-              form_category:
-                properties:
-                  id:
-                    format: uuid
-                    type: string
-                  name:
-                    type: string
-    FormSubmissionSort:
+    IUpdateWorkflowInput:
+      type: object
       properties:
-        sort_by:
-          enum:
-          - created_at
-          - status
-          - answer
-          default: created_at
+        status:
           type: string
-        sort_direction:
-          default: asc
-          description: sort direction
           enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-    ICreateWorkflowInput:
-      allOf:
-      - type: object
-        properties:
-          workflow_template_id:
-            type: string
-            format: uuid
-        required:
-        - workflow_template_id
-      - type: object
-        properties:
-          facility_id:
-            type: string
-            format: uuid
-          asset_id:
-            type: string
-            format: uuid
-          due_date:
-            type: object
-            properties:
-              time_period:
-                type: string
-                enum:
-                - hours
-                - days
-                - weeks
-                - months
-              duration:
-                type: number
-                exclusiveMinimum: 0
-              start_variable:
-                type: string
-            required:
-            - time_period
-            - duration
-          notification_date:
-            type: object
-            properties:
-              time_period:
-                type: string
-                enum:
-                - hours
-                - days
-                - weeks
-                - months
-              duration:
-                type: number
-                exclusiveMinimum: 0
-            required:
-            - time_period
-            - duration
-    FormSchemaStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      - draft
+          - complete
+          - in_progress
+          - overdue
+          - dismissed
+          - missed
+          - error
     IWorkflow:
       type: object
       properties:
@@ -1147,63 +1067,143 @@ components:
       - updated_at
       - created_by
       - updated_by
-    WorkflowFilter:
-      properties:
-        filter:
-          description: A filter object for Workflow where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            category_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            status: active
-            created_by: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            created_at:
-              $gt: '2023-07-01T08:19:25.438Z'
-              $lt: '2023-07-30T08:19:25.438Z'
-          allOf:
-          - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-          - properties:
+    FormSubmissionWithFormSchemaName:
+      allOf:
+      - $ref: '#/components/schemas/FormSubmissionWithoutAnswers'
+      - properties:
+          form_schema:
+            properties:
               id:
-                type: string
                 format: uuid
+                type: string
               name:
                 type: string
-              description:
-                type: string
-              workflow_template_id:
-                type: string
-                format: uuid
-              status:
-                $ref: '#/components/schemas/WorkflowStatus'
-              created_by:
-                type: string
-                format: uuid
-              created_at:
-                type: string
-                format: date-time
-              updated_at:
-                type: string
-                format: date-time
-              due_date:
-                type: string
-                format: date-time
-              workflow_category.id:
-                type: string
-                format: uuid
-              workflow_category.name:
-                type: string
-              workflow_template.name:
-                type: string
-              workflow_template.status:
-                $ref: '#/components/schemas/WorkflowTemplateStatus'
-              workflow_template.description:
-                type: string
-            type: object
+              form_category:
+                properties:
+                  id:
+                    format: uuid
+                    type: string
+                  name:
+                    type: string
+    PagedWorkflowFormSubmissionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FormSubmissionWithFormSchemaName'
+              - properties:
+                  associated_tasks:
+                    items:
+                      properties:
+                        workflow_task_name:
+                          type: string
+                        workflow_task_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  associated_actions:
+                    items:
+                      properties:
+                        workflow_action_name:
+                          type: string
+                        workflow_action_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  is_workflow_trigger:
+                    type: boolean
+                type: object
+            type: array
+        type: object
+    WorkflowSort:
+      properties:
+        sort_by:
+          enum:
+          - status
+          - created_at
+          example: created_at
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
-  parameters:
-    WorkflowId:
-      description: Workflow ID
-      in: path
-      name: workflow_id
-      required: true
-      schema:
-        format: uuid
-        type: string
+    ICreateWorkflowInput:
+      allOf:
+      - type: object
+        properties:
+          workflow_template_id:
+            type: string
+            format: uuid
+        required:
+        - workflow_template_id
+      - type: object
+        properties:
+          facility_id:
+            type: string
+            format: uuid
+          asset_id:
+            type: string
+            format: uuid
+          due_date:
+            type: object
+            properties:
+              time_period:
+                type: string
+                enum:
+                - hours
+                - days
+                - weeks
+                - months
+              duration:
+                type: number
+                exclusiveMinimum: 0
+              start_variable:
+                type: string
+            required:
+            - time_period
+            - duration
+          notification_date:
+            type: object
+            properties:
+              time_period:
+                type: string
+                enum:
+                - hours
+                - days
+                - weeks
+                - months
+              duration:
+                type: number
+                exclusiveMinimum: 0
+            required:
+            - time_period
+            - duration

@@ -165,31 +165,6 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
-      properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    DataResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: DataResponse
-      description: Data response envelope
     JSONDataPostRequest:
       properties:
         client_id:
@@ -212,6 +187,22 @@ components:
       - dataset_id
       - data
       title: JSONDataPostRequest
+    DataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: DataResponse
+      description: Data response envelope
     ValidationError:
       properties:
         loc:
@@ -238,6 +229,15 @@ components:
       - msg
       - type
       title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ResponseMeta:
       properties:
         type:

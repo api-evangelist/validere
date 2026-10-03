@@ -97,10 +97,35 @@ paths:
       - Measurement Types
 components:
   schemas:
+    MeasurementTypeDataType:
+      type: string
+      enum:
+      - int
+      - float
     MeasurementTypeList:
       items:
         $ref: '#/components/schemas/MeasurementType'
       type: array
+    MeasurementQuantityList:
+      items:
+        properties:
+          id:
+            type: string
+          name:
+            type: string
+        type: object
+      type: array
+    MeasurementTypeV2:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        quantity:
+          type: string
+        default_unit:
+          type: string
+      type: object
     MeasurementTypeUnitConfig:
       properties:
         name:
@@ -121,31 +146,6 @@ components:
         id:
           type: string
       type: object
-    MeasurementTypeV2:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        quantity:
-          type: string
-        default_unit:
-          type: string
-      type: object
-    MeasurementTypeDataType:
-      type: string
-      enum:
-      - int
-      - float
-    MeasurementQuantityList:
-      items:
-        properties:
-          id:
-            type: string
-          name:
-            type: string
-        type: object
-      type: array
     MeasurementType:
       properties:
         data_type:
@@ -160,13 +160,6 @@ components:
           type: array
       type: object
   parameters:
-    MeasurementQuantityId:
-      description: ID of the measurement quantity
-      in: path
-      name: quantity
-      required: true
-      schema:
-        type: string
     MeasurementTypeSubjectId:
       description: ID of the entity you want to list the measurement types for
       in: query
@@ -174,4 +167,11 @@ components:
       required: false
       schema:
         format: uuid
+        type: string
+    MeasurementQuantityId:
+      description: ID of the measurement quantity
+      in: path
+      name: quantity
+      required: true
+      schema:
         type: string

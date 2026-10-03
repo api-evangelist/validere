@@ -107,6 +107,51 @@ paths:
       - credit_owner
 components:
   schemas:
+    CreditOwnerVisibility:
+      type: string
+      enum:
+      - public
+      - private
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    CreditOwner:
+      allOf:
+      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          public_name:
+            type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     CreditOwnerFilter:
       properties:
         filter:
@@ -124,54 +169,6 @@ components:
               type: string
           type: object
       type: object
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    CreditOwnerVisibility:
-      type: string
-      enum:
-      - public
-      - private
-    CreditOwner:
-      allOf:
-      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          public_name:
-            type: string
     CreditOwnerSort:
       properties:
         sort_by:
@@ -190,18 +187,6 @@ components:
           example: asc
           type: string
       type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     CreditOwnerCreateUpdate:
       properties:
         name:
@@ -212,6 +197,21 @@ components:
         buffer_holder:
           type: boolean
           default: false
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
   parameters:
     CreditOwnerId:

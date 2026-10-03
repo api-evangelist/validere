@@ -124,36 +124,18 @@ paths:
       - Networks
 components:
   schemas:
-    NetworkInput:
-      properties:
-        input:
-          type: object
-          description: flow_id map
-          example:
-            3fa85f64-5717-4562-b3fc-2c963f66afa6:
-              adjustable: true
-          additionalProperties:
-            type: object
-            properties:
-              adjustable:
-                type: boolean
-        reporting_group_id:
-          type: string
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    PagedNetworkList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/NetworkFlowList'
+          reporting_group_id:
+            type: string
+        type: object
     NetworkRunPromote:
       properties:
         promote_to_record:
@@ -171,163 +153,9 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    NetworkFlowList:
-      items:
-        $ref: '#/components/schemas/NetworkFlow'
-    AssetGroup:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/AssetGroupStatus'
-        asset_group_type_id:
-          type: string
-          enum:
-          - network
-        default_network_reporting_group_id:
-          type: string
-        default_network_reporting_group:
-          $ref: '#/components/schemas/ReportingGroupInput'
-        default_estimation_method_id:
-          format: uuid
-          type: string
-        default_estimation_method:
-          $ref: '#/components/schemas/EstimationMethodResponse'
-        id:
-          format: uuid
-          type: string
-        company_id:
-          format: uuid
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
     FlowTypes:
       type: string
       description: Use `id` value of any index in `GET /v1/flow_types`
-    ReportingGroupInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    ProductTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
-    FlowStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    FlowBasic:
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/FlowTypes'
-        status:
-          $ref: '#/components/schemas/FlowStatus'
-        product_category:
-          $ref: '#/components/schemas/ProductCategories'
-        product_type:
-          $ref: '#/components/schemas/ProductTypes'
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
-    PagedNetworkList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/NetworkFlowList'
-          reporting_group_id:
-            type: string
-        type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
-    FlowSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - product_category
-          - product_type
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    NetworkFlow:
-      allOf:
-      - properties:
-          adjustable:
-            type: boolean
-          proratable:
-            description: If the entry is able to be adjustable
-            type: boolean
-          volume:
-            type: number
-          volume_unit:
-            type: string
-          adjusted_volume:
-            type: number
-          volume_record_id:
-            type: string
-            format: uuid
-          volume_estimation_method_id:
-            type: string
-            format: uuid
-          volume_source_type:
-            type: string
-            enum:
-            - record
-            - estimation_method
-          id:
-            description: flow_id
-            type: string
-            format: uuid
-      - $ref: '#/components/schemas/FlowBasic'
-    ProductCategories:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
     EstimationMethodResponse:
       type: object
       properties:
@@ -483,30 +311,214 @@ components:
       - updated_at
       - created_by
       - updated_by
+    NetworkFlowList:
+      items:
+        $ref: '#/components/schemas/NetworkFlow'
+    AssetGroup:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        default_network_reporting_group_id:
+          type: string
+        default_network_reporting_group:
+          $ref: '#/components/schemas/ReportingGroupInput'
+        default_estimation_method_id:
+          format: uuid
+          type: string
+        default_estimation_method:
+          $ref: '#/components/schemas/EstimationMethodResponse'
+        id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    FlowBasic:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/FlowTypes'
+        status:
+          $ref: '#/components/schemas/FlowStatus'
+        product_category:
+          $ref: '#/components/schemas/ProductCategories'
+        product_type:
+          $ref: '#/components/schemas/ProductTypes'
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
     AssetGroupStatus:
       type: string
       enum:
       - active
       - inactive
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    FlowSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - product_category
+          - product_type
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    NetworkFlow:
+      allOf:
+      - properties:
+          adjustable:
+            type: boolean
+          proratable:
+            description: If the entry is able to be adjustable
+            type: boolean
+          volume:
+            type: number
+          volume_unit:
+            type: string
+          adjusted_volume:
+            type: number
+          volume_record_id:
+            type: string
+            format: uuid
+          volume_estimation_method_id:
+            type: string
+            format: uuid
+          volume_source_type:
+            type: string
+            enum:
+            - record
+            - estimation_method
+          id:
+            description: flow_id
+            type: string
+            format: uuid
+      - $ref: '#/components/schemas/FlowBasic'
+    NetworkInput:
+      properties:
+        input:
+          type: object
+          description: flow_id map
+          example:
+            3fa85f64-5717-4562-b3fc-2c963f66afa6:
+              adjustable: true
+          additionalProperties:
+            type: object
+            properties:
+              adjustable:
+                type: boolean
+        reporting_group_id:
+          type: string
   parameters:
-    Page:
-      description: page number
+    SortDirection:
+      description: sort direction
+      example: desc
       in: query
-      name: page
+      name: sort_direction
       required: false
       schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
+        enum:
+        - asc
+        - desc
+        type: string
+    AssetGroupId:
+      description: Asset Group ID
+      in: path
+      name: id
+      required: true
       schema:
+        format: uuid
         type: string
     PageSize:
       description: page size
       in: query
       name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
       required: false
       schema:
         type: number
@@ -518,22 +530,10 @@ components:
       required: true
       schema:
         type: string
-    AssetGroupId:
-      description: Asset Group ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
+    SortBy:
+      description: sort by
       in: query
-      name: sort_direction
+      name: sort_by
       required: false
       schema:
-        enum:
-        - asc
-        - desc
         type: string

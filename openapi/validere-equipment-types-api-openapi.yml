@@ -42,6 +42,15 @@ paths:
       tags:
       - equipment_types
 components:
+  parameters:
+    EquipmentTypeId:
+      description: Equipment Type Id
+      example: acid_gas_removal
+      in: path
+      name: type_id
+      required: true
+      schema:
+        type: string
   schemas:
     EquipmentTypeList:
       items:
@@ -54,12 +63,3 @@ components:
         name:
           type: string
       type: object
-  parameters:
-    EquipmentTypeId:
-      description: Equipment Type Id
-      example: acid_gas_removal
-      in: path
-      name: type_id
-      required: true
-      schema:
-        type: string

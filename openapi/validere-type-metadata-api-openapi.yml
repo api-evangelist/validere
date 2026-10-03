@@ -277,21 +277,24 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
-    CodeNamePair:
-      type: object
+    CustomAttributeDataType:
       properties:
-        code:
-          type: string
+        id:
+          $ref: '#/components/schemas/AttributeTypes'
         name:
           type: string
-    schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
+      type: object
+    CustomAttributeEntityType:
+      properties:
+        id:
+          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+        name:
+          type: string
+      type: object
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
     AttributeTypes:
       type: string
       enum:
@@ -307,24 +310,25 @@ components:
       - date
       - date-time
       - file
+    CodeNamePair:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
     CustomAttributeEntityTypeList:
       items:
         $ref: '#/components/schemas/CustomAttributeEntityType'
       type: array
-    CustomAttributeDataType:
-      properties:
-        id:
-          $ref: '#/components/schemas/AttributeTypes'
-        name:
-          type: string
-      type: object
-    CustomAttributeEntityType:
-      properties:
-        id:
-          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-        name:
-          type: string
-      type: object
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
     EnumIdNamePairList:
       type: array
       items:
@@ -335,10 +339,6 @@ components:
           name:
             type: string
             description: display name
-    CustomAttributeDataTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeDataType'
-      type: array
     TypeMetadataResponse:
       properties:
         meta:

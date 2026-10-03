@@ -97,17 +97,19 @@ paths:
       - emissions_calculator
 components:
   parameters:
+    CalculatorVersionInformationFieldQuery:
+      description: Calculator Version Information Fields
+      in: query
+      name: include
+      required: false
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/CalculatorVersionInformationField'
     CalculatorId:
       description: Calculator ID
       in: path
       name: calculator_id
-      required: true
-      schema:
-        type: string
-    LibraryId:
-      description: Library ID
-      in: path
-      name: library_id
       required: true
       schema:
         type: string
@@ -118,15 +120,13 @@ components:
       required: true
       schema:
         type: string
-    CalculatorVersionInformationFieldQuery:
-      description: Calculator Version Information Fields
-      in: query
-      name: include
-      required: false
+    LibraryId:
+      description: Library ID
+      in: path
+      name: library_id
+      required: true
       schema:
-        type: array
-        items:
-          $ref: '#/components/schemas/CalculatorVersionInformationField'
+        type: string
   schemas:
     CalculatorVersionInformationField:
       type: string

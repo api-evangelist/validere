@@ -107,44 +107,14 @@ paths:
       - form_categories
 components:
   parameters:
-    SortBy:
-      description: sort by
+    FormCategoryArchived:
+      description: Form Category archived
       in: query
-      name: sort_by
+      name: archived
       required: false
       schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    RelatedEntityIdQuery:
-      description: device id or facility id or equipment id
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: query
-      name: related_entity_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    FormCategoryId:
-      description: Form Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
+        default: false
+        type: boolean
     MeasurementTypeQuery:
       description: Measurement type of the measurements being retrieved
       example: volume
@@ -164,14 +134,13 @@ components:
         - asc
         - desc
         type: string
-    FormCategoryArchived:
-      description: Form Category archived
+    Page:
+      description: page number
       in: query
-      name: archived
+      name: page
       required: false
       schema:
-        default: false
-        type: boolean
+        type: number
     FormCategoryName:
       description: Form Category name
       in: query
@@ -179,22 +148,38 @@ components:
       required: false
       schema:
         type: string
+    FormCategoryId:
+      description: Form Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    RelatedEntityIdQuery:
+      description: device id or facility id or equipment id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: related_entity_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
     FormCategoryInput:
       properties:
         archived:
@@ -223,6 +208,21 @@ components:
         updated_at:
           format: date-time
           type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
     FormCategoryUpdate:
       properties:

@@ -105,42 +105,6 @@ paths:
       - workflow_categories
 components:
   parameters:
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    WorkflowCategoryId:
-      description: Workflow Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    WorkflowCategoryName:
-      description: Workflow Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    WorkflowCategoryDescription:
-      description: Workflow Category description
-      in: query
-      name: description
-      required: false
-      schema:
-        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -152,6 +116,35 @@ components:
         - asc
         - desc
         type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    WorkflowCategoryDescription:
+      description: Workflow Category description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    WorkflowCategoryId:
+      description: Workflow Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    WorkflowCategoryName:
+      description: Workflow Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
     SortBy:
       description: sort by
       in: query
@@ -159,7 +152,31 @@ components:
       required: false
       schema:
         type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
   schemas:
+    IUpdateWorkflowCategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+    ICreateWorkflowCategoryInput:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - description
     Pagination:
       properties:
         page_number:
@@ -175,13 +192,6 @@ components:
           type: number
           example: 6
       type: object
-    IUpdateWorkflowCategoryInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     IWorkflowCategory:
       type: object
       properties:
@@ -220,13 +230,3 @@ components:
       - updated_at
       - created_by
       - updated_by
-    ICreateWorkflowCategoryInput:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-      required:
-      - name
-      - description

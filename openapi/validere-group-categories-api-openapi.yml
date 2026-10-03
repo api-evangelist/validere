@@ -100,15 +100,6 @@ paths:
       tags:
       - Group Categories
 components:
-  parameters:
-    GroupCategoryId:
-      description: Group Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
   schemas:
     AuditFields:
       properties:
@@ -125,22 +116,61 @@ components:
           format: uuid
           type: string
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    PagedGroupCategoryList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/GroupCategory'
+            type: array
+        type: object
+    GroupCategory:
+      allOf:
+      - $ref: '#/components/schemas/GroupCategoryCreate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
       type: object
-    GroupCategoryUpdate:
+    GroupCategorySort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - description
+          - created_by
+          - created_at
+          - updated_by
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    GroupCategoryCreate:
       properties:
         name:
           type: string
@@ -175,40 +205,7 @@ components:
               format: date-time
           type: object
       type: object
-    GroupCategorySort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - name
-          - description
-          - created_by
-          - created_at
-          - updated_by
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    GroupCategory:
-      allOf:
-      - $ref: '#/components/schemas/GroupCategoryCreate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-      type: object
-    GroupCategoryCreate:
+    GroupCategoryUpdate:
       properties:
         name:
           type: string
@@ -217,24 +214,27 @@ components:
           type: string
           maxLength: 256
       type: object
-    PagedGroupCategoryList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/GroupCategory'
-            type: array
-        type: object
-    Paginated:
+    Pagination:
       properties:
-        page:
-          default: 0
-          description: Which page to return
+        page_number:
+          type: number
           example: 0
-          type: number
         page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
           type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+  parameters:
+    GroupCategoryId:
+      description: Group Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string

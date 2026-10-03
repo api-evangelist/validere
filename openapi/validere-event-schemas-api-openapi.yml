@@ -108,6 +108,60 @@ paths:
       - Event Schemas
 components:
   schemas:
+    EventSchemaFilter:
+      properties:
+        filter:
+          description: A filter object for Event Schemas where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            version: V1
+            status: active
+            name:
+              $like: leak
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            description:
+              type: string
+            status:
+              type: string
+            version:
+              type: string
+            priority:
+              type: string
+            event_category.id:
+              type: string
+            event_category.name:
+              type: string
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+          type: object
+    EventSchemaSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - version
+          - priority
+          - event_category.id
+          - event_category.name
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     EventSchemaWithForms:
       allOf:
       - $ref: '#/components/schemas/EventSchema'
@@ -135,49 +189,18 @@ components:
                   type: boolean
               type: object
       type: object
-    Pagination:
+    Paginated:
       properties:
-        page_number:
-          type: number
+        page:
+          default: 0
+          description: Which page to return
           example: 0
+          type: number
         page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
           type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    EventSchemaCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        version:
-          type: string
-          maxLength: 20
-        priority:
-          type: string
-          enum:
-          - high
-          - medium
-          - low
-        status:
-          type: string
-          enum:
-          - active
-          - archived
-        description:
-          type: string
-          maxLength: 256
-        config:
-          $ref: '#/components/schemas/EventSchemaConfig'
-        event_category_id:
-          type: string
-          format: uuid
-      type: object
     EventSchemaConfig:
       properties:
         has_due_date:
@@ -227,60 +250,34 @@ components:
           type: object
         has_devices:
           type: boolean
-    EventSchemaSort:
+    EventSchemaCreate:
       properties:
-        sort_by:
-          enum:
-          - name
-          - description
-          - status
-          - version
-          - priority
-          - event_category.id
-          - event_category.name
-          example: name
+        name:
           type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
+          maxLength: 100
+        version:
           type: string
-    EventSchemaFilter:
-      properties:
-        filter:
-          description: A filter object for Event Schemas where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            version: V1
-            status: active
-            name:
-              $like: leak
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            description:
-              type: string
-            status:
-              type: string
-            version:
-              type: string
-            priority:
-              type: string
-            event_category.id:
-              type: string
-            event_category.name:
-              type: string
-            created_at:
-              type: string
-              format: date-time
-            updated_at:
-              type: string
-              format: date-time
-          type: object
+          maxLength: 20
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+        description:
+          type: string
+          maxLength: 256
+        config:
+          $ref: '#/components/schemas/EventSchemaConfig'
+        event_category_id:
+          type: string
+          format: uuid
+      type: object
     EventSchema:
       allOf:
       - $ref: '#/components/schemas/EventSchemaCreate'
@@ -304,18 +301,21 @@ components:
             format: uuid
             type: string
       type: object
-    Paginated:
+    Pagination:
       properties:
-        page:
-          default: 0
-          description: Which page to return
+        page_number:
+          type: number
           example: 0
-          type: number
         page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
           type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
   parameters:
     EventSchemaId:
       description: Event Schema ID

@@ -181,100 +181,59 @@ paths:
       tags:
       - Asset groups
 components:
+  parameters:
+    Period:
+      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
+      in: query
+      name: period
+      required: false
+      schema:
+        type: string
+    AssetGroupId:
+      description: Asset Group ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    AssetId:
+      description: Asset ID
+      in: path
+      name: asset_id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    AssetAttributeStartEndDateInput:
       type: object
-    PagedAssetGroupWithAssetsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/AssetGroupWithAssets'
-            type: array
-        type: object
-    AssetType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-    AssetGroupSort:
       properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - asset_group_type_id
-          - created_at
-          - updated_at
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    AssetGroupFilter:
-      properties:
-        filter:
-          description: A filter object for Asset Group where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            $or:
-            - asset.asset_type: equipment
-            - name:
-                $like: Asset Group 1
-          properties:
-            id:
-              type: string
-            name:
-              type: string
-            status:
-              $ref: '#/components/schemas/AssetGroupStatus'
-            asset.id:
-              type: string
-            created_at:
-              type: string
-            created_by:
-              type: string
-            updated_at:
-              type: string
-            updated_by:
-              type: string
-            custom_attributes:
-              type: object
-          type: object
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    AssetGroup:
+        start_date:
+          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: min
+            description: Year month shorthand
+        end_date:
+          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
+          anyOf:
+          - type: string
+            example: 202407
+            description: Year month formatted as YYYYMM
+          - type: string
+            enum:
+            - min
+            - max
+            example: max
+            description: Year month shorthand
+    AssetGroupCreateV2:
       properties:
         name:
           type: string
@@ -285,66 +244,27 @@ components:
           type: string
           enum:
           - network
-        default_network_reporting_group_id:
-          type: string
-        default_network_reporting_group:
-          $ref: '#/components/schemas/ReportingGroupInput'
-        default_estimation_method_id:
-          format: uuid
-          type: string
-        default_estimation_method:
-          $ref: '#/components/schemas/EstimationMethodResponse'
-        id:
-          format: uuid
-          type: string
-        company_id:
-          format: uuid
-          type: string
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        updated_by:
-          format: uuid
-          type: string
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
         custom_attributes:
           $ref: '#/components/schemas/CustomAttributes'
-      type: object
-    Asset:
-      type: object
-      properties:
-        id:
+        reporting_group_id:
+          description: Reporting group ID when `asset_group_type_id="network"`
           type: string
           format: uuid
-        asset_type:
-          $ref: '#/components/schemas/AssetType'
-    AssetGroupWithAssets:
-      allOf:
-      - $ref: '#/components/schemas/AssetGroup'
-      - properties:
-          assets:
-            type: array
-            items:
-              $ref: '#/components/schemas/Asset'
-          network_inlet_ids:
-            type: array
-            items:
-              type: string
-              format: uuid
       type: object
-    ReportingGroupInput:
+    AssetGroupAsset:
       type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
+      properties:
+        asset_id:
+          format: uuid
+          type: string
+        asset_group_id:
+          format: uuid
+          type: string
     CalculatorInputs:
       type: object
       additionalProperties:
@@ -379,27 +299,6 @@ components:
           measurement_type: measurement_type
           measurement_quantity: volume
         rvp: null
-    AssetGroupAsset:
-      type: object
-      properties:
-        asset_id:
-          format: uuid
-          type: string
-        asset_group_id:
-          format: uuid
-          type: string
-    ReportingGroupUpdateInput:
-      properties:
-        name:
-          type: string
-          example: SubpartW
-        description:
-          type: string
-          example: my reporting group
-        priority:
-          type: number
-          description: default to 1
-          example: 2
     AssetGroupUpdate:
       allOf:
       - properties:
@@ -412,88 +311,18 @@ components:
             $ref: '#/components/schemas/CustomAttributes'
       - $ref: '#/components/schemas/AssetAttributeStartEndDateInput'
       type: object
-    AssetGroupCreate:
+    Paginated:
       properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/AssetGroupStatus'
-        asset_group_type_id:
-          type: string
-          enum:
-          - network
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-      type: object
-    AssetGroupAssetsUpdate:
-      properties:
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-      type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
-    AssetGroupCreateV2:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/AssetGroupStatus'
-        asset_group_type_id:
-          type: string
-          enum:
-          - network
-        asset_ids:
-          type: array
-          items:
-            format: uuid
-            type: string
-        custom_attributes:
-          $ref: '#/components/schemas/CustomAttributes'
-        reporting_group_id:
-          description: Reporting group ID when `asset_group_type_id="network"`
-          type: string
-          format: uuid
-      type: object
-    AssetAttributeStartEndDateInput:
-      type: object
-      properties:
-        start_date:
-          description: Start date of attributes. If start_date is provided and end_date is not provided, it defaults to the range [start_date, max]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: min
-            description: Year month shorthand
-        end_date:
-          description: End date of attributes. If end_date is provided and start_date is not provided, it defaults to the range [min, start_date]. If both start_date and end_date are not provided, it defaults to the range [current year month, next existing year month - 1]
-          anyOf:
-          - type: string
-            example: 202407
-            description: Year month formatted as YYYYMM
-          - type: string
-            enum:
-            - min
-            - max
-            example: max
-            description: Year month shorthand
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     EstimationMethodResponse:
       type: object
       properties:
@@ -649,32 +478,203 @@ components:
       - updated_at
       - created_by
       - updated_by
+    Asset:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        asset_type:
+          $ref: '#/components/schemas/AssetType'
+    AssetGroupWithAssets:
+      allOf:
+      - $ref: '#/components/schemas/AssetGroup'
+      - properties:
+          assets:
+            type: array
+            items:
+              $ref: '#/components/schemas/Asset'
+          network_inlet_ids:
+            type: array
+            items:
+              type: string
+              format: uuid
+      type: object
+    AssetGroup:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        default_network_reporting_group_id:
+          type: string
+        default_network_reporting_group:
+          $ref: '#/components/schemas/ReportingGroupInput'
+        default_estimation_method_id:
+          format: uuid
+          type: string
+        default_estimation_method:
+          $ref: '#/components/schemas/EstimationMethodResponse'
+        id:
+          format: uuid
+          type: string
+        company_id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
     AssetGroupStatus:
       type: string
       enum:
       - active
       - inactive
-  parameters:
-    Period:
-      description: year month (YYYYMM), defaulting to the current time, indicates which time period to return the attributes and custom attributes from
-      in: query
-      name: period
-      required: false
-      schema:
-        type: string
-    AssetGroupId:
-      description: Asset Group ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    AssetId:
-      description: Asset ID
-      in: path
-      name: asset_id
-      required: true
-      schema:
-        format: uuid
-        type: string
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    PagedAssetGroupWithAssetsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/AssetGroupWithAssets'
+            type: array
+        type: object
+    AssetGroupAssetsUpdate:
+      properties:
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    AssetGroupSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - asset_group_type_id
+          - created_at
+          - updated_at
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    ReportingGroupUpdateInput:
+      properties:
+        name:
+          type: string
+          example: SubpartW
+        description:
+          type: string
+          example: my reporting group
+        priority:
+          type: number
+          description: default to 1
+          example: 2
+    AssetGroupCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/AssetGroupStatus'
+        asset_group_type_id:
+          type: string
+          enum:
+          - network
+        asset_ids:
+          type: array
+          items:
+            format: uuid
+            type: string
+        custom_attributes:
+          $ref: '#/components/schemas/CustomAttributes'
+      type: object
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    AssetGroupFilter:
+      properties:
+        filter:
+          description: A filter object for Asset Group where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            $or:
+            - asset.asset_type: equipment
+            - name:
+                $like: Asset Group 1
+          properties:
+            id:
+              type: string
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/AssetGroupStatus'
+            asset.id:
+              type: string
+            created_at:
+              type: string
+            created_by:
+              type: string
+            updated_at:
+              type: string
+            updated_by:
+              type: string
+            custom_attributes:
+              type: object
+          type: object
+      type: object
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow

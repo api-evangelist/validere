@@ -203,56 +203,11 @@ paths:
       - Workflow Tasks
 components:
   parameters:
-    WorkflowActionId:
-      description: Workflow Action ID
-      in: path
-      name: workflow_action_id
-      required: true
-      schema:
-        format: uuid
-        type: string
     FilterId:
       description: Filter ID
       example: 748970de-fd1f-4494-ae3f-47cc21ff205f
       in: path
       name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    WorkflowTaskId:
-      description: Workflow Task ID
-      in: path
-      name: workflow_task_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    FormSubmissionIdFull:
-      description: Form Submission ID
-      in: path
-      name: form_submission_id
       required: true
       schema:
         format: uuid
@@ -275,12 +230,210 @@ components:
         - asc
         - desc
         type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    WorkflowTaskId:
+      description: Workflow Task ID
+      in: path
+      name: workflow_task_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    FormSubmissionIdFull:
+      description: Form Submission ID
+      in: path
+      name: form_submission_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    WorkflowActionId:
+      description: Workflow Action ID
+      in: path
+      name: workflow_action_id
+      required: true
+      schema:
+        format: uuid
+        type: string
   schemas:
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    WorkflowTemplateFilterWithPrefix:
+      properties:
+        workflow_template.id:
+          type: string
+          format: uuid
+        workflow_template.category_id:
+          type: string
+          format: uuid
+        workflow_template.name:
+          type: string
+        workflow_template.description:
+          type: string
+        workflow_template.asset_type:
+          $ref: '#/components/schemas/AssetType'
+        workflow_template.status:
+          $ref: '#/components/schemas/WorkflowTemplateStatus'
+      type: object
+    IWorkflowTask:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        workflow_id:
+          type: string
+          format: uuid
+        step_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - open
+          - complete
+          - dismissed
+          - overdue
+        is_dismissible:
+          type: boolean
+        type:
+          type: string
+          enum:
+          - manual_task
+          - submit_form
+          - complete_event
+          - choice
+        assignee_user:
+          type: string
+        assignee_group:
+          type: string
+        restrict_assignee_completion:
+          type: boolean
+        callback_token:
+          type: string
+        due_date:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_by:
+          type: string
+          format: uuid
+      required:
+      - id
+      - company_id
+      - workflow_id
+      - step_id
+      - name
+      - description
+      - status
+      - type
+      - restrict_assignee_completion
+      - created_at
+      - updated_at
+      - updated_by
+    PagedWorkflowStepList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/IWorkflowStep'
+            type: array
+        type: object
+    WorkflowTaskType:
+      allOf:
+      - $ref: '#/components/schemas/schemas-UserTask'
+      - $ref: '#/components/schemas/SystemAction'
+    FilterStatus:
+      properties:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    CompanyId:
+      properties:
+        id:
+          format: uuid
+          type: string
     FilterName:
       properties:
         name:
           type: string
           example: My first filter
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    WorkflowTemplateStatus:
+      type: string
+      enum:
+      - active
+      - draft
+      - archive
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
     WorkflowStepType:
       type:
       - string
@@ -288,61 +441,134 @@ components:
       enum:
       - user_task
       - system_action
-    schemas-UserTask:
-      type: string
-      enum:
-      - manual_task
-      - submit_form
-      - complete_event
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    AssetType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
     WorkflowTaskFilterOutput:
       allOf:
       - $ref: '#/components/schemas/FilterOutput'
       - $ref: '#/components/schemas/WorkflowTaskFilter'
       type: object
-    WorkflowTemplateStatus:
-      type: string
-      enum:
-      - active
-      - draft
-      - archive
+    WorkflowCategoryFilterWithPrefix:
+      properties:
+        workflow_category.id:
+          type: string
+          format: uuid
+        workflow_category.name:
+          type: string
+        workflow_category.description:
+          type: string
+      type: object
+    IWorkflowAction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        company_id:
+          type: string
+          format: uuid
+        workflow_id:
+          type: string
+          format: uuid
+        step_id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - create_event
+          - form_choice
+          - delay
+          - create_form
+        created_at:
+          type: string
+      required:
+      - id
+      - company_id
+      - workflow_id
+      - step_id
+      - name
+      - description
+      - type
+      - created_at
+    WorkflowStepFilter:
+      type: object
+      properties:
+        filter:
+          description: A filter object for workflow steps where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            workflow_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
+            status: open
+          type: object
+          properties:
+            id:
+              type: string
+              format: uuid
+            workflow_id:
+              type: string
+              format: uuid
+            name:
+              type: string
+            description:
+              type: string
+            type:
+              $ref: '#/components/schemas/WorkflowTaskType'
+            step_type:
+              $ref: '#/components/schemas/WorkflowStepType'
+            status:
+              $ref: '#/components/schemas/WorkflowTaskStatus'
+            assigned_to:
+              type: string
+              format: uuid
+              deprecated: true
+            assignee_user:
+              type: string
+              description: filter tasks assigned to a specific user
+              format: uuid
+            assignee_group:
+              type: string
+              description: filter tasks assigned to a specific group
+              format: uuid
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+    WorkflowStepSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - type
+          - step_type
+          - status
+          - created_at
+          - updated_at
+          example: created_at
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
     IWorkflowStep:
       type: object
       properties:
@@ -444,78 +670,54 @@ components:
       - entity_name
       - created_at
       - updated_at
-    FilterStatus:
-      properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    IUpdateWorkflowTaskInput:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - open
-          - complete
-          - dismissed
-          - overdue
-        assignee_user:
-          type: string
-        assignee_group:
-          type: string
-        choice:
-          type: string
-          description: Include for choice task types to specify which choice
-    PagedWorkflowTaskList:
+    WorkflowTaskWithForm:
       allOf:
-      - $ref: '#/components/schemas/Pagination'
+      - $ref: '#/components/schemas/IWorkflowTask'
       - properties:
-          data:
+          config_form_schema:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              name:
+                type: string
+          form_submission:
             items:
-              $ref: '#/components/schemas/IWorkflowTask'
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                created_by:
+                  type: string
+                  format: uuid
+                status:
+                  $ref: '#/components/schemas/FormSubmissionStatus'
+                created_at:
+                  type: string
+                  format: datetime
+                form_schema:
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                  type: object
+              type: object
             type: array
         type: object
-    PagedWorkflowStepList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/IWorkflowStep'
-            type: array
-        type: object
-    WorkflowTaskFilterUpdateInput:
+    WorkflowTaskFilterInput:
       allOf:
       - $ref: '#/components/schemas/FilterInput'
       - $ref: '#/components/schemas/WorkflowTaskFilter'
-    WorkflowTaskStatus:
+      type: object
+    schemas-UserTask:
       type: string
       enum:
-      - complete
-      - open
-      - dismissed
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
+      - manual_task
+      - submit_form
+      - complete_event
     WorkflowTaskFilter:
       properties:
         filter:
@@ -577,64 +779,22 @@ components:
                 format: uuid
             type: object
       type: object
-    FormSubmissionStatus:
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
+    WorkflowTaskStatus:
       type: string
       enum:
-      - validated
-      - invalidated
-      - pending
-      - submitted
-      - draft
-      default: pending
-    WorkflowCategoryFilterWithPrefix:
-      properties:
-        workflow_category.id:
-          type: string
-          format: uuid
-        workflow_category.name:
-          type: string
-        workflow_category.description:
-          type: string
-      type: object
-    FilterTag:
-      properties:
-        tag:
-          type: string
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    UserTask:
+      - complete
+      - open
+      - dismissed
+    TemplatedReportStatus:
       type: string
       enum:
-      - manual_task
-      - submit_form
-      - complete_event
-      - choice
-    WorkflowTemplateFilterWithPrefix:
-      properties:
-        workflow_template.id:
-          type: string
-          format: uuid
-        workflow_template.category_id:
-          type: string
-          format: uuid
-        workflow_template.name:
-          type: string
-        workflow_template.description:
-          type: string
-        workflow_template.asset_type:
-          $ref: '#/components/schemas/AssetType'
-        workflow_template.status:
-          $ref: '#/components/schemas/WorkflowTemplateStatus'
-      type: object
+      - active
+      - archived
     SystemAction:
       type: string
       enum:
@@ -642,170 +802,30 @@ components:
       - form_choice
       - delay
       - create_form
-    PagedWorkflowTaskFilterOutput:
+    FilterOutput:
       allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/WorkflowTaskFilterOutput'
-            type: array
-        type: object
-    IWorkflowTask:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
       type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        company_id:
-          type: string
-          format: uuid
-        workflow_id:
-          type: string
-          format: uuid
-        step_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        status:
-          type: string
-          enum:
-          - open
-          - complete
-          - dismissed
-          - overdue
-        is_dismissible:
-          type: boolean
-        type:
-          type: string
-          enum:
-          - manual_task
-          - submit_form
-          - complete_event
-          - choice
-        assignee_user:
-          type: string
-        assignee_group:
-          type: string
-        restrict_assignee_completion:
-          type: boolean
-        callback_token:
-          type: string
-        due_date:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        created_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        updated_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        updated_by:
-          type: string
-          format: uuid
-      required:
-      - id
-      - company_id
-      - workflow_id
-      - step_id
-      - name
-      - description
-      - status
-      - type
-      - restrict_assignee_completion
-      - created_at
-      - updated_at
-      - updated_by
-    IWorkflowAction:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        company_id:
-          type: string
-          format: uuid
-        workflow_id:
-          type: string
-          format: uuid
-        step_id:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          enum:
-          - create_event
-          - form_choice
-          - delay
-          - create_form
-        created_at:
-          type: string
-      required:
-      - id
-      - company_id
-      - workflow_id
-      - step_id
-      - name
-      - description
-      - type
-      - created_at
-    WorkflowTaskWithForm:
-      allOf:
-      - $ref: '#/components/schemas/IWorkflowTask'
-      - properties:
-          config_form_schema:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              name:
-                type: string
-          form_submission:
-            items:
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                created_by:
-                  type: string
-                  format: uuid
-                status:
-                  $ref: '#/components/schemas/FormSubmissionStatus'
-                created_at:
-                  type: string
-                  format: datetime
-                form_schema:
-                  properties:
-                    id:
-                      type: string
-                      format: uuid
-                    name:
-                      type: string
-                  type: object
-              type: object
-            type: array
-        type: object
-    CompanyId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    WorkflowTaskFilterInput:
+    WorkflowTaskFilterUpdateInput:
       allOf:
       - $ref: '#/components/schemas/FilterInput'
       - $ref: '#/components/schemas/WorkflowTaskFilter'
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
     WorkflowTaskSort:
       properties:
@@ -825,78 +845,58 @@ components:
           - desc
           example: desc
           type: string
-    WorkflowTaskType:
+    FilterInput:
       allOf:
-      - $ref: '#/components/schemas/schemas-UserTask'
-      - $ref: '#/components/schemas/SystemAction'
-    FilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
-      - $ref: '#/components/schemas/FilterInput'
-      type: object
-    WorkflowStepFilter:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
+    IUpdateWorkflowTaskInput:
       type: object
       properties:
-        filter:
-          description: A filter object for workflow steps where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            workflow_id: 1b154c71-67be-1f51-40ce-3aefb42a6480
-            status: open
-          type: object
-          properties:
-            id:
-              type: string
-              format: uuid
-            workflow_id:
-              type: string
-              format: uuid
-            name:
-              type: string
-            description:
-              type: string
-            type:
-              $ref: '#/components/schemas/WorkflowTaskType'
-            step_type:
-              $ref: '#/components/schemas/WorkflowStepType'
-            status:
-              $ref: '#/components/schemas/WorkflowTaskStatus'
-            assigned_to:
-              type: string
-              format: uuid
-              deprecated: true
-            assignee_user:
-              type: string
-              description: filter tasks assigned to a specific user
-              format: uuid
-            assignee_group:
-              type: string
-              description: filter tasks assigned to a specific group
-              format: uuid
-            created_at:
-              type: string
-              format: date-time
-            updated_at:
-              type: string
-              format: date-time
-    WorkflowStepSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - description
-          - type
-          - step_type
-          - status
-          - created_at
-          - updated_at
-          example: created_at
+        status:
           type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
           enum:
-          - asc
-          - desc
-          example: desc
+          - open
+          - complete
+          - dismissed
+          - overdue
+        assignee_user:
           type: string
+        assignee_group:
+          type: string
+        choice:
+          type: string
+          description: Include for choice task types to specify which choice
+    PagedWorkflowTaskFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/WorkflowTaskFilterOutput'
+            type: array
+        type: object
+    UserTask:
+      type: string
+      enum:
+      - manual_task
+      - submit_form
+      - complete_event
+      - choice
+    PagedWorkflowTaskList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/IWorkflowTask'
+            type: array
+        type: object
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
