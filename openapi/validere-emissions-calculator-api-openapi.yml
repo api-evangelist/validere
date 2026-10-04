@@ -106,10 +106,10 @@ components:
         type: array
         items:
           $ref: '#/components/schemas/CalculatorVersionInformationField'
-    CalculatorId:
-      description: Calculator ID
+    LibraryId:
+      description: Library ID
       in: path
-      name: calculator_id
+      name: library_id
       required: true
       schema:
         type: string
@@ -120,10 +120,10 @@ components:
       required: true
       schema:
         type: string
-    LibraryId:
-      description: Library ID
+    CalculatorId:
+      description: Calculator ID
       in: path
-      name: library_id
+      name: calculator_id
       required: true
       schema:
         type: string

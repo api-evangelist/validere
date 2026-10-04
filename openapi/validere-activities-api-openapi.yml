@@ -61,6 +61,25 @@ paths:
       - Activities
 components:
   schemas:
+    ActivitySort:
+      properties:
+        sort_by:
+          enum:
+          - resource_type
+          - resource_id
+          - author_id
+          - action
+          - timestamp
+          example: timestamp
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     PagedActivityList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -70,6 +89,56 @@ components:
               $ref: '#/components/schemas/Activity'
             type: array
         type: object
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Activity:
+      properties:
+        resource_type:
+          type: string
+        resource_id:
+          type: string
+          format: uuid
+        author_id:
+          type: string
+          format: uuid
+        action:
+          type: string
+          format: uuid
+        before:
+          type: object
+          example:
+            name: old name
+            description: old description
+        after:
+          type: object
+          example:
+            name: new name
+            description: new description
+        timestamp:
+          format: date-time
+          type: string
+      type: object
     Paginated:
       properties:
         page:
@@ -107,75 +176,6 @@ components:
               type: string
               format: date-time
           type: object
-      type: object
-    ActivitySort:
-      properties:
-        sort_by:
-          enum:
-          - resource_type
-          - resource_id
-          - author_id
-          - action
-          - timestamp
-          example: timestamp
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    ResourceType:
-      type: string
-      enum:
-      - facility
-      - equipment
-      - device
-      - flow
-      - record_value
-    Activity:
-      properties:
-        resource_type:
-          type: string
-        resource_id:
-          type: string
-          format: uuid
-        author_id:
-          type: string
-          format: uuid
-        action:
-          type: string
-          format: uuid
-        before:
-          type: object
-          example:
-            name: old name
-            description: old description
-        after:
-          type: object
-          example:
-            name: new name
-            description: new description
-        timestamp:
-          format: date-time
-          type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
       type: object
   parameters:
     ResourceType:

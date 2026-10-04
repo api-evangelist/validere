@@ -108,6 +108,77 @@ paths:
       - Event Schemas
 components:
   schemas:
+    EventSchemaSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - description
+          - status
+          - version
+          - priority
+          - event_category.id
+          - event_category.name
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    EventSchema:
+      allOf:
+      - $ref: '#/components/schemas/EventSchemaCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          created_by:
+            format: uuid
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+          updated_by:
+            format: uuid
+            type: string
+      type: object
+    EventSchemaWithForms:
+      allOf:
+      - $ref: '#/components/schemas/EventSchema'
+      - properties:
+          form_schemas:
+            type: array
+            items:
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                name:
+                  type: string
+                description:
+                  type: string
+                form_category:
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                    name:
+                      type: string
+                  type: object
+                required:
+                  type: boolean
+              type: object
+      type: object
     EventSchemaFilter:
       properties:
         filter:
@@ -141,53 +212,48 @@ components:
               type: string
               format: date-time
           type: object
-    EventSchemaSort:
+    EventSchemaCreate:
       properties:
-        sort_by:
-          enum:
-          - name
-          - description
-          - status
-          - version
-          - priority
-          - event_category.id
-          - event_category.name
-          example: name
+        name:
           type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
+          maxLength: 100
+        version:
           type: string
-    EventSchemaWithForms:
-      allOf:
-      - $ref: '#/components/schemas/EventSchema'
-      - properties:
-          form_schemas:
-            type: array
-            items:
-              properties:
-                id:
-                  type: string
-                  format: uuid
-                name:
-                  type: string
-                description:
-                  type: string
-                form_category:
-                  properties:
-                    id:
-                      type: string
-                      format: uuid
-                    name:
-                      type: string
-                  type: object
-                required:
-                  type: boolean
-              type: object
+          maxLength: 20
+        priority:
+          type: string
+          enum:
+          - high
+          - medium
+          - low
+        status:
+          type: string
+          enum:
+          - active
+          - archived
+        description:
+          type: string
+          maxLength: 256
+        config:
+          $ref: '#/components/schemas/EventSchemaConfig'
+        event_category_id:
+          type: string
+          format: uuid
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
     Paginated:
       properties:
@@ -250,72 +316,6 @@ components:
           type: object
         has_devices:
           type: boolean
-    EventSchemaCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        version:
-          type: string
-          maxLength: 20
-        priority:
-          type: string
-          enum:
-          - high
-          - medium
-          - low
-        status:
-          type: string
-          enum:
-          - active
-          - archived
-        description:
-          type: string
-          maxLength: 256
-        config:
-          $ref: '#/components/schemas/EventSchemaConfig'
-        event_category_id:
-          type: string
-          format: uuid
-      type: object
-    EventSchema:
-      allOf:
-      - $ref: '#/components/schemas/EventSchemaCreate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          created_at:
-            format: date-time
-            type: string
-          created_by:
-            format: uuid
-            type: string
-          updated_at:
-            format: date-time
-            type: string
-          updated_by:
-            format: uuid
-            type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
   parameters:
     EventSchemaId:
       description: Event Schema ID

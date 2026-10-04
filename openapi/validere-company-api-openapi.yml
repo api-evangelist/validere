@@ -105,7 +105,7 @@ paths:
       - Company
 components:
   schemas:
-    ICreateCompanyWithAdminInput:
+    ICompany:
       type: object
       properties:
         id:
@@ -116,23 +116,30 @@ components:
         localization:
           type: object
           additionalProperties: {}
-        admin:
-          type: object
-          properties:
-            name:
-              type: string
-              minLength: 1
-              maxLength: 100
-            email:
-              type: string
-              format: email
-          required:
-          - name
-          - email
+        created_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        created_by:
+          type: string
+          format: uuid
+        updated_at:
+          anyOf:
+          - type: string
+          - type: string
+            format: date-time
+        updated_by:
+          type: string
+          format: uuid
       required:
+      - id
       - name
       - localization
-      - admin
+      - created_at
+      - created_by
+      - updated_at
+      - updated_by
     AuditFields:
       properties:
         created_at:
@@ -176,41 +183,29 @@ components:
           - desc
           example: desc
           type: string
-    ICompany:
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    IUpdateCompanyInput:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
         name:
           type: string
         localization:
           type: object
           additionalProperties: {}
-        created_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        created_by:
-          type: string
-          format: uuid
-        updated_at:
-          anyOf:
-          - type: string
-          - type: string
-            format: date-time
-        updated_by:
-          type: string
-          format: uuid
-      required:
-      - id
-      - name
-      - localization
-      - created_at
-      - created_by
-      - updated_at
-      - updated_by
     Paginated:
       properties:
         page:
@@ -236,38 +231,35 @@ components:
               name:
                 type: string
           type: object
-    IUpdateCompanyInput:
+    ICreateCompanyWithAdminInput:
       type: object
       properties:
+        id:
+          type: string
+          format: uuid
         name:
           type: string
         localization:
           type: object
           additionalProperties: {}
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
+        admin:
+          type: object
+          properties:
+            name:
+              type: string
+              minLength: 1
+              maxLength: 100
+            email:
+              type: string
+              format: email
+          required:
+          - name
+          - email
+      required:
+      - name
+      - localization
+      - admin
   parameters:
-    TenantId:
-      description: Tenant ID for admin users
-      example: ''
-      in: query
-      name: tenant_id
-      required: false
-      schema:
-        type: string
     CompanyId:
       schema:
         format: uuid
@@ -276,3 +268,11 @@ components:
       description: Company ID
       in: path
       name: company_id
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string

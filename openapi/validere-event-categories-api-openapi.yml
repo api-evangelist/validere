@@ -104,81 +104,8 @@ paths:
       tags:
       - Event Categories
 components:
-  parameters:
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    EventCategoryName:
-      description: Event Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    EventCategoryArchived:
-      description: Event Category archived
-      in: query
-      name: archived
-      required: false
-      schema:
-        default: false
-        type: boolean
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    EventCategoryId:
-      description: Event Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
   schemas:
-    EventCategory:
-      allOf:
-      - $ref: '#/components/schemas/EventCategoryCreate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-          company_id:
-            format: uuid
-            type: string
-          created_at:
-            format: date-time
-            type: string
-          updated_at:
-            format: date-time
-            type: string
-      type: object
-    EventCategoryCreate:
+    EventCategoryUpdate:
       properties:
         name:
           type: string
@@ -186,7 +113,7 @@ components:
         archived:
           type: boolean
       type: object
-    EventCategoryUpdate:
+    EventCategoryCreate:
       properties:
         name:
           type: string
@@ -209,3 +136,76 @@ components:
           type: number
           example: 6
       type: object
+    EventCategory:
+      allOf:
+      - $ref: '#/components/schemas/EventCategoryCreate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          company_id:
+            format: uuid
+            type: string
+          created_at:
+            format: date-time
+            type: string
+          updated_at:
+            format: date-time
+            type: string
+      type: object
+  parameters:
+    EventCategoryArchived:
+      description: Event Category archived
+      in: query
+      name: archived
+      required: false
+      schema:
+        default: false
+        type: boolean
+    EventCategoryId:
+      description: Event Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    EventCategoryName:
+      description: Event Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number

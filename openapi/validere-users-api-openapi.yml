@@ -186,79 +186,37 @@ paths:
       - Users
 components:
   schemas:
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
+    RoleMembershipWithRole:
+      allOf:
+      - $ref: '#/components/schemas/RoleMembership'
+      - properties:
+          role:
+            $ref: '#/components/schemas/GroupBasic'
+    UserPermissions:
+      type: array
+      items:
+        $ref: '#/components/schemas/PermissionInput'
+    PermissionDecision:
       type: object
-    IUpdateUserInput:
-      type: object
-      properties:
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        phone:
-          type:
-          - string
-          - 'null'
-        quicksight:
-          type: boolean
-          default: false
-        status:
-          type: string
-          enum:
-          - active
-          - disabled
-          default: active
-        timezone:
-          type: string
-          default: US/Central
-          example: America/Los_Angeles
-    ICreateUserInput:
+      additionalProperties:
+        type: boolean
+      example:
+        facilities:read: true
+        equipment:read: true
+    PermissionDecisionRequest:
       type: object
       properties:
-        id:
-          type: string
-          format: uuid
-          default: 0007bb10-5367-4d41-ad10-b05468b52529
-        name:
-          type: string
-          minLength: 1
-          maxLength: 100
-        email:
-          type: string
-          format: email
-        phone:
-          type:
-          - string
-          - 'null'
-        quicksight:
-          type: boolean
-          default: false
-        status:
-          type: string
-          enum:
-          - active
-          - disabled
-          default: active
-        timezone:
-          type: string
-          default: US/Central
-          example: America/Los_Angeles
-      required:
-      - name
-      - email
+        permissions:
+          type: array
+          items:
+            type: string
+          example:
+          - facilities:read
+          - facilities:write
+          - facilities:delete
+          - equipment:read
+          - equipment:write
+          - equipment:delete
     UserFilter:
       properties:
         filter:
@@ -290,108 +248,6 @@ components:
           format: uuid
         name:
           type: string
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
-    RoleMembership:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-            format: uuid
-          role_id:
-            type: string
-            format: uuid
-          user_id:
-            type: string
-            format: uuid
-    PagedUserList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/IUser'
-              - properties:
-                  user_groups:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  user_groups_count:
-                    type: number
-                  roles:
-                    items:
-                      $ref: '#/components/schemas/GroupBasic'
-                  roles_count:
-                    type: number
-                type: object
-        type: object
-    UserStatus:
-      type: string
-      enum:
-      - active
-      - disabled
-    UserSort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - name
-          - quicksight
-          - timezone
-          - status
-          - email
-          - created_at
-          - updated_at
-          - created_by
-          - updated_by
-          example: name
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    PermissionDecisionRequest:
-      type: object
-      properties:
-        permissions:
-          type: array
-          items:
-            type: string
-          example:
-          - facilities:read
-          - facilities:write
-          - facilities:delete
-          - equipment:read
-          - equipment:write
-          - equipment:delete
-    RoleMembershipWithRole:
-      allOf:
-      - $ref: '#/components/schemas/RoleMembership'
-      - properties:
-          role:
-            $ref: '#/components/schemas/GroupBasic'
-    PermissionDecision:
-      type: object
-      additionalProperties:
-        type: boolean
-      example:
-        facilities:read: true
-        equipment:read: true
     UserWithCompanies:
       type: object
       properties:
@@ -465,25 +321,11 @@ components:
       - updated_at
       - updated_by
       - companies
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    UserPermissions:
-      type: array
-      items:
-        $ref: '#/components/schemas/PermissionInput'
+    UserStatus:
+      type: string
+      enum:
+      - active
+      - disabled
     PermissionInput:
       properties:
         name:
@@ -500,6 +342,89 @@ components:
                 $like: Facility 1
           type: object
       type: object
+    RoleMembership:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+            format: uuid
+          role_id:
+            type: string
+            format: uuid
+          user_id:
+            type: string
+            format: uuid
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedUserList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/IUser'
+              - properties:
+                  user_groups:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  user_groups_count:
+                    type: number
+                  roles:
+                    items:
+                      $ref: '#/components/schemas/GroupBasic'
+                  roles_count:
+                    type: number
+                type: object
+        type: object
+    ICreateUserInput:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          default: 0007bb10-5367-4d41-ad10-b05468b52529
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        email:
+          type: string
+          format: email
+        phone:
+          type:
+          - string
+          - 'null'
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+      required:
+      - name
+      - email
     IUser:
       type: object
       properties:
@@ -559,6 +484,81 @@ components:
       - created_by
       - updated_at
       - updated_by
+    UserSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - name
+          - quicksight
+          - timezone
+          - status
+          - email
+          - created_at
+          - updated_at
+          - created_by
+          - updated_by
+          example: name
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    IUpdateUserInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 100
+        phone:
+          type:
+          - string
+          - 'null'
+        quicksight:
+          type: boolean
+          default: false
+        status:
+          type: string
+          enum:
+          - active
+          - disabled
+          default: active
+        timezone:
+          type: string
+          default: US/Central
+          example: America/Los_Angeles
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
   parameters:
     UserId:
       description: User ID

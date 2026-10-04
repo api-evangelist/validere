@@ -89,7 +89,86 @@ paths:
       tags:
       - custom_attribute_definition
 components:
+  parameters:
+    CustomAttributeFieldName:
+      description: field name identifier for custom attribute
+      example: attribute_1
+      in: path
+      name: field_name
+      required: true
+      schema:
+        type: string
+    CustomAttributeDefinitionEntitySubType:
+      description: String to search for in entity subtype
+      in: query
+      name: entity_subtype
+      required: false
+      schema:
+        type: string
+    CustomAttributeDefinitionArchived:
+      description: Set true to return archived attribute definitions
+      in: query
+      name: archived
+      required: false
+      schema:
+        type: boolean
+    CustomAttributeDefinitionFieldName:
+      description: String to search for in field names
+      in: query
+      name: field_name
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    SortByCustomAttributeDefinition:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        enum:
+        - field_name
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    CustomAttributeEntityType:
+      description: Supported attribute type for custom attribute
+      example: equipment
+      in: path
+      name: entity_type
+      required: true
+      schema:
+        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
   schemas:
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
     CustomAttributeDefinitionUpdateInput:
       properties:
         archived:
@@ -114,6 +193,48 @@ components:
             type: string
           type: array
       type: object
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    CustomAttributeDefinition:
+      properties:
+        archived:
+          type: boolean
+        company_id:
+          type: string
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
+        display_name:
+          type: string
+        entity_type:
+          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+        entity_subtype:
+          type: string
+          deprecated: true
+        entity_subtypes:
+          items:
+            type: string
+          type: array
+        field_name:
+          type: string
+        is_required:
+          type: boolean
+        lookup_entity_type:
+          $ref: '#/components/schemas/MeasurementSubjectEntityType'
+        pick_list_values:
+          items:
+            type: string
+          type: array
+        unit:
+          type: string
+      type: object
     PagedCustomAttributeDefinitionList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -123,6 +244,21 @@ components:
               $ref: '#/components/schemas/CustomAttributeDefinition'
             type: array
         type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     CustomAttributeDefinitionInput:
       properties:
         data_type:
@@ -170,139 +306,3 @@ components:
       - date
       - date-time
       - file
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    MeasurementSubjectEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    CustomAttributeDefinition:
-      properties:
-        archived:
-          type: boolean
-        company_id:
-          type: string
-        data_type:
-          $ref: '#/components/schemas/AttributeTypes'
-        description:
-          type: string
-        display_name:
-          type: string
-        entity_type:
-          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-        entity_subtype:
-          type: string
-          deprecated: true
-        entity_subtypes:
-          items:
-            type: string
-          type: array
-        field_name:
-          type: string
-        is_required:
-          type: boolean
-        lookup_entity_type:
-          $ref: '#/components/schemas/MeasurementSubjectEntityType'
-        pick_list_values:
-          items:
-            type: string
-          type: array
-        unit:
-          type: string
-      type: object
-  parameters:
-    CustomAttributeDefinitionArchived:
-      description: Set true to return archived attribute definitions
-      in: query
-      name: archived
-      required: false
-      schema:
-        type: boolean
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    CustomAttributeDefinitionEntitySubType:
-      description: String to search for in entity subtype
-      in: query
-      name: entity_subtype
-      required: false
-      schema:
-        type: string
-    CustomAttributeDefinitionFieldName:
-      description: String to search for in field names
-      in: query
-      name: field_name
-      required: false
-      schema:
-        type: string
-    CustomAttributeFieldName:
-      description: field name identifier for custom attribute
-      example: attribute_1
-      in: path
-      name: field_name
-      required: true
-      schema:
-        type: string
-    SortByCustomAttributeDefinition:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        enum:
-        - field_name
-    CustomAttributeEntityType:
-      description: Supported attribute type for custom attribute
-      example: equipment
-      in: path
-      name: entity_type
-      required: true
-      schema:
-        $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number

@@ -87,18 +87,6 @@ components:
               isDeprecated:
                 type: boolean
           type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     Pagination:
       properties:
         page_number:
@@ -114,6 +102,18 @@ components:
           type: number
           example: 6
       type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
   parameters:
     FeatureFlagId:
       description: Feature Flag Name (any version)

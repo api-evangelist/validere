@@ -42,6 +42,18 @@ paths:
       tags:
       - equipment_types
 components:
+  schemas:
+    EquipmentType:
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    EquipmentTypeList:
+      items:
+        $ref: '#/components/schemas/EquipmentType'
+      type: array
   parameters:
     EquipmentTypeId:
       description: Equipment Type Id
@@ -51,15 +63,3 @@ components:
       required: true
       schema:
         type: string
-  schemas:
-    EquipmentTypeList:
-      items:
-        $ref: '#/components/schemas/EquipmentType'
-      type: array
-    EquipmentType:
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-      type: object

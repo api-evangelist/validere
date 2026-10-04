@@ -277,6 +277,25 @@ paths:
       - APIKeyHeader: []
 components:
   schemas:
+    CustomAttributeEntityTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeEntityType'
+      type: array
+    schemas-CustomAttributeEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    CodeNamePair:
+      type: object
+      properties:
+        code:
+          type: string
+        name:
+          type: string
     CustomAttributeDataType:
       properties:
         id:
@@ -284,6 +303,10 @@ components:
         name:
           type: string
       type: object
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
     CustomAttributeEntityType:
       properties:
         id:
@@ -291,10 +314,16 @@ components:
         name:
           type: string
       type: object
-    CustomAttributeDataTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeDataType'
+    EnumIdNamePairList:
       type: array
+      items:
+        properties:
+          id:
+            type: string
+            description: enum value
+          name:
+            type: string
+            description: display name
     AttributeTypes:
       type: string
       enum:
@@ -310,51 +339,6 @@ components:
       - date
       - date-time
       - file
-    CodeNamePair:
-      type: object
-      properties:
-        code:
-          type: string
-        name:
-          type: string
-    CustomAttributeEntityTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeEntityType'
-      type: array
-    schemas-CustomAttributeEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    EnumIdNamePairList:
-      type: array
-      items:
-        properties:
-          id:
-            type: string
-            description: enum value
-          name:
-            type: string
-            description: display name
-    TypeMetadataResponse:
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          items:
-            additionalProperties: true
-            type: object
-          type: array
-          title: Data
-      type: object
-      required:
-      - meta
-      - data
-      title: TypeMetadataResponse
-      description: TypeMetadata response envelope
     ResponseMeta:
       properties:
         type:
@@ -381,6 +365,22 @@ components:
       - type
       title: ResponseMeta
       description: Standard response envelope meta object
+    TypeMetadataResponse:
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
+      type: object
+      required:
+      - meta
+      - data
+      title: TypeMetadataResponse
+      description: TypeMetadata response envelope
   securitySchemes:
     HTTPBearer:
       type: http

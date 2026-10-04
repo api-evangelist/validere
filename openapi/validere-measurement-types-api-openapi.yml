@@ -96,25 +96,36 @@ paths:
       tags:
       - Measurement Types
 components:
+  parameters:
+    MeasurementTypeSubjectId:
+      description: ID of the entity you want to list the measurement types for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    MeasurementQuantityId:
+      description: ID of the measurement quantity
+      in: path
+      name: quantity
+      required: true
+      schema:
+        type: string
   schemas:
-    MeasurementTypeDataType:
-      type: string
-      enum:
-      - int
-      - float
-    MeasurementTypeList:
-      items:
-        $ref: '#/components/schemas/MeasurementType'
-      type: array
-    MeasurementQuantityList:
-      items:
-        properties:
-          id:
+    MeasurementType:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/MeasurementTypeDataType'
+        id:
+          type: string
+        name:
+          type: string
+        units:
+          items:
             type: string
-          name:
-            type: string
-        type: object
-      type: array
+          type: array
+      type: object
     MeasurementTypeV2:
       properties:
         id:
@@ -146,32 +157,21 @@ components:
         id:
           type: string
       type: object
-    MeasurementType:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/MeasurementTypeDataType'
-        id:
-          type: string
-        name:
-          type: string
-        units:
-          items:
+    MeasurementTypeDataType:
+      type: string
+      enum:
+      - int
+      - float
+    MeasurementTypeList:
+      items:
+        $ref: '#/components/schemas/MeasurementType'
+      type: array
+    MeasurementQuantityList:
+      items:
+        properties:
+          id:
             type: string
-          type: array
-      type: object
-  parameters:
-    MeasurementTypeSubjectId:
-      description: ID of the entity you want to list the measurement types for
-      in: query
-      name: subject_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    MeasurementQuantityId:
-      description: ID of the measurement quantity
-      in: path
-      name: quantity
-      required: true
-      schema:
-        type: string
+          name:
+            type: string
+        type: object
+      type: array

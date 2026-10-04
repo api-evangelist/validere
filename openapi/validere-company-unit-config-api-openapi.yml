@@ -150,15 +150,6 @@ paths:
       - company_unit_config
 components:
   parameters:
-    FilterId:
-      description: Filter ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: filter_id
-      required: true
-      schema:
-        format: uuid
-        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -170,12 +161,27 @@ components:
         - asc
         - desc
         type: string
-    MeasurementType:
-      description: Measurement type of the measurements being retrieved
-      example: volume
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    FilterId:
+      description: Filter ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
       in: path
-      name: measurement_type
+      name: filter_id
       required: true
+      schema:
+        format: uuid
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
       schema:
         type: string
     PageSize:
@@ -185,36 +191,15 @@ components:
       required: false
       schema:
         type: number
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
       schema:
         type: string
   schemas:
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
     PagedUnitConfigFilterOutput:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -224,10 +209,11 @@ components:
               $ref: '#/components/schemas/UnitConfigFilterOutput'
             type: array
         type: object
-    FilterStatus:
+    CompanyId:
       properties:
-        status:
-          $ref: '#/components/schemas/TemplatedReportStatus'
+        id:
+          format: uuid
+          type: string
     PagedCompanyUnitConfig:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -237,52 +223,16 @@ components:
               $ref: '#/components/schemas/CompanyUnitConfig'
             type: array
         type: object
-    CompanyId:
+    FilterStatus:
       properties:
-        id:
-          format: uuid
-          type: string
-    FilterName:
-      properties:
-        name:
-          type: string
-          example: My first filter
-    UnitConfigUpdate:
+        status:
+          $ref: '#/components/schemas/TemplatedReportStatus'
+    FilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/CompanyId'
+      - $ref: '#/components/schemas/FilterId'
+      - $ref: '#/components/schemas/FilterInput'
       type: object
-      properties:
-        measurement_unit:
-          type: string
-          example: g
-        precision:
-          type: integer
-          example: 3
-    FilterMetadata:
-      properties:
-        metadata:
-          type: array
-          items:
-            type: object
-          example:
-          - key: calculator_configuration.year_month
-            isSelected: true
-          - key: flow.type
-            isSelected: false
-    FilterTag:
-      properties:
-        tag:
-          type: string
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     UnitConfigFilter:
       properties:
         filter:
@@ -294,11 +244,11 @@ components:
             measurement_unit:
               type: string
               example: l
-    UnitConfigFilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/UnitConfigFilter'
-      type: object
+    FilterId:
+      properties:
+        id:
+          format: uuid
+          type: string
     CompanyUnitConfig:
       allOf:
       - $ref: '#/components/schemas/AuditFields'
@@ -310,31 +260,35 @@ components:
         company_id:
           type: string
           format: uuid
-    FilterId:
-      properties:
-        id:
-          format: uuid
-          type: string
-    TemplatedReportStatus:
-      type: string
-      enum:
-      - active
-      - archived
-    FilterOutput:
+    UnitConfigFilterInput:
       allOf:
-      - $ref: '#/components/schemas/CompanyId'
-      - $ref: '#/components/schemas/FilterId'
       - $ref: '#/components/schemas/FilterInput'
-      type: object
-    UnitConfigFilterOutput:
-      allOf:
-      - $ref: '#/components/schemas/FilterOutput'
       - $ref: '#/components/schemas/UnitConfigFilter'
-      - properties:
-          entity_type:
-            example: company_unit_config
-            type: string
       type: object
+    UnitConfigUpdate:
+      type: object
+      properties:
+        measurement_unit:
+          type: string
+          example: g
+        precision:
+          type: integer
+          example: 3
+    UnitConfigFilterUpdateInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/FilterInput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+    FilterTag:
+      properties:
+        tag:
+          type: string
+    FilterInput:
+      allOf:
+      - $ref: '#/components/schemas/FilterName'
+      - $ref: '#/components/schemas/FilterStatus'
+      - $ref: '#/components/schemas/FilterTag'
+      - $ref: '#/components/schemas/FilterMetadata'
     Pagination:
       properties:
         page_number:
@@ -350,17 +304,11 @@ components:
           type: number
           example: 6
       type: object
-    FilterInput:
-      allOf:
-      - $ref: '#/components/schemas/FilterName'
-      - $ref: '#/components/schemas/FilterStatus'
-      - $ref: '#/components/schemas/FilterTag'
-      - $ref: '#/components/schemas/FilterMetadata'
-    UnitConfigFilterUpdateInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/FilterInput'
-      - $ref: '#/components/schemas/UnitConfigFilter'
+    FilterName:
+      properties:
+        name:
+          type: string
+          example: My first filter
     UnitConfigSort:
       properties:
         sort_by:
@@ -379,3 +327,55 @@ components:
           - desc
           example: desc
           type: string
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    UnitConfigFilterOutput:
+      allOf:
+      - $ref: '#/components/schemas/FilterOutput'
+      - $ref: '#/components/schemas/UnitConfigFilter'
+      - properties:
+          entity_type:
+            example: company_unit_config
+            type: string
+      type: object
+    TemplatedReportStatus:
+      type: string
+      enum:
+      - active
+      - archived
+    FilterMetadata:
+      properties:
+        metadata:
+          type: array
+          items:
+            type: object
+          example:
+          - key: calculator_configuration.year_month
+            isSelected: true
+          - key: flow.type
+            isSelected: false
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number

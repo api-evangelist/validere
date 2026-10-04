@@ -99,19 +99,15 @@ components:
               $ref: '#/components/schemas/JobItem'
             type: array
         type: object
-    JobStatus:
-      type: string
-      enum:
-      - started
-      - finished
-      - failed
-      - partial
-    JobType:
-      type: string
-      enum:
-      - run_calculation
-      - apply_default_record_configuration
-      - apply_default_calculator_configuration
+    JobItemStatusCounts:
+      type: object
+      properties:
+        success:
+          type: number
+        failed:
+          type: number
+        skipped:
+          type: number
     BulkItemStatus:
       type: string
       enum:
@@ -149,43 +145,15 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
-    JobItemStatusCounts:
-      type: object
-      properties:
-        success:
-          type: number
-        failed:
-          type: number
-        skipped:
-          type: number
-    JobItem:
-      properties:
-        key:
-          type: string
-        company_id:
-          type: string
-          format: uuid
-        job_id:
-          type: string
-          format: uuid
-        status:
-          $ref: '#/components/schemas/BulkItemStatus'
-        input:
-          type: object
-        output:
-          type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+    PagedJobs:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Job'
+            type: array
+        type: object
     JobV2:
       properties:
         id:
@@ -214,6 +182,62 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
+    JobStatus:
+      type: string
+      enum:
+      - started
+      - finished
+      - failed
+      - partial
+    JobType:
+      type: string
+      enum:
+      - run_calculation
+      - apply_default_record_configuration
+      - apply_default_calculator_configuration
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    JobItem:
+      properties:
+        key:
+          type: string
+        company_id:
+          type: string
+          format: uuid
+        job_id:
+          type: string
+          format: uuid
+        status:
+          $ref: '#/components/schemas/BulkItemStatus'
+        input:
+          type: object
+        output:
+          type: object
     JobFilter:
       properties:
         filter:
@@ -231,39 +255,21 @@ components:
             finished_at:
               type: string
               format: date-time
-    PagedJobs:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Job'
-            type: array
-        type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
   parameters:
-    JobId:
-      description: Job ID
-      in: path
-      name: job_id
-      required: true
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
       schema:
-        format: uuid
         type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
     SortDirection:
       description: sort direction
       example: desc
@@ -275,6 +281,14 @@ components:
         - asc
         - desc
         type: string
+    JobId:
+      description: Job ID
+      in: path
+      name: job_id
+      required: true
+      schema:
+        format: uuid
+        type: string
     Page:
       description: page number
       in: query
@@ -282,17 +296,3 @@ components:
       required: false
       schema:
         type: number
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string

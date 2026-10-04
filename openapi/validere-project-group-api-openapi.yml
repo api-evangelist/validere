@@ -185,39 +185,28 @@ paths:
       - project_group
 components:
   schemas:
-    ProjectGroupPublicFilter:
+    ProjectGroupCreateUpdate:
       properties:
-        filter:
-          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            name: Basin
-          properties:
-            name:
-              type: string
-            status:
-              $ref: '#/components/schemas/ProjectGroupStatus'
-            project_developer:
-              type: string
-            protocol:
-              type: string
-            country:
-              type: string
-          type: object
-      type: object
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
+        name:
           type: string
-        updated_at:
-          format: date-time
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/ProjectGroupStatus'
+        project_developer:
           type: string
-        created_by:
-          format: uuid
+          maxLength: 256
+        start_date:
           type: string
-        updated_by:
-          format: uuid
+          format: date
+        end_date:
           type: string
+          format: date
+        protocol:
+          type: string
+          maxLength: 256
+        country:
+          type: string
+          maxLength: 256
       type: object
     ProjectGroupFilter:
       properties:
@@ -238,7 +227,57 @@ components:
               type: string
           type: object
       type: object
-    ProjectGroupPublicSort:
+    ProjectGroupStatus:
+      type: string
+      enum:
+      - active
+      - closed
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
+    ProjectGroupPublicFilter:
+      properties:
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
+      type: object
+    ProjectGroup:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+    ProjectGroupSort:
       properties:
         sort_by:
           enum:
@@ -258,49 +297,22 @@ components:
           example: asc
           type: string
       type: object
-    ProjectGroupStatus:
-      type: string
-      enum:
-      - active
-      - closed
-    ProjectGroupSummary:
+    Pagination:
       properties:
-        summary:
-          properties:
-            project_periods:
-              type: number
-            total_active_credits:
-              type: number
-            total_retired_credits:
-              type: number
-            buffer_credits:
-              type: number
-          type: object
-      type: object
-    ProjectGroup:
-      allOf:
-      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
+        page_number:
+          type: number
           example: 0
-          type: number
         page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
           type: number
-    ProjectGroupSort:
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ProjectGroupPublicSort:
       properties:
         sort_by:
           enum:
@@ -327,44 +339,32 @@ components:
           id:
             format: uuid
             type: string
-    ProjectGroupCreateUpdate:
+    ProjectGroupSummary:
       properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/ProjectGroupStatus'
-        project_developer:
-          type: string
-          maxLength: 256
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        protocol:
-          type: string
-          maxLength: 256
-        country:
-          type: string
-          maxLength: 256
+        summary:
+          properties:
+            project_periods:
+              type: number
+            total_active_credits:
+              type: number
+            total_retired_credits:
+              type: number
+            buffer_credits:
+              type: number
+          type: object
       type: object
-    Pagination:
+    Paginated:
       properties:
-        page_number:
-          type: number
+        page:
+          default: 0
+          description: Which page to return
           example: 0
+          type: number
         page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
           type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
   parameters:
     CompanyId:
       schema:

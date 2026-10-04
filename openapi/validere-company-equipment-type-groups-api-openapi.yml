@@ -79,16 +79,29 @@ paths:
       tags:
       - company_equipment_type_groups
 components:
-  schemas:
-    CompanyEquipmentTypeGroup:
-      properties:
-        company_id:
-          format: uuid
-          type: string
-        group_name:
-          example: subpartW
-          type: string
   parameters:
+    EquipmentTypeGroupName:
+      description: Name of an equipment type group
+      in: path
+      name: group_name
+      required: true
+      schema:
+        example: subpartW
+        type: string
+    EquipmentTypeGroupNameQuery:
+      description: equipment type group name
+      in: query
+      name: group_name
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
     SortDirection:
       description: sort direction
       example: desc
@@ -100,25 +113,12 @@ components:
         - asc
         - desc
         type: string
-    EquipmentTypeGroupNameQuery:
-      description: equipment type group name
-      in: query
-      name: group_name
-      required: false
-      schema:
-        type: string
-    EquipmentTypeGroupName:
-      description: Name of an equipment type group
-      in: path
-      name: group_name
-      required: true
-      schema:
-        example: subpartW
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
+  schemas:
+    CompanyEquipmentTypeGroup:
+      properties:
+        company_id:
+          format: uuid
+          type: string
+        group_name:
+          example: subpartW
+          type: string

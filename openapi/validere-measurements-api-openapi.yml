@@ -139,171 +139,105 @@ paths:
       tags:
       - Measurements
 components:
-  parameters:
-    DeviceIdQuery:
-      description: Id of device
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: query
-      name: device_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    GroupBy:
-      description: group by
-      example: measurement_type
-      in: query
-      name: group_by
-      required: false
-      schema:
-        type: string
-    FormSubmissionStatuses:
-      description: Form submission status to filter on, can be comma separated list
-      in: query
-      name: form_submission_statuses
-      required: false
-      schema:
-        type: string
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    EndDate:
-      description: end date
-      example: '2022-11-30T09:12:28.000Z'
-      in: query
-      name: end
-      schema:
-        format: date-time
-        type: string
-    MeasurementType:
-      description: Measurement type of the measurements being retrieved
-      example: volume
-      in: path
-      name: measurement_type
-      required: true
-      schema:
-        type: string
-    MeasurementTypeSubjectType:
-      description: Type of the entity you want to list the measurement types for. Required if ID is defined.
-      in: query
-      name: subject_type
-      required: false
-      schema:
-        $ref: '#/components/schemas/MeasurementSubjectEntityType'
-    DeviceIdQueryOptional:
-      description: ID of device
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: query
-      name: device_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    StartDate:
-      description: start date - default value is current date time
-      example: '2022-11-20T09:12:28.000Z'
-      in: query
-      name: start
-      schema:
-        format: date-time
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    IncludeForms:
-      description: If form measurements should be included
-      in: query
-      name: include_forms
-      required: false
-      schema:
-        type: boolean
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    MeasurementSeriesSubjectType:
-      description: Type of the entity you want to list the measurements for. Required if ID is defined.
-      in: query
-      name: subject_type
-      required: false
-      schema:
-        $ref: '#/components/schemas/MeasurementSubjectEntityType'
-    AggregateFunction:
-      description: Aggregate Function
-      example: avg
-      in: query
-      name: func
-      required: false
-      schema:
-        enum:
-        - avg
-        - sum
-    MeasurementTypeSubjectId:
-      description: ID of the entity you want to list the measurement types for
-      in: query
-      name: subject_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesSubjectId:
-      description: ID of the entity you want to list the measurements for
-      in: query
-      name: subject_id
-      required: false
-      schema:
-        format: uuid
-        type: string
-    MeasurementSeriesIds:
-      description: a comma-separated list of measurement series ids
-      in: query
-      name: measurement_series_ids
-      required: false
-      schema:
-        type: string
-    MeasurementSeriesId:
-      description: ID of the measurement series
-      in: path
-      name: measurement_series_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Interval:
-      description: interval
-      example: 1day
-      in: query
-      name: interval
-      required: false
-      schema:
-        enum:
-        - 1minute
-        - 15minute
-        - 1hour
-        - 1day
   schemas:
+    Measurement:
+      properties:
+        measurement_type:
+          type: string
+          example: volume
+        measurement_unit:
+          type: string
+          example: bbl
+        records:
+          items:
+            $ref: '#/components/schemas/MeasurementInputRecord'
+          type: array
+      required:
+      - records
+      - measurement_type
+      - measurement_unit
+      type: object
+    MeasurementSubjectEntityType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+      - asset_group
+    MeasurementOutput:
+      properties:
+        measure_name:
+          example: methane_concentration
+          type: string
+        measure_value:
+          example: 456
+          type: number
+        msid:
+          description: Measurement series Id
+          format: uuid
+          type: string
+        time:
+          format: date-time
+          type: string
+      type: object
+    MeasurementInputRecord:
+      properties:
+        timestamp:
+          format: date-time
+          type: string
+        value:
+          type: number
+      required:
+      - timestamp
+      - value
+      type: object
+    MeasurementList:
+      items:
+        $ref: '#/components/schemas/MeasurementOutput'
+      type: array
+    MeasurementPlot:
+      properties:
+        form:
+          type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/MeasurementOutputLean'
+        series:
+          type: array
+          items:
+            properties:
+              measurement_series_id:
+                type: string
+                format: uuid
+              description:
+                type: string
+              data:
+                $ref: '#/components/schemas/MeasurementOutputLean'
+            type: object
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    PagedMeasurementList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            $ref: '#/components/schemas/MeasurementList'
+        type: object
     MeasurementOutputLean:
       properties:
         id:
@@ -350,41 +284,14 @@ components:
       - submitted
       - draft
       default: pending
-    Measurement:
+    RejectedRecord:
       properties:
-        measurement_type:
+        ExistingVersion:
+          type: integer
+        Reason:
           type: string
-          example: volume
-        measurement_unit:
-          type: string
-          example: bbl
-        records:
-          items:
-            $ref: '#/components/schemas/MeasurementInputRecord'
-          type: array
-      required:
-      - records
-      - measurement_type
-      - measurement_unit
-      type: object
-    MeasurementSubjectEntityType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-      - asset_group
-    MeasurementInputRecord:
-      properties:
-        timestamp:
-          format: date-time
-          type: string
-        value:
-          type: number
-      required:
-      - timestamp
-      - value
+        RecordIndex:
+          type: integer
       type: object
     MeasurementSeriesSubjectInput:
       properties:
@@ -400,74 +307,167 @@ components:
                 format: date-time
           type: array
       type: object
-    MeasurementList:
-      items:
-        $ref: '#/components/schemas/MeasurementOutput'
-      type: array
-    PagedMeasurementList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            $ref: '#/components/schemas/MeasurementList'
-        type: object
-    MeasurementOutput:
-      properties:
-        measure_name:
-          example: methane_concentration
-          type: string
-        measure_value:
-          example: 456
-          type: number
-        msid:
-          description: Measurement series Id
-          format: uuid
-          type: string
-        time:
-          format: date-time
-          type: string
-      type: object
-    MeasurementPlot:
-      properties:
-        form:
-          type: object
-          properties:
-            data:
-              $ref: '#/components/schemas/MeasurementOutputLean'
-        series:
-          type: array
-          items:
-            properties:
-              measurement_series_id:
-                type: string
-                format: uuid
-              description:
-                type: string
-              data:
-                $ref: '#/components/schemas/MeasurementOutputLean'
-            type: object
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    RejectedRecord:
-      properties:
-        ExistingVersion:
-          type: integer
-        Reason:
-          type: string
-        RecordIndex:
-          type: integer
-      type: object
+  parameters:
+    IncludeForms:
+      description: If form measurements should be included
+      in: query
+      name: include_forms
+      required: false
+      schema:
+        type: boolean
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    MeasurementSeriesSubjectId:
+      description: ID of the entity you want to list the measurements for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesIds:
+      description: a comma-separated list of measurement series ids
+      in: query
+      name: measurement_series_ids
+      required: false
+      schema:
+        type: string
+    MeasurementSeriesId:
+      description: ID of the measurement series
+      in: path
+      name: measurement_series_id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    MeasurementSeriesSubjectType:
+      description: Type of the entity you want to list the measurements for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    EndDate:
+      description: end date
+      example: '2022-11-30T09:12:28.000Z'
+      in: query
+      name: end
+      schema:
+        format: date-time
+        type: string
+    MeasurementTypeSubjectType:
+      description: Type of the entity you want to list the measurement types for. Required if ID is defined.
+      in: query
+      name: subject_type
+      required: false
+      schema:
+        $ref: '#/components/schemas/MeasurementSubjectEntityType'
+    StartDate:
+      description: start date - default value is current date time
+      example: '2022-11-20T09:12:28.000Z'
+      in: query
+      name: start
+      schema:
+        format: date-time
+        type: string
+    MeasurementTypeSubjectId:
+      description: ID of the entity you want to list the measurement types for
+      in: query
+      name: subject_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    GroupBy:
+      description: group by
+      example: measurement_type
+      in: query
+      name: group_by
+      required: false
+      schema:
+        type: string
+    MeasurementType:
+      description: Measurement type of the measurements being retrieved
+      example: volume
+      in: path
+      name: measurement_type
+      required: true
+      schema:
+        type: string
+    DeviceIdQueryOptional:
+      description: ID of device
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: device_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FormSubmissionStatuses:
+      description: Form submission status to filter on, can be comma separated list
+      in: query
+      name: form_submission_statuses
+      required: false
+      schema:
+        type: string
+    AggregateFunction:
+      description: Aggregate Function
+      example: avg
+      in: query
+      name: func
+      required: false
+      schema:
+        enum:
+        - avg
+        - sum
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    Interval:
+      description: interval
+      example: 1day
+      in: query
+      name: interval
+      required: false
+      schema:
+        enum:
+        - 1minute
+        - 15minute
+        - 1hour
+        - 1day
+    DeviceIdQuery:
+      description: Id of device
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: device_id
+      required: true
+      schema:
+        format: uuid
+        type: string

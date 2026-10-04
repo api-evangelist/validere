@@ -120,71 +120,33 @@ paths:
       tags:
       - Reporting Groups
 components:
-  parameters:
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    EstimationMethodFullId:
-      description: Estimation Method ID
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: path
-      name: estimation_method_id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    ReportingGroupId:
-      description: ID of report group
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-        example: subpartw
-    ReportingGroupIdFilter:
-      description: String to search for in reporting group IDs
-      in: query
-      name: id
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    ReportingGroupNameFilter:
-      description: String to search for in reporting group names
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
   schemas:
+    ReportingGroupInput:
+      type: object
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
+      - properties:
+          id:
+            type: string
+            example: subpartw
+    ReportingGroup:
+      allOf:
+      - $ref: '#/components/schemas/ReportingGroupInput'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+        type: object
+    PagedReportingGroupOutput:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/ReportingGroup'
+            type: array
+        type: object
     AuditFields:
       properties:
         created_at:
@@ -212,32 +174,6 @@ components:
           type: number
           description: default to 1
           example: 2
-    ReportingGroupInput:
-      type: object
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupUpdateInput'
-      - properties:
-          id:
-            type: string
-            example: subpartw
-    ReportingGroup:
-      allOf:
-      - $ref: '#/components/schemas/ReportingGroupInput'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-        type: object
-    PagedReportingGroupOutput:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/ReportingGroup'
-            type: array
-        type: object
     Pagination:
       properties:
         page_number:
@@ -253,3 +189,67 @@ components:
           type: number
           example: 6
       type: object
+  parameters:
+    ReportingGroupId:
+      description: ID of report group
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        example: subpartw
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    ReportingGroupIdFilter:
+      description: String to search for in reporting group IDs
+      in: query
+      name: id
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    ReportingGroupNameFilter:
+      description: String to search for in reporting group names
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    EstimationMethodFullId:
+      description: Estimation Method ID
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: path
+      name: estimation_method_id
+      required: true
+      schema:
+        format: uuid
+        type: string

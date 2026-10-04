@@ -121,16 +121,16 @@ paths:
       tags:
       - Workflows
 components:
-  parameters:
-    WorkflowId:
-      description: Workflow ID
-      in: path
-      name: workflow_id
-      required: true
-      schema:
-        format: uuid
-        type: string
   schemas:
+    PagedWorkflowList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/IWorkflow'
+            type: array
+        type: object
     FacilityPrimaryFilterFieldsWithPrefix:
       properties:
         facility.custom_attributes:
@@ -142,52 +142,6 @@ components:
         facility.status:
           type: string
       type: object
-    FormSchemaStatus:
-      type: string
-      enum:
-      - active
-      - archived
-      - draft
-    PagedWorkflowList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/IWorkflow'
-            type: array
-        type: object
-    FormSubmissionSort:
-      properties:
-        sort_by:
-          enum:
-          - created_at
-          - status
-          - answer
-          default: created_at
-          type: string
-        sort_direction:
-          default: asc
-          description: sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-    WorkflowStatus:
-      type: string
-      enum:
-      - complete
-      - in_progress
-      - overdue
-      - dismissed
-      - missed
-    WorkflowTemplateStatus:
-      type: string
-      enum:
-      - active
-      - draft
-      - archive
     WorkflowFilter:
       properties:
         filter:
@@ -239,15 +193,40 @@ components:
                 type: string
             type: object
       type: object
-    FormSubmissionStatus:
-      type: string
-      enum:
-      - validated
-      - invalidated
-      - pending
-      - submitted
-      - draft
-      default: pending
+    FormSubmissionWithFormSchemaName:
+      allOf:
+      - $ref: '#/components/schemas/FormSubmissionWithoutAnswers'
+      - properties:
+          form_schema:
+            properties:
+              id:
+                format: uuid
+                type: string
+              name:
+                type: string
+              form_category:
+                properties:
+                  id:
+                    format: uuid
+                    type: string
+                  name:
+                    type: string
+    WorkflowSort:
+      properties:
+        sort_by:
+          enum:
+          - status
+          - created_at
+          example: created_at
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     FormSubmissionWithoutAnswers:
       properties:
         company_id:
@@ -267,18 +246,14 @@ components:
         status:
           $ref: '#/components/schemas/FormSubmissionStatus'
       type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+    WorkflowStatus:
+      type: string
+      enum:
+      - complete
+      - in_progress
+      - overdue
+      - dismissed
+      - missed
     FormSubmissionFilter:
       properties:
         filter:
@@ -354,18 +329,6 @@ components:
               type: string
               format: date-time
           type: object
-    IUpdateWorkflowInput:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - complete
-          - in_progress
-          - overdue
-          - dismissed
-          - missed
-          - error
     IWorkflow:
       type: object
       properties:
@@ -1067,80 +1030,29 @@ components:
       - updated_at
       - created_by
       - updated_by
-    FormSubmissionWithFormSchemaName:
-      allOf:
-      - $ref: '#/components/schemas/FormSubmissionWithoutAnswers'
-      - properties:
-          form_schema:
-            properties:
-              id:
-                format: uuid
-                type: string
-              name:
-                type: string
-              form_category:
-                properties:
-                  id:
-                    format: uuid
-                    type: string
-                  name:
-                    type: string
-    PagedWorkflowFormSubmissionList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/FormSubmissionWithFormSchemaName'
-              - properties:
-                  associated_tasks:
-                    items:
-                      properties:
-                        workflow_task_name:
-                          type: string
-                        workflow_task_id:
-                          type: string
-                          format: uuid
-                        form_submission_id:
-                          type: string
-                          format: uuid
-                      type: object
-                    type: array
-                  associated_actions:
-                    items:
-                      properties:
-                        workflow_action_name:
-                          type: string
-                        workflow_action_id:
-                          type: string
-                          format: uuid
-                        form_submission_id:
-                          type: string
-                          format: uuid
-                      type: object
-                    type: array
-                  is_workflow_trigger:
-                    type: boolean
-                type: object
-            type: array
-        type: object
-    WorkflowSort:
+    FormSubmissionSort:
       properties:
         sort_by:
           enum:
-          - status
           - created_at
-          example: created_at
+          - status
+          - answer
+          default: created_at
           type: string
         sort_direction:
-          default: desc
-          description: Sort direction
+          default: asc
+          description: sort direction
           enum:
           - asc
           - desc
-          example: desc
+          example: asc
           type: string
+    WorkflowTemplateStatus:
+      type: string
+      enum:
+      - active
+      - draft
+      - archive
     Pagination:
       properties:
         page_number:
@@ -1156,6 +1068,33 @@ components:
           type: number
           example: 6
       type: object
+    FormSchemaStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      - draft
+    FormSubmissionStatus:
+      type: string
+      enum:
+      - validated
+      - invalidated
+      - pending
+      - submitted
+      - draft
+      default: pending
+    IUpdateWorkflowInput:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - complete
+          - in_progress
+          - overdue
+          - dismissed
+          - missed
+          - error
     ICreateWorkflowInput:
       allOf:
       - type: object
@@ -1207,3 +1146,64 @@ components:
             required:
             - time_period
             - duration
+    PagedWorkflowFormSubmissionList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FormSubmissionWithFormSchemaName'
+              - properties:
+                  associated_tasks:
+                    items:
+                      properties:
+                        workflow_task_name:
+                          type: string
+                        workflow_task_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  associated_actions:
+                    items:
+                      properties:
+                        workflow_action_name:
+                          type: string
+                        workflow_action_id:
+                          type: string
+                          format: uuid
+                        form_submission_id:
+                          type: string
+                          format: uuid
+                      type: object
+                    type: array
+                  is_workflow_trigger:
+                    type: boolean
+                type: object
+            type: array
+        type: object
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+  parameters:
+    WorkflowId:
+      description: Workflow ID
+      in: path
+      name: workflow_id
+      required: true
+      schema:
+        format: uuid
+        type: string

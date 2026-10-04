@@ -41,7 +41,50 @@ paths:
       tags:
       - Permissions
 components:
+  schemas:
+    Permission:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
   parameters:
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
     SortDirection:
       description: sort direction
       example: desc
@@ -67,46 +110,3 @@ components:
       required: false
       schema:
         type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PermissionIsFeatureEnabled:
-      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
-      in: query
-      name: isFeatureEnabled
-      required: false
-      schema:
-        type: boolean
-  schemas:
-    Permission:
-      properties:
-        name:
-          type: string
-          example: facilities:read
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object

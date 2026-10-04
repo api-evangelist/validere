@@ -139,6 +139,194 @@ paths:
       - Ledger
 components:
   schemas:
+    CreditOwnerCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        visibility:
+          $ref: '#/components/schemas/CreditOwnerVisibility'
+        buffer_holder:
+          type: boolean
+          default: false
+      type: object
+    LedgerEntryFilter:
+      properties:
+        filter:
+          description: A filter object for Ledger Entries where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            holding: true
+            visibility: public
+          properties:
+            owner_id:
+              type: string
+              format: uuid
+            project_group_id:
+              type: string
+              format: uuid
+            vintage:
+              type: string
+            status:
+              type: string
+            holding:
+              type: string
+          type: object
+      type: object
+    LedgerEntry:
+      allOf:
+      - $ref: '#/components/schemas/LedgerEntryCreate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          serial_number_range:
+            type: string
+          credit_owner:
+            $ref: '#/components/schemas/CreditOwner'
+          project_group:
+            $ref: '#/components/schemas/ProjectGroup'
+      type: object
+    ProjectGroupCreateUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        status:
+          $ref: '#/components/schemas/ProjectGroupStatus'
+        project_developer:
+          type: string
+          maxLength: 256
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        protocol:
+          type: string
+          maxLength: 256
+        country:
+          type: string
+          maxLength: 256
+      type: object
+    ProjectGroup:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+    LedgerEntryPublicFilter:
+      properties:
+        filter:
+          description: A filter object for Ledger Entries where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            owner_name: Validere
+            project_group_id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
+          properties:
+            owner_name:
+              type: string
+            project_group_id:
+              type: string
+              format: uuid
+            vintage:
+              type: string
+            status:
+              type: string
+            holding:
+              type: string
+          type: object
+      type: object
+    CreditOwner:
+      allOf:
+      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+          public_name:
+            type: string
+    LedgerEntryPublicSort:
+      properties:
+        sort_by:
+          enum:
+          - owner_name
+          - project_group_id
+          - vintage
+          - status
+          - holding
+          - range_start
+          - range_end
+          example: range_start
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    ProjectGroupStatus:
+      type: string
+      enum:
+      - active
+      - closed
+    CreditOwnerVisibility:
+      type: string
+      enum:
+      - public
+      - private
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    LedgerEntryPublic:
+      properties:
+        owner_name:
+          type: string
+        vintage:
+          type: string
+        status:
+          $ref: '#/components/schemas/LedgerEntryStatus'
+        range_start:
+          type: integer
+        range_end:
+          type: integer
+        holding:
+          type: boolean
+        serial_number_prefix:
+          type: string
+        serial_number_range:
+          type: string
+        id:
+          type: string
+          format: uuid
+      type: object
     AuditFields:
       properties:
         created_at:
@@ -154,22 +342,48 @@ components:
           format: uuid
           type: string
       type: object
-    ProjectGroupStatus:
-      type: string
-      enum:
-      - active
-      - closed
     LedgerEntryStatus:
       type: string
       enum:
       - active
       - retired
       - removed
-    CreditOwnerVisibility:
-      type: string
-      enum:
-      - public
-      - private
+    LedgerEntryCreate:
+      properties:
+        owner_id:
+          type: string
+          format: uuid
+        project_group_id:
+          type: string
+          format: uuid
+        vintage:
+          type: string
+        status:
+          $ref: '#/components/schemas/LedgerEntryStatus'
+        range_start:
+          type: integer
+        range_end:
+          type: integer
+        holding:
+          type: boolean
+        serial_number_prefix:
+          type: string
+      required:
+      - owner_id
+      - project_group_id
+      - vintage
+      - status
+      - range_start
+      - range_end
+      - holding
+      type: object
+    LedgerEntryUpdate:
+      properties:
+        holding:
+          type: boolean
+        serial_number_prefix:
+          type: string
+      type: object
     LedgerEntrySort:
       properties:
         sort_by:
@@ -202,220 +416,6 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
-    LedgerEntryPublicFilter:
-      properties:
-        filter:
-          description: A filter object for Ledger Entries where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            owner_name: Validere
-            project_group_id: 3fa85f64-5717-4562-b3fc-2c963f66afa6
-          properties:
-            owner_name:
-              type: string
-            project_group_id:
-              type: string
-              format: uuid
-            vintage:
-              type: string
-            status:
-              type: string
-            holding:
-              type: string
-          type: object
-      type: object
-    ProjectGroup:
-      allOf:
-      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-    LedgerEntryCreate:
-      properties:
-        owner_id:
-          type: string
-          format: uuid
-        project_group_id:
-          type: string
-          format: uuid
-        vintage:
-          type: string
-        status:
-          $ref: '#/components/schemas/LedgerEntryStatus'
-        range_start:
-          type: integer
-        range_end:
-          type: integer
-        holding:
-          type: boolean
-        serial_number_prefix:
-          type: string
-      required:
-      - owner_id
-      - project_group_id
-      - vintage
-      - status
-      - range_start
-      - range_end
-      - holding
-      type: object
-    CreditOwnerCreateUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        visibility:
-          $ref: '#/components/schemas/CreditOwnerVisibility'
-        buffer_holder:
-          type: boolean
-          default: false
-      type: object
-    LedgerEntry:
-      allOf:
-      - $ref: '#/components/schemas/LedgerEntryCreate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          serial_number_range:
-            type: string
-          credit_owner:
-            $ref: '#/components/schemas/CreditOwner'
-          project_group:
-            $ref: '#/components/schemas/ProjectGroup'
-      type: object
-    CreditOwner:
-      allOf:
-      - $ref: '#/components/schemas/CreditOwnerCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-          public_name:
-            type: string
-    ProjectGroupCreateUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        status:
-          $ref: '#/components/schemas/ProjectGroupStatus'
-        project_developer:
-          type: string
-          maxLength: 256
-        start_date:
-          type: string
-          format: date
-        end_date:
-          type: string
-          format: date
-        protocol:
-          type: string
-          maxLength: 256
-        country:
-          type: string
-          maxLength: 256
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    LedgerEntryFilter:
-      properties:
-        filter:
-          description: A filter object for Ledger Entries where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            holding: true
-            visibility: public
-          properties:
-            owner_id:
-              type: string
-              format: uuid
-            project_group_id:
-              type: string
-              format: uuid
-            vintage:
-              type: string
-            status:
-              type: string
-            holding:
-              type: string
-          type: object
-      type: object
-    LedgerEntryPublicSort:
-      properties:
-        sort_by:
-          enum:
-          - owner_name
-          - project_group_id
-          - vintage
-          - status
-          - holding
-          - range_start
-          - range_end
-          example: range_start
-          type: string
-        sort_direction:
-          default: asc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-      type: object
-    LedgerEntryPublic:
-      properties:
-        owner_name:
-          type: string
-        vintage:
-          type: string
-        status:
-          $ref: '#/components/schemas/LedgerEntryStatus'
-        range_start:
-          type: integer
-        range_end:
-          type: integer
-        holding:
-          type: boolean
-        serial_number_prefix:
-          type: string
-        serial_number_range:
-          type: string
-        id:
-          type: string
-          format: uuid
-      type: object
-    LedgerEntryUpdate:
-      properties:
-        holding:
-          type: boolean
-        serial_number_prefix:
-          type: string
-      type: object
   parameters:
     LedgerEntryId:
       description: Ledger Entry ID

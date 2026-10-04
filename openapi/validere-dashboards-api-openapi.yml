@@ -112,6 +112,28 @@ paths:
       - Dashboards
 components:
   parameters:
+    DashboardId:
+      description: Dashboard ID
+      in: path
+      name: id
+      required: true
+      schema:
+        type: string
+        format: uuid
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
     SortDirection:
       description: sort direction
       example: desc
@@ -123,28 +145,6 @@ components:
         - asc
         - desc
         type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    DashboardId:
-      description: Dashboard ID
-      in: path
-      name: id
-      required: true
-      schema:
-        type: string
-        format: uuid
     DashboardName:
       description: Dashboard name
       in: query
@@ -159,14 +159,36 @@ components:
       required: false
       schema:
         type: string
-    PageSize:
-      description: page size
+    Page:
+      description: page number
       in: query
-      name: page_size
+      name: page
       required: false
       schema:
         type: number
   schemas:
+    Chart:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        dashboard_id:
+          format: uuid
+          type: string
+        id:
+          format: uuid
+          type: string
+        json:
+          type: object
+        name:
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      type: object
     Dashboard:
       properties:
         company_id:
@@ -211,27 +233,5 @@ components:
           type: string
         name:
           example: 'Dashboard #1'
-          type: string
-      type: object
-    Chart:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        dashboard_id:
-          format: uuid
-          type: string
-        id:
-          format: uuid
-          type: string
-        json:
-          type: object
-        name:
-          type: string
-        updated_at:
-          format: date-time
           type: string
       type: object
