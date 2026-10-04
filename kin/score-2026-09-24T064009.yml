@@ -1,25 +1,24 @@
-# Kin Score artifact — validere — 2026-08-25T143147
+# Kin Score artifact — validere — 2026-09-24T064009
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: validere
-  schema_version: 0.14.0
-  scored_at: '2026-08-25'
-  run_ts: 2026-08-25T143147
-  composite: 48.1
+  schema_version: 0.22.0
+  scored_at: '2026-09-24'
+  run_ts: 2026-09-24T064009
+  composite: 46.4
   band: developing
   facets:
-    discoverability: 92.6
-    contract_quality: 52.4
-    governance: 30.3
+    discoverability: 75.9
+    contract_quality: 52.3
+    contract_governance: 18.2
     operational_transparency: 2.6
     developer_ergonomics: 49.4
-    commercial_clarity: 43.4
-    contract_governance: 30.3
     access_clarity: 43.4
   agent_readiness:
-    score: 37.2
+    score: 40.1
     band: agent-ready
+    band_gated_from: agent-native
     dimensions:
       spec_presence: true
       agentic_access: false
@@ -35,7 +34,7 @@ kin_score:
       well_known_catalog: false
       consent_identity: false
       agent_card: false
-      dry_run_mode: false
+      dry_run_mode: true
       delegated_identity: served
       protected_resource_metadata: false
       dynamic_client_registration: true
@@ -51,7 +50,7 @@ kin_score:
     skills: derived
     conformance: first-party
     contracts:
-      total: 55
+      total: 54
       derived: 0
       coverage: 0.0
-      callable: 100.0
+      callable: 96.3
