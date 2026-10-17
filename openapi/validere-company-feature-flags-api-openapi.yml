@@ -89,46 +89,17 @@ paths:
       tags:
       - company_feature_flags
 components:
-  parameters:
-    CompanyId:
-      schema:
-        format: uuid
-        type: string
-      required: true
-      description: Company ID
-      in: path
-      name: company_id
-    TenantId:
-      description: Tenant ID for admin users
-      example: ''
-      in: query
-      name: tenant_id
-      required: false
-      schema:
-        type: string
-    FeatureFlagName:
-      description: Feature Flag Name (any version)
-      in: path
-      name: feature_flag_name
-      required: true
-      schema:
-        type: string
   schemas:
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
+    PagedCompanyFeatureFlagsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/CompanyFeatureFlag'
+            type: array
+        type: object
     CompanyFeatureFlagsFilter:
       properties:
         filter:
@@ -138,14 +109,6 @@ components:
               feature_flag_name:
                 type: string
           type: object
-    CompanyFeatureFlag:
-      allOf:
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            type: string
-          feature_flag_name:
-            type: string
     Pagination:
       properties:
         page_number:
@@ -161,16 +124,6 @@ components:
           type: number
           example: 6
       type: object
-    PagedCompanyFeatureFlagsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/CompanyFeatureFlag'
-            type: array
-        type: object
     Paginated:
       properties:
         page:
@@ -183,6 +136,21 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
     AllCompanyFeatureFlagsFilter:
       properties:
         filter:
@@ -194,3 +162,35 @@ components:
               feature_flag_name:
                 type: string
           type: object
+    CompanyFeatureFlag:
+      allOf:
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            type: string
+          feature_flag_name:
+            type: string
+  parameters:
+    TenantId:
+      description: Tenant ID for admin users
+      example: ''
+      in: query
+      name: tenant_id
+      required: false
+      schema:
+        type: string
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id
+    FeatureFlagName:
+      description: Feature Flag Name (any version)
+      in: path
+      name: feature_flag_name
+      required: true
+      schema:
+        type: string

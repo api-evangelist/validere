@@ -185,6 +185,148 @@ paths:
       - project_group
 components:
   schemas:
+    ProjectGroupSummary:
+      properties:
+        summary:
+          properties:
+            project_periods:
+              type: number
+            total_active_credits:
+              type: number
+            total_retired_credits:
+              type: number
+            buffer_credits:
+              type: number
+          type: object
+      type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ProjectGroupFilter:
+      properties:
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
+      type: object
+    ProjectGroupSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    ProjectGroupPublicSort:
+      properties:
+        sort_by:
+          enum:
+          - name
+          - status
+          - project_developer
+          - protocol
+          - country
+          example: start_date
+          type: string
+        sort_direction:
+          default: asc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: asc
+          type: string
+      type: object
+    ProjectGroup:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - $ref: '#/components/schemas/AuditFields'
+      - properties:
+          company_id:
+            format: uuid
+            type: string
+          id:
+            format: uuid
+            type: string
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    ProjectGroupPublic:
+      allOf:
+      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
+      - properties:
+          id:
+            format: uuid
+            type: string
+    ProjectGroupStatus:
+      type: string
+      enum:
+      - active
+      - closed
+    ProjectGroupPublicFilter:
+      properties:
+        filter:
+          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
+          example:
+            name: Basin
+          properties:
+            name:
+              type: string
+            status:
+              $ref: '#/components/schemas/ProjectGroupStatus'
+            project_developer:
+              type: string
+            protocol:
+              type: string
+            country:
+              type: string
+          type: object
+      type: object
     ProjectGroupCreateUpdate:
       properties:
         name:
@@ -208,30 +350,6 @@ components:
           type: string
           maxLength: 256
       type: object
-    ProjectGroupFilter:
-      properties:
-        filter:
-          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            name: Basin
-          properties:
-            name:
-              type: string
-            status:
-              $ref: '#/components/schemas/ProjectGroupStatus'
-            project_developer:
-              type: string
-            protocol:
-              type: string
-            country:
-              type: string
-          type: object
-      type: object
-    ProjectGroupStatus:
-      type: string
-      enum:
-      - active
-      - closed
     AuditFields:
       properties:
         created_at:
@@ -247,133 +365,7 @@ components:
           format: uuid
           type: string
       type: object
-    ProjectGroupPublicFilter:
-      properties:
-        filter:
-          description: A filter object for Project Groups where it can filter based on any of these following fields. No fields are mandatory and the syntax is roughly the same as MongoDB querying.
-          example:
-            name: Basin
-          properties:
-            name:
-              type: string
-            status:
-              $ref: '#/components/schemas/ProjectGroupStatus'
-            project_developer:
-              type: string
-            protocol:
-              type: string
-            country:
-              type: string
-          type: object
-      type: object
-    ProjectGroup:
-      allOf:
-      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
-      - $ref: '#/components/schemas/AuditFields'
-      - properties:
-          company_id:
-            format: uuid
-            type: string
-          id:
-            format: uuid
-            type: string
-    ProjectGroupSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - project_developer
-          - protocol
-          - country
-          example: start_date
-          type: string
-        sort_direction:
-          default: asc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    ProjectGroupPublicSort:
-      properties:
-        sort_by:
-          enum:
-          - name
-          - status
-          - project_developer
-          - protocol
-          - country
-          example: start_date
-          type: string
-        sort_direction:
-          default: asc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: asc
-          type: string
-      type: object
-    ProjectGroupPublic:
-      allOf:
-      - $ref: '#/components/schemas/ProjectGroupCreateUpdate'
-      - properties:
-          id:
-            format: uuid
-            type: string
-    ProjectGroupSummary:
-      properties:
-        summary:
-          properties:
-            project_periods:
-              type: number
-            total_active_credits:
-              type: number
-            total_retired_credits:
-              type: number
-            buffer_credits:
-              type: number
-          type: object
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
   parameters:
-    CompanyId:
-      schema:
-        format: uuid
-        type: string
-      required: true
-      description: Company ID
-      in: path
-      name: company_id
     ProjectGroupId:
       description: Project Group ID
       in: path
@@ -382,3 +374,11 @@ components:
       schema:
         format: uuid
         type: string
+    CompanyId:
+      schema:
+        format: uuid
+        type: string
+      required: true
+      description: Company ID
+      in: path
+      name: company_id

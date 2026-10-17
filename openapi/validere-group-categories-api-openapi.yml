@@ -101,6 +101,21 @@ paths:
       - Group Categories
 components:
   schemas:
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     GroupCategory:
       allOf:
       - $ref: '#/components/schemas/GroupCategoryCreate'
@@ -134,30 +149,6 @@ components:
           - desc
           example: desc
           type: string
-    AuditFields:
-      properties:
-        created_at:
-          format: date-time
-          type: string
-        updated_at:
-          format: date-time
-          type: string
-        created_by:
-          format: uuid
-          type: string
-        updated_by:
-          format: uuid
-          type: string
-      type: object
-    GroupCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
-      type: object
     GroupCategoryFilter:
       properties:
         filter:
@@ -184,21 +175,6 @@ components:
               format: date-time
           type: object
       type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
     PagedGroupCategoryList:
       allOf:
       - $ref: '#/components/schemas/Pagination'
@@ -208,15 +184,6 @@ components:
               $ref: '#/components/schemas/GroupCategory'
             type: array
         type: object
-    GroupCategoryCreate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        description:
-          type: string
-          maxLength: 256
-      type: object
     Paginated:
       properties:
         page:
@@ -229,6 +196,39 @@ components:
           description: How many items to list in a page
           example: 20
           type: number
+    GroupCategoryCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    GroupCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        description:
+          type: string
+          maxLength: 256
+      type: object
+    AuditFields:
+      properties:
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        created_by:
+          format: uuid
+          type: string
+        updated_by:
+          format: uuid
+          type: string
+      type: object
   parameters:
     GroupCategoryId:
       description: Group Category ID

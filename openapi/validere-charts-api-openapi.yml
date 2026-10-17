@@ -79,6 +79,14 @@ paths:
       - Charts
 components:
   schemas:
+    ChartUpdate:
+      properties:
+        json:
+          type: object
+        name:
+          example: 'Chart #1'
+          type: string
+      type: object
     Chart:
       properties:
         created_at:
@@ -99,14 +107,6 @@ components:
           type: string
         updated_at:
           format: date-time
-          type: string
-      type: object
-    ChartUpdate:
-      properties:
-        json:
-          type: object
-        name:
-          example: 'Chart #1'
           type: string
       type: object
     ChartCreate:

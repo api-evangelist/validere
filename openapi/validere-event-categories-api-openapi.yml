@@ -105,14 +105,6 @@ paths:
       - Event Categories
 components:
   schemas:
-    EventCategoryUpdate:
-      properties:
-        name:
-          type: string
-          maxLength: 100
-        archived:
-          type: boolean
-      type: object
     EventCategoryCreate:
       properties:
         name:
@@ -120,21 +112,6 @@ components:
           maxLength: 100
         archived:
           type: boolean
-      type: object
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
       type: object
     EventCategory:
       allOf:
@@ -153,15 +130,30 @@ components:
             format: date-time
             type: string
       type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    EventCategoryUpdate:
+      properties:
+        name:
+          type: string
+          maxLength: 100
+        archived:
+          type: boolean
+      type: object
   parameters:
-    EventCategoryArchived:
-      description: Event Category archived
-      in: query
-      name: archived
-      required: false
-      schema:
-        default: false
-        type: boolean
     EventCategoryId:
       description: Event Category ID
       in: path
@@ -170,13 +162,14 @@ components:
       schema:
         format: uuid
         type: string
-    PageSize:
-      description: page size
+    EventCategoryArchived:
+      description: Event Category archived
       in: query
-      name: page_size
+      name: archived
       required: false
       schema:
-        type: number
+        default: false
+        type: boolean
     SortDirection:
       description: sort direction
       example: desc
@@ -195,13 +188,13 @@ components:
       required: false
       schema:
         type: string
-    SortBy:
-      description: sort by
+    PageSize:
+      description: page size
       in: query
-      name: sort_by
+      name: page_size
       required: false
       schema:
-        type: string
+        type: number
     Page:
       description: page number
       in: query
@@ -209,3 +202,10 @@ components:
       required: false
       schema:
         type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string

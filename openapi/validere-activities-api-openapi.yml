@@ -61,57 +61,6 @@ paths:
       - Activities
 components:
   schemas:
-    ActivitySort:
-      properties:
-        sort_by:
-          enum:
-          - resource_type
-          - resource_id
-          - author_id
-          - action
-          - timestamp
-          example: timestamp
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    PagedActivityList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/Activity'
-            type: array
-        type: object
-    ResourceType:
-      type: string
-      enum:
-      - facility
-      - equipment
-      - device
-      - flow
-      - record_value
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
     Activity:
       properties:
         resource_type:
@@ -139,6 +88,57 @@ components:
           format: date-time
           type: string
       type: object
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
+    ResourceType:
+      type: string
+      enum:
+      - facility
+      - equipment
+      - device
+      - flow
+      - record_value
+    PagedActivityList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Activity'
+            type: array
+        type: object
+    ActivitySort:
+      properties:
+        sort_by:
+          enum:
+          - resource_type
+          - resource_id
+          - author_id
+          - action
+          - timestamp
+          example: timestamp
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     Paginated:
       properties:
         page:

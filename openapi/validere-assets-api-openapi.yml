@@ -40,122 +40,6 @@ paths:
       - Assets
 components:
   schemas:
-    ProductCategories:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_categories`
-    EquipmentStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-      - deprecated
-    ProductTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/product_types`
-    FlowTypes:
-      type: string
-      description: Use `id` value of any index in `GET /v1/flow_types`
-    FlowStatus:
-      type: string
-      enum:
-      - active
-      - inactive
-    AssetSort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - asset_type
-          type: string
-        sort_direction:
-          default: desc
-          description: sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    EquipmentPrimaryFilterFieldsWithPrefix:
-      properties:
-        equipment.custom_attributes:
-          type: object
-        equipment.id:
-          type: string
-        equipment.name:
-          type: string
-        equipment.status:
-          $ref: '#/components/schemas/EquipmentStatus'
-        equipment.type.id:
-          type: string
-        equipment.type.name:
-          type: string
-      type: object
-    AssetFilterFields:
-      allOf:
-      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
-      - $ref: '#/components/schemas/AssetGroupFilterWithPrefix'
-    AssetType:
-      type: string
-      enum:
-      - equipment
-      - device
-      - facility
-      - flow
-    PagedAssetList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - type: object
-        properties:
-          data:
-            type: object
-            properties:
-              id:
-                type: string
-                format: uuid
-              asset_type:
-                $ref: '#/components/schemas/AssetType'
-              name:
-                type: string
-    DevicePrimaryFilterFieldsWithPrefix:
-      properties:
-        device.attributes:
-          type: object
-        device.custom_attributes:
-          type: object
-        device.id:
-          type: string
-        device.measurement_types:
-          type: string
-        device.name:
-          type: string
-        device.status:
-          type: string
-        device.type_id:
-          type: string
-    FacilityPrimaryFilterFieldsWithPrefix:
-      properties:
-        facility.custom_attributes:
-          type: object
-        facility.id:
-          type: string
-        facility.name:
-          type: string
-        facility.status:
-          type: string
-      type: object
-    CustomAttributes:
-      example:
-        attribute1: 12345
-        attribute2: value1
-      type: object
-    AssetGroupStatus:
-      type: string
-      enum:
-      - active
-      - inactive
     Pagination:
       properties:
         page_number:
@@ -171,6 +55,97 @@ components:
           type: number
           example: 6
       type: object
+    AssetSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - asset_type
+          type: string
+        sort_direction:
+          default: desc
+          description: sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
+    FacilityPrimaryFilterFieldsWithPrefix:
+      properties:
+        facility.custom_attributes:
+          type: object
+        facility.id:
+          type: string
+        facility.name:
+          type: string
+        facility.status:
+          type: string
+      type: object
+    EquipmentPrimaryFilterFieldsWithPrefix:
+      properties:
+        equipment.custom_attributes:
+          type: object
+        equipment.id:
+          type: string
+        equipment.name:
+          type: string
+        equipment.status:
+          $ref: '#/components/schemas/EquipmentStatus'
+        equipment.type.id:
+          type: string
+        equipment.type.name:
+          type: string
+      type: object
+    ProductCategories:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_categories`
+    AssetGroupStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+    PagedAssetList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+              asset_type:
+                $ref: '#/components/schemas/AssetType'
+              name:
+                type: string
+    FlowTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/flow_types`
+    AssetFilterFields:
+      allOf:
+      - $ref: '#/components/schemas/FacilityPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/EquipmentPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/DevicePrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/FlowPrimaryFilterFieldsWithPrefix'
+      - $ref: '#/components/schemas/AssetGroupFilterWithPrefix'
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    FlowStatus:
+      type: string
+      enum:
+      - active
+      - inactive
     FlowPrimaryFilterFieldsWithPrefix:
       properties:
         flow.id:
@@ -194,18 +169,43 @@ components:
           type: string
           format: uuid
       type: object
-    Paginated:
+    ProductTypes:
+      type: string
+      description: Use `id` value of any index in `GET /v1/product_types`
+    CustomAttributes:
+      example:
+        attribute1: 12345
+        attribute2: value1
+      type: object
+    EquipmentStatus:
+      type: string
+      enum:
+      - active
+      - inactive
+      - deprecated
+    AssetType:
+      type: string
+      enum:
+      - equipment
+      - device
+      - facility
+      - flow
+    DevicePrimaryFilterFieldsWithPrefix:
       properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
+        device.attributes:
+          type: object
+        device.custom_attributes:
+          type: object
+        device.id:
+          type: string
+        device.measurement_types:
+          type: string
+        device.name:
+          type: string
+        device.status:
+          type: string
+        device.type_id:
+          type: string
     AssetGroupFilterWithPrefix:
       properties:
         asset_group.id:

@@ -104,14 +104,77 @@ paths:
       tags:
       - workflow_categories
 components:
+  parameters:
+    WorkflowCategoryName:
+      description: Workflow Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    WorkflowCategoryDescription:
+      description: Workflow Category description
+      in: query
+      name: description
+      required: false
+      schema:
+        type: string
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    WorkflowCategoryId:
+      description: Workflow Category ID
+      in: path
+      name: id
+      required: true
+      schema:
+        format: uuid
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
   schemas:
-    IUpdateWorkflowCategoryInput:
-      type: object
+    Pagination:
       properties:
-        name:
-          type: string
-        description:
-          type: string
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     IWorkflowCategory:
       type: object
       properties:
@@ -160,73 +223,10 @@ components:
       required:
       - name
       - description
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+    IUpdateWorkflowCategoryInput:
       type: object
-  parameters:
-    WorkflowCategoryName:
-      description: Workflow Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    WorkflowCategoryId:
-      description: Workflow Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    WorkflowCategoryDescription:
-      description: Workflow Category description
-      in: query
-      name: description
-      required: false
-      schema:
-        type: string
+      properties:
+        name:
+          type: string
+        description:
+          type: string

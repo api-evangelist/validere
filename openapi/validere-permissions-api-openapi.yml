@@ -41,13 +41,54 @@ paths:
       tags:
       - Permissions
 components:
+  parameters:
+    PermissionIsFeatureEnabled:
+      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
+      in: query
+      name: isFeatureEnabled
+      required: false
+      schema:
+        type: boolean
+    SortDirection:
+      description: sort direction
+      example: desc
+      in: query
+      name: sort_direction
+      required: false
+      schema:
+        enum:
+        - asc
+        - desc
+        type: string
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    Page:
+      description: page number
+      in: query
+      name: page
+      required: false
+      schema:
+        type: number
+    PermissionName:
+      description: Permission name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string
   schemas:
-    Permission:
-      properties:
-        name:
-          type: string
-          example: facilities:read
-      type: object
     Pagination:
       properties:
         page_number:
@@ -63,50 +104,9 @@ components:
           type: number
           example: 6
       type: object
-  parameters:
-    PermissionIsFeatureEnabled:
-      description: only return permissions whose associated feature flag is enabled globally & for the callee's company
-      in: query
-      name: isFeatureEnabled
-      required: false
-      schema:
-        type: boolean
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    SortDirection:
-      description: sort direction
-      example: desc
-      in: query
-      name: sort_direction
-      required: false
-      schema:
-        enum:
-        - asc
-        - desc
-        type: string
-    Page:
-      description: page number
-      in: query
-      name: page
-      required: false
-      schema:
-        type: number
-    PermissionName:
-      description: Permission name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
+    Permission:
+      properties:
+        name:
+          type: string
+          example: facilities:read
+      type: object

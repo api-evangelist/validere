@@ -52,28 +52,6 @@ paths:
       - Feature Flags
 components:
   schemas:
-    PagedFeatureFlagsList:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              allOf:
-              - $ref: '#/components/schemas/FeatureFlag'
-            type: array
-        type: object
-    FeatureFlag:
-      allOf:
-      - type: object
-        properties:
-          name:
-            type: string
-          version:
-            type: string
-          isEnabled:
-            type: boolean
-          isDeprecated:
-            type: boolean
     FeatureFlagsFilter:
       properties:
         filter:
@@ -87,6 +65,16 @@ components:
               isDeprecated:
                 type: boolean
           type: object
+    PagedFeatureFlagsList:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              allOf:
+              - $ref: '#/components/schemas/FeatureFlag'
+            type: array
+        type: object
     Pagination:
       properties:
         page_number:
@@ -102,6 +90,18 @@ components:
           type: number
           example: 6
       type: object
+    FeatureFlag:
+      allOf:
+      - type: object
+        properties:
+          name:
+            type: string
+          version:
+            type: string
+          isEnabled:
+            type: boolean
+          isDeprecated:
+            type: boolean
     Paginated:
       properties:
         page:

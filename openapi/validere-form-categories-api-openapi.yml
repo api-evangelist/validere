@@ -117,12 +117,20 @@ components:
           example: Truck Tickets
           type: string
       type: object
-    FormCategoryUpdate:
+    Pagination:
       properties:
-        archived:
-          type: boolean
-        name:
-          type: string
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
       type: object
     FormCategory:
       properties:
@@ -143,60 +151,22 @@ components:
           format: date-time
           type: string
       type: object
-    Pagination:
+    FormCategoryUpdate:
       properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
+        archived:
+          type: boolean
+        name:
+          type: string
       type: object
   parameters:
-    RelatedEntityIdQuery:
-      description: device id or facility id or equipment id
-      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
-      in: query
-      name: related_entity_id
-      required: false
+    FormCategoryId:
+      description: Form Category ID
+      in: path
+      name: id
+      required: true
       schema:
         format: uuid
         type: string
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
-      schema:
-        type: string
-    FormCategoryName:
-      description: Form Category name
-      in: query
-      name: name
-      required: false
-      schema:
-        type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
-    FormCategoryArchived:
-      description: Form Category archived
-      in: query
-      name: archived
-      required: false
-      schema:
-        default: false
-        type: boolean
     SortDirection:
       description: sort direction
       example: desc
@@ -208,6 +178,14 @@ components:
         - asc
         - desc
         type: string
+    FormCategoryArchived:
+      description: Form Category archived
+      in: query
+      name: archived
+      required: false
+      schema:
+        default: false
+        type: boolean
     MeasurementTypeQuery:
       description: Measurement type of the measurements being retrieved
       example: volume
@@ -216,14 +194,6 @@ components:
       required: false
       schema:
         type: string
-    FormCategoryId:
-      description: Form Category ID
-      in: path
-      name: id
-      required: true
-      schema:
-        format: uuid
-        type: string
     Page:
       description: page number
       in: query
@@ -231,3 +201,33 @@ components:
       required: false
       schema:
         type: number
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
+      schema:
+        type: number
+    RelatedEntityIdQuery:
+      description: device id or facility id or equipment id
+      example: 748970de-fd1f-4494-ae3f-47cc21ff205f
+      in: query
+      name: related_entity_id
+      required: false
+      schema:
+        format: uuid
+        type: string
+    FormCategoryName:
+      description: Form Category name
+      in: query
+      name: name
+      required: false
+      schema:
+        type: string
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string

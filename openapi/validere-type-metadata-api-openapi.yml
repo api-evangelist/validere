@@ -281,6 +281,20 @@ components:
       items:
         $ref: '#/components/schemas/CustomAttributeEntityType'
       type: array
+    CustomAttributeDataType:
+      properties:
+        id:
+          $ref: '#/components/schemas/AttributeTypes'
+        name:
+          type: string
+      type: object
+    CustomAttributeEntityType:
+      properties:
+        id:
+          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
+        name:
+          type: string
+      type: object
     schemas-CustomAttributeEntityType:
       type: string
       enum:
@@ -296,24 +310,6 @@ components:
           type: string
         name:
           type: string
-    CustomAttributeDataType:
-      properties:
-        id:
-          $ref: '#/components/schemas/AttributeTypes'
-        name:
-          type: string
-      type: object
-    CustomAttributeDataTypeList:
-      items:
-        $ref: '#/components/schemas/CustomAttributeDataType'
-      type: array
-    CustomAttributeEntityType:
-      properties:
-        id:
-          $ref: '#/components/schemas/schemas-CustomAttributeEntityType'
-        name:
-          type: string
-      type: object
     EnumIdNamePairList:
       type: array
       items:
@@ -339,6 +335,10 @@ components:
       - date
       - date-time
       - file
+    CustomAttributeDataTypeList:
+      items:
+        $ref: '#/components/schemas/CustomAttributeDataType'
+      type: array
     ResponseMeta:
       properties:
         type:

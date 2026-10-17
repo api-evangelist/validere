@@ -43,6 +43,10 @@ paths:
       - equipment_types
 components:
   schemas:
+    EquipmentTypeList:
+      items:
+        $ref: '#/components/schemas/EquipmentType'
+      type: array
     EquipmentType:
       properties:
         id:
@@ -50,10 +54,6 @@ components:
         name:
           type: string
       type: object
-    EquipmentTypeList:
-      items:
-        $ref: '#/components/schemas/EquipmentType'
-      type: array
   parameters:
     EquipmentTypeId:
       description: Equipment Type Id

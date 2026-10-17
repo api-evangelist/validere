@@ -28,21 +28,6 @@ paths:
       - Device Types
 components:
   schemas:
-    DeviceTypeList:
-      items:
-        $ref: '#/components/schemas/DeviceType'
-      type: array
-    DeviceTypeAttribute:
-      properties:
-        data_type:
-          $ref: '#/components/schemas/AttributeTypes'
-        description:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-      type: object
     AttributeTypes:
       type: string
       enum:
@@ -64,6 +49,21 @@ components:
           items:
             $ref: '#/components/schemas/DeviceTypeAttribute'
           type: array
+        id:
+          type: string
+        name:
+          type: string
+      type: object
+    DeviceTypeList:
+      items:
+        $ref: '#/components/schemas/DeviceType'
+      type: array
+    DeviceTypeAttribute:
+      properties:
+        data_type:
+          $ref: '#/components/schemas/AttributeTypes'
+        description:
+          type: string
         id:
           type: string
         name:

@@ -71,34 +71,12 @@ paths:
       - Job
 components:
   schemas:
-    JobSort:
-      properties:
-        sort_by:
-          enum:
-          - id
-          - status
-          - type
-          - started_at
-          - finished_at
-          example: type
-          type: string
-        sort_direction:
-          default: desc
-          description: Sort direction
-          enum:
-          - asc
-          - desc
-          example: desc
-          type: string
-    PagedJobItems:
-      allOf:
-      - $ref: '#/components/schemas/Pagination'
-      - properties:
-          data:
-            items:
-              $ref: '#/components/schemas/JobItem'
-            type: array
-        type: object
+    JobType:
+      type: string
+      enum:
+      - run_calculation
+      - apply_default_record_configuration
+      - apply_default_calculator_configuration
     JobItemStatusCounts:
       type: object
       properties:
@@ -108,6 +86,38 @@ components:
           type: number
         skipped:
           type: number
+    JobFilter:
+      properties:
+        filter:
+          properties:
+            id:
+              type: string
+              format: uuid
+            status:
+              $ref: '#/components/schemas/JobStatus'
+            type:
+              $ref: '#/components/schemas/JobType'
+            started_at:
+              type: string
+              format: date-time
+            finished_at:
+              type: string
+              format: date-time
+    Pagination:
+      properties:
+        page_number:
+          type: number
+          example: 0
+        page_size:
+          type: number
+          example: 10
+        total_entries:
+          type: number
+          example: 58
+        total_pages:
+          type: number
+          example: 6
+      type: object
     BulkItemStatus:
       type: string
       enum:
@@ -145,15 +155,53 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
-    PagedJobs:
+    PagedJobItems:
       allOf:
       - $ref: '#/components/schemas/Pagination'
       - properties:
           data:
             items:
-              $ref: '#/components/schemas/Job'
+              $ref: '#/components/schemas/JobItem'
             type: array
         type: object
+    JobStatus:
+      type: string
+      enum:
+      - started
+      - finished
+      - failed
+      - partial
+    Paginated:
+      properties:
+        page:
+          default: 0
+          description: Which page to return
+          example: 0
+          type: number
+        page_size:
+          default: 10
+          description: How many items to list in a page
+          example: 20
+          type: number
+    JobSort:
+      properties:
+        sort_by:
+          enum:
+          - id
+          - status
+          - type
+          - started_at
+          - finished_at
+          example: type
+          type: string
+        sort_direction:
+          default: desc
+          description: Sort direction
+          enum:
+          - asc
+          - desc
+          example: desc
+          type: string
     JobV2:
       properties:
         id:
@@ -182,46 +230,6 @@ components:
           type: number
         item_status_counts:
           $ref: '#/components/schemas/JobItemStatusCounts'
-    JobStatus:
-      type: string
-      enum:
-      - started
-      - finished
-      - failed
-      - partial
-    JobType:
-      type: string
-      enum:
-      - run_calculation
-      - apply_default_record_configuration
-      - apply_default_calculator_configuration
-    Pagination:
-      properties:
-        page_number:
-          type: number
-          example: 0
-        page_size:
-          type: number
-          example: 10
-        total_entries:
-          type: number
-          example: 58
-        total_pages:
-          type: number
-          example: 6
-      type: object
-    Paginated:
-      properties:
-        page:
-          default: 0
-          description: Which page to return
-          example: 0
-          type: number
-        page_size:
-          default: 10
-          description: How many items to list in a page
-          example: 20
-          type: number
     JobItem:
       properties:
         key:
@@ -238,38 +246,24 @@ components:
           type: object
         output:
           type: object
-    JobFilter:
-      properties:
-        filter:
-          properties:
-            id:
-              type: string
-              format: uuid
-            status:
-              $ref: '#/components/schemas/JobStatus'
-            type:
-              $ref: '#/components/schemas/JobType'
-            started_at:
-              type: string
-              format: date-time
-            finished_at:
-              type: string
-              format: date-time
+    PagedJobs:
+      allOf:
+      - $ref: '#/components/schemas/Pagination'
+      - properties:
+          data:
+            items:
+              $ref: '#/components/schemas/Job'
+            type: array
+        type: object
   parameters:
-    SortBy:
-      description: sort by
-      in: query
-      name: sort_by
-      required: false
+    JobId:
+      description: Job ID
+      in: path
+      name: job_id
+      required: true
       schema:
+        format: uuid
         type: string
-    PageSize:
-      description: page size
-      in: query
-      name: page_size
-      required: false
-      schema:
-        type: number
     SortDirection:
       description: sort direction
       example: desc
@@ -281,14 +275,13 @@ components:
         - asc
         - desc
         type: string
-    JobId:
-      description: Job ID
-      in: path
-      name: job_id
-      required: true
+    PageSize:
+      description: page size
+      in: query
+      name: page_size
+      required: false
       schema:
-        format: uuid
-        type: string
+        type: number
     Page:
       description: page number
       in: query
@@ -296,3 +289,10 @@ components:
       required: false
       schema:
         type: number
+    SortBy:
+      description: sort by
+      in: query
+      name: sort_by
+      required: false
+      schema:
+        type: string

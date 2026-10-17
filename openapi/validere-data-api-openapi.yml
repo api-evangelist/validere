@@ -165,41 +165,28 @@ paths:
                 $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
-    HTTPValidationError:
+    JSONDataPostRequest:
       properties:
-        detail:
-          items:
-            $ref: '#/components/schemas/ValidationError'
-          type: array
-          title: Detail
-      type: object
-      title: HTTPValidationError
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-            - type: string
-            - type: integer
-          type: array
-          title: Location
-        msg:
+        client_id:
           type: string
-          title: Message
-        type:
+          format: uuid
+          title: Client Id
+        dataset_id:
           type: string
-          title: Error Type
-        input:
-          title: Input
-        ctx:
-          type: object
-          title: Context
+          format: uuid
+          title: Dataset Id
+        data:
+          items:
+            additionalProperties: true
+            type: object
+          type: array
+          title: Data
       type: object
       required:
-      - loc
-      - msg
-      - type
-      title: ValidationError
+      - client_id
+      - dataset_id
+      - data
+      title: JSONDataPostRequest
     ResponseMeta:
       properties:
         type:
@@ -226,28 +213,41 @@ components:
       - type
       title: ResponseMeta
       description: Standard response envelope meta object
-    JSONDataPostRequest:
+    ValidationError:
       properties:
-        client_id:
-          type: string
-          format: uuid
-          title: Client Id
-        dataset_id:
-          type: string
-          format: uuid
-          title: Dataset Id
-        data:
+        loc:
           items:
-            additionalProperties: true
-            type: object
+            anyOf:
+            - type: string
+            - type: integer
           type: array
-          title: Data
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+        input:
+          title: Input
+        ctx:
+          type: object
+          title: Context
       type: object
       required:
-      - client_id
-      - dataset_id
-      - data
-      title: JSONDataPostRequest
+      - loc
+      - msg
+      - type
+      title: ValidationError
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     DataResponse:
       properties:
         meta:
